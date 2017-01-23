@@ -1,0 +1,236 @@
+// Sandstone 3.3.7
+// Bootswatch
+// -----------------------------------------------------
+
+$web-font-path: "https://fonts.googleapis.com/css?family=Roboto:400,500,700" !default;
+@import url($web-font-path);
+
+// Navbar =====================================================================
+
+.sandstone {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.navbar {
+  .nav > li > a {
+    @extend .sandstone;
+  }
+
+  &-form input,
+  &-form .form-control {
+    border: none;
+  }
+  &-default {
+    border-bottom: 2px ridge #dea81c;
+  }
+}
+
+// Buttons ====================================================================
+
+.btn {
+  border: 2px ridge #dea81c;
+  box-shadow: inset 0 0 10px 5px rgba(233, 161, 0, .1),
+    inset 0 0 10px 5px rgba(0, 0, 0, .15);
+  @extend .sandstone;
+
+  &:hover {
+    border-color: #dfa100;
+    box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, .25);
+  }
+
+  &:focus, &:active {
+    border-color: #dea81c;
+    box-shadow: inset 0 0 10px 5px rgba(233, 161, 0, .1);
+  }
+
+  &-lg {
+    line-height: 26px;
+  }
+
+  &-link {
+    background: none;
+    box-shadow: none;
+    border: none;
+
+    &:active,
+    &:focus,
+    &:hover {
+      background: none;
+      box-shadow: none;
+      border: none;
+    }
+  }
+
+  &-default {
+    box-shadow: inset 0 0 10px 10px rgba(0, 0, 0, .15),
+      inset 0 0 10px 5px rgba(233, 161, 0, .20);
+    &:hover {
+      background-color: $navbar-default-link-active-bg;
+    }
+  }
+}
+// Typography =================================================================
+
+// Tables =====================================================================
+
+// Forms ======================================================================
+
+input,
+.form-control {
+  border: 2px ridge #dea81c;
+  box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, 0.15);
+
+  &:focus {
+    border-color: $input-border;
+    box-shadow: inset 0 0 10px 3px rgba(0, 0, 0, 0.10);
+  }
+}
+
+// Navs =======================================================================
+
+.nav {
+  @extend .sandstone;
+
+  .open > a,
+  .open > a:hover,
+  .open > a:focus {
+    border-color: $gray-light;
+  }
+}
+
+.nav-tabs {
+
+  & > li > a {
+    background-color: $gray-lighter;
+    border-color: $nav-tabs-border-color;
+    color: $gray;
+  }
+
+  > li.disabled > a:hover {
+    background-color: $gray-lighter;
+  }
+}
+
+.nav-pills {
+  a {
+    color: $gray;
+  }
+
+  li > a {
+    border: 1px solid transparent;
+  }
+
+  li.active > a,
+  li > a:hover {
+    border-color: $gray-light;
+  }
+
+  li.disabled > a {
+    border-color: transparent;
+  }
+}
+
+.breadcrumb {
+  @extend .sandstone;
+
+  border: 1px solid $gray-light;
+
+  a {
+    color: $gray;
+  }
+}
+
+.pagination {
+  @extend .sandstone;
+}
+
+.pager {
+  @extend .sandstone;
+
+  li > a {
+    color: $gray;
+  }
+}
+
+.dropdown-menu {
+  & > li > a {
+    @extend .sandstone;
+  }
+}
+
+// Indicators =================================================================
+
+.alert {
+
+  a,
+  .alert-link {
+    color: #fff;
+  }
+}
+
+.tooltip {
+  @extend .sandstone;
+}
+
+// Progress bars ==============================================================
+
+.progress {
+  border-radius: 10px;
+  background-color: $gray-light;
+  @include box-shadow(none);
+
+  &-bar {
+    @include box-shadow(none);
+  }
+}
+
+// Containers =================================================================
+
+.list-group {
+  &-item {
+    padding: 16px 24px;
+  }
+}
+
+.well,
+.jumbotron {
+  box-shadow: inset 0 0 15px 5px rgba(0, 0, 0, .25);
+}
+
+.jumbotron {
+  border: 3px ridge #dea81c;
+}
+
+.panel {
+  @include box-shadow(none);
+
+  .panel-heading,
+  .panel-title {
+    @extend .sandstone;
+    color: #fff;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .5);
+  }
+
+  .panel-heading,
+  .panel-footer {
+    box-shadow: inset 0 0 15px 5px rgba(0, 0, 0, .15);
+  }
+
+  .panel-footer {
+    @extend .sandstone;
+  }
+
+  &-default {
+    .panel-heading,
+    .panel-title {
+      color: $gray-lighter;
+    }
+
+    .panel-footer {
+      color: $gray;
+    }
+  }
+}

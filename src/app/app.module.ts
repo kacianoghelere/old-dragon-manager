@@ -6,8 +6,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { WelcomeComponent } from './welcome/welcome.component';
 import { AuthenticationModule } from './authentication/authentication.module';
+import { LayoutModule } from './layout/layout.module';
+import { UtilModule } from './util/util.module';
 import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
@@ -16,11 +17,11 @@ import { AppRoutingModule } from './app-routing.module';
     FormsModule,
     HttpModule,
     AuthenticationModule,
+    LayoutModule,
     AppRoutingModule
   ],
   declarations: [
-    AppComponent,
-    WelcomeComponent
+    AppComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
