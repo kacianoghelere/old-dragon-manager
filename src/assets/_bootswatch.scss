@@ -43,13 +43,13 @@ $web-font-path: "https://fonts.googleapis.com/css?family=PT+Serif:400,400i,700,7
 
 .btn {
   border: 2px ridge #dea81c;
-  box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, .20);
+  box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, .2);
   text-shadow: 1px 1px 1px rgba(0, 0, 0, .5);
   @extend .parchment;
 
   &:hover {
     border-color: #dfa100;
-    box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, .20);
+    box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, .2);
   }
 
   &:focus, &:active {
@@ -60,14 +60,12 @@ $web-font-path: "https://fonts.googleapis.com/css?family=PT+Serif:400,400i,700,7
   &-minimal {
     background-color: transparent;
     border-color: transparent;
-    box-shadow: none;
+    box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, .1);
     color: $gray-dark;
   }
 
   &-outline {
     background-color: transparent;
-    // border-color: transparent;
-    // box-shadow: none;
     color: $gray-dark;
   }
 
@@ -78,6 +76,7 @@ $web-font-path: "https://fonts.googleapis.com/css?family=PT+Serif:400,400i,700,7
   &-link {
     background: none;
     box-shadow: none;
+    text-shadow: none;
     border: none;
 
     &:active,
@@ -85,6 +84,7 @@ $web-font-path: "https://fonts.googleapis.com/css?family=PT+Serif:400,400i,700,7
     &:hover {
       background: none;
       box-shadow: none;
+      text-shadow: none;
       border: none;
     }
   }

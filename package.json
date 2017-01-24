@@ -26,6 +26,7 @@
     "@types/jasmine": "2.5.38",
     "@types/node": "^6.0.42",
     "angular-cli": "1.0.0-beta.24",
+    "blueimp-md5": "^2.6.0",
     "bootstrap-sass": "^3.3.7",
     "bootswatch": "^3.3.7",
     "codelyzer": "~2.0.0-beta.1",

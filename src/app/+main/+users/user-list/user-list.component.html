@@ -1,0 +1,16 @@
+<table class='table table-condensed'>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>E-mail</th>
+      <th>Role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td><a [routerLink]="['profile', user.id]">{{user?.name}}</a></td>
+      <td>{{user?.email}}</td>
+      <td>{{user?.role?.name}}</td>
+    </tr>
+  </tbody>
+</table>

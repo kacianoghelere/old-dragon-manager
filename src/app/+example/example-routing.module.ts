@@ -4,11 +4,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { FullTemplateComponent } from './full-template/full-template.component';
 
 const exampleRoutes: Routes  = [
-  { path: '', component: FullTemplateComponent }
+  {path: '', component: FullTemplateComponent}
 ];
 
 @NgModule({
-  imports: [ RouterModule.forChild(exampleRoutes) ],
-  exports: [ RouterModule ]
+  imports: [RouterModule.forChild(exampleRoutes)],
+  exports: [RouterModule]
 })
 export class ExampleRoutingModule { }

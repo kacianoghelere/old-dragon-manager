@@ -9,8 +9,8 @@ export class AuthenticationService {
 
   token: string;
   authenticated: boolean = false;
-  headers: Headers;
   user: any;
+  private headers: Headers;
   private url: string = 'http://localhost:3000';
 
   constructor(
@@ -37,7 +37,14 @@ export class AuthenticationService {
         this.user = null;
         this.authenticated = false;
       });
-
     return response;
+  }
+
+  /* Cabeçalho de autorização, inclui token de acesso */
+  get authHeaders(): Headers {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', `Bearer ${this.token}`);
+    return headers;
   }
 }

@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
 
-import { AuthenticationService } from '../authentication/authentication.service';
+import {
+  AuthenticationService
+} from '../../authentication/authentication.service';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  templateUrl: './login-form.component.html',
+  styleUrls: ['./login-form.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginFormComponent implements OnInit {
 
   user: any = {email: '', password: ''};
   message: any = {text: '', error: false};
