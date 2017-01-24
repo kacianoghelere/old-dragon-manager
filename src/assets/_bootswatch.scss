@@ -1,13 +1,13 @@
-// Sandstone 3.3.7
+// parchment 3.3.7
 // Bootswatch
 // -----------------------------------------------------
 
-$web-font-path: "https://fonts.googleapis.com/css?family=Roboto:400,500,700" !default;
+$web-font-path: "https://fonts.googleapis.com/css?family=PT+Serif:400,400i,700,700i" !default;
 @import url($web-font-path);
 
 // Navbar =====================================================================
 
-.sandstone {
+.parchment {
   font-size: 12px;
   line-height: 16px;
   font-weight: 500;
@@ -16,13 +16,24 @@ $web-font-path: "https://fonts.googleapis.com/css?family=Roboto:400,500,700" !de
 
 .navbar {
   .nav > li > a {
-    @extend .sandstone;
+    @extend .parchment;
+  }
+  .navbar-brand {
+    height: 50px;
   }
 
-  &-form input,
-  &-form .form-control {
-    border: none;
+  &-form {
+    padding: 0px 15px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+
+    input,
+    .form-control {
+      height: 43px;
+      border: none;
+    }
   }
+
   &-default {
     border-bottom: 2px ridge #dea81c;
   }
@@ -32,18 +43,32 @@ $web-font-path: "https://fonts.googleapis.com/css?family=Roboto:400,500,700" !de
 
 .btn {
   border: 2px ridge #dea81c;
-  box-shadow: inset 0 0 10px 5px rgba(233, 161, 0, .1),
-    inset 0 0 10px 5px rgba(0, 0, 0, .15);
-  @extend .sandstone;
+  box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, .20);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, .5);
+  @extend .parchment;
 
   &:hover {
     border-color: #dfa100;
-    box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, .25);
+    box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, .20);
   }
 
   &:focus, &:active {
     border-color: #dea81c;
     box-shadow: inset 0 0 10px 5px rgba(233, 161, 0, .1);
+  }
+
+  &-minimal {
+    background-color: transparent;
+    border-color: transparent;
+    box-shadow: none;
+    color: $gray-dark;
+  }
+
+  &-outline {
+    background-color: transparent;
+    // border-color: transparent;
+    // box-shadow: none;
+    color: $gray-dark;
   }
 
   &-lg {
@@ -65,13 +90,28 @@ $web-font-path: "https://fonts.googleapis.com/css?family=Roboto:400,500,700" !de
   }
 
   &-default {
-    box-shadow: inset 0 0 10px 10px rgba(0, 0, 0, .15),
-      inset 0 0 10px 5px rgba(233, 161, 0, .20);
     &:hover {
-      background-color: $navbar-default-link-active-bg;
+      background-color: $gray-dark;
+    }
+  }
+
+  &-group {
+    & > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
+      border-right: none;
+    }
+    & > .btn + .dropdown-toggle {
+      border-left: 1px ridge rgba(233, 161, 0, .3);
     }
   }
 }
+
+// Labels =====================================================================
+
+.label {
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, .5);
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.5);
+}
+
 // Typography =================================================================
 
 // Tables =====================================================================
@@ -92,7 +132,7 @@ input,
 // Navs =======================================================================
 
 .nav {
-  @extend .sandstone;
+  @extend .parchment;
 
   .open > a,
   .open > a:hover,
@@ -106,7 +146,7 @@ input,
   & > li > a {
     background-color: $gray-lighter;
     border-color: $nav-tabs-border-color;
-    color: $gray;
+    color: $gray-dark;
   }
 
   > li.disabled > a:hover {
@@ -116,13 +156,16 @@ input,
 
 .nav-pills {
   a {
-    color: $gray;
+    color: $gray-dark;
   }
 
   li > a {
     border: 1px solid transparent;
   }
 
+  li.active > a {
+    color: $gray-dark;
+  }
   li.active > a,
   li > a:hover {
     border-color: $gray-light;
@@ -134,21 +177,22 @@ input,
 }
 
 .breadcrumb {
-  @extend .sandstone;
+  color: $gray-dark;
+  @extend .parchment;
 
   border: 1px solid $gray-light;
 
   a {
-    color: $gray;
+    color: $gray-darker;
   }
 }
 
 .pagination {
-  @extend .sandstone;
+  @extend .parchment;
 }
 
 .pager {
-  @extend .sandstone;
+  @extend .parchment;
 
   li > a {
     color: $gray;
@@ -157,14 +201,14 @@ input,
 
 .dropdown-menu {
   & > li > a {
-    @extend .sandstone;
+    @extend .parchment;
   }
 }
 
 // Indicators =================================================================
 
 .alert {
-
+  box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, .20);
   a,
   .alert-link {
     color: #fff;
@@ -172,7 +216,7 @@ input,
 }
 
 .tooltip {
-  @extend .sandstone;
+  @extend .parchment;
 }
 
 // Progress bars ==============================================================
@@ -209,7 +253,7 @@ input,
 
   .panel-heading,
   .panel-title {
-    @extend .sandstone;
+    @extend .parchment;
     color: #fff;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, .5);
   }
@@ -220,17 +264,18 @@ input,
   }
 
   .panel-footer {
-    @extend .sandstone;
+    @extend .parchment;
   }
 
   &-default {
     .panel-heading,
     .panel-title {
       color: $gray-lighter;
+      font-weight: bold;
     }
 
     .panel-footer {
-      color: $gray;
+      color: $gray-dark;
     }
   }
 }

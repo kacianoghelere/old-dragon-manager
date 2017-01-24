@@ -1,5 +1,5 @@
 $bootstrap-sass-asset-helper: false !default;
-// Sandstone 3.3.7
+// parchment 3.3.7
 // Variables
 // --------------------------------------------------
 
@@ -15,9 +15,9 @@ $gray:                   lighten($gray-dark, 10%) !default;
 $gray-light:             lighten($gray, 15%) !default;
 $gray-lighter:           lighten($gray-light, 10%) !default;
 
-$brand-primary:         #325D88 !default;
-$brand-success:         #93C54B !default;
-$brand-info:            #29ABE0 !default;
+$brand-primary:         #3A6086 !default;
+$brand-success:         #9EC358 !default;
+$brand-info:            #42A5CD !default;
 $brand-warning:         #F4B53C !default;
 $brand-danger:          #d9534f !default;
 
@@ -43,7 +43,7 @@ $link-hover-decoration: underline !default;
 //
 //## Font, line-height, and color for body text, headings, and more.
 
-$font-family-sans-serif:  "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$font-family-sans-serif:  "PT Serif", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
 $font-family-serif:       Georgia, "Times New Roman", Times, serif !default;
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 $font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace !default;
@@ -146,7 +146,7 @@ $table-border-color:            $gray-light !default;
 $btn-font-weight:                normal !default;
 
 $btn-default-color:              #fff !default;
-$btn-default-bg:                 $gray-darker !default;
+$btn-default-bg:                 $gray !default;
 $btn-default-border:             transparent !default;
 
 $btn-primary-color:              #fff !default;
@@ -173,7 +173,7 @@ $btn-danger-border:              transparent !default;
   background: linear-gradient(top, $color, lighten($color, 10%));
 }
 
-$btn-default-gradient: linear-gradient($gray-darker, lighten($gray-darker, 10%)) !default;
+$btn-default-gradient: linear-gradient($gray-dark, lighten($gray-dark, 10%)) !default;
 $btn-primary-gradient: linear-gradient($brand-primary, lighten($brand-primary, 10%)) !default;
 $btn-success-gradient: linear-gradient($brand-success, lighten($brand-success, 10%)) !default;
 $btn-info-gradient:    linear-gradient($brand-info, lighten($brand-info, 10%)) !default;
@@ -783,12 +783,12 @@ $well-border:                 transparent !default;
 $badge-color:                 #fff !default;
 //** Linked badge text color on hover
 $badge-link-hover-color:      #fff !default;
-$badge-bg:                    $brand-success !default;
+$badge-bg:                    $gray-dark !default;
 
 //** Badge text color in active nav link
 $badge-active-color:          #fff !default;
 //** Badge background color in active nav link
-$badge-active-bg:             $brand-success !default;
+$badge-active-bg:             $gray-darker !default;
 
 $badge-font-weight:           normal !default;
 $badge-line-height:           1 !default;
