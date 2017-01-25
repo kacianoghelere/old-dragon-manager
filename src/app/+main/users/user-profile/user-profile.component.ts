@@ -14,10 +14,14 @@ export class UserProfileComponent implements OnInit {
   user: User;
 
   constructor(
-    private usersService: UsersService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private usersService: UsersService
   ) { }
+
+  avatar(email: string): string | Int32Array {
+    return this.usersService.avatarHash(email);
+  }
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
@@ -29,7 +33,4 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
-  avatar(email: string): string | Int32Array {
-    return this.usersService.avatarHash(email);
-  }
 }

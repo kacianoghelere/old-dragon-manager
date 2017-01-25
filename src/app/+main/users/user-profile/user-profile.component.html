@@ -1,0 +1,21 @@
+<div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
+
+  <img class="img-responsive img-thumbnail"
+      [src]="avatar(user?.email)"
+      [alt]="user?.name">
+
+  <div class="panel panel-default">
+
+    <div class="panel-body">
+      <h3 class="panel-title">{{user?.name}}</h3>
+      <h4 class="text-muted">{{user?.email}}</h4>
+    </div>
+
+    <div class="panel-footer">
+      <router-link path="settings" classes="btn btn-primary btn-sm">
+        <glyph icon="cog"></glyph> Opções
+      </router-link>
+    </div>
+
+  </div>
+</div>

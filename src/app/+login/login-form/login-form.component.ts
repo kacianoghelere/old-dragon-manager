@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router'
 
+import { Message } from '../../util/message';
 import {
   AuthenticationService
 } from '../../authentication/authentication.service';
@@ -13,15 +14,16 @@ import {
 })
 export class LoginFormComponent implements OnInit {
 
-  user: any = {email: '', password: ''};
   loginForm: FormGroup;
-  message: any = {text: '', error: false};
+  message: Message;
+  user: any = {email: '', password: ''};
 
   constructor(
     private authService: AuthenticationService,
     private builder: FormBuilder,
     private router: Router
   ) {
+    this.message = new Message();
     this.loginForm = builder.group({
       "login-email": ['', Validators.compose(
           [Validators.required, Validators.minLength(4)]

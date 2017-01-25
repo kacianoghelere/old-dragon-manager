@@ -1,1 +1,12 @@
-<h2><a [routerLink]="['users']">Users</a></h2>
+<ul class="nav nav-pills">
+  <li role="presentation" class="active">
+    <a [routerLink]="['/main']">Main</a>
+  </li>
+  <li role="presentation">
+    <a [routerLink]="['/main/users']">Users</a>
+  </li>
+</ul>
+
+<div class="row">
+  <router-outlet></router-outlet>
+</div>

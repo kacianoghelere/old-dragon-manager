@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
+import { Message } from '../../../util/message';
 import { User } from '../user';
 import { UsersService } from '../users.service';
 
@@ -12,6 +13,7 @@ import { UsersService } from '../users.service';
 })
 export class UserSettingsComponent implements OnInit {
 
+  message: Message;
   user: User;
   userForm: FormGroup;
 
@@ -21,16 +23,28 @@ export class UserSettingsComponent implements OnInit {
     private router: Router,
     private usersService: UsersService
   ) {
+    this.message = new Message();
     this.userForm = builder.group({
-        "user-name": ['', Validators.compose(
-            [Validators.required, Validators.minLength(4)]
-        )],
-        url: ['', Validators.required],
-        descricao: ['']
+      "user-email": [''],
+      "user-name": ['', Validators.required],
+      "user-password": ['', Validators.compose(
+        [Validators.required, Validators.minLength(4)]
+      )],
+      "user-confirm": ['', Validators.compose(
+        [Validators.required, Validators.minLength(4)]
+      )]
     });
   }
 
   ngOnInit() {
+    this.user = new User;
+    this.route.params.subscribe((params) => {
+      let id = params['id'];
+      if (id) {
+        this.usersService.find(id)
+          .subscribe((response) => this.user = response);
+      }
+    });
   }
 
   saveChanges() {

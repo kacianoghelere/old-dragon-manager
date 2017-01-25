@@ -8,7 +8,7 @@ import { UserSettingsComponent } from './user-settings/user-settings.component';
 
 const usersRoutes: Routes = [
   {
-    path: "",
+    path: "users",
     component: UsersComponent,
     children: [
       {path: "", component: UserListComponent},
