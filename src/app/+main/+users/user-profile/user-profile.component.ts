@@ -20,16 +20,16 @@ export class UserProfileComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-        let id = params['id'];
-        if (id) {
-          this.usersService.find(id)
-            .subscribe((response) => this.user = response);
-        }
+    this.route.params.subscribe((params) => {
+      let id = params['id'];
+      if (id) {
+        this.usersService.find(id)
+          .subscribe((response) => this.user = response);
+      }
     });
   }
 
-  hash(email: string): string {
-    return email;
+  avatar(email: string): string | Int32Array {
+    return this.usersService.avatarHash(email);
   }
 }

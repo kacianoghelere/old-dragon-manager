@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { User } from '../user';
+import { UsersService } from '../users.service';
 
 @Component({
   selector: 'app-user-settings',
@@ -8,12 +12,17 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class UserSettingsComponent implements OnInit {
 
-  user: any = {name: 'Test', email: 'test@test.com', password: '', confirm: ''};
-  meuForm: FormGroup;
+  user: User;
+  userForm: FormGroup;
 
-  constructor(private builder: FormBuilder) {
-    this.meuForm = builder.group({
-        titulo: ['', Validators.compose(
+  constructor(
+    private builder: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private usersService: UsersService
+  ) {
+    this.userForm = builder.group({
+        "user-name": ['', Validators.compose(
             [Validators.required, Validators.minLength(4)]
         )],
         url: ['', Validators.required],

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { UsersComponent } from './users/users.component';
@@ -10,11 +10,13 @@ import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { UsersService } from './users.service';
 import { UtilModule } from '../../util/util.module';
 import { UsersRoutingModule } from './users-routing.module';
+import { UserListItemComponent } from './user-list-item/user-list-item.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     UtilModule,
     UsersRoutingModule
@@ -23,7 +25,8 @@ import { UsersRoutingModule } from './users-routing.module';
     UsersComponent,
     UserListComponent,
     UserProfileComponent,
-    UserSettingsComponent
+    UserSettingsComponent,
+    UserListItemComponent
   ],
   providers: [UsersService]
 })

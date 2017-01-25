@@ -9,22 +9,31 @@
 
 <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
 
-  <form class="form-horizontal" action="index.html" (submit)="authenticate()">
+  <form [formGroup]="loginForm" class="form-horizontal"
+      (submit)="authenticate()">
     <div class="form-group">
       <label for="login-email">E-mail</label>
-      <input class="form-control" type="email" [(ngModel)]="user.email"
-        id="login-email" name="login-email" placeholder="example@test.com">
+      <input class="form-control"
+          type="email"
+          formControlName="login-email"
+          [(ngModel)]="user.email"
+          id="login-email"
+          placeholder="example@test.com">
     </div>
 
     <div class="form-group">
       <label for="login-password">Password</label>
-      <input class="form-control" type="password" [(ngModel)]="user.password"
-        id="login-password" name="login-password" placeholder="*******">
+      <input class="form-control"
+          type="password"
+          formControlName="login-password"
+          [(ngModel)]="user.password"
+          id="login-password"
+          placeholder="*******">
     </div>
 
     <div class="form-group">
       <button type="submit" class="btn btn-primary btn-block">
-        Login
+        <glyph icon="log-in"></glyph> Login
       </button>
     </div>
   </form>

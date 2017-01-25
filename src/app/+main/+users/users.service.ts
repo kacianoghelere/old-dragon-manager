@@ -3,6 +3,8 @@ import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 
+import { Md5 } from 'ts-md5/dist/md5';
+
 import {
   AuthenticationService
 } from '../../authentication/authentication.service';
@@ -18,6 +20,15 @@ export class UsersService {
     private http: Http
   ) {
     this.headers = this.authService.authHeaders;
+  }
+
+  avatarHash(email: string): string | Int32Array {
+    if (!email) {
+      return '';
+    }
+    let emailMd5 = Md5.hashStr(email);
+    let hash = `https://www.gravatar.com/avatar/${emailMd5}`;
+    return hash;
   }
 
   list(): Observable<any> {

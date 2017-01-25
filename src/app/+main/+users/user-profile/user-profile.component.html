@@ -1,4 +1,4 @@
-<img src="https://www.gravatar.com/avatar/{{hash(user?.email)}}" alt="avatar">
+<img [src]="avatar(user?.email)" alt="avatar">
 
 <h2>{{user?.name}} <small>{{user?.email}}</small></h2>
 
