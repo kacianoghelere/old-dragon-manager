@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router'
 
-import { Message } from '../../util/message';
+import { Message } from '../../shared/message';
 import {
   AuthenticationService
 } from '../../authentication/authentication.service';
@@ -37,6 +37,7 @@ export class LoginFormComponent implements OnInit {
     response.subscribe((res) => {
         this.router.navigate(['/main']);
       }, (error) => {
+        this.message.error = true;
         this.message.text = 'Authentication Error';
       });
   }

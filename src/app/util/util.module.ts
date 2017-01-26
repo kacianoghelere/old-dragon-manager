@@ -4,8 +4,8 @@ import { RouterModule } from '@angular/router';
 
 import { GlyphComponent } from './glyph/glyph.component';
 import { CheckGlyphComponent } from './check-glyph/check-glyph.component';
-import { Message } from './message';
 import { RouterLinkComponent } from './router-link/router-link.component';
+import { MessageComponent } from './message/message.component';
 
 @NgModule({
   imports: [
@@ -15,12 +15,14 @@ import { RouterLinkComponent } from './router-link/router-link.component';
   declarations: [
     CheckGlyphComponent,
     GlyphComponent,
-    RouterLinkComponent
+    RouterLinkComponent,
+    MessageComponent
   ],
   exports: [
     CheckGlyphComponent,
     GlyphComponent,
-    RouterLinkComponent
+    RouterLinkComponent,
+    MessageComponent
   ]
 })
 export class UtilModule { }

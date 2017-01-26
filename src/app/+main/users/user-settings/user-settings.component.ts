@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
+
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Message } from '../../../util/message';
-import { User } from '../user';
+import { Message } from '../../../shared/message';
+import { User } from '../../../shared/user';
 import { UsersService } from '../users.service';
 
 @Component({
@@ -11,44 +13,53 @@ import { UsersService } from '../users.service';
   templateUrl: './user-settings.component.html',
   styleUrls: ['./user-settings.component.scss']
 })
-export class UserSettingsComponent implements OnInit {
+export class UserSettingsComponent implements OnInit, OnDestroy {
 
+  user_id: number;
   message: Message;
+  subscription: Subscription;
   user: User;
-  userForm: FormGroup;
 
   constructor(
-    private builder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private usersService: UsersService
   ) {
     this.message = new Message();
-    this.userForm = builder.group({
-      "user-email": [''],
-      "user-name": ['', Validators.required],
-      "user-password": ['', Validators.compose(
-        [Validators.required, Validators.minLength(4)]
-      )],
-      "user-confirm": ['', Validators.compose(
-        [Validators.required, Validators.minLength(4)]
-      )]
-    });
   }
 
   ngOnInit() {
     this.user = new User;
     this.route.params.subscribe((params) => {
-      let id = params['id'];
-      if (id) {
-        this.usersService.find(id)
+      this.user_id = params['id'];
+      if (this.user_id) {
+        this.subscription = this.usersService.find(this.user_id)
           .subscribe((response) => this.user = response);
       }
     });
   }
 
-  saveChanges() {
-    console.log(this.user);
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
+
+  updateUser(user: User) {
+    console.log("Event Triggered", user);
+    this.usersService.update(this.user_id, user)
+      .subscribe(
+        (response) => {
+          this.message.error = false;
+          this.message.text = 'Dados atualizados com sucesso';
+          console.log(this.message);
+        },
+        (error) => {
+          this.message.error = true;
+          this.message.text = 'Ocorreu um erro ao atualizar os dados';
+          console.log(this.message);
+        }
+      );
   }
 
 }

@@ -1,25 +1,21 @@
 import { Observable } from 'rxjs/Observable';
 
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { Http } from '@angular/http';
 
 import { Md5 } from 'ts-md5/dist/md5';
 
 import {
   AuthenticationService
 } from '../../authentication/authentication.service';
+import { MainService } from '../main.service';
+import { User } from '../../shared/user';
 
 @Injectable()
-export class UsersService {
+export class UsersService extends MainService {
 
-  private headers: Headers;
-  private url: string = 'http://localhost:3000/api/v1';
-
-  constructor(
-    private authService: AuthenticationService,
-    private http: Http
-  ) {
-    this.headers = this.authService.authHeaders;
+  constructor(auth: AuthenticationService, http: Http) {
+    super(auth, http);
   }
 
   avatarHash(email: string): string | Int32Array {
@@ -31,38 +27,29 @@ export class UsersService {
     return hash;
   }
 
-  get options(): any {
-    return { headers: this.headers };
+  create(params: User): Observable<any> {
+    let role = params['role'];
+    params['role_id'] = role['id'];
+    return super._create("users")({user: params});
   }
 
-  responseToJson(response: any): any {
-    return response.json();
+  destroy(id: number): Observable<any> {
+    return super._destroy("users")(id);
+  }
+
+  find(id: number): Observable<any> {
+    return super._find("users")(id);
   }
 
   list(): Observable<any> {
-    return this.http.get(`${this.url}/users`, this.options)
-      .map(this.responseToJson);
+    return super._list("users")();
   }
 
-  find(id: any): Observable<any> {
-    return this.http.get(`${this.url}/users/${id}`, this.options)
-      .map(this.responseToJson);
+  update(id: number, params: User): Observable<any> {
+    let role = params.role;
+    params.role_id = role.id;
+    console.log(params);
+    return super._update("users")(id, {user: params});
   }
 
-  create(params: any[]): Observable<any> {
-    let _params = JSON.stringify(params);
-    return this.http.put(`${this.url}/users`, _params, this.options)
-      .map(this.responseToJson);
-  }
-
-  update(id: any, params: any[]): Observable<any> {
-    let _params = JSON.stringify(params);
-    return this.http.put(`${this.url}/users/${id}`, _params, this.options)
-      .map(this.responseToJson);
-  }
-
-  destroy(id: any): Observable<any> {
-    return this.http.delete(`${this.url}/users/${id}`, this.options)
-      .map(this.responseToJson);
-  }
 }

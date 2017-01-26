@@ -11,6 +11,7 @@ import { UsersService } from './users.service';
 import { UtilModule } from '../../util/util.module';
 import { UsersRoutingModule } from './users-routing.module';
 import { UserListItemComponent } from './user-list-item/user-list-item.component';
+import { UserFormComponent } from './user-form/user-form.component';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { UserListItemComponent } from './user-list-item/user-list-item.component
     UserListComponent,
     UserProfileComponent,
     UserSettingsComponent,
-    UserListItemComponent
+    UserListItemComponent,
+    UserFormComponent
   ],
   providers: [UsersService]
 })

@@ -1,0 +1,7 @@
+<div class="alert" *ngIf="message.text"
+    [ngClass]="{'alert-warning': message.error, 'alert-info': !message.error}">
+  <button type="button" class="close" (click)="clear()">
+    &times;
+  </button>
+  {{message.text}}
+</div>

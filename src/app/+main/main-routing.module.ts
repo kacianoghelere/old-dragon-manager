@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './main.component';
 import { AuthenticationGuard } from '../authentication/authentication.guard';
 
+// {path: '', redirectTo: 'users', pathMatch: 'full'}
 const mainRoutes: Routes = [
   {path: '', component: MainComponent}
 ];

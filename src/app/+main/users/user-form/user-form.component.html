@@ -1,0 +1,73 @@
+<form [formGroup]="userForm" class="form-horizontal" (submit)="saveChanges()">
+  <div class="form-group">
+    <label class="control-label" for="user-login">Código</label>
+    <input class="form-control input-sm"
+    id="user-login"
+    formControlName="user-login"
+    [(ngModel)]="user.login"
+    type="text"
+    placeholder="joao.teste">
+  </div>
+
+  <div class="form-group">
+    <label class="control-label" for="user-name">Nome</label>
+    <input class="form-control input-sm"
+        id="user-name"
+        formControlName="user-name"
+        [(ngModel)]="user.name"
+        type="text"
+        placeholder="Nome">
+  </div>
+
+  <div class="form-group">
+    <label class="control-label" for="user-email">E-mail</label>
+    <input class="form-control input-sm"
+        id="user-email"
+        formControlName="user-email"
+        [(ngModel)]="user.email"
+        type="email"
+        placeholder="joao.teste@exemplo.com">
+  </div>
+
+  <div class="form-group">
+    <label class="control-label" for="user-password">Senha</label>
+    <input class="form-control input-sm"
+        id="user-password"
+        formControlName="user-password"
+        [(ngModel)]="user.password"
+        type="password"
+        placeholder="******">
+  </div>
+
+  <div class="form-group">
+    <label class="control-label" for="user-confirm">Confirmação</label>
+    <input class="form-control input-sm"
+        id="user-confirm"
+        formControlName="user-confirm"
+        [(ngModel)]="user.confirm"
+        type="password"
+        placeholder="******">
+  </div>
+
+  <div class="form-group">
+    <label class="control-label" for="user-confirm">Perfil</label>
+    <select class="form-control input-sm"
+        id="user-role"
+        formControlName="user-role"
+        [(ngModel)]="user.role">
+      <option value="">Selecione</option>
+      <option *ngFor="let role of roles" [value]="role | json">
+        {{role.name}}
+      </option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <button type='submit' class='btn btn-primary'>
+      <glyph icon="floppy-save"></glyph> Salvar
+    </button>
+    <button type='button' class='btn btn-default'>
+      <glyph icon="trash"></glyph> Limpar
+    </button>
+  </div>
+</form>

@@ -1,10 +1,7 @@
-<div class="alert" *ngIf="message.text"
-    [ngClass]="{'alert-danger': message.error, 'alert-info': !message.error}">
-  {{message.text}}
-</div>
+<app-message [message]="message"></app-message>
 
 <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
-  <h2>Login</h2>
+  <h2 class="title">Login</h2>
 
   <form [formGroup]="loginForm" class="form-horizontal"
       (submit)="authenticate()">

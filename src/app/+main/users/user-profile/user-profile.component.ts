@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
+
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { User } from '../user';
+import { User } from '../../../shared/user';
 import { UsersService } from '../users.service';
 
 @Component({
@@ -9,9 +11,10 @@ import { UsersService } from '../users.service';
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.scss']
 })
-export class UserProfileComponent implements OnInit {
+export class UserProfileComponent implements OnInit, OnDestroy {
 
   user: User;
+  subscription: Subscription;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,10 +30,16 @@ export class UserProfileComponent implements OnInit {
     this.route.params.subscribe((params) => {
       let id = params['id'];
       if (id) {
-        this.usersService.find(id)
+        this.subscription = this.usersService.find(id)
           .subscribe((response) => this.user = response);
       }
     });
+  }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
 }

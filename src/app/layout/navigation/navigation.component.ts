@@ -11,10 +11,14 @@ import {
 })
 export class NavigationComponent implements OnInit {
 
-  @Input() title: string = '';
+  @Input('title') title: string = '';
 
-  constructor() { }
+  constructor(private authService: AuthenticationService) { }
 
   ngOnInit() {
+  }
+
+  get authenticated(): boolean {
+    return this.authService.authenticated;
   }
 }
