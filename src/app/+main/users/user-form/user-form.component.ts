@@ -7,10 +7,11 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Message } from '../../../shared/message';
-import { User } from '../../../shared/user';
 import { Role } from '../../../shared/role';
-import { UsersService } from '../users.service';
 import { RolesService } from '../../shared/roles.service';
+import { User } from '../../../shared/user';
+import { UsersService } from '../users.service';
+import { ValidatorsService } from '../../../shared/validators.service';
 
 @Component({
   selector: 'user-form',
@@ -21,6 +22,7 @@ export class UserFormComponent implements OnInit, OnDestroy {
 
   @Input() user: User;
   @Output() userSubmitted: EventEmitter<User>;
+  @Output() userReseted: EventEmitter<User>;
   message: Message;
   roles: Role[];
   subscription: Subscription;
@@ -31,40 +33,68 @@ export class UserFormComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private router: Router,
     private usersService: UsersService,
-    private rolesService: RolesService
+    private rolesService: RolesService,
+    private validators: ValidatorsService
   ) {
     this.message = new Message();
     this.userForm = this.builder.group({
-      "user-confirm": ['', Validators.compose(
-        [Validators.required, Validators.minLength(4)]
+      userLogin: ['', Validators.required],
+      userName: ['', Validators.required],
+      userEmail: ['', Validators.required],
+      userPassword: ['', Validators.compose(
+        [Validators.required, Validators.minLength(6)]
       )],
-      "user-email": [''],
-      "user-login": [''],
-      "user-name": ['', Validators.required],
-      "user-password": ['', Validators.compose(
-        [Validators.required, Validators.minLength(4)]
+      userConfirm: ['', Validators.compose(
+        [Validators.required, Validators.minLength(6)]
       )],
-      "user-role": [{}]
+      userRole: [{}, Validators.required]
+    },
+    {
+      validator: this.validators.matchingPasswords('userPassword', 'userConfirm')
     });
+
+    this.userReseted = new EventEmitter();
     this.userSubmitted = new EventEmitter();
+    console.log(this.userForm);
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.user.password = '';
+    this.user.confirm = '';
+
     this.subscription = this.rolesService.list()
       .subscribe((response) => this.roles = response);
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
+    this.resetChanges();
   }
 
-  resetChanges() {
+  /**
+   * Emit the save event
+   */
+  resetChanges(): void {
+    // console.log(this.userForm);
+    this.userForm.reset();
+    this.userReseted.emit(this.user);
   }
 
-  saveChanges() {
-    console.log("Form Submitted", this.user);
+  /**
+   * Check if the role in the select input is the same of the user
+   * @param  {Role}    role Role in the select input
+   * @return {boolean}      Verification result
+   */
+  selectedRole(role: Role): boolean {
+    return role.id === this.user.id;
+  }
+
+  /**
+   * Emit the save event
+   */
+  submitChanges(): void {
     this.userSubmitted.emit(this.user);
   }
 

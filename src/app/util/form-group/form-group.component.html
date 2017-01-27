@@ -1,0 +1,19 @@
+<div class="form-group has-feedback" [ngClass]="{'has-error': hasError}">
+  <ng-content></ng-content>
+
+  <span class="form-control-feedback text-danger" *ngIf="hasError">
+    <glyph icon="remove-sign"></glyph>
+  </span>
+
+  <div *ngIf="hasError">
+    <span *ngIf="field.errors.required" class="help-block text-danger">
+      Campo obrigatório
+    </span>
+    <span *ngIf="field.errors.mismatchedPasswords" class="help-block text-danger">
+      As senhas devem ser identicas
+    </span>
+    <span *ngIf="field.errors.minlength" class="help-block text-danger">
+      Título deve ter no mínimo  caracteres
+    </span>
+  </div>
+</div>

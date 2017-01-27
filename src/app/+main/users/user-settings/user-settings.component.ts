@@ -45,21 +45,25 @@ export class UserSettingsComponent implements OnInit, OnDestroy {
     }
   }
 
+  /**
+   * Sends the updated user information to the API
+   * @param  {User}   user User data
+   */
   updateUser(user: User) {
-    console.log("Event Triggered", user);
+    let fail = (error) => {
+      this.message.error = true;
+      this.message.text = 'Ocorreu um erro ao atualizar os dados';
+    };
+
+    let success = (response) => {
+      this.message.error = false;
+      this.message.text = 'Dados atualizados com sucesso';
+    };
+
+    let sendMessage = () => console.log(this.message);
+
     this.usersService.update(this.user_id, user)
-      .subscribe(
-        (response) => {
-          this.message.error = false;
-          this.message.text = 'Dados atualizados com sucesso';
-          console.log(this.message);
-        },
-        (error) => {
-          this.message.error = true;
-          this.message.text = 'Ocorreu um erro ao atualizar os dados';
-          console.log(this.message);
-        }
-      );
+      .subscribe(success, fail, sendMessage);
   }
 
 }

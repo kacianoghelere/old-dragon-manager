@@ -23,27 +23,36 @@ export class AuthenticationService {
     this.headers.append('Content-Type', 'application/json');
   }
 
-  // email=a@a.com&password=changeme
+  /**
+   * API authentication method
+   * Sends the user email and password to the API in order to receive de JWT
+   * @param {any} user User login data
+   */
   authenticate(user) {
     let options = { headers: this.headers };
-    let response = this.http
-      .post(`${this.url}/authentication`, JSON.stringify(user), options)
-      .map((res) => { return res.json() });
-    response.subscribe((res) => {
-        this.token = res.auth_token;
-        this.user = res.user;
-        this.authenticated = true;
-        this.authentication.emit(this.authenticated);
-      }, (error) => {
-        this.token = null;
-        this.user = null;
-        this.authenticated = false;
-        this.authentication.emit(this.authenticated);
-      });
-    return response;
+    this.http.post(`${this.url}/authentication`, JSON.stringify(user), options)
+      .map((res) => { return res.json() })
+      .subscribe(
+        (res) => {
+          this.token = res.auth_token;
+          this.user = res.user;
+          this.authenticated = true;
+        },
+        (error) => {
+          this.token = null;
+          this.user = null;
+          this.authenticated = false;
+        },
+        () => {
+          this.authentication.emit(this.authenticated);
+        }
+      );
   }
 
-  /* Cabeçalho de autorização, inclui token de acesso */
+  /**
+   * Returns Authenticated headers for easy http requests to the API
+   * @return {Headers} Http headers, includes the JWT
+   */
   get authHeaders(): Headers {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');

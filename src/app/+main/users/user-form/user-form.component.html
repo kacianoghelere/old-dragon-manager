@@ -1,73 +1,79 @@
-<form [formGroup]="userForm" class="form-horizontal" (submit)="saveChanges()">
-  <div class="form-group">
-    <label class="control-label" for="user-login">Código</label>
-    <input class="form-control input-sm"
-    id="user-login"
-    formControlName="user-login"
-    [(ngModel)]="user.login"
-    type="text"
-    placeholder="joao.teste">
-  </div>
+<app-message [message]="message"></app-message>
 
-  <div class="form-group">
-    <label class="control-label" for="user-name">Nome</label>
-    <input class="form-control input-sm"
-        id="user-name"
-        formControlName="user-name"
+<form class="form-horizontal" [formGroup]="userForm" (submit)="submitChanges()">
+
+  <form-group [field]="userForm.controls.userLogin">
+    <label for="userLogin">Código</label>
+    <input class="form-control"
+        id="userLogin"
+        formControlName="userLogin"
+        [(ngModel)]="user.login"
+        type="text"
+        placeholder="joao.teste">
+  </form-group>
+
+  <form-group [field]="userForm.controls.userName">
+    <label for="userName">Nome</label>
+    <input class="form-control"
+        id="userName"
+        formControlName="userName"
         [(ngModel)]="user.name"
         type="text"
         placeholder="Nome">
-  </div>
+  </form-group>
 
-  <div class="form-group">
-    <label class="control-label" for="user-email">E-mail</label>
-    <input class="form-control input-sm"
-        id="user-email"
-        formControlName="user-email"
+  <form-group [field]="userForm.controls.userEmail">
+    <label for="userEmail">E-mail</label>
+    <input class="form-control"
+        id="userEmail"
+        formControlName="userEmail"
         [(ngModel)]="user.email"
         type="email"
         placeholder="joao.teste@exemplo.com">
-  </div>
+  </form-group>
 
-  <div class="form-group">
-    <label class="control-label" for="user-password">Senha</label>
-    <input class="form-control input-sm"
-        id="user-password"
-        formControlName="user-password"
+  <form-group [field]="userForm.controls.userPassword">
+    <label for="userPassword">Senha</label>
+    <input class="form-control"
+        id="userPassword"
+        formControlName="userPassword"
         [(ngModel)]="user.password"
         type="password"
         placeholder="******">
-  </div>
+  </form-group>
 
-  <div class="form-group">
-    <label class="control-label" for="user-confirm">Confirmação</label>
-    <input class="form-control input-sm"
-        id="user-confirm"
-        formControlName="user-confirm"
+  <form-group [field]="userForm.controls.userConfirm">
+    <label for="userConfirm">Confirmação</label>
+    <input class="form-control"
+        id="userConfirm"
+        formControlName="userConfirm"
         [(ngModel)]="user.confirm"
         type="password"
         placeholder="******">
-  </div>
+  </form-group>
 
-  <div class="form-group">
-    <label class="control-label" for="user-confirm">Perfil</label>
-    <select class="form-control input-sm"
-        id="user-role"
-        formControlName="user-role"
-        [(ngModel)]="user.role">
+  <form-group [field]="userForm.controls.userRole">
+    <label for="userRole">Perfil</label>
+    <select class="form-control"
+        id="userRole"
+        formControlName="userRole"
+        [(ngModel)]="user.role_id">
       <option value="">Selecione</option>
-      <option *ngFor="let role of roles" [value]="role | json">
+      <option *ngFor="let role of roles"
+          [ngValue]="role.id"
+          [selected]="selectedRole(role)">
         {{role.name}}
       </option>
     </select>
-  </div>
+  </form-group>
 
   <div class="form-group">
-    <button type='submit' class='btn btn-primary'>
+    <button type='submit' class='btn btn-primary' [disabled]="!userForm.valid">
       <glyph icon="floppy-save"></glyph> Salvar
     </button>
-    <button type='button' class='btn btn-default'>
+    <button type='button' class='btn btn-default' (click)="resetChanges()">
       <glyph icon="trash"></glyph> Limpar
     </button>
   </div>
+
 </form>

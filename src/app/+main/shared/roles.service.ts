@@ -6,10 +6,11 @@ import { Http } from '@angular/http';
 import {
   AuthenticationService
 } from '../../authentication/authentication.service';
-import { MainService } from '../main.service';
+import { EntityService } from '../entity.service';
+import { Role } from '../../shared/role';
 
 @Injectable()
-export class RolesService extends MainService {
+export class RolesService extends EntityService<Role> {
 
   constructor(auth: AuthenticationService, http: Http) {
     super(auth, http);

@@ -6,6 +6,7 @@ import { GlyphComponent } from './glyph/glyph.component';
 import { CheckGlyphComponent } from './check-glyph/check-glyph.component';
 import { RouterLinkComponent } from './router-link/router-link.component';
 import { MessageComponent } from './message/message.component';
+import { FormGroupComponent } from './form-group/form-group.component';
 
 @NgModule({
   imports: [
@@ -16,13 +17,15 @@ import { MessageComponent } from './message/message.component';
     CheckGlyphComponent,
     GlyphComponent,
     RouterLinkComponent,
-    MessageComponent
+    MessageComponent,
+    FormGroupComponent
   ],
   exports: [
     CheckGlyphComponent,
     GlyphComponent,
     RouterLinkComponent,
-    MessageComponent
+    MessageComponent,
+    FormGroupComponent
   ]
 })
 export class UtilModule { }

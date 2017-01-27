@@ -31,8 +31,15 @@
         <li>
           <a [routerLink]="['/example']">Examples</a>
         </li>
-        <li *ngIf="!authenticated">
-          <a [routerLink]="['/login']">Login</a>
+        <li class="active" *ngIf="!authenticated">
+          <a [routerLink]="['/login']">
+            <glyph icon="log-in"></glyph> Login
+          </a>
+        </li>
+        <li class="active" *ngIf="authenticated">
+          <a [routerLink]="['/login']">
+            <glyph icon="log-out"></glyph> Logout
+          </a>
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->

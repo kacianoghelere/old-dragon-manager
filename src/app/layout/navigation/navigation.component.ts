@@ -12,13 +12,15 @@ import {
 export class NavigationComponent implements OnInit {
 
   @Input('title') title: string = '';
+  authenticated: boolean = false;
 
-  constructor(private authService: AuthenticationService) { }
+  constructor(private authService: AuthenticationService) {
+    this.authService.authentication.subscribe((authenticated) => {
+      this.authenticated = authenticated;
+    });
+  }
 
   ngOnInit() {
   }
 
-  get authenticated(): boolean {
-    return this.authService.authenticated;
-  }
 }

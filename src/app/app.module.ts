@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { ValidatorsService } from './shared/validators.service';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { LayoutModule } from './layout/layout.module';
 import { UtilModule } from './util/util.module';
@@ -23,7 +24,7 @@ import { AppRoutingModule } from './app-routing.module';
   declarations: [
     AppComponent
   ],
-  providers: [],
+  providers: [ValidatorsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
