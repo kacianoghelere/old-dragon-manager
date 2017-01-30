@@ -12,7 +12,14 @@ import {
 export class NavigationComponent implements OnInit {
 
   @Input('title') title: string = '';
+
+  // Public variables
+  // ---------------------------------------------------------------------------
   authenticated: boolean = false;
+
+  //
+  // Functions
+  // ===========================================================================
 
   constructor(private authService: AuthenticationService) {
     this.authService.authentication.subscribe((authenticated) => {
@@ -20,7 +27,18 @@ export class NavigationComponent implements OnInit {
     });
   }
 
+  //
+  // Lifecycle hooks functions
+  // ---------------------------------------------------------------------------
+
   ngOnInit() {
   }
 
+  //
+  // Common functions
+  // ---------------------------------------------------------------------------
+
+  signout() {
+    this.authService.signout(true);
+  }
 }

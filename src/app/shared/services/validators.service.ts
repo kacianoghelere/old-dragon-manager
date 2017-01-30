@@ -33,14 +33,12 @@ export class ValidatorsService {
    * @return {[type]}             Validation
    */
   matchingPasswords(passwordKey: string, confirmationKey: string) {
-    return (formGroup: FormGroup): {[key: string]: any} => {
-      let password = formGroup.controls[passwordKey];
-      let confirmation = formGroup.controls[confirmationKey];
+    return (group: FormGroup): {[key: string]: any} => {
+      let password = group.controls[passwordKey];
+      let confirmation = group.controls[confirmationKey];
 
       if (password.value !== confirmation.value) {
-        formGroup.controls[confirmationKey].setErrors({mismatchedPasswords: true});
-      } else {
-        console.log(formGroup.errors);
+        group.controls[confirmationKey].setErrors({mismatchedPasswords: true});
       }
 
       return null;

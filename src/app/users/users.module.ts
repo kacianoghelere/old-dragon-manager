@@ -4,14 +4,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { UsersComponent } from './users/users.component';
+import { UserFormComponent } from './user-form/user-form.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { UserListItemComponent } from './user-list-item/user-list-item.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import {
+  UserRegistrationComponent
+} from './user-registration/user-registration.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { UsersService } from './users.service';
-import { UtilModule } from '../../util/util.module';
+import { UtilModule } from '../util/util.module';
 import { UsersRoutingModule } from './users-routing.module';
-import { UserListItemComponent } from './user-list-item/user-list-item.component';
-import { UserFormComponent } from './user-form/user-form.component';
 
 @NgModule({
   imports: [
@@ -24,12 +27,14 @@ import { UserFormComponent } from './user-form/user-form.component';
   ],
   declarations: [
     UsersComponent,
+    UserFormComponent,
     UserListComponent,
-    UserProfileComponent,
-    UserSettingsComponent,
     UserListItemComponent,
-    UserFormComponent
+    UserProfileComponent,
+    UserRegistrationComponent,
+    UserSettingsComponent
   ],
+  exports: [UserFormComponent],
   providers: [UsersService]
 })
 export class UsersModule { }

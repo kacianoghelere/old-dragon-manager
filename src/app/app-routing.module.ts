@@ -5,7 +5,7 @@ import { WelcomeComponent } from './layout/welcome/welcome.component';
 import { AuthenticationGuard } from './authentication/authentication.guard';
 
 const appRoutes: Routes = [
-  {path: "", component: WelcomeComponent},
+  {path: "", redirectTo: 'welcome', pathMatch: 'full'},
   {
     path: 'example',
     loadChildren: 'app/+example/example.module#ExampleModule'
@@ -18,7 +18,8 @@ const appRoutes: Routes = [
     path: 'main',
     canActivate: [AuthenticationGuard],
     loadChildren: 'app/+main/main.module#MainModule'
-  }
+  },
+  {path: "welcome", component: WelcomeComponent}
 ];
 
 @NgModule({

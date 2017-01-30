@@ -6,10 +6,12 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { ValidatorsService } from './shared/validators.service';
+import { ValidatorsService } from './shared/services/validators.service';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { LayoutModule } from './layout/layout.module';
 import { UtilModule } from './util/util.module';
+import { RolesModule } from './roles/roles.module';
+import { UsersModule } from './users/users.module';
 import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
@@ -19,6 +21,8 @@ import { AppRoutingModule } from './app-routing.module';
     HttpModule,
     AuthenticationModule,
     LayoutModule,
+    RolesModule,
+    UsersModule,
     AppRoutingModule
   ],
   declarations: [

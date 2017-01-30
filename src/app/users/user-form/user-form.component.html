@@ -3,7 +3,7 @@
 <form class="form-horizontal" [formGroup]="userForm" (submit)="submitChanges()">
 
   <form-group [field]="userForm.controls.userLogin">
-    <label for="userLogin">Código</label>
+    <label for="userLogin">Código de acesso</label>
     <input class="form-control"
         id="userLogin"
         formControlName="userLogin"
@@ -52,7 +52,7 @@
         placeholder="******">
   </form-group>
 
-  <form-group [field]="userForm.controls.userRole">
+  <form-group [field]="userForm.controls.userRole" *ngIf="currentUser.admin">
     <label for="userRole">Perfil</label>
     <select class="form-control"
         id="userRole"
@@ -68,7 +68,8 @@
   </form-group>
 
   <div class="form-group">
-    <button type='submit' class='btn btn-primary' [disabled]="!userForm.valid">
+    <button type='submit' class='btn btn-primary'
+        [disabled]="!userForm.valid || submitted">
       <glyph icon="floppy-save"></glyph> Salvar
     </button>
     <button type='button' class='btn btn-default' (click)="resetChanges()">

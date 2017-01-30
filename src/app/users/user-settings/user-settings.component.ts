@@ -1,11 +1,10 @@
 import { Subscription } from 'rxjs/Subscription';
 
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Message } from '../../../shared/message';
-import { User } from '../../../shared/user';
+import { Message } from '../../shared/message';
+import { User } from '../../shared/entities/user';
 import { UsersService } from '../users.service';
 
 @Component({
@@ -47,7 +46,7 @@ export class UserSettingsComponent implements OnInit, OnDestroy {
 
   /**
    * Sends the updated user information to the API
-   * @param  {User}   user User data
+   * @param {User} user User data
    */
   updateUser(user: User) {
     let fail = (error) => {

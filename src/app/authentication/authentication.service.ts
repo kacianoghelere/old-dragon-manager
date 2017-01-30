@@ -7,12 +7,21 @@ import { Router } from '@angular/router';
 @Injectable()
 export class AuthenticationService {
 
-  token: string;
+  // Public variables
+  // ---------------------------------------------------------------------------
   authenticated: boolean = false;
   authentication: EventEmitter<boolean>;
-  user: any;
+  currentUser: any;
+  token: string = '';
+
+  // Private & Protected variables
+  // ---------------------------------------------------------------------------
   private headers: Headers;
   private url: string = 'http://localhost:3000';
+
+  //
+  // Functions
+  // ===========================================================================
 
   constructor(
     private http: Http,
@@ -23,31 +32,9 @@ export class AuthenticationService {
     this.headers.append('Content-Type', 'application/json');
   }
 
-  /**
-   * API authentication method
-   * Sends the user email and password to the API in order to receive de JWT
-   * @param {any} user User login data
-   */
-  authenticate(user) {
-    let options = { headers: this.headers };
-    this.http.post(`${this.url}/authentication`, JSON.stringify(user), options)
-      .map((res) => { return res.json() })
-      .subscribe(
-        (res) => {
-          this.token = res.auth_token;
-          this.user = res.user;
-          this.authenticated = true;
-        },
-        (error) => {
-          this.token = null;
-          this.user = null;
-          this.authenticated = false;
-        },
-        () => {
-          this.authentication.emit(this.authenticated);
-        }
-      );
-  }
+  //
+  // Getters and Setters
+  // ---------------------------------------------------------------------------
 
   /**
    * Returns Authenticated headers for easy http requests to the API
@@ -60,4 +47,53 @@ export class AuthenticationService {
     return headers;
   }
 
+  get debugInfo(): any {
+    return {
+      authenticated: this.authenticated,
+      currentUser: this.currentUser,
+      token: this.token
+    };
+  }
+
+  //
+  // Common functions
+  // ---------------------------------------------------------------------------
+
+  /**
+   * API authentication method
+   * Sends the user email and password to the API in order to receive de JWT
+   * @param {any} user User login data
+   */
+  signin(user) {
+    let options = { headers: this.headers };
+    this.http.post(`${this.url}/authentication`, JSON.stringify(user), options)
+      .map((res) => { return res.json() })
+      .subscribe((response) => {
+        this.token = response.auth_token;
+        this.currentUser = response.user;
+        this.authenticated = true;
+        console.log("Debug", this.debugInfo);
+        this.router.navigate(['/main']);
+      },
+      (error) => {
+        this.signout();
+      },
+      () => {
+        this.authentication.emit(this.authenticated);
+      });
+  }
+
+  /**
+   * Signout method
+   * @param {boolean} redirect Redirect router to the root page
+   */
+  signout(redirect: boolean = false) {
+    this.token = '';
+    this.currentUser = null;
+    this.authenticated = false;
+    if (redirect) {
+      this.router.navigate(['/welcome']);
+    }
+    this.authentication.emit(this.authenticated);
+  }
 }

@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { User } from '../../../shared/user';
+import { User } from '../../shared/entities/user';
 import { UsersService } from '../users.service';
 
 @Component({
@@ -13,8 +13,14 @@ import { UsersService } from '../users.service';
 })
 export class UserProfileComponent implements OnInit, OnDestroy {
 
-  user: User;
+  // Public variables
+  // ---------------------------------------------------------------------------
   subscription: Subscription;
+  user: User;
+
+  //
+  // Functions
+  // ===========================================================================
 
   constructor(
     private route: ActivatedRoute,
@@ -22,9 +28,9 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     private usersService: UsersService
   ) { }
 
-  avatar(email: string): string | Int32Array {
-    return this.usersService.avatarHash(email);
-  }
+  //
+  // Lifecycle hooks functions
+  // ---------------------------------------------------------------------------
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
@@ -40,6 +46,19 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
+  }
+
+  //
+  // Common functions
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Genereates the url with the email hash for gravatar
+   * @param  {string} email User email
+   * @return {string}       Url with the email hash for gravatar
+   */
+  avatar(email: string): string | Int32Array {
+    return this.usersService.avatarHash(email);
   }
 
 }

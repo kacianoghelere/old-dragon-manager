@@ -2,7 +2,7 @@ import { Http, Headers } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
 
-import { AuthenticationService } from '../authentication/authentication.service';
+import { AuthenticationService } from '../../authentication/authentication.service';
 
 /**
  * Abstract class that contains useful methods and information for entity
@@ -81,7 +81,7 @@ export abstract class EntityService<T> {
   protected _create(resource: string) {
     return (params: any): Observable<any> => {
       let _params = JSON.stringify(params);
-      return this.http.put(`${this.url}/${resource}`, _params, this.options)
+      return this.http.post(`${this.url}/${resource}`, _params, this.options)
         .map(this.responseToJson);
     }
   }

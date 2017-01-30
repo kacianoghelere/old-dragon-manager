@@ -6,12 +6,15 @@ import {
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Message } from '../../../shared/message';
-import { Role } from '../../../shared/role';
-import { RolesService } from '../../shared/roles.service';
-import { User } from '../../../shared/user';
+import { Message } from '../../shared/message';
+import { Role } from '../../shared/entities/role';
+import { RolesService } from '../../roles/roles.service';
+import { User } from '../../shared/entities/user';
 import { UsersService } from '../users.service';
-import { ValidatorsService } from '../../../shared/validators.service';
+import {
+  AuthenticationService
+} from '../../authentication/authentication.service';
+import { ValidatorsService } from '../../shared/services/validators.service';
 
 @Component({
   selector: 'user-form',
@@ -20,15 +23,25 @@ import { ValidatorsService } from '../../../shared/validators.service';
 })
 export class UserFormComponent implements OnInit, OnDestroy {
 
+  // Property & Event bindings
+  // ---------------------------------------------------------------------------
   @Input() user: User;
-  @Output() userSubmitted: EventEmitter<User>;
   @Output() userReseted: EventEmitter<User>;
+  @Output() userSubmitted: EventEmitter<User>;
+
+  // Public variables
+  // ---------------------------------------------------------------------------
   message: Message;
   roles: Role[];
-  subscription: Subscription;
+  submitted: boolean = false;
   userForm: FormGroup;
 
+  // Private & Protected variables
+  // ---------------------------------------------------------------------------
+  private subscription: Subscription;
+
   constructor(
+    private authService: AuthenticationService,
     private builder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
@@ -52,19 +65,13 @@ export class UserFormComponent implements OnInit, OnDestroy {
     {
       validator: this.validators.matchingPasswords('userPassword', 'userConfirm')
     });
-
     this.userReseted = new EventEmitter();
     this.userSubmitted = new EventEmitter();
-    console.log(this.userForm);
   }
 
-  ngOnInit(): void {
-    this.user.password = '';
-    this.user.confirm = '';
-
-    this.subscription = this.rolesService.list()
-      .subscribe((response) => this.roles = response);
-  }
+  //
+  // Life cycle hook functions
+  // ==========================================================================
 
   ngOnDestroy(): void {
     if (this.subscription) {
@@ -73,11 +80,33 @@ export class UserFormComponent implements OnInit, OnDestroy {
     this.resetChanges();
   }
 
+  ngOnInit(): void {
+    this.user.password = '';
+    this.user.confirm = '';
+    this.subscription = this.rolesService.list()
+      .subscribe((response) => this.roles = response);
+  }
+
+  //
+  // Getters and Setters
+  // ==========================================================================
+
   /**
-   * Emit the save event
+   * Returns de the authenticated current user information
+   * @return {any} Authenticated current user information
+   */
+  get currentUser(): any {
+    return this.authService.currentUser || {admin: false};
+  }
+
+  //
+  // Common functions
+  // ==========================================================================
+
+  /**
+   * Emit the reset event
    */
   resetChanges(): void {
-    // console.log(this.userForm);
     this.userForm.reset();
     this.userReseted.emit(this.user);
   }
@@ -96,6 +125,7 @@ export class UserFormComponent implements OnInit, OnDestroy {
    */
   submitChanges(): void {
     this.userSubmitted.emit(this.user);
+    this.submitted = !this.submitted;
   }
 
 }

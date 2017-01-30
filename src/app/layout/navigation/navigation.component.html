@@ -22,26 +22,33 @@
           </a>
         </li>
         <li>
-          <a [routerLink]="['/main/users']">
+          <a [routerLink]="['/users']">
             <glyph icon="user"></glyph> Usuários
           </a>
         </li>
       </ul>
+
       <ul class="nav navbar-nav navbar-right">
         <li>
           <a [routerLink]="['/example']">Examples</a>
         </li>
+        <li *ngIf="!authenticated">
+          <a [routerLink]="['/users/registration']">
+            <glyph icon="plus-sign"></glyph> Sign-up
+          </a>
+        </li>
         <li class="active" *ngIf="!authenticated">
           <a [routerLink]="['/login']">
-            <glyph icon="log-in"></glyph> Login
+            <glyph icon="log-in"></glyph> Sign-in
           </a>
         </li>
         <li class="active" *ngIf="authenticated">
-          <a [routerLink]="['/login']">
-            <glyph icon="log-out"></glyph> Logout
+          <a [routerLink]="['/welcome']" (click)="signout()">
+            <glyph icon="log-out"></glyph> Log-out
           </a>
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->
+
   </div><!-- /.container-fluid -->
 </nav>

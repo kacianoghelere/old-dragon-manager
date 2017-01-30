@@ -2,9 +2,11 @@
 
 <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
   <h2 class="title">Login</h2>
+</div>
 
-  <form class="form-horizontal" [formGroup]="loginForm" (submit)="authenticate()">
-
+<div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4 well well-lg">
+  <form class="form-horizontal" [formGroup]="loginForm"
+      (submit)="authenticate()">
     <form-group [field]="loginForm.controls.loginEmail">
       <label for="loginEmail">E-mail</label>
       <input class="form-control"
@@ -26,11 +28,14 @@
     </form-group>
 
     <div class="form-group">
-      <button type="submit" class="btn btn-primary btn-block"
+      <button class="btn btn-primary btn-block" type="submit"
           [disabled]="!loginForm.valid">
-        <glyph icon="log-in"></glyph> Login
+        <glyph icon="log-in"></glyph> Sign-in
       </button>
+      <a class="btn btn-default btn-block"
+          [routerLink]="['/users/registration']">
+        <glyph icon="plus-sign"></glyph> Sign-up
+      </a>
     </div>
-
   </form>
 </div>

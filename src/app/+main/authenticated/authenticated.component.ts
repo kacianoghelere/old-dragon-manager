@@ -4,8 +4,8 @@ import { Headers } from '@angular/http';
 import {
   AuthenticationService
 } from '../../authentication/authentication.service';
-import { User } from '../../shared/user';
-import { UsersService } from '../users/users.service';
+import { User } from '../../shared/entities/user';
+import { UsersService } from '../../users/users.service';
 
 @Component({
   selector: 'app-authenticated',
@@ -24,9 +24,8 @@ export class AuthenticatedComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.usersService.find(this.authService.user.id)
+    this.usersService.find(this.authService.currentUser.id)
       .subscribe((response) => this.currentUser = response);
   }
-
 
 }
