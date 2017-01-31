@@ -16,11 +16,10 @@ export abstract class EntityService<T> {
   constructor(
     protected authService: AuthenticationService,
     protected http: Http
-  ) {
-    this.headers = this.authService.authHeaders;
-  }
+  ) { }
 
   private get options(): any {
+    this.headers = this.authService.authHeaders;
     return { headers: this.headers };
   }
 

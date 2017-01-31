@@ -5,3 +5,15 @@
     width: 150px;
   }
 }
+.navbar-nav {
+  a {
+    &.user {
+      padding: 9px;
+
+      img {
+        width: 32px;
+        height: 32px;
+      }
+    }
+  }
+}

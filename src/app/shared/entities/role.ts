@@ -1,4 +1,5 @@
 export class Role {
-  id: number;
-  name: string;
+  id: number = null;
+  name: string = '';
+  admin: boolean = false;
 }

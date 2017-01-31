@@ -71,7 +71,7 @@ export class UsersService extends EntityService<User> {
    * @return {Observable<any>}        [description]
    */
   update(id: number, params: User): Observable<any> {
-    console.log(params);
+    // console.log(params);
     return super._update("users")(id, {user: params});
   }
 

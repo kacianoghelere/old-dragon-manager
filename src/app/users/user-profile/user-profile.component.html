@@ -1,21 +1,34 @@
-<div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
+<div class="col-xs-12 col-sm-4 col-md-3">
   <h2 class="title">{{user?.name}}</h2>
 
   <img class="img-responsive img-thumbnail img-avatar"
-      [src]="avatar(user?.email)"
+      [src]="avatar"
       [alt]="user?.name">
 
   <div class="panel panel-default">
-
-    <div class="panel-body">
-      <h3 class="text-muted">{{user?.email}}</h3>
-    </div>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <b>E-mail:</b>
+        <span class="pull-right">{{user?.email}}</span>
+      </li>
+    </ul>
 
     <div class="panel-footer">
-      <router-link path="settings" classes="btn btn-primary btn-sm">
+      <router-link classes="btn btn-primary btn-sm"
+          path="settings"
+          *ngIf="canChange">
         <glyph icon="cog"></glyph> Opções
       </router-link>
     </div>
 
   </div>
+</div>
+
+<div class="col-xs-12 col-sm-8 col-md-9">
+  <h2 class="title">Criações</h2>
+  <ul class="nav nav-pills">
+    <li role="presentation" class="active"><a href="#">Home</a></li>
+    <li role="presentation"><a href="#">Profile</a></li>
+    <li role="presentation"><a href="#">Messages</a></li>
+  </ul>
 </div>

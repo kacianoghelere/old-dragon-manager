@@ -16,9 +16,10 @@ export class AuthenticatedGuard implements CanActivate {
   ) {}
 
   canActivate(
-    route: ActivatedRouteSnapshot, state: RouterStateSnapshot
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
   ): boolean {
-    if (!this.authService.authenticated) {
+    if (!this.authService.authenticated || this.authService.currentUser.admin) {
       return true;
     }
     return false;

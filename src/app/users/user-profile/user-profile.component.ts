@@ -3,6 +3,9 @@ import { Subscription } from 'rxjs/Subscription';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
+import {
+  AuthenticationService
+} from '../../authentication/authentication.service';
 import { User } from '../../shared/entities/user';
 import { UsersService } from '../users.service';
 
@@ -25,6 +28,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private authService: AuthenticationService,
     private usersService: UsersService
   ) { }
 
@@ -33,6 +37,8 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   // ---------------------------------------------------------------------------
 
   ngOnInit() {
+    this.user = new User;
+    console.log("currentUser:", this.authService.currentUser);
     this.route.params.subscribe((params) => {
       let id = params['id'];
       if (id) {
@@ -49,16 +55,39 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   }
 
   //
-  // Common functions
+  // Getters & Setters
   // ---------------------------------------------------------------------------
 
   /**
    * Genereates the url with the email hash for gravatar
-   * @param  {string} email User email
    * @return {string}       Url with the email hash for gravatar
    */
-  avatar(email: string): string | Int32Array {
-    return this.usersService.avatarHash(email);
+  get avatar(): string | Int32Array {
+    return this.usersService.avatarHash(this.user.email);
+  }
+
+  /**
+   * Checks if the profile can be changed by de the current user
+   * @return {boolean} Profile can be changed by de the current user?
+   */
+  get canChange(): boolean {
+    return (this.isAdmin === true) || (this.isCurrentUser === true);
+  }
+
+  /**
+   * Checks if the current user is sys admin
+   * @return {boolean} Current user is sys admin?
+   */
+  get isAdmin(): boolean {
+    return this.authService.currentUser.admin;
+  }
+
+  /**
+   * Checks if the profile displayed belongs to the current user
+   * @return {boolean} Profile displayed belongs to the current user?
+   */
+  get isCurrentUser(): boolean {
+    return this.authService.currentUser.id === this.user.id;
   }
 
 }

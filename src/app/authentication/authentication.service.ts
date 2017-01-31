@@ -60,6 +60,20 @@ export class AuthenticationService {
   // ---------------------------------------------------------------------------
 
   /**
+   * Signout method
+   * @param {boolean} redirect Redirect router to the root page
+   */
+  logout(redirect: boolean = false) {
+    this.token = '';
+    this.currentUser = null;
+    this.authenticated = false;
+    if (redirect) {
+      this.router.navigate(['/welcome']);
+    }
+    this.authentication.emit(this.authenticated);
+  }
+
+  /**
    * API authentication method
    * Sends the user email and password to the API in order to receive de JWT
    * @param {any} user User login data
@@ -72,28 +86,16 @@ export class AuthenticationService {
         this.token = response.auth_token;
         this.currentUser = response.user;
         this.authenticated = true;
-        console.log("Debug", this.debugInfo);
+        // console.log("Response:", response);
+        // console.log("Debug:", this.debugInfo);
         this.router.navigate(['/main']);
       },
       (error) => {
-        this.signout();
+        this.logout();
       },
       () => {
         this.authentication.emit(this.authenticated);
       });
   }
 
-  /**
-   * Signout method
-   * @param {boolean} redirect Redirect router to the root page
-   */
-  signout(redirect: boolean = false) {
-    this.token = '';
-    this.currentUser = null;
-    this.authenticated = false;
-    if (redirect) {
-      this.router.navigate(['/welcome']);
-    }
-    this.authentication.emit(this.authenticated);
-  }
 }

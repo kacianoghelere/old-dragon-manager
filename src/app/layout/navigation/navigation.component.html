@@ -30,21 +30,26 @@
 
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a [routerLink]="['/example']">Examples</a>
+          <a [routerLink]="['/example']">Templates</a>
         </li>
         <li *ngIf="!authenticated">
           <a [routerLink]="['/users/registration']">
-            <glyph icon="plus-sign"></glyph> Sign-up
+            <glyph icon="plus-sign"></glyph> Registrar-se
           </a>
         </li>
         <li class="active" *ngIf="!authenticated">
           <a [routerLink]="['/login']">
-            <glyph icon="log-in"></glyph> Sign-in
+            <glyph icon="log-in"></glyph> Entrar
+          </a>
+        </li>
+        <li *ngIf="authenticated">
+          <a [routerLink]="['/users/profile/', currentUser.id]">
+            <glyph icon="user"></glyph> Minha Conta
           </a>
         </li>
         <li class="active" *ngIf="authenticated">
-          <a [routerLink]="['/welcome']" (click)="signout()">
-            <glyph icon="log-out"></glyph> Log-out
+          <a [routerLink]="['/welcome']" (click)="logout()">
+            <glyph icon="log-out"></glyph> Sair
           </a>
         </li>
       </ul>

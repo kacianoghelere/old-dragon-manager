@@ -6,7 +6,6 @@ import {
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Message } from '../../shared/message';
 import { Role } from '../../shared/entities/role';
 import { RolesService } from '../../roles/roles.service';
 import { User } from '../../shared/entities/user';
@@ -31,7 +30,6 @@ export class UserFormComponent implements OnInit, OnDestroy {
 
   // Public variables
   // ---------------------------------------------------------------------------
-  message: Message;
   roles: Role[];
   submitted: boolean = false;
   userForm: FormGroup;
@@ -49,7 +47,6 @@ export class UserFormComponent implements OnInit, OnDestroy {
     private rolesService: RolesService,
     private validators: ValidatorsService
   ) {
-    this.message = new Message();
     this.userForm = this.builder.group({
       userLogin: ['', Validators.required],
       userName: ['', Validators.required],
@@ -83,8 +80,10 @@ export class UserFormComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.user.password = '';
     this.user.confirm = '';
-    this.subscription = this.rolesService.list()
-      .subscribe((response) => this.roles = response);
+    if (this.currentUser.admin) {
+      this.subscription = this.rolesService.list()
+        .subscribe((response) => this.roles = response);
+    }
   }
 
   //

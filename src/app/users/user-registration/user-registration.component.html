@@ -3,5 +3,7 @@
 <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
   <h2 class="title">Formulário de Cadastro</h2>
 
-  <user-form [user]="user" (userSubmitted)="registerUser($event)"></user-form>
+  <div class="well well-sm">
+    <user-form [user]="user" (userSubmitted)="registerUser($event)"></user-form>
+  </div>
 </div>

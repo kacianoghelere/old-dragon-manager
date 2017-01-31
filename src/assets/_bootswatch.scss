@@ -251,6 +251,9 @@ input,
 .jumbotron {
   box-shadow: inset 0 0 15px 5px rgba(0, 0, 0, .25);
 }
+.well {
+  border: 1px solid #dea81c;
+}
 
 .jumbotron {
   border: 3px ridge #dea81c;
@@ -301,6 +304,6 @@ input,
 
 .title {
   border-bottom: 1px solid $gray-light;
-  margin-left: -15px;
-  margin-right: -15px;
+  // margin-left: -15px;
+  // margin-right: -15px;
 }

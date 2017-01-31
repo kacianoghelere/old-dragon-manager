@@ -5,7 +5,7 @@ export class User {
   name: string = '';
   email: string = '';
   login: string = '';
-  role: Role;
+  role: Role = {id: null, name: '', admin: false};
   role_id: number;
   password: string = '';
   confirm: string = '';
