@@ -1,0 +1,49 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Modificadores de Destreza</h3>
+  </div>
+
+  <table class='table table-striped table-hover table-condensed'
+      *ngIf="dexterityMods.length">
+    <thead>
+      <tr>
+        <th class="text-center">Destreza</th>
+        <th class="text-center">Ajuste de ataque e surpresa,<br>defesa e proteção</th>
+        <th class="text-center">Localizar e desarmar<br>armadilhas</th>
+        <th class="text-center">Mover-se em silêncio<br>e Abrir fechaduras</th>
+        <th class="text-center">Esconder-se nas<br> sombras e Pungar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="text-center" *ngFor="let mod of dexterityMods">
+        <td>{{mod?.range}}</td>
+        <td>{{mod?.attack_mod}}</td>
+        <td>{{mod?.find_traps_mod}}</td>
+        <td>{{mod?.silent_movement_mod}}</td>
+        <td>{{mod?.stealth_mod}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="panel-body" *ngIf="!dexterityMods.length">
+    <h3 class="text-center">Carregando...</h3>
+  </div>
+
+  <div class="list-group">
+    <div class="list-group-item">
+      <b>Ajuste de ataque e surpresa</b>: indica o bônus ou penalidade para se
+      proteger das jogadas de surpresa e nas jogadas de ataque à distância.
+    </div>
+    <div class="list-group-item">
+      <b>Ajuste de defesa e de proteção</b>: indica o bônus ou penalidade na
+      classe de armadura do personagem. Esse bônus ou penalidade também será
+      adicionado às jogadas de proteção que envolvam esquiva ou agilidade do
+      personagem.
+    </div>
+    <div class="list-group-item">
+      <b>Ajuste de talentos de ladrão</b>: indica o bônus ou penalidade
+      percentual nos talentos de ladrão do personagem, caso pertença à classe
+      ladrão.
+    </div>
+  </div>
+</div>

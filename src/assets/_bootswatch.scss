@@ -256,6 +256,13 @@ input,
     }
   }
 
+  > .list-group:last-child {
+    .list-group-item:last-child {
+        border-bottom-right-radius: .5em;
+        border-bottom-left-radius: .5em;
+    }
+  }
+
   > .panel-heading:first-child {
       border-top-right-radius: .5em;
       border-top-left-radius: .5em;

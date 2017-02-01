@@ -1,0 +1,38 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Modificadores de Força</h3>
+  </div>
+
+  <table class='table table-striped table-hover table-condensed'
+      *ngIf="strengthMods.length">
+    <thead>
+      <tr>
+        <th class="text-center">Força</th>
+        <th class="text-center">Ajuste de Ataque</th>
+        <th class="text-center">Ajuste de dano</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="text-center" *ngFor="let mod of strengthMods">
+        <td>{{mod?.range}}</td>
+        <td>{{mod?.attack_mod}}</td>
+        <td>{{mod?.damage_mod}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="panel-body" *ngIf="!strengthMods.length">
+    <h3 class="text-center">Carregando...</h3>
+  </div>
+
+  <div class="list-group">
+    <div class="list-group-item">
+      <b>Ajuste de ataque</b>: indica o bônus ou penalidade nos ataques
+      corpo-a-corpo realizados pelo personagem.
+    </div>
+    <div class="list-group-item">
+      <b>Ajuste de dano</b>: indica o bônus ou penalidade no dano causado pelos
+      ataques corpo-a-corpo.
+    </div>
+  </div>
+</div>

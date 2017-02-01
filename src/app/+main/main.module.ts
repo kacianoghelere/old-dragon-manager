@@ -2,9 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MainComponent } from './main/main.component';
+import { AuthenticatedComponent } from './authenticated/authenticated.component';
+import { FeedComponent } from './feed/feed.component';
 import { MainRoutingModule } from './main-routing.module';
 import { UtilModule } from '../util/util.module';
-import { AuthenticatedComponent } from './authenticated/authenticated.component';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { AuthenticatedComponent } from './authenticated/authenticated.component'
   ],
   declarations: [
     MainComponent,
-    AuthenticatedComponent
+    AuthenticatedComponent,
+    FeedComponent
   ],
   exports: [MainComponent]
 })
