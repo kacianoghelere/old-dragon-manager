@@ -6,10 +6,25 @@
       [alt]="user?.name">
 
   <div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">Dados do Usuário</div>
+    </div>
+
     <ul class="list-group">
       <li class="list-group-item">
-        <b>E-mail:</b>
-        <span class="pull-right">{{user?.email}}</span>
+        <small>
+          <b>Perfil:</b> {{user?.role?.name}}
+        </small>
+      </li>
+      <li class="list-group-item">
+        <small>
+          <b>E-mail:</b> {{user?.email}}
+        </small>
+      </li>
+      <li class="list-group-item">
+        <small>
+          <b>Último acesso em:</b> {{user?.last_login | date }}
+        </small>
       </li>
     </ul>
 

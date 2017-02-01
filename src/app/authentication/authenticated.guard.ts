@@ -19,9 +19,10 @@ export class AuthenticatedGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean {
-    if (!this.authService.authenticated || this.authService.currentUser.admin) {
+    if (this.authService.authenticated === false) {
       return true;
     }
+    this.router.navigate(['/main']);
     return false;
   }
 

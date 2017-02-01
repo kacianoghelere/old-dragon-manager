@@ -245,8 +245,27 @@ input,
   &-item {
     padding: 16px 24px;
   }
+
 }
 
+.panel {
+  > .list-group:first-child {
+    .list-group-item:first-child {
+        border-top-right-radius: .5em;
+        border-top-left-radius: .5em;
+    }
+  }
+
+  > .panel-heading:first-child {
+      border-top-right-radius: .5em;
+      border-top-left-radius: .5em;
+  }
+
+  > .panel-footer:last-child {
+      border-bottom-right-radius: .5em;
+      border-bottom-left-radius: .5em;
+  }
+}
 .well,
 .jumbotron {
   box-shadow: inset 0 0 15px 5px rgba(0, 0, 0, .25);
