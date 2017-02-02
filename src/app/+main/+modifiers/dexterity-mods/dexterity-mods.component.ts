@@ -22,10 +22,7 @@ export class DexterityModsComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscription = this.modService.list<DexterityMod>("dexterity_mods")
       .subscribe(
-        (response) => {
-          let listData = this.modService.getList(response, "attack_mod");
-          this.dexterityMods = listData;
-        },
+        (response) => this.dexterityMods = response,
         (error) => console.log(error)
       );
   }

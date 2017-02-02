@@ -4,6 +4,6 @@ export class CharismaMod {
   value: number;
   followers_mod: number;
   reaction_mod: number;
-  undead_mod: string
+  undead_mod: string;
 
 }

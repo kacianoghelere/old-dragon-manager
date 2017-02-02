@@ -22,11 +22,7 @@ export class StrengthModsComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscription = this.modService.list<StrengthMod>("strength_mods")
       .subscribe(
-        (response) => {
-          let listData = this.modService.getList(response, "attack_mod");
-          console.log("listData", listData);
-          this.strengthMods = listData;
-        },
+        (response) => this.strengthMods = response,
         (error) => console.log(error));
   }
 

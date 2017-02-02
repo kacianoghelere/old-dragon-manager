@@ -1,21 +1,67 @@
-<table class='table table-striped table-hover table-condensed'>
-  <caption>Modificadores de Inteligência</caption>
-  <thead>
-    <tr>
-      <th>Teste</th>
-      <th>Teste</th>
-      <th>Teste</th>
-      <th>Teste</th>
-      <th>Teste</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Teste</td>
-      <td>Teste</td>
-      <td>Teste</td>
-      <td>Teste</td>
-      <td>Teste</td>
-    </tr>
-  </tbody>
-</table>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Modificadores de Inteligência</h3>
+  </div>
+
+  <table class='table table-striped table-hover table-condensed'
+      *ngIf="intelligenceMods.length">
+    <thead>
+      <tr>
+        <th class="text-center" rowspan="2">Inteligência</th>
+        <th class="text-center" rowspan="2">Idiomas<br>adicionais</th>
+        <th class="text-center" rowspan="2">Chance de<br>Aprender Magia</th>
+        <th class="text-center" rowspan="1" colspan="9">
+          Magias arcanas<br>adicionais por circulo
+        </th>
+      </tr>
+      <tr>
+        <th class="text-center" width="5%">1<sup>o</sup></th>
+        <th class="text-center" width="5%">2<sup>o</sup></th>
+        <th class="text-center" width="5%">3<sup>o</sup></th>
+        <th class="text-center" width="5%">4<sup>o</sup></th>
+        <th class="text-center" width="5%">5<sup>o</sup></th>
+        <th class="text-center" width="5%">6<sup>o</sup></th>
+        <th class="text-center" width="5%">7<sup>o</sup></th>
+        <th class="text-center" width="5%">8<sup>o</sup></th>
+        <th class="text-center" width="5%">9<sup>o</sup></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="text-center" *ngFor="let mod of intelligenceMods">
+        <td>{{mod?.value}}</td>
+        <td>{{mod?.languages_mod}}</td>
+        <td>{{mod?.learn_magic_mod}}</td>
+        <td class="text-center" width="5%">{{mod?.magic_circle_1_mod}}</td>
+        <td class="text-center" width="5%">{{mod?.magic_circle_2_mod}}</td>
+        <td class="text-center" width="5%">{{mod?.magic_circle_3_mod}}</td>
+        <td class="text-center" width="5%">{{mod?.magic_circle_4_mod}}</td>
+        <td class="text-center" width="5%">{{mod?.magic_circle_5_mod}}</td>
+        <td class="text-center" width="5%">{{mod?.magic_circle_6_mod}}</td>
+        <td class="text-center" width="5%">{{mod?.magic_circle_7_mod}}</td>
+        <td class="text-center" width="5%">{{mod?.magic_circle_8_mod}}</td>
+        <td class="text-center" width="5%">{{mod?.magic_circle_9_mod}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="panel-body" *ngIf="!intelligenceMods.length">
+    <h3 class="text-center">Carregando...</h3>
+  </div>
+
+  <div class="list-group">
+    <div class="list-group-item">
+      <b>Idiomas adicionais</b>: representa a quantidade de idiomas que o
+      personagem sabe falar e compreender além da sua língua nativa.
+    </div>
+    <div class="list-group-item">
+      <b>Chance de aprender magia</b>: é a chance que o mago tem de, a partir
+      de um pergaminho ou de um grimório pertencente a outro mago, copiar e
+      aprender uma magia nova.
+    </div>
+    <div class="list-group-item">
+      <b>Magias arcanas adicionais</b>: compreende o número de magias arcanas
+      adicionais que o mago pode memorizar, desde que seja capaz de lançar a
+      magia daquele círculo.
+    </div>
+  </div>
+</div>

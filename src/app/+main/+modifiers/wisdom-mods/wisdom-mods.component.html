@@ -1,21 +1,56 @@
-<table class='table table-striped table-hover table-condensed'>
-  <caption>Modificadores de Sabedoria</caption>
-  <thead>
-    <tr>
-      <th>Teste</th>
-      <th>Teste</th>
-      <th>Teste</th>
-      <th>Teste</th>
-      <th>Teste</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Teste</td>
-      <td>Teste</td>
-      <td>Teste</td>
-      <td>Teste</td>
-      <td>Teste</td>
-    </tr>
-  </tbody>
-</table>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Modificadores de Sabedoria</h3>
+  </div>
+
+  <table class='table table-striped table-hover table-condensed'
+      *ngIf="wisdomMods.length">
+    <thead>
+      <tr>
+        <th class="text-center" rowspan="2">Sabedoria</th>
+        <th class="text-center" rowspan="2">Ajuste de proteção</th>
+        <th class="text-center" rowspan="1" colspan="7">
+          Magias divinas<br>adicionais por circulo
+        </th>
+      </tr>
+      <tr>
+        <th class="text-center" width="5%">1<sup>o</sup></th>
+        <th class="text-center" width="5%">2<sup>o</sup></th>
+        <th class="text-center" width="5%">3<sup>o</sup></th>
+        <th class="text-center" width="5%">4<sup>o</sup></th>
+        <th class="text-center" width="5%">5<sup>o</sup></th>
+        <th class="text-center" width="5%">6<sup>o</sup></th>
+        <th class="text-center" width="5%">7<sup>o</sup></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="text-center" *ngFor="let mod of wisdomMods">
+        <td>{{mod?.value}}</td>
+        <td>{{mod?.protection_mod}}</td>
+        <td class="text-center" width="5%">{{mod?.magic_circle_1_mod}}</td>
+        <td class="text-center" width="5%">{{mod?.magic_circle_2_mod}}</td>
+        <td class="text-center" width="5%">{{mod?.magic_circle_3_mod}}</td>
+        <td class="text-center" width="5%">{{mod?.magic_circle_4_mod}}</td>
+        <td class="text-center" width="5%">{{mod?.magic_circle_5_mod}}</td>
+        <td class="text-center" width="5%">{{mod?.magic_circle_6_mod}}</td>
+        <td class="text-center" width="5%">{{mod?.magic_circle_7_mod}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="panel-body" *ngIf="!wisdomMods.length">
+    <h3 class="text-center">Carregando...</h3>
+  </div>
+
+  <div class="list-group">
+    <div class="list-group-item">
+      <b>Ajuste de proteção</b>: indica o bônus ou penalidade nas jogadas de
+      proteção que envolvam situações que afetem a mente do personagem.
+    </div>
+    <div class="list-group-item">
+      <b>Magias divinas adicionais</b>: representa a quantidade de magias
+      divinas adicionais que o clérigo pode receber de sua divindade patrona,
+      desde que seja capaz de lançar a magia daquele círculo.
+    </div>
+  </div>
+</div>
