@@ -8,16 +8,16 @@ const appRoutes: Routes = [
   {path: "", redirectTo: 'welcome', pathMatch: 'full'},
   {
     path: 'example',
-    loadChildren: 'app/+example/example.module#ExampleModule'
+    loadChildren: `app/+example/example.module#ExampleModule`
   },
   {
     path: 'login',
-    loadChildren: 'app/+login/login.module#LoginModule'
+    loadChildren: `app/+login/login.module#LoginModule`
   },
   {
     path: 'main',
     canActivate: [AuthenticationGuard],
-    loadChildren: 'app/+main/main.module#MainModule'
+    loadChildren: `app/+main/main.module#MainModule`
   },
   {path: "welcome", component: WelcomeComponent}
 ];

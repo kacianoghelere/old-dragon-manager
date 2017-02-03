@@ -5,7 +5,6 @@ import { MainComponent } from './main/main.component';
 import { FeedComponent } from './feed/feed.component';
 import { AuthenticationGuard } from '../authentication/authentication.guard';
 
-// {path: '', redirectTo: 'users', pathMatch: 'full'}
 const mainRoutes: Routes = [
   {
     path: '',
@@ -13,7 +12,11 @@ const mainRoutes: Routes = [
     children: [
       {
         path: 'modifiers',
-        loadChildren: 'app/+main/+modifiers/modifiers.module#ModifiersModule'
+        loadChildren: `app/+main/+modifiers/modifiers.module#ModifiersModule`
+      },
+      {
+        path: 'characters',
+        loadChildren: `app/+main/+characters/characters.module#CharactersModule`
       },
       {path: '', component: FeedComponent}
     ]
