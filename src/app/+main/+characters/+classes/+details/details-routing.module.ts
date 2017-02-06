@@ -1,10 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { EvolutionsComponent } from './evolutions/evolutions.component';
+import { DetailsComponent } from './details/details.component';
 
 const routes: Routes = [
-  {path: '', component: EvolutionsComponent}
+  {
+    path: '',
+    component: DetailsComponent,
+    children: []
+  }
 ];
 
 @NgModule({
@@ -12,4 +16,4 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: []
 })
-export class EvolutionsRoutingModule { }
+export class DetailsRoutingModule { }

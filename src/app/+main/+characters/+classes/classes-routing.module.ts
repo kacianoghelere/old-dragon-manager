@@ -9,8 +9,8 @@ const classesRoutes: Routes = [
     component: ClassesComponent,
     children: [
       {
-        path: 'evolutions',
-        loadChildren: `app/+main/+characters/+classes/+evolutions/evolutions.module#EvolutionsModule`
+        path: 'details',
+        loadChildren: `app/+main/+characters/+classes/+details/details.module#DetailsModule`
       },
       {
         path: 'specializations',

@@ -1,0 +1,30 @@
+<div class="col-xs-12">
+  <h2 class="title">Modificadores</h2>
+
+  <ul class="nav nav-pills nav-justified">
+    <li role="presentation" [routerLinkActive]="['active']">
+      <a [routerLink]="['wisdom']">
+        <img src="./assets/wisdom-icon.png" alt=">>" width="32"> Clérigo
+      </a>
+    </li>
+    <li role="presentation" [routerLinkActive]="['active']">
+      <a [routerLink]="['strength']">
+        <img src="./assets/strength-icon.png" alt=">>" width="32"> Homem de Armas
+      </a>
+    </li>
+    <li role="presentation" [routerLinkActive]="['active']">
+      <a [routerLink]="['dexterity']">
+        <img src="./assets/dexterity-icon.png" alt=">>" width="32"> Ladrão
+      </a>
+    </li>
+    <li role="presentation" [routerLinkActive]="['active']">
+      <a [routerLink]="['intelligence']">
+        <img src="./assets/intelligence-icon.png" alt=">>" width="32"> Mago
+      </a>
+    </li>
+  </ul>
+
+  <div class="tab-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>
