@@ -1,0 +1,33 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Níveis de {{characterClass.name}}</h3>
+  </div>
+
+  <div class='table-responsive'>
+    <table class='table table-striped table-hover table-condensed'>
+      <thead>
+        <tr>
+          <th class="text-center">Nível</th>
+          <th class="text-center">Experiência</th>
+          <th class="text-center">Dados de Vida</th>
+          <th class="text-center">Base de Ataque</th>
+          <th class="text-center">Proteção</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let evo of characterClass.evolutions">
+          <td class="text-center">{{evo.level}}</td>
+          <td class="text-center">{{evo.exp}}</td>
+          <td class="text-center">
+            <i *ngIf="!evo.plus_life">{{evo.life_amount}}</i>
+            <i *ngIf="evo.plus_life">+{{evo.life_amount}} P.V.</i>
+          </td>
+          <td class="text-center">
+            {{evo.attack_base}}<i *ngIf="evo.attack_base2 > 0">/{{evo.attack_base2}}</i>
+          </td>
+          <td class="text-center">{{evo.protection_mod}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

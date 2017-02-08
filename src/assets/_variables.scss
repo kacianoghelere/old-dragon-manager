@@ -724,9 +724,9 @@ $panel-border-radius:         $border-radius-base !default;
 $panel-inner-border:          $gray-light !default;
 $panel-footer-bg:             $gray-lighter !default;
 
-$panel-default-text:          $gray-lighter !default;
-$panel-default-border:        $gray-darker !default;
-$panel-default-heading-bg:    $gray-dark !default;
+$panel-default-text:          $gray-darker !default;
+$panel-default-border:        $gray-light !default;
+$panel-default-heading-bg:    $gray-lighter !default;
 
 $panel-primary-text:          #fff !default;
 $panel-primary-border:        $brand-primary !default;

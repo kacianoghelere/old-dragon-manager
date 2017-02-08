@@ -1,0 +1,74 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{characterClass.id}} - {{characterClass.name}}</h3>
+  </div>
+
+  <div class="panel-body">
+    {{characterClass.description}}
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Informações</h3>
+  </div>
+
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-xs-12">
+        <b>Usuário de magia?</b>: {{characterClass?.class_type?.magic}}
+      </div>
+      <div class="col-xs-12">
+        <b>Atributo chave</b>: {{characterClass?.class_type?.key_attr}}
+      </div>
+      <div class="col-xs-12">
+        <b>Pode Banir Mortos-vivos?</b>: {{characterClass?.class_type?.can_bane_undead}}
+      </div>
+      <div class="col-xs-12">
+        <b>Possui talentos ladinos?</b>: {{characterClass?.class_type?.has_thief_talents}}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Requerimentos</h3>
+  </div>
+
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-xs-4">
+        <b>FOR</b>: {{characterClass?.requirement?.str_mod}}
+      </div>
+      <div class="col-xs-4">
+        <b>DES</b>: {{characterClass?.requirement?.dex_mod}}
+      </div>
+      <div class="col-xs-4">
+        <b>CON</b>: {{characterClass?.requirement?.cons_mod}}
+      </div>
+      <div class="col-xs-4">
+        <b>INT</b>: {{characterClass?.requirement?.int_mod}}
+      </div>
+      <div class="col-xs-4">
+        <b>SAB</b>: {{characterClass?.requirement?.wis_mod}}
+      </div>
+      <div class="col-xs-4">
+        <b>CAR</b>: {{characterClass?.requirement?.char_mod}}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">Especializações</h4>
+  </div>
+
+  <div class="list-group">
+    <a class="list-group-item"
+        *ngFor="let specialization of characterClass.specializations">
+      {{specialization.name}}
+    </a>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-xs-4">
+    <class-info [characterClass]="characterClass"></class-info>
+  </div>
+  <div class="col-xs-8">
+    <ul class="nav nav-pills">
+      <li role="presentation"
+          [ngClass]="{active: isSelectedTab(0)}"
+          (click)="selectTab(0)">
+        <a>Evolução</a>
+      </li>
+      <li role="presentation"
+          [ngClass]="{active: isSelectedTab(1)}"
+          (click)="selectTab(1)">
+        <a>Talentos Ladinos</a>
+      </li>
+      <li role="presentation"
+          [ngClass]="{active: isSelectedTab(2)}"
+          (click)="selectTab(2)">
+        <a>Magias</a>
+      </li>
+    </ul>
+
+    <div class="tab-content">
+      <div class="tab-pane" role="tabpanel"
+          [ngClass]="{active: isSelectedTab(0)}">
+        <class-mods [characterClass]="characterClass"></class-mods>
+      </div>
+      <div class="tab-pane" role="tabpanel"
+          [ngClass]="{active: isSelectedTab(1)}">
+        <class-thief-talents [characterClass]="characterClass"></class-thief-talents>
+      </div>
+      <div class="tab-pane" role="tabpanel"
+          [ngClass]="{active: isSelectedTab(2)}">
+        <class-magic-circles [characterClass]="characterClass"></class-magic-circles>
+      </div>
+    </div>
+  </div>
+</div>

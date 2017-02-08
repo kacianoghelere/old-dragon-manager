@@ -1,0 +1,42 @@
+<div class="panel panel-default" *ngIf="!emptyCollection(characterClass.thief_talents)">
+  <div class="panel-body">
+    Esta classe não possui acesso à talentos ladinos
+  </div>
+</div>
+
+<div class="panel panel-default" *ngIf="emptyCollection(characterClass.thief_talents)">
+  <div class="panel-heading">
+    <h3 class="panel-title">Telentos Ladinos de {{characterClass.name}}</h3>
+  </div>
+
+  <div class='table-responsive'>
+    <table class='table table-striped table-hover table-condensed'>
+      <thead>
+        <tr>
+          <th class="text-center">Nível</th>
+          <th class="text-center">Abrir<br>Fechaduras</th>
+          <th class="text-center">Reconhecer e<br>desarmar armadilhas</th>
+          <th class="text-center">Escalar<br>muros</th>
+          <th class="text-center">Mover-se em<br>silêncio</th>
+          <th class="text-center">Esconder-se<br>nas sombras</th>
+          <th class="text-center">Pungar</th>
+          <th class="text-center">Ouvir<br>barulhos</th>
+          <th class="text-center">Ataque<br>pelas costas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let talents of characterClass.thief_talents">
+          <td class="text-center">{{talents.level}}</td>
+          <td class="text-center">{{talents.lockpick_mod}}</td>
+          <td class="text-center">{{talents.find_traps_mod}}</td>
+          <td class="text-center">{{talents.climb_mod}}</td>
+          <td class="text-center">{{talents.silent_movement_mod}}</td>
+          <td class="text-center">{{talents.stealth_mod}}</td>
+          <td class="text-center">{{talents.pickpocket_mod}}</td>
+          <td class="text-center">{{talents.hear_noises_mod}}</td>
+          <td class="text-center">{{talents.backstab_mod}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
