@@ -10,6 +10,7 @@ const classesRoutes: Routes = [
     component: ClassesComponent,
     children: [
       {path: 'details/:id', component: ClassDetailsComponent},
+      {path: '', redirectTo: 'details/1', pathMatch: 'full'},
       {
         path: 'specializations',
         loadChildren: `app/+main/+characters/+classes/+specializations/specializations.module#SpecializationsModule`

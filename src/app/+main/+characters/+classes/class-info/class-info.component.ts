@@ -26,4 +26,12 @@ export class ClassInfoComponent implements OnInit {
   ngOnInit() {
   }
 
+  yesNoFormat(
+    source: any,
+    property: string,
+    yesParam: string = 'Sim',
+    noParam: string = 'Não'
+  ): string {
+    return source[property] ? yesParam : noParam;
+  }
 }

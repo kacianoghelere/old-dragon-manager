@@ -16,16 +16,16 @@
   <div class="panel-body">
     <div class="row">
       <div class="col-xs-12">
-        <b>Usuário de magia?</b>: {{characterClass?.class_type?.magic}}
+        <b>Usuário de magia?</b>: {{yesNoFormat(characterClass.class_type, 'magic')}}
       </div>
       <div class="col-xs-12">
         <b>Atributo chave</b>: {{characterClass?.class_type?.key_attr}}
       </div>
       <div class="col-xs-12">
-        <b>Pode Banir Mortos-vivos?</b>: {{characterClass?.class_type?.can_bane_undead}}
+        <b>Pode Banir Mortos-vivos?</b>: {{yesNoFormat(characterClass.class_type, 'can_bane_undead')}}
       </div>
       <div class="col-xs-12">
-        <b>Possui talentos ladinos?</b>: {{characterClass?.class_type?.has_thief_talents}}
+        <b>Possui talentos ladinos?</b>: {{yesNoFormat(characterClass.class_type, 'has_thief_talents')}}
       </div>
     </div>
   </div>

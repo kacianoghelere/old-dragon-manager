@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { RacesComponent } from './races/races.component';
 
-const routes: Routes = [
+const racesRoutes: Routes = [
   {
     path: '',
     component: RacesComponent,
@@ -12,7 +12,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(racesRoutes)],
   exports: [RouterModule],
   providers: []
 })
