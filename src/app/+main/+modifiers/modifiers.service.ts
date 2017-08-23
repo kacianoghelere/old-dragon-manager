@@ -11,7 +11,7 @@ import {
 export class ModifiersService {
 
   protected headers: Headers;
-  protected url: string = 'http://localhost:3000/api/v1';
+  protected url: string = 'http://127.0.0.1:3000/api/v1';
 
   constructor(
     protected authService: AuthenticationService,

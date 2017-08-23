@@ -1,14 +1,14 @@
-import { OldDragonManagerPage } from './app.po';
+import { AppPage } from './app.po';
 
-describe('old-dragon-manager App', function() {
-  let page: OldDragonManagerPage;
+describe('old-dragon-manager App', () => {
+  let page: AppPage;
 
   beforeEach(() => {
-    page = new OldDragonManagerPage();
+    page = new AppPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    expect(page.getParagraphText()).toEqual('Welcome to app!');
   });
 });

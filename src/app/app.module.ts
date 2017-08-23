@@ -10,6 +10,7 @@ import { ValidatorsService } from './shared/services/validators.service';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { LayoutModule } from './layout/layout.module';
 import { UtilModule } from './util/util.module';
+import { SharedModule } from './shared/shared.module';
 import { RolesModule } from './roles/roles.module';
 import { UsersModule } from './users/users.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -20,6 +21,8 @@ import { AppRoutingModule } from './app-routing.module';
     FormsModule,
     HttpModule,
     AuthenticationModule,
+    SharedModule,
+    UtilModule,
     LayoutModule,
     RolesModule,
     UsersModule,

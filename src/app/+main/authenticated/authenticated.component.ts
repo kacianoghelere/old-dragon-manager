@@ -16,7 +16,7 @@ export class AuthenticatedComponent implements OnInit {
 
   currentUser: User;
   private headers: Headers;
-  private url: string = 'http://localhost:3000/api/v1';
+  private url: string = 'http://127.0.0.1:3000/api/v1';
 
   constructor(
     private authService: AuthenticationService,
