@@ -5,6 +5,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import { ToastyModule } from 'ng2-toasty';
+
 import { AppComponent } from './app.component';
 import { ValidatorsService } from './shared/services/validators.service';
 import { AuthenticationModule } from './authentication/authentication.module';
@@ -20,6 +22,7 @@ import { AppRoutingModule } from './app-routing.module';
     BrowserModule,
     FormsModule,
     HttpModule,
+    ToastyModule.forRoot(),
     AuthenticationModule,
     SharedModule,
     UtilModule,

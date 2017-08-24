@@ -194,8 +194,12 @@ $btn-border-radius-small:        $border-radius-small !default;
 
 //** `<input>` background color
 $input-bg:                       #fff !default;
-//** `<input disabled>` background color
-$input-bg-disabled:              $gray-lighter !default;
+//** `<input disabled>` color
+$input-bg-disabled:              lighten($gray-lighter, 10%) !default;
+$input-color-disabled:           $gray !default;
+//** `<input readonly>` color
+$input-bg-readonly:              lighten($gray-lighter, 20%) !default;
+$input-color-readonly:           $gray-darker !default;
 
 //** Text color for `<input>`s
 $input-color:                    $text-color !default;
@@ -385,9 +389,11 @@ $navbar-default-link-color:                $gray-lighter !default;
 $navbar-default-link-hover-color:          $gray-light !default;
 $navbar-default-link-hover-bg:             $gray-dark !default;
 $navbar-default-link-active-color:         #fff !default;
+$navbar-default-link-active-box-shadow:    0 1px 0 0 rgba(0, 0, 0, 0.5) !default;
 $navbar-default-link-active-bg:            $gray !default;
 $navbar-default-link-disabled-color:       #ccc !default;
 $navbar-default-link-disabled-bg:          transparent !default;
+$navbar-default-link-text-shadow:          0 1px 0 rgba(0, 0, 0, 0.5) !default;
 
 // Navbar brand label
 $navbar-default-brand-color:               #fff !default;

@@ -1,13 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { CharacterClass } from '../../../../shared/entities/character-class';
+import { CharacterClass } from '../../../../../shared/entities/character-class';
 
 @Component({
-  selector: 'class-mods',
-  templateUrl: './class-mods.component.html',
-  styleUrls: ['./class-mods.component.scss']
+  selector: 'class-magic-circles',
+  templateUrl: './class-magic-circles.component.html',
+  styleUrls: ['./class-magic-circles.component.scss']
 })
-export class ClassModsComponent implements OnInit {
+export class ClassMagicCirclesComponent implements OnInit {
 
   // Public variables
   // ---------------------------------------------------------------------------
@@ -24,6 +24,13 @@ export class ClassModsComponent implements OnInit {
   // ---------------------------------------------------------------------------
 
   ngOnInit() {
+  }
+
+  emptyCollection(collection: any[]): boolean {
+    if (collection && collection.length) {
+        return true;
+    }
+    return false;
   }
 
 }

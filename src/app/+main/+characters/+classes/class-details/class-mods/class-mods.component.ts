@@ -1,13 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { CharacterClass } from '../../../../shared/entities/character-class';
+import { CharacterClass } from '../../../../../shared/entities/character-class';
 
 @Component({
-  selector: 'class-thief-talents',
-  templateUrl: './class-thief-talents.component.html',
-  styleUrls: ['./class-thief-talents.component.scss']
+  selector: 'class-mods',
+  templateUrl: './class-mods.component.html',
+  styleUrls: ['./class-mods.component.scss']
 })
-export class ClassThiefTalentsComponent implements OnInit {
+export class ClassModsComponent implements OnInit {
 
   // Public variables
   // ---------------------------------------------------------------------------
@@ -24,13 +24,6 @@ export class ClassThiefTalentsComponent implements OnInit {
   // ---------------------------------------------------------------------------
 
   ngOnInit() {
-  }
-
-  emptyCollection(collection: any[]): boolean {
-    if (collection && collection.length) {
-        return true;
-    }
-    return false;
   }
 
 }

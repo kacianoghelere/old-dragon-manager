@@ -15,6 +15,10 @@ const charactersRoutes: Routes = [
       {
         path: 'races',
         loadChildren: `app/+main/+characters/+races/races.module#RacesModule`
+      },
+      {
+        path: 'sheet',
+        loadChildren: `app/+main/+characters/+sheet/sheet.module#SheetModule`
       }
     ]
   }

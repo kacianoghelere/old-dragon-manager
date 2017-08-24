@@ -1,0 +1,38 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Armas</h3>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-hover table-condensed">
+      <thead>
+        <tr>
+          <th width="30%">Arma</th>
+          <th class="text-center" width="10%" title="Iniciativa">Inic.</th>
+          <th class="text-center" width="10%" title="Bônus de Ataque">B.A.</th>
+          <th class="text-center" width="10%">Dano</th>
+          <th class="text-center" width="12%">Alcance</th>
+          <th class="text-center" width="10%">Tamanho</th>
+          <th class="text-center" width="10%">Peso</th>
+          <th class="text-center" width="8%"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let weapon of weapons">
+          <td>{{weapon.name}}</td>
+          <td align="center">{{weapon.initiative}}</td>
+          <td align="center">0</td>
+          <td align="center">{{weapon.damage}}</td>
+          <td align="center">{{weapon.range}}</td>
+          <td align="center">{{weapon.weapon_type_id}}</td>
+          <td align="center">{{weapon.weight}}</td>
+          <td>
+            <button class="btn btn-default btn-minimal btn-block btn-xs"
+                type="button" name="button">
+              <glyph icon=edit></glyph>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

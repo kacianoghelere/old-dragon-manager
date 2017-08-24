@@ -3,19 +3,18 @@ import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 
-import {
-  AuthenticationService
-} from '../../authentication/authentication.service';
+import { AuthenticationService } from '../../authentication/authentication.service';
+import { ApiService } from '../../shared/api.service';
 
 @Injectable()
 export class ModifiersService {
 
   protected headers: Headers;
-  protected url: string = 'http://127.0.0.1:3000/api/v1';
 
   constructor(
     protected authService: AuthenticationService,
-    protected http: Http
+    protected http: Http,
+    protected apiService: ApiService
   ) { }
 
   private get options(): any {
@@ -28,7 +27,7 @@ export class ModifiersService {
   }
 
   list<T>(resource: string): Observable<Array<T>> {
-    return this.http.get(`${this.url}/${resource}`, this.options)
+    return this.http.get(`${this.apiService.url}/${resource}`, this.options)
       .map(this.responseToJson);
   }
 

@@ -1,0 +1,15 @@
+/deep/ .row-fluid {
+  float: left;
+  width: 100%;
+
+  > div[class^="col-"] { padding: 5px; }
+
+  .form-group {
+    margin-bottom: 5px;
+
+    label { font-size: 80%; }
+  }
+}
+/deep/ .panel {
+  .panel-body { padding: 5px; }
+}

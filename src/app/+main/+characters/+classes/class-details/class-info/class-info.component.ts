@@ -1,13 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { CharacterClass } from '../../../../shared/entities/character-class';
+import { CharacterClass } from '../../../../../shared/entities/character-class';
 
 @Component({
-  selector: 'class-magic-circles',
-  templateUrl: './class-magic-circles.component.html',
-  styleUrls: ['./class-magic-circles.component.scss']
+  selector: 'class-info',
+  templateUrl: './class-info.component.html',
+  styleUrls: ['./class-info.component.scss']
 })
-export class ClassMagicCirclesComponent implements OnInit {
+export class ClassInfoComponent implements OnInit {
 
   // Public variables
   // ---------------------------------------------------------------------------
@@ -26,11 +26,12 @@ export class ClassMagicCirclesComponent implements OnInit {
   ngOnInit() {
   }
 
-  emptyCollection(collection: any[]): boolean {
-    if (collection && collection.length) {
-        return true;
-    }
-    return false;
+  yesNoFormat(
+    source: any,
+    property: string,
+    yesParam: string = 'Sim',
+    noParam: string = 'Não'
+  ): string {
+    return source[property] ? yesParam : noParam;
   }
-
 }

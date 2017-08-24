@@ -1,13 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { CharacterClass } from '../../../../shared/entities/character-class';
+import { CharacterClass } from '../../../../../shared/entities/character-class';
 
 @Component({
-  selector: 'class-info',
-  templateUrl: './class-info.component.html',
-  styleUrls: ['./class-info.component.scss']
+  selector: 'class-thief-talents',
+  templateUrl: './class-thief-talents.component.html',
+  styleUrls: ['./class-thief-talents.component.scss']
 })
-export class ClassInfoComponent implements OnInit {
+export class ClassThiefTalentsComponent implements OnInit {
 
   // Public variables
   // ---------------------------------------------------------------------------
@@ -26,12 +26,11 @@ export class ClassInfoComponent implements OnInit {
   ngOnInit() {
   }
 
-  yesNoFormat(
-    source: any,
-    property: string,
-    yesParam: string = 'Sim',
-    noParam: string = 'Não'
-  ): string {
-    return source[property] ? yesParam : noParam;
+  emptyCollection(collection: any[]): boolean {
+    if (collection && collection.length) {
+        return true;
+    }
+    return false;
   }
+
 }

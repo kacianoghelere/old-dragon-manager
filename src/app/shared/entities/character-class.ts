@@ -10,17 +10,16 @@ import { CharacterClassThiefTalent } from './character-class-thief-talent';
 
 export class CharacterClass {
 
-    id: number;
-    name: string;
-    description: string;
-    dice: Dice;
-    perk: Perk;
-    requirement: AttributeRequirement;
-    class_type: CharacterClassType;
-    evolutions: CharacterClassEvolution[];
-    specializations: CharacterClassSpecialization[];
-    magic_circles: CharacterClassMagicCircle[];
-    thief_talents: CharacterClassThiefTalent[];
-    user: User;
-
+  id: number;
+  name: string;
+  description: string;
+  dice: Dice;
+  perk: Perk;
+  requirement: AttributeRequirement;
+  class_type: CharacterClassType;
+  evolutions: CharacterClassEvolution[];
+  specializations: CharacterClassSpecialization[];
+  magic_circles: CharacterClassMagicCircle[];
+  thief_talents: CharacterClassThiefTalent[];
+  user: User;
 }

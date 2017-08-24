@@ -577,12 +577,20 @@
       <form class="bs-component">
         <div class="form-group">
           <label class="control-label" for="focusedInput">Focused input</label>
-          <input class="form-control" id="focusedInput" type="text" value="This is focused...">
+          <input class="form-control" type="text"
+            id="focusedInput" value="This is focused...">
+        </div>
+
+        <div class="form-group">
+          <label class="control-label" for="readonlyInput">Readonly input</label>
+          <input class="form-control" type="text"
+            id="readonlyInput" placeholder="Readonly input here..." readonly="">
         </div>
 
         <div class="form-group">
           <label class="control-label" for="disabledInput">Disabled input</label>
-          <input class="form-control" id="disabledInput" type="text" placeholder="Disabled input here..." disabled="">
+          <input class="form-control" type="text"
+            id="disabledInput" placeholder="Disabled input here..." disabled="">
         </div>
 
         <div class="form-group has-warning has-feedback">
