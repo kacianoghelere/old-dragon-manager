@@ -13,6 +13,7 @@ import { SheetCharacterPointsComponent } from './sheet-character-points/sheet-ch
 import { SheetCharacterProtectionComponent } from './sheet-character-protection/sheet-character-protection.component';
 import { SheetCharacterAttackBonusesComponent } from './sheet-character-attack-bonuses/sheet-character-attack-bonuses.component';
 import { SheetCharacterWeaponsComponent } from './sheet-character-weapons/sheet-character-weapons.component';
+import { SheetCharacterThiefTalentsComponent } from './sheet-character-thief-talents/sheet-character-thief-talents.component';
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import { SheetCharacterWeaponsComponent } from './sheet-character-weapons/sheet-
     SheetCharacterPointsComponent,
     SheetCharacterProtectionComponent,
     SheetCharacterAttackBonusesComponent,
-    SheetCharacterWeaponsComponent
+    SheetCharacterWeaponsComponent,
+    SheetCharacterThiefTalentsComponent
   ]
 })
 export class SheetModule { }
