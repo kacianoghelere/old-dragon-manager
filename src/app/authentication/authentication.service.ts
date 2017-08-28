@@ -9,7 +9,7 @@ export class AuthenticationService {
 
   // Public variables
   // ---------------------------------------------------------------------------
-  authenticated: boolean = false;
+  fakeAuth: boolean = true;
   authentication: EventEmitter<boolean>;
   // currentUser: any = {
   //   admin: true,
@@ -24,7 +24,7 @@ export class AuthenticationService {
   // Private & Protected variables
   // ---------------------------------------------------------------------------
   private headers: Headers;
-  private url: string = 'http://localhost:3000';
+  private url: string = 'http://127.0.0.1:3000';
 
   //
   // Functions
@@ -37,11 +37,28 @@ export class AuthenticationService {
     this.authentication = new EventEmitter();
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
+    if (this.fakeAuth) {
+      this.currentUser = {
+        admin: true,
+        email: "themohawkeagle@gmail.com",
+        id: 1,
+        name: "Administrador"
+      };
+      this.token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.oR-IHkxvncZCvEJ9HXZ67I5rH2-hROijD4WF73U08Nk';
+    }
   }
 
   //
   // Getters and Setters
   // ---------------------------------------------------------------------------
+
+  /**
+   * Returns the authentication status
+   * @return {Boolean} Is authenticated?
+   */
+  get authenticated(): boolean {
+    return !!(this.token);
+  }
 
   /**
    * Returns Authenticated headers for easy http requests to the API
@@ -73,7 +90,6 @@ export class AuthenticationService {
   logout(redirect: boolean = false) {
     this.token = '';
     this.currentUser = null;
-    this.authenticated = false;
     if (redirect) {
       this.router.navigate(['/welcome']);
     }
@@ -92,9 +108,6 @@ export class AuthenticationService {
       .subscribe((response) => {
         this.token = response.auth_token;
         this.currentUser = response.user;
-        this.authenticated = true;
-        // console.log("Response:", response);
-        // console.log("Debug:", this.debugInfo);
         this.router.navigate(['/main']);
       },
       (error) => {

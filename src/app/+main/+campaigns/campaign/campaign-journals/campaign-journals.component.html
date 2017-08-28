@@ -1,9 +1,9 @@
-<div class="panel panel-default">
+<fieldset class="panel panel-default" [disabled]="!editing">
   <div class="panel-heading">
     <h4 class="panel-title">
       Diários de Campanha
-      <span class="pull-right">
-        <button class="btn btn-default btn-xs">
+      <span class="pull-right" *ngIf="editing">
+        <button class="btn btn-default btn-xs" (click)="addJournal()">
           <glyph icon="plus-sign"></glyph> Novo
         </button>
       </span>
@@ -11,8 +11,12 @@
   </div>
   <ul class="list-group">
     <li class="list-group-item" *ngFor="let journal of campaign.journals">
-      <h5><b>{{journal.title}}</b></h5>
-      <p>{{journal.description}}</p>
+      <h5>
+        <input type="text" class="form-control ninja-input"
+          [(ngModel)]="journal.title">
+      </h5>
+      <textarea class="form-control ninja-input"
+        [(ngModel)]="journal.description"></textarea>
     </li>
   </ul>
-</div>
+</fieldset>

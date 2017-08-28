@@ -14,9 +14,10 @@ import { CampaignsService } from "../shared/campaigns.service";
 })
 export class CampaignComponent implements OnInit {
 
-  subscription: Subscription;
-  campaign: Campaign;
   activeTab: number = 1;
+  campaign: Campaign;
+  editing: Boolean = false;
+  subscription: Subscription;
 
   constructor(
     private route: ActivatedRoute,
@@ -45,5 +46,9 @@ export class CampaignComponent implements OnInit {
 
   setActiveTab(index) {
     this.activeTab = index;
+  }
+
+  toggleEditing() {
+    this.editing = !this.editing;
   }
 }

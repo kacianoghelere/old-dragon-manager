@@ -1,38 +1,62 @@
-<div class="row">
-  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">{{campaign.title}}</h3>
-      </div>
-      <div class="panel-body">{{campaign.description}}</div>
-    </div>
-  </div>
-
-  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-    <ul class="nav nav-pills" role="tablist">
-      <li role="presentation" class="active">
-        <a class="pointer" (click)="setActiveTab(1)">Personagens</a>
-      </li>
-      <li role="presentation">
-        <a class="pointer" (click)="setActiveTab(2)">Diários de Campanha</a>
-      </li>
-      <li role="presentation">
-        <a class="pointer" (click)="setActiveTab(3)">Anotações</a>
-      </li>
-    </ul>
-  </div>
-
-  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-    <div class="tab-content">
-      <div class="tab-pane" [ngClass]="isActiveTab(1)">
-        <campaign-characters [campaign]="campaign"></campaign-characters>
-      </div>
-      <div class="tab-pane" [ngClass]="isActiveTab(2)">
-        <campaign-journals [campaign]="campaign"></campaign-journals>
-      </div>
-      <div class="tab-pane" [ngClass]="isActiveTab(3)">
-        <campaign-notes [campaign]="campaign"></campaign-notes>
-      </div>
-    </div>
-  </div>
+<div class="floating-buttons">
+  <button class="btn btn-default btn-outline floating-edit" type="button"
+      (click)="toggleEditing()">
+    <glyph icon="pencil"></glyph> Editar
+  </button>
 </div>
+
+<form>
+  <div class="row">
+    <fieldset [disabled]="!editing">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="form-group">
+          <label for=""><small>Titulo</small></label>
+          <input class="form-control ninja-input panel-title"
+            type="text" name="campaignTitle"
+            [(ngModel)]="campaign.title"
+            [readonly]="!editing">
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="form-group">
+          <label for=""><small>Descrição</small></label>
+          <textarea class="form-control ninja-input" name="campaignDescription"
+            [(ngModel)]="campaign.description"
+            [readonly]="!editing"></textarea>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <ul class="nav nav-pills" role="tablist">
+        <li role="presentation" [ngClass]="isActiveTab(1)">
+          <a class="pointer" (click)="setActiveTab(1)">Diários de Campanha</a>
+        </li>
+        <li role="presentation" [ngClass]="isActiveTab(2)">
+          <a class="pointer" (click)="setActiveTab(2)">Anotações</a>
+        </li>
+        <li role="presentation" [ngClass]="isActiveTab(3)">
+          <a class="pointer" (click)="setActiveTab(3)">Personagens</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="tab-content">
+        <div class="tab-pane" [ngClass]="isActiveTab(1)">
+          <campaign-journals [campaign]="campaign"
+            [editing]="editing"></campaign-journals>
+        </div>
+        <div class="tab-pane" [ngClass]="isActiveTab(2)">
+          <campaign-notes [campaign]="campaign"></campaign-notes>
+        </div>
+        <div class="tab-pane" [ngClass]="isActiveTab(3)">
+          <campaign-characters [campaign]="campaign"></campaign-characters>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

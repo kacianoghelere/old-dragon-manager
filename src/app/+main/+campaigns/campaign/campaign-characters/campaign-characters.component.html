@@ -3,18 +3,19 @@
       *ngFor="let character of campaign.characters">
     <div class="panel panel-success">
       <div class="panel-heading">
-        <h3 class="panel-title">{{character.name}} ({{character.player}})</h3>
+        <h3 class="panel-title">{{character?.name}} ({{character?.player}})</h3>
       </div>
-      <div class="panel-body">
+      <div class="panel-body avatar-body">
         <img class="img-responsive" [src]="character.picture"
-        alt="{{character.name}}">
+          [alt]="character.name">
       </div>
       <ul class="list-group">
         <li class="list-group-item">
-          <b>Raça:</b> {{character.race}}
+          <b>Raça:</b> {{character?.race?.name}}
         </li>
         <li class="list-group-item">
-          <b>Classe:</b> {{character.class_name}} ({{character.specialization}})
+          <b>Classe:</b> {{character?.class?.name}}
+          ({{character?.specialization?.name}})
         </li>
       </ul>
       <div class="table-responsive">
@@ -31,19 +32,17 @@
           </thead>
           <tbody>
             <tr>
-              <td align="center">{{character.attribute.strength}}</td>
-              <td align="center">{{character.attribute.dexterity}}</td>
-              <td align="center">{{character.attribute.constitution}}</td>
-              <td align="center">{{character.attribute.intelligence}}</td>
-              <td align="center">{{character.attribute.wisdom}}</td>
-              <td align="center">{{character.attribute.charisma}}</td>
+              <td align="center">{{character?.attributes?.strength}}</td>
+              <td align="center">{{character?.attributes?.dexterity}}</td>
+              <td align="center">{{character?.attributes?.constitution}}</td>
+              <td align="center">{{character?.attributes?.intelligence}}</td>
+              <td align="center">{{character?.attributes?.wisdom}}</td>
+              <td align="center">{{character?.attributes?.charisma}}</td>
             </tr>
           </tbody>
         </table>
       </div>
-      <div class="panel-body">
-        {{character.description}}
-      </div>
+      <div class="panel-body">{{character?.description}}</div>
     </div>
   </div>
 </div>

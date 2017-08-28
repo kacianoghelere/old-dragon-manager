@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { ToastyModule } from 'ng2-toasty';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { AppComponent } from './app.component';
 import { ValidatorsService } from './shared/services/validators.service';
@@ -23,6 +24,7 @@ import { AppRoutingModule } from './app-routing.module';
     FormsModule,
     HttpModule,
     ToastyModule.forRoot(),
+    ModalModule.forRoot(),
     AuthenticationModule,
     SharedModule,
     UtilModule,

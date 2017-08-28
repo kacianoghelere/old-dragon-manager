@@ -6,6 +6,7 @@ import { AuthenticatedComponent } from './authenticated/authenticated.component'
 import { MainRoutingModule } from './main-routing.module';
 import { UtilModule } from '../util/util.module';
 import { MainFeedComponent } from './main-feed/main-feed.component';
+import { CharactersService } from "./shared/characters.service";
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { MainFeedComponent } from './main-feed/main-feed.component';
     AuthenticatedComponent,
     MainFeedComponent
   ],
-  exports: [MainComponent]
+  exports: [MainComponent],
+  providers: [CharactersService]
 })
 export class MainModule { }

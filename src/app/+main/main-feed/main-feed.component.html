@@ -1,15 +1,15 @@
-
-<ul class="nav nav-pills">
-  <li role="presentation" [routerLinkActive]="['active']">
-    <a [routerLink]="['campaigns']">Campanhas</a>
-  </li>
-  <li role="presentation" [routerLinkActive]="['active']">
-    <a [routerLink]="['modifiers']">Modificadores</a>
-  </li>
-  <li role="presentation" [routerLinkActive]="['active']">
-    <a [routerLink]="['characters']">Personagens</a>
-  </li>
-</ul>
+<section class="row">
+  <article class="col-xs-12 col-sm-6 col-md-4" *ngFor="let link of links">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <a [routerLink]="[link.route]">
+          <h4><b>{{link.title}}</b></h4>
+          <p>{{link.description}}</p>
+        </a>
+      </div>
+    </div>
+  </article>
+</section>
 
 <div class="page-header">
   <h2>Feed</h2>

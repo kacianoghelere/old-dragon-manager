@@ -10,10 +10,18 @@ import { Campaign } from '../../../../shared/entities/campaign';
 export class CampaignJournalsComponent implements OnInit {
 
   @Input() campaign: Campaign;
+  @Input() editing: Boolean;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  addJournal() {
+    this.campaign.journals.push({
+      title: 'Novo diário',
+      description: 'Sua descrição aqui'
+    });
   }
 
 }

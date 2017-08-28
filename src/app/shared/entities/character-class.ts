@@ -1,7 +1,7 @@
 import { User } from './user';
 import { Dice } from './dice';
 import { Perk } from './perk';
-import { AttributeRequirement } from './attr-requirement';
+import { AttributeRequirement } from './attribute-requirement';
 import { CharacterClassType } from './character-class-type';
 import { CharacterClassEvolution } from './character-class-evolution';
 import { CharacterClassMagicCircle } from './character-class-magic-circle';
@@ -12,14 +12,14 @@ export class CharacterClass {
 
   id: number;
   name: string;
-  description: string;
-  dice: Dice;
-  perk: Perk;
-  requirement: AttributeRequirement;
-  class_type: CharacterClassType;
-  evolutions: CharacterClassEvolution[];
-  specializations: CharacterClassSpecialization[];
-  magic_circles: CharacterClassMagicCircle[];
-  thief_talents: CharacterClassThiefTalent[];
+  description?: string= '';
+  dice?: Dice = null;
+  perk?: Perk = null;
+  requirement?: AttributeRequirement  = null;
+  class_type?: CharacterClassType = null;
+  evolutions?: CharacterClassEvolution[] = [];
+  specializations?: CharacterClassSpecialization[] = [];
+  magic_circles?: CharacterClassMagicCircle[] = [];
+  thief_talents?: CharacterClassThiefTalent[] = [];
   user: User;
 }
