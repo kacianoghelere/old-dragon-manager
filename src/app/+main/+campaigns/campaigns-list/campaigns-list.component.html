@@ -1,0 +1,7 @@
+<div class="list-group">
+  <a class="list-group-item" *ngFor="let campaign of campaigns"
+      [routerLink]="[campaign.id]">
+    <h4>{{campaign.title}}</h4>
+    <p>{{campaign.description}}</p>
+  </a>
+</div>

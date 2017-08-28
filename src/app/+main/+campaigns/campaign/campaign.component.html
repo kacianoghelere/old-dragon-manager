@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">{{campaign.title}}</h3>
+      </div>
+      <div class="panel-body">{{campaign.description}}</div>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <ul class="nav nav-pills" role="tablist">
+      <li role="presentation" class="active">
+        <a class="pointer" (click)="setActiveTab(1)">Personagens</a>
+      </li>
+      <li role="presentation">
+        <a class="pointer" (click)="setActiveTab(2)">Diários de Campanha</a>
+      </li>
+      <li role="presentation">
+        <a class="pointer" (click)="setActiveTab(3)">Anotações</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="tab-content">
+      <div class="tab-pane" [ngClass]="isActiveTab(1)">
+        <campaign-characters [campaign]="campaign"></campaign-characters>
+      </div>
+      <div class="tab-pane" [ngClass]="isActiveTab(2)">
+        <campaign-journals [campaign]="campaign"></campaign-journals>
+      </div>
+      <div class="tab-pane" [ngClass]="isActiveTab(3)">
+        <campaign-notes [campaign]="campaign"></campaign-notes>
+      </div>
+    </div>
+  </div>
+</div>

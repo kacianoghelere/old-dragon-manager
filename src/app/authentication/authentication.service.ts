@@ -9,15 +9,17 @@ export class AuthenticationService {
 
   // Public variables
   // ---------------------------------------------------------------------------
-  authenticated: boolean = true;
+  authenticated: boolean = false;
   authentication: EventEmitter<boolean>;
-  currentUser: any = {
-    admin: true,
-    email: "themohawkeagle@gmail.com",
-    id: 1,
-    name: "Administrador"
-  };
-  token: string = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.oR-IHkxvncZCvEJ9HXZ67I5rH2-hROijD4WF73U08Nk';
+  // currentUser: any = {
+  //   admin: true,
+  //   email: "themohawkeagle@gmail.com",
+  //   id: 1,
+  //   name: "Administrador"
+  // };
+  // token: string = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.oR-IHkxvncZCvEJ9HXZ67I5rH2-hROijD4WF73U08Nk';
+  currentUser: any;
+  token: string;
 
   // Private & Protected variables
   // ---------------------------------------------------------------------------

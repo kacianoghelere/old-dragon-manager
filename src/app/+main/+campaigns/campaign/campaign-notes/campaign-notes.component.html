@@ -1,0 +1,17 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      Anotações
+      <span class="pull-right">
+        <button class="btn btn-default btn-xs">
+          <glyph icon="plus-sign"></glyph> Novo
+        </button>
+      </span>
+    </h4>
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let journal of campaign.journals">
+      <p>{{journal.description}}</p>
+    </li>
+  </ul>
+</div>

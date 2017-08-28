@@ -26,7 +26,7 @@ export class UserFormComponent implements OnInit, OnDestroy {
   // ---------------------------------------------------------------------------
   @Input() user: User;
   @Output() userReseted: EventEmitter<User>;
-  @Output() userSubmitted: EventEmitter<User>;
+  @Output() userSubmitted: EventEmitter<any>;
 
   // Public variables
   // ---------------------------------------------------------------------------
@@ -123,7 +123,16 @@ export class UserFormComponent implements OnInit, OnDestroy {
    * Emit the save event
    */
   submitChanges(): void {
-    this.userSubmitted.emit(this.user);
+    // :name, :login, :pass, :inc_date, :last_login, :email, :role_id)
+
+    this.userSubmitted.emit({
+      name: this.user.name,
+      login: this.user.login,
+      password: this.user.password,
+      password_confirmation: this.user.confirm,
+      email: this.user.email,
+      role_id: this.user.role.id
+    });
     this.submitted = !this.submitted;
   }
 

@@ -34,7 +34,7 @@ export abstract class EntityService<T> {
    * @param  {T}               params Entity parameters
    * @return {Observable<any>}        Response Observable
    */
-  protected create(params: T): Observable<any> {
+  protected create(params: T): Observable<any> | T {
     return null;
   }
 
@@ -43,7 +43,7 @@ export abstract class EntityService<T> {
    * @param  {number}          id Entity identification
    * @return {Observable<any>}    Response Observable
    */
-  protected destroy(id: number): Observable<any> {
+  protected destroy(id: number): Observable<any> | T {
     return null;
   }
 
@@ -52,7 +52,7 @@ export abstract class EntityService<T> {
    * @param  {number}          id Entity identification
    * @return {Observable<any>}    Response Observable
    */
-  protected find(id: number): Observable<any> {
+  protected find(id: number): Observable<any> | T {
     return null;
   }
 
@@ -60,7 +60,7 @@ export abstract class EntityService<T> {
    * Query function for multiple entity results
    * @return {Observable<any>} Response Observable
    */
-  protected list(): Observable<any> {
+  protected list(): Observable<any> | T[] {
     return null;
   }
 
@@ -70,7 +70,7 @@ export abstract class EntityService<T> {
    * @param  {T}               params Entity parameters
    * @return {Observable<any>}        Response Observable
    */
-  protected update(id: number, params: T): Observable<any> {
+  protected update(id: number, params: T): Observable<any> | T {
     return null;
   }
 

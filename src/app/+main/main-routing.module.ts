@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { MainComponent } from './main/main.component';
-import { FeedComponent } from './feed/feed.component';
+import { MainFeedComponent } from './main-feed/main-feed.component';
 import { AuthenticationGuard } from '../authentication/authentication.guard';
 
 const mainRoutes: Routes = [
@@ -18,7 +18,11 @@ const mainRoutes: Routes = [
         path: 'characters',
         loadChildren: `app/+main/+characters/characters.module#CharactersModule`
       },
-      {path: '', component: FeedComponent}
+      {
+        path: 'campaigns',
+        loadChildren: `app/+main/+campaigns/campaigns.module#CampaignsModule`
+      },
+      {path: '', component: MainFeedComponent}
     ]
   }
 ];

@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"
+      *ngFor="let character of campaign.characters">
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <h3 class="panel-title">{{character.name}} ({{character.player}})</h3>
+      </div>
+      <div class="panel-body">
+        <img class="img-responsive" [src]="character.picture"
+        alt="{{character.name}}">
+      </div>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <b>Raça:</b> {{character.race}}
+        </li>
+        <li class="list-group-item">
+          <b>Classe:</b> {{character.class_name}} ({{character.specialization}})
+        </li>
+      </ul>
+      <div class="table-responsive">
+        <table class="table table-condensed">
+          <thead>
+            <tr>
+              <th class="text-center">FOR</th>
+              <th class="text-center">DES</th>
+              <th class="text-center">CON</th>
+              <th class="text-center">INT</th>
+              <th class="text-center">SAB</th>
+              <th class="text-center">CAR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td align="center">{{character.attribute.strength}}</td>
+              <td align="center">{{character.attribute.dexterity}}</td>
+              <td align="center">{{character.attribute.constitution}}</td>
+              <td align="center">{{character.attribute.intelligence}}</td>
+              <td align="center">{{character.attribute.wisdom}}</td>
+              <td align="center">{{character.attribute.charisma}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="panel-body">
+        {{character.description}}
+      </div>
+    </div>
+  </div>
+</div>

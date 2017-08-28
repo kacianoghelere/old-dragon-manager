@@ -1,0 +1,7 @@
+.input-group-addon {
+  &.modifier {
+    font-weight: bold;
+    min-width: 150px;
+    text-transform: uppercase;
+  }
+}
