@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { Campaign } from '../../../../shared/entities/campaign';
+import { CampaignJournal } from '../../../../shared/entities/campaign-journal';
 
 @Component({
   selector: 'campaign-journals',

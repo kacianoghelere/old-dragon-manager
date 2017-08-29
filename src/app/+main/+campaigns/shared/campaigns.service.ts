@@ -36,11 +36,11 @@ export class CampaignsService extends EntityService<Campaign> {
           }
         ],
         notes: [
-          {description: this.getLorem()},
-          {description: this.getLorem()},
-          {description: this.getLorem()},
-          {description: this.getLorem()},
-          {description: this.getLorem()}
+          {description: this.getLorem(), dm_only: true},
+          {description: this.getLorem(), dm_only: true},
+          {description: this.getLorem(), dm_only: false},
+          {description: this.getLorem(), dm_only: false},
+          {description: this.getLorem(), dm_only: true}
         ],
         user: authService.currentUser
       }
