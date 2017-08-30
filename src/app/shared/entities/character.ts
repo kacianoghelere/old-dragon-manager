@@ -7,6 +7,7 @@ export class Character {
   id: number;
   name: string;
   player: string;
+  level?: number;
   race?: CharacterRace;
   class?: CharacterClass;
   specialization?: CharacterClassSpecialization;

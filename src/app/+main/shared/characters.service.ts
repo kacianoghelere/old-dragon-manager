@@ -20,6 +20,7 @@ export class CharactersService extends EntityService<Character> {
         id: 1,
         name: 'Torhmmund, o Ruivo',
         player: 'Zézinho',
+        level: 5,
         race: {
           id: 1,
           name: 'Humano',

@@ -6,7 +6,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AuthenticationService } from '../../../authentication/authentication.service';
 import { Campaign } from '../../../shared/entities/campaign';
-import { CampaignsService } from "../shared/campaigns.service";
+import { CampaignsService } from '../shared/campaigns.service';
+import { CampaignWatcherService } from '../shared/campaign-watcher.service';
 
 @Component({
   selector: 'campaign',
@@ -18,20 +19,19 @@ export class CampaignComponent implements OnInit {
   activeTab: number = 1;
   campaign: Campaign;
   campaignForm: FormGroup;
-  editing: Boolean = false;
   subscription: Subscription;
+  private enabledEditing: Boolean;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private formBuilder: FormBuilder,
     private authService: AuthenticationService,
-    private campaignsService: CampaignsService
+    private campaignsService: CampaignsService,
+    private watcherService: CampaignWatcherService
   ) { }
 
   ngOnInit() {
-
-
     this.route.params.subscribe((params) => {
       let id = params['id'];
       if (id) {
@@ -41,17 +41,12 @@ export class CampaignComponent implements OnInit {
         //     console.log(this.campaign);
         //   });
         this.campaign = this.campaignsService.find(id);
-        // this.campaignForm.setValue({
-        //   title: this.campaign.title,
-        //   description: this.campaign.description
-        // });
+        this.campaignForm = this.toFormGroup(this.campaign);
       }
-      this.campaignForm = this.formBuilder.group({
-        title: [this.campaign.title, Validators.required],
-        description: [this.campaign.description, Validators.required],
-        journals: this.formBuilder.array(this.campaign.journals),
-        notes: this.formBuilder.array(this.campaign.notes)
-      });
+    });
+    this.watcherService.editingEmitter.subscribe((status) => {
+      console.log("Mudou status de edição nos dados principais", status);
+      this.enabledEditing = status.editing;
     });
   }
 
@@ -59,24 +54,32 @@ export class CampaignComponent implements OnInit {
     return {active: index === this.activeTab};
   }
 
+  onSubmit({ value, valid }: { value: Campaign, valid: boolean }) {
+    console.log("Salvou!", value);
+    this.watcherService.broadcast({editing: false});
+  }
+
   setActiveTab(index) {
     this.activeTab = index;
   }
 
-  toggleEditing() {
-    this.editing = !this.editing;
+  /**
+   * Envia notificação de edição do formulário
+   * @param {Boolean} status Permissão de edição
+   */
+  setEditing(status: Boolean) {
+    this.watcherService.broadcast({editing: status});
   }
 
-  startEditing() {
-    this.editing = true;
-  }
-
-  cancelEditing() {
-    this.editing = false;
-  }
-
-  onSubmit({ value, valid }: { value: Campaign, valid: boolean }) {
-    console.log("Salvou!", value);
-    this.editing = false;
+  /**
+   * Generates a new FormGroup form the campaign
+   * @param  {Campaign}  journal Campaign entity
+   * @return {FormGroup}         The new FormGroup
+   */
+  toFormGroup(campaign: Campaign): FormGroup {
+    return this.campaignForm = this.formBuilder.group({
+      title: [this.campaign.title, Validators.required],
+      description: [this.campaign.description, Validators.required]
+    });
   }
 }

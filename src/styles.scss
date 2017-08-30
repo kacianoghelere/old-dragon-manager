@@ -99,3 +99,122 @@ fieldset[disabled] .form-control.ninja-input,
   max-height: 100%;
   max-width: 100%;
 }
+
+
+.note {
+  background: #ffc;
+  -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.3), 1px 1px 1px rgba(0,0,0,0.2);
+  -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.3), 1px 1px 1px rgba(0,0,0,0.2);
+  box-shadow: 0 1px 1px rgba(0,0,0,0.3), 1px 1px 1px rgba(0,0,0,0.2);
+  color: #333;
+  margin-bottom: 2em;
+  overflow: hidden;
+  padding: 1em 1.5em;
+  position: relative;
+  width: 100%;
+}
+
+.note small {
+  border-top: 1px solid #333;
+  display: block;
+  margin-top: 5px;
+  padding: 3px;
+  text-align: right;
+}
+
+.note textarea {
+  max-width: 100%;
+  min-width: 100%;
+}
+
+.note.folded:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-width: 0 16px 16px 0;
+  border-style: solid;
+  border-color: #fff #fff #658E15 #658E15;
+  background: #ffc;
+  -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.3), -1px 1px 1px rgba(0,0,0,0.2);
+  -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.3), -1px 1px 1px rgba(0,0,0,0.2);
+  box-shadow: 0 1px 1px rgba(0,0,0,0.3), -1px 1px 1px rgba(0,0,0,0.2);
+  /* Firefox 3.0 damage limitation */
+  display: block; width: 0;
+}
+
+.note.rounded {
+  -moz-border-radius: 5px 0 5px 5px;
+  border-radius: 5px 0 5px 5px;
+}
+
+.note.rounded.folded:before {
+  border-width: 8px;
+  border-color: #fff #fff transparent transparent;
+  -moz-border-radius: 0 0 0 5px;
+  border-radius: 0 0 0 5px;
+}
+
+
+/* CHARACTER BLOCK STYLES */
+$character-avatar-size: 48px;
+$character-info-size: calc(100% - $character-avatar-size);
+
+.character {
+  background-color: $gray-lighter;
+  border-radius: 4px;
+  box-shadow: 0px 1px 5px rgba(0,0,0,.2);
+  display: table;
+  float: left;
+  margin: 5px 0;
+  padding: 10px;
+  width: 100%;
+
+  .character-avatar {
+    display:table-cell;
+    vertical-align: top;
+    width: $character-avatar-size;
+
+    > img {
+      float: left;
+      height: $character-avatar-size;
+      margin: 0;
+      max-height: $character-avatar-size;
+      max-width: $character-avatar-size;
+      min-height: $character-avatar-size;
+      min-width: $character-avatar-size;
+      padding: 0;
+      width: $character-avatar-size;
+    }
+  }
+
+  .character-info {
+    display: table-cell;
+    float: left;
+    max-width: $character-info-size;
+    padding: 0 10px;
+    width: auto;
+
+    .character-class,
+    .character-name,
+    .character-race {
+      float: left;
+      margin: 0;
+      width: 100%;
+    }
+
+    .character-name .character-level {
+      background-color: #fff;
+      border-radius: 50%;
+      box-shadow: 0px 1px 2px rgba(0,0,0,.2);
+      color: $gray-darker;
+      float: right;
+      padding: 2px 5px;
+    }
+
+    .character-class,
+    .character-race {
+      font-size: 85%;
+    }
+  }
+}

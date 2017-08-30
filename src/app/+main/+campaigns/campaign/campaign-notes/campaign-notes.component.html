@@ -1,8 +1,18 @@
-<fieldset [disabled]="!editing">
+<fieldset class="campaign-notes" [formGroup]="campaignForm"
+    [disabled]="!enabledEditing">
   <h4 class="title">Anotações</h4>
-  <blockquote class="blockquote-reverse" *ngFor="let note of campaign.notes">
-    <textarea class="form-control ninja-input"
-      [(ngModel)]="note.description"></textarea>
-    <small *ngIf="note.dm_only">Nota do Narrador</small>
-  </blockquote>
+
+  <div formArrayName="notes">
+    <div *ngFor="let note of notes; let idx=index">
+      <campaign-note-form [note]="note"
+        [notes]="campaignForm.controls.notes"
+        (removeJournal)="removeNote($event)"></campaign-note-form>
+    </div>
+  </div>
+
+  <div>
+    <a class="pointer" (click)="addNote()">
+      <glyph icon="plus-sign"></glyph> Adicionar anotação
+    </a>
+  </div>
 </fieldset>

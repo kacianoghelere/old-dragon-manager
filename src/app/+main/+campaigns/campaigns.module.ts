@@ -7,10 +7,13 @@ import { CampaignsRoutingModule } from './campaigns-routing.module';
 import { CampaignsListComponent } from './campaigns-list/campaigns-list.component';
 import { CampaignsComponent } from './campaigns/campaigns.component';
 import { CampaignComponent } from './campaign/campaign.component';
-import { CampaignsService } from "./shared/campaigns.service";
 import { CampaignJournalsComponent } from './campaign/campaign-journals/campaign-journals.component';
 import { CampaignNotesComponent } from './campaign/campaign-notes/campaign-notes.component';
 import { CampaignCharactersComponent } from './campaign/campaign-characters/campaign-characters.component';
+import { CampaignJournalFormComponent } from './campaign/campaign-journals/campaign-journal-form/campaign-journal-form.component';
+import { CampaignNoteFormComponent } from './campaign/campaign-notes/campaign-note-form/campaign-note-form.component';
+import { CampaignsService } from "./shared/campaigns.service";
+import { CampaignWatcherService } from "./shared/campaign-watcher.service";
 
 @NgModule({
   imports: [
@@ -26,8 +29,13 @@ import { CampaignCharactersComponent } from './campaign/campaign-characters/camp
     CampaignComponent,
     CampaignJournalsComponent,
     CampaignNotesComponent,
-    CampaignCharactersComponent
+    CampaignCharactersComponent,
+    CampaignJournalFormComponent,
+    CampaignNoteFormComponent
   ],
-  providers: [CampaignsService]
+  providers: [
+    CampaignsService,
+    CampaignWatcherService
+  ]
 })
 export class CampaignsModule { }

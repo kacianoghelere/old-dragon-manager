@@ -1,73 +1,61 @@
-<form (ngSubmit)="onSubmit(campaignForm)" [formGroup]="campaignForm">
-  <div class="row">
-    <fieldset [disabled]="!editing">
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <div class="form-group">
-          <label for=""><small>Titulo</small></label>
-          <input class="form-control ninja-input panel-title"
-            type="text" name="campaignTitle"
-            formControlName="title"
-            [readonly]="!editing">
-        </div>
-      </div>
-
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <div class="form-group">
-          <label for=""><small>Descrição</small></label>
-          <textarea class="form-control ninja-input" name="campaignDescription"
-            formControlName="description"></textarea>
-        </div>
-      </div>
-    </fieldset>
-  </div>
-
-  <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-      <ul class="nav nav-pills" role="tablist">
-        <li role="presentation" [ngClass]="isActiveTab(1)">
-          <a class="pointer" (click)="setActiveTab(1)">Diários de Campanha</a>
-        </li>
-        <li role="presentation" [ngClass]="isActiveTab(2)">
-          <a class="pointer" (click)="setActiveTab(2)">Personagens</a>
-        </li>
-      </ul>
-      <div class="tab-content">
-        <div class="tab-pane" [ngClass]="isActiveTab(1)">
-          <ul class="list-group" formArrayName="journals">
-            <li class="list-group-item" *ngFor="let journal of campaign.journals">
-              <h5>
-                <input type="text" class="form-control ninja-input"
-                  [(ngModel)]="journal.title">
-              </h5>
-              <textarea class="form-control ninja-input"
-                [(ngModel)]="journal.description"></textarea>
-            </li>
-          </ul>
-        </div>
-        <div class="tab-pane" [ngClass]="isActiveTab(2)">
-          <campaign-characters [campaign]="campaign"></campaign-characters>
-        </div>
+<form [formGroup]="campaignForm" (ngSubmit)="onSubmit(campaignForm)">
+  <fieldset class="row" [disabled]="!enabledEditing">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="form-group">
+        <label for="title"><small>Titulo</small></label>
+        <input class="form-control ninja-input"
+          type="text" name="campaignTitle"
+          formControlName="title">
       </div>
     </div>
 
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="form-group">
+        <label for="description"><small>Descrição</small></label>
+        <textarea class="form-control ninja-input" name="campaignDescription"
+          formControlName="description"></textarea>
+      </div>
+    </div>
+  </fieldset>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-2">
+      <ul class="nav nav-pills nav-stacked">
+        <li role="presentation" class="active"><a href="#">Home</a></li>
+        <li role="presentation"><a href="#">Profile</a></li>
+        <li role="presentation"><a href="#">Messages</a></li>
+      </ul>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-7 col-lg-6">
+      <campaign-journals [campaignForm]="campaignForm"
+        [journals]="campaign.journals"></campaign-journals>
+    </div>
+
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-      <campaign-notes [campaign]="campaign" [editing]="editing"></campaign-notes>
+      <campaign-notes [campaignForm]="campaignForm"
+        [notes]="campaign.notes"></campaign-notes>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <campaign-characters [campaign]="campaign"></campaign-characters>
     </div>
   </div>
 
   <div class="floating-buttons">
-    <button class="btn btn-primary btn-sm btn-block" type="submit"
-        *ngIf="editing">
-      <glyph icon="floppy-save"></glyph>
-    </button>
-    <button class="btn btn-danger btn-sm btn-block" type="button"
-        (click)="cancelEditing()"
-        *ngIf="editing">
-      <glyph icon="ban-circle"></glyph>
-    </button>
+    <div *ngIf="enabledEditing">
+      <button class="btn btn-primary btn-sm btn-block" type="submit">
+        <glyph icon="floppy-save"></glyph>
+      </button>
+      <button class="btn btn-danger btn-sm btn-block" type="button"
+          (click)="setEditing(false)">
+        <glyph icon="ban-circle"></glyph>
+      </button>
+    </div>
     <button class="btn btn-default btn-outline btn-sm btn-block" type="button"
-        (click)="startEditing()"
-        *ngIf="!editing">
+        (click)="setEditing(true)" *ngIf="!enabledEditing">
       <glyph icon="pencil"></glyph>
     </button>
   </div>

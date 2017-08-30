@@ -1,48 +1,21 @@
 <div class="row">
-  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"
+  <h4 class="title">Personagens</h4>
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3"
       *ngFor="let character of campaign.characters">
-    <div class="panel panel-success">
-      <div class="panel-heading">
-        <h3 class="panel-title">{{character?.name}} ({{character?.player}})</h3>
+    <div class="character">
+      <div class="character-avatar">
+        <img [src]="character.picture" [alt]="character.name" />
       </div>
-      <div class="panel-body avatar-body">
-        <img class="img-responsive" [src]="character.picture"
-          [alt]="character.name">
+      <div class="character-info">
+        <p class="character-name">
+          <strong>{{character?.name}}</strong>
+          <span class="character-level">{{character?.level}}</span>
+        </p>
+        <p class="character-class">
+          {{character?.class?.name}} <i>({{character?.specialization?.name}})</i>
+        </p>
+        <p class="character-race">{{character?.race?.name}}</p>
       </div>
-      <ul class="list-group">
-        <li class="list-group-item">
-          <b>Raça:</b> {{character?.race?.name}}
-        </li>
-        <li class="list-group-item">
-          <b>Classe:</b> {{character?.class?.name}}
-          ({{character?.specialization?.name}})
-        </li>
-      </ul>
-      <div class="table-responsive">
-        <table class="table table-condensed">
-          <thead>
-            <tr>
-              <th class="text-center">FOR</th>
-              <th class="text-center">DES</th>
-              <th class="text-center">CON</th>
-              <th class="text-center">INT</th>
-              <th class="text-center">SAB</th>
-              <th class="text-center">CAR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td align="center">{{character?.attributes?.strength}}</td>
-              <td align="center">{{character?.attributes?.dexterity}}</td>
-              <td align="center">{{character?.attributes?.constitution}}</td>
-              <td align="center">{{character?.attributes?.intelligence}}</td>
-              <td align="center">{{character?.attributes?.wisdom}}</td>
-              <td align="center">{{character?.attributes?.charisma}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="panel-body">{{character?.description}}</div>
     </div>
   </div>
 </div>
