@@ -25,6 +25,7 @@ export class CampaignsService extends EntityService<Campaign> {
         title: 'Campanha 1',
         description: 'Descrição da Campanha 1',
         characters: this.charactersService.list(),
+        cover_picture: 'http://www.wallpapersbrowse.com/images/mj/mj7yyaf.jpg',
         journals: [
           {
             title: 'Primeira sessão',
@@ -41,6 +42,33 @@ export class CampaignsService extends EntityService<Campaign> {
           {description: this.getLorem(), dm_only: false},
           {description: this.getLorem(), dm_only: false},
           {description: this.getLorem(), dm_only: true}
+        ],
+        user: authService.currentUser
+      },
+      {
+        id: 2,
+        title: 'Campanha 2',
+        description: 'Descrição da Campanha 2',
+        characters: this.charactersService.list().filter((c) => c.id % 2 == 0),
+        cover_picture: 'http://www.wallpapersbrowse.com/images/mj/mj7yyaf.jpg',
+        journals: [
+          {
+            title: 'Primeira sessão',
+            description: this.getLorem()
+          },
+          {
+            title: 'Segunda sessão',
+            description: this.getLorem()
+          },
+          {
+            title: 'Terceira sessão',
+            description: this.getLorem()
+          }
+        ],
+        notes: [
+          {description: this.getLorem(), dm_only: true},
+          {description: this.getLorem(), dm_only: true},
+          {description: this.getLorem(), dm_only: false},
         ],
         user: authService.currentUser
       }

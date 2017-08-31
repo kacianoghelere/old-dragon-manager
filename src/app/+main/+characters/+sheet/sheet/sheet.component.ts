@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ToasterService } from '../../../../shared/toaster.service';
-
 @Component({
   selector: 'app-sheet',
   templateUrl: './sheet.component.html',
@@ -9,10 +7,9 @@ import { ToasterService } from '../../../../shared/toaster.service';
 })
 export class SheetComponent implements OnInit {
 
-  constructor(private toasterService: ToasterService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.toasterService.test();
   }
 
 }

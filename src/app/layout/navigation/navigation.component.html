@@ -1,59 +1,52 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" [routerLink]="['/']">
-        <img class="brand-logo" src="./assets/od_logo.png" [alt]="title">
-      </a>
-    </div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    <img class="brand-logo" src="./assets/od_logo.png" [alt]="title">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse"
+          data-target="#navbarTogglableContent"
+          aria-controls="navbarTogglableContent"
+          aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav" *ngIf="authenticated">
-        <li>
-          <a [routerLink]="['/main']">
-            <glyph icon="home"></glyph> Principal
-          </a>
-        </li>
-        <li [routerLinkActive]="['active']">
-          <a [routerLink]="['/users']">
-            <glyph icon="user"></glyph> Usuários
-          </a>
-        </li>
-      </ul>
+  <div class="collapse navbar-collapse" id="navbarTogglableContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" *ngIf="authenticated" [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="['/main']">
+          <glyph icon="home"></glyph> Principal
+        </a>
+      </li>
+      <li class="nav-item" *ngIf="authenticated" [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="['/users']">
+          <glyph icon="user"></glyph> Usuários
+        </a>
+      </li>
+    </ul>
 
-      <ul class="nav navbar-nav navbar-right">
-        <li [routerLinkActive]="['active']">
-          <a [routerLink]="['/example']">Templates</a>
-        </li>
-        <li *ngIf="!authenticated" [routerLinkActive]="['active']">
-          <a [routerLink]="['/users/registration']">
-            <glyph icon="plus-sign"></glyph> Registrar-se
-          </a>
-        </li>
-        <li class="" *ngIf="!authenticated">
-          <a [routerLink]="['/login']">
-            <glyph icon="log-in"></glyph> Entrar
-          </a>
-        </li>
-        <li *ngIf="authenticated">
-          <a [routerLink]="['/users/profile/', currentUser.id]">
-            <glyph icon="user"></glyph> Minha Conta
-          </a>
-        </li>
-        <li class="" *ngIf="authenticated">
-          <a [routerLink]="['/welcome']" (click)="logout()">
-            <glyph icon="log-out"></glyph> Sair
-          </a>
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-
-  </div><!-- /.container-fluid -->
+    <ul class="navbar-nav my-2 my-lg-0">
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="['/example']">Templates</a>
+      </li>
+      <li class="nav-item" *ngIf="!authenticated" [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="['/users/registration']">
+          <glyph icon="plus-sign"></glyph> Registrar-se
+        </a>
+      </li>
+      <li class="nav-item" *ngIf="!authenticated" [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="['/login']">
+          <glyph icon="log-in"></glyph> Entrar
+        </a>
+      </li>
+      <li class="nav-item" *ngIf="authenticated" [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="['/users/profile/', currentUser.id]">
+          <glyph icon="user"></glyph> Minha Conta
+        </a>
+      </li>
+      <li class="nav-item" *ngIf="authenticated" [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="['/welcome']" (click)="logout()">
+          <glyph icon="log-out"></glyph> Sair
+        </a>
+      </li>
+    </ul>
+  </div>
 </nav>

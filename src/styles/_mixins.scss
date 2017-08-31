@@ -1,0 +1,120 @@
+@import "~bootstrap/scss/mixins";
+
+@mixin button-background($background) {
+  background: -webkit-linear-gradient($background, darken($background, 2%));
+  background: -o-linear-gradient($background, darken($background, 2%));
+  background: linear-gradient($background, darken($background, 2%));
+}
+
+@mixin border-config { border: 2px ridge theme-color('warning'); }
+
+@mixin button-variant($background, $border, $active-background: darken($background, 7.5%), $active-border: darken($border, 10%)) {
+  @include color-yiq($background);
+  @include button-background($background);
+  @include box-shadow($btn-box-shadow);
+  @include border-config;
+  text-shadow: $btn-focus-text-shadow;
+
+  &:hover {
+    @include color-yiq($background);
+    @include button-background($active-background);
+  }
+
+  &:focus,
+  &.focus {
+    // Avoid using mixin so we can pass custom focus shadow properly
+    @if $enable-shadows {
+      box-shadow: $btn-box-shadow, 0 0 0 3px rgba($border, .5);
+    } @else {
+      box-shadow: 0 0 0 3px rgba($border, .5);
+    }
+  }
+
+  // Disabled comes first so active can properly restyle
+  &.disabled,
+  &:disabled {
+    @include button-background($background);
+    border: 1px solid $background;
+  }
+
+  &:active,
+  &.active,
+  .show > &.dropdown-toggle {
+    @include button-background($active-background);
+    @include border-config;
+    @include box-shadow($btn-active-box-shadow);
+  }
+}
+
+@mixin button-outline-variant($color, $color-hover: #fff, $active-color: darken($color, 7.5%)) {
+  color: $color;
+  background-color: transparent;
+  background-image: none;
+  @include border-config;
+  box-shadow: $btn-focus-box-shadow;
+
+  @include hover {
+    color: $color-hover;
+    @include button-background($color);
+    @include border-config;
+    text-shadow: $btn-focus-text-shadow;
+  }
+
+  &:focus,
+  &.focus {
+    box-shadow: 0 0 0 3px rgba($color, .5);
+  }
+
+  &.disabled,
+  &:disabled {
+    color: $color;
+    background-color: transparent;
+  }
+
+  &:active,
+  &.active,
+  .show > &.dropdown-toggle {
+    color: $color-hover;
+    @include button-background($active-color);
+    @include border-config;
+    text-shadow: $btn-focus-text-shadow;
+  }
+}
+
+@mixin button-minimal-variant($color, $color-hover: #fff, $active-color: darken($color, 7.5%)) {
+  color: $color;
+  background-color: transparent;
+  background-image: none;
+  @include border-config;
+  border-color: transparent;
+
+  @include hover {
+    color: $color-hover;
+    background-color: $color;
+    @include border-config;
+    text-shadow: $btn-focus-text-shadow;
+  }
+
+  &:focus,
+  &.focus {
+    background-color: $color;
+    box-shadow: 0 0 0 3px rgba($color, .5);
+    color: $color-hover;
+    @include border-config;
+    border-color: $color;
+  }
+
+  &.disabled,
+  &:disabled {
+    color: $color;
+    background-color: transparent;
+  }
+
+  &:active,
+  &.active,
+  .show > &.dropdown-toggle {
+    color: $color-hover;
+    @include button-background($active-color);
+    @include border-config;
+  }
+}

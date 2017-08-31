@@ -1,7 +1,10 @@
-<div class="list-group">
-  <a class="list-group-item" *ngFor="let campaign of campaigns"
+<div class="card-columns">
+  <a class="card" *ngFor="let campaign of campaigns"
       [routerLink]="[campaign.id]">
-    <h4>{{campaign.title}}</h4>
-    <p>{{campaign.description}}</p>
+    <img class="card-img-top" [src]="campaign.cover_picture" alt="picture">
+    <div class="card-body">
+      <h4 class="card-title">{{campaign.title}}</h4>
+      <p class="card-text">{{campaign.description}}</p>
+    </div>
   </a>
 </div>

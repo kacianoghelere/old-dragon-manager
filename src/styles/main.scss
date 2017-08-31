@@ -1,0 +1,196 @@
+$icon-font-path: '../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
+
+// @import "../node_modules/bootstrap/scss/bootstrap.scss";
+// @import "assets/_variables.scss";
+// @import "assets/style-bootstrap.scss";
+// @import "assets/_bootswatch.scss";
+
+/* You can add global styles to this file, and also import other style files */
+// body { background-color: #FBF4E8; }
+
+.content { margin-top: 70px; }
+
+.page-header { margin: 10px 0; }
+
+.page-header h1 {  margin: 0px; }
+
+.pointer { cursor: pointer; }
+
+fieldset:not([disabled]) .form-control.ninja-input,
+.form-control.ninja-input:not([readonly]) {
+  background-color: transparent;
+  border: 1px dotted rgba(0, 0, 0, .3);
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  padding: 5px;
+}
+
+fieldset:not([disabled]) .form-control.ninja-input:focus,
+.form-control.ninja-input:focus:not([readonly]) {
+  background-color: #fff;
+  border: 1px dotted rgba(0, 0, 0, .5);
+  border-radius: 4px;
+}
+
+fieldset:not([disabled]) .ninja-input.panel-title:focus,
+.ninja-input.panel-title:focus:not([readonly]) {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  color: #abd5bd;
+}
+
+fieldset[disabled] .form-control.ninja-input,
+.form-control[readonly].ninja-input {
+  background-color: transparent;
+  border: 1px solid transparent;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  padding: 5px;
+}
+
+.note {
+  background: #ffc;
+  -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.3), 1px 1px 1px rgba(0,0,0,0.2);
+  -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.3), 1px 1px 1px rgba(0,0,0,0.2);
+  box-shadow: 0 1px 1px rgba(0,0,0,0.3), 1px 1px 1px rgba(0,0,0,0.2);
+  color: #333;
+  margin-bottom: 2em;
+  overflow: hidden;
+  padding: 1em 1.5em;
+  position: relative;
+  width: 100%;
+}
+
+.note small {
+  border-top: 1px solid #333;
+  display: block;
+  margin-top: 5px;
+  padding: 3px;
+  text-align: right;
+}
+
+.note textarea {
+  max-width: 100%;
+  min-width: 100%;
+}
+
+.note.folded:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-width: 0 16px 16px 0;
+  border-style: solid;
+  border-color: #fff #fff #658E15 #658E15;
+  background: #ffc;
+  -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.3), -1px 1px 1px rgba(0,0,0,0.2);
+  -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.3), -1px 1px 1px rgba(0,0,0,0.2);
+  box-shadow: 0 1px 1px rgba(0,0,0,0.3), -1px 1px 1px rgba(0,0,0,0.2);
+  /* Firefox 3.0 damage limitation */
+  display: block; width: 0;
+}
+
+.note.rounded {
+  -moz-border-radius: 5px 0 5px 5px;
+  border-radius: 5px 0 5px 5px;
+}
+
+.note.rounded.folded:before {
+  border-width: 8px;
+  border-color: #fff #fff transparent transparent;
+  -moz-border-radius: 0 0 0 5px;
+  border-radius: 0 0 0 5px;
+}
+
+.character-card {
+  background: #f0f0f0;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px #aaa;
+  display: block;
+  margin-bottom: 10px;
+  overflow: hidden;
+  position: relative;
+  text-decoration: none;
+
+  .header {
+    padding: 0.5em;
+    background: white;
+
+    .avatar {
+      display: inline-block;
+      vertical-align: middle;
+      padding: 0 0.2em;
+
+      > img {
+        width: 70px;
+        height: 70px;
+        background: #f0f0f0;
+        padding: 2px;
+        border: 1px solid #aaa;
+        border-radius: 50%;
+      }
+    }
+
+    .body {
+      display: inline-block;
+      vertical-align: middle;
+      padding: 0 0.2em;
+      line-height: 1.2;
+    }
+  }
+
+  .name {
+    color: #333;
+    font-family: 'MedievalSharp', cursive;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .title {
+    color: #888;
+    display: block;
+    font-size: 70%;
+    font-weight: normal;
+    font-style: italic;
+  }
+
+  .infos {
+    padding: 0;
+    border-top: 1px solid #ccc;
+    margin: 0;
+    color: #555;
+    font-size: 70%;
+    list-style: none;
+
+    > li {
+      padding: 0.5em;
+    }
+
+    > li + li {
+      border-top: 1px solid #ccc;
+    }
+  }
+}
+
+.lawfull {
+  .title {
+      color: #006EC8;
+  }
+
+  .avatar > img {
+      background: #008CFF;
+  }
+}
+
+.chaotic {
+  .title {
+      color: #D1371B;
+  }
+
+  .avatar > img {
+      background: #D1371B;
+  }
+}
