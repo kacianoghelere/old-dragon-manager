@@ -192,12 +192,13 @@ input,
   }
 
   li > a {
-    border: 1px solid transparent;
+    border: 1px solid $gray-lighter;
   }
 
   li.active > a {
     color: $gray-dark;
   }
+
   li.active > a,
   li > a:hover {
     border-color: $gray-light;

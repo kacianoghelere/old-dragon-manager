@@ -1,46 +1,63 @@
 <form [formGroup]="campaignForm" (ngSubmit)="onSubmit(campaignForm)">
-  <fieldset class="row" [disabled]="!enabledEditing">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <div class="form-group">
-        <label for="title"><small>Titulo</small></label>
-        <input class="form-control ninja-input"
-          type="text" name="campaignTitle"
-          formControlName="title">
-      </div>
-    </div>
-
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <div class="form-group">
-        <label for="description"><small>Descrição</small></label>
-        <textarea class="form-control ninja-input" name="campaignDescription"
-          formControlName="description"></textarea>
-      </div>
-    </div>
-  </fieldset>
-
   <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-2">
-      <ul class="nav nav-pills nav-stacked">
-        <li role="presentation" class="active"><a href="#">Home</a></li>
-        <li role="presentation"><a href="#">Profile</a></li>
-        <li role="presentation"><a href="#">Messages</a></li>
-      </ul>
-    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <fieldset class="panel panel-default" [disabled]="!enabledEditing">
+        <div class="panel-body">
+          <div class="form-group">
+            <label for="title"><small>Titulo</small></label>
+            <input class="form-control ninja-input"
+              type="text"
+              formControlName="title">
+          </div>
 
-    <div class="col-xs-12 col-sm-12 col-md-7 col-lg-6">
-      <campaign-journals [campaignForm]="campaignForm"
-        [journals]="campaign.journals"></campaign-journals>
-    </div>
-
-    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-      <campaign-notes [campaignForm]="campaignForm"
-        [notes]="campaign.notes"></campaign-notes>
+          <div class="form-group">
+            <label for="description"><small>Descrição</small></label>
+            <textarea class="form-control ninja-input"
+              formControlName="description"></textarea>
+          </div>
+        </div>
+      </fieldset>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <campaign-characters [campaign]="campaign"></campaign-characters>
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-2">
+      <ul class="nav nav-pills nav-stacked">
+        <li role="presentation" [ngClass]="activeTabClass('J')">
+          <a class="pointer text-center" (click)="setActiveTab('J')">
+            <p><i class="fa fa-book fa-5x"></i></p>
+            <p>Diários</p>
+          </a>
+        </li>
+        <li role="presentation" [ngClass]="activeTabClass('N')">
+          <a class="pointer text-center" (click)="setActiveTab('N')">
+            <p><i class="fa fa-sticky-note fa-5x"></i></p>
+            <p>Notas</p>
+          </a>
+        </li>
+        <li role="presentation" [ngClass]="activeTabClass('C')">
+          <a class="pointer text-center" (click)="setActiveTab('C')">
+            <p><i class="fa fa-users fa-5x"></i></p>
+            <p>Personagens</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-9 col-lg-10">
+      <div class="tab-content">
+        <div class="tab-pane" [ngClass]="activeTabClass('J')">
+          <campaign-journals [campaignForm]="campaignForm"
+            [journals]="campaign.journals"></campaign-journals>
+        </div>
+        <div class="tab-pane" [ngClass]="activeTabClass('N')">
+          <campaign-notes [campaignForm]="campaignForm"
+            [notes]="campaign.notes"></campaign-notes>
+        </div>
+        <div class="tab-pane" [ngClass]="activeTabClass('C')">
+          <campaign-characters [campaign]="campaign"></campaign-characters>
+        </div>
+      </div>
     </div>
   </div>
 

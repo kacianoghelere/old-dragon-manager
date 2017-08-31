@@ -21,6 +21,7 @@ $brand-info:            #42A5CD !default;
 $brand-warning:         #F4B53C !default;
 $brand-danger:          #d9534f !default;
 
+$default-margin:       10px !default;
 
 //== Scaffolding
 //
@@ -229,7 +230,7 @@ $input-height-large:             (ceil($font-size-large * $line-height-large) + 
 $input-height-small:             (floor($font-size-small * $line-height-small) + ($padding-small-vertical * 2) + 2) !default;
 
 //** `.form-group` margin
-$form-group-margin-bottom:       15px !default;
+$form-group-margin-bottom:       10px !default;
 
 $legend-color:                   $headings-color !default;
 $legend-border-color:            transparent !default;

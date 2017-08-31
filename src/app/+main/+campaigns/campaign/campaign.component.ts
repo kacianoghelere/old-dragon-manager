@@ -16,7 +16,7 @@ import { CampaignWatcherService } from '../shared/campaign-watcher.service';
 })
 export class CampaignComponent implements OnInit {
 
-  activeTab: number = 1;
+  activeTab: string = 'J';
   campaign: Campaign;
   campaignForm: FormGroup;
   subscription: Subscription;
@@ -50,8 +50,22 @@ export class CampaignComponent implements OnInit {
     });
   }
 
-  isActiveTab(index) {
-    return {active: index === this.activeTab};
+  /**
+   * Retorna objeto de classe ativa
+   * @param  {any}               index Índice da aba
+   * @return {{active: Boolean}}       Objeto de classe de aba ativa
+   */
+  activeTabClass(index: any): {active: Boolean} {
+    return {active: this.isActiveTab(index)};
+  }
+
+  /**
+   * Verifica se uma aba é a aba ativa
+   * @param  {any}     index Índice da aba
+   * @return {Boolean}       Objeto de classe de aba ativa
+   */
+  isActiveTab(index: any): Boolean {
+    return index === this.activeTab;
   }
 
   onSubmit({ value, valid }: { value: Campaign, valid: boolean }) {
@@ -59,7 +73,11 @@ export class CampaignComponent implements OnInit {
     this.watcherService.broadcast({editing: false});
   }
 
-  setActiveTab(index) {
+  /**
+   * Modifica o índice da aba ativa
+   * @param {any} index Índice da aba
+   */
+  setActiveTab(index: any) {
     this.activeTab = index;
   }
 
