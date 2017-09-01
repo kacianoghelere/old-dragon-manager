@@ -1,1 +1,22 @@
 .jumbotron { box-shadow: $jumbotron-box-shadow; }
+
+.card-picture {
+  width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
+  @include border-radius($card-inner-border-radius);
+}
+
+// Card image caps
+.card-picture-top {
+  width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
+  @include border-top-radius($card-inner-border-radius);
+}
+
+.card-picture-bottom {
+  width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
+  @include border-bottom-radius($card-inner-border-radius);
+}
+
+.title {
+  padding: 5px 0;
+  text-shadow: 0 2px 1px rgba($gray-900, .3);
+}

@@ -1,18 +1,11 @@
-<div class="panel panel-default journal-form" [formGroup]="journalForm">
-  <div class="panel-body">
-    <div class="form-group">
-      <label for="childField1">Título</label>
-      <input type="text" class="form-control ninja-input"
-        formControlName="title">
-    </div>
-    <div class="form-group">
-        <textarea class="form-control ninja-input"
-          formControlName="description"></textarea>
-    </div>
-  </div>
-  <div class="panel-footer">
-    <button class="btn btn-danger btn-xs" type="button" (click)="remove()">
-      <glyph icon="remove-sign"></glyph> Remover
-    </button>
+<div class="card bg-light journal-form" [formGroup]="journalForm">
+  <div class="card-body">
+    <input class="form-control ninja-input card-title" type="text"
+      formControlName="title">
+    <textarea class="form-control ninja-input card-text"
+      formControlName="description"></textarea>
+    <a class="card-link text-right pointer" (click)="remove()">
+      <i class="fa fa-trash-o"></i> Remover
+    </a>
   </div>
 </div>

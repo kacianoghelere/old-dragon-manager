@@ -1,60 +1,53 @@
 <form [formGroup]="campaignForm" (ngSubmit)="onSubmit(campaignForm)">
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <fieldset class="panel panel-default" [disabled]="!enabledEditing">
-        <div class="panel-body">
-          <div class="form-group">
-            <label for="title"><small>Titulo</small></label>
-            <input class="form-control ninja-input"
-              type="text"
-              formControlName="title">
-          </div>
-
-          <div class="form-group">
-            <label for="description"><small>Descrição</small></label>
-            <textarea class="form-control ninja-input"
-              formControlName="description"></textarea>
-          </div>
+      <a class="card">
+        <div class="card-picture-top">
+          <img class="card-img-top" [src]="campaign.cover_picture"
+            alt="picture">
         </div>
-      </fieldset>
+        <fieldset class="card-body" [disabled]="!enabledEditing">
+          <input class="form-control ninja-input card-title"
+            type="text"
+            formControlName="title">
+          <textarea class="form-control ninja-input card-text"
+            formControlName="description"></textarea>
+        </fieldset>
+      </a>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-2">
-      <ul class="nav nav-pills nav-stacked">
-        <li role="presentation" [ngClass]="activeTabClass('J')">
-          <a class="pointer text-center" (click)="setActiveTab('J')">
-            <p><i class="fa fa-book fa-5x"></i></p>
-            <p>Diários</p>
-          </a>
-        </li>
-        <li role="presentation" [ngClass]="activeTabClass('N')">
-          <a class="pointer text-center" (click)="setActiveTab('N')">
-            <p><i class="fa fa-sticky-note fa-5x"></i></p>
-            <p>Notas</p>
-          </a>
-        </li>
-        <li role="presentation" [ngClass]="activeTabClass('C')">
-          <a class="pointer text-center" (click)="setActiveTab('C')">
-            <p><i class="fa fa-users fa-5x"></i></p>
-            <p>Personagens</p>
-          </a>
-        </li>
-      </ul>
-    </div>
-
-    <div class="col-xs-12 col-sm-12 col-md-9 col-lg-10">
-      <div class="tab-content">
-        <div class="tab-pane" [ngClass]="activeTabClass('J')">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <nav class="nav nav-tabs nav-fill card-header-tabs">
+            <a class="nav-link text-center pointer"
+                [ngClass]="activeTabClass('J')"
+                (click)="setActiveTab('J')">
+              <i class="fa fa-book"></i> Diários
+            </a>
+            <a class="nav-link text-center pointer"
+                [ngClass]="activeTabClass('N')"
+                (click)="setActiveTab('N')">
+              <i class="fa fa-sticky-note"></i> Notas
+            </a>
+            <a class="nav-link text-center pointer"
+                [ngClass]="activeTabClass('C')"
+                (click)="setActiveTab('C')">
+              <i class="fa fa-users"></i> Personagens
+            </a>
+          </nav>
+        </div>
+        <div class="card-body" [hidden]="!isActiveTab('J')">
           <campaign-journals [campaignForm]="campaignForm"
-            [journals]="campaign.journals"></campaign-journals>
+          [journals]="campaign.journals"></campaign-journals>
         </div>
-        <div class="tab-pane" [ngClass]="activeTabClass('N')">
+        <div class="card-body" [hidden]="!isActiveTab('N')">
           <campaign-notes [campaignForm]="campaignForm"
-            [notes]="campaign.notes"></campaign-notes>
+          [notes]="campaign.notes"></campaign-notes>
         </div>
-        <div class="tab-pane" [ngClass]="activeTabClass('C')">
+        <div class="card-body" [hidden]="!isActiveTab('C')">
           <campaign-characters [campaign]="campaign"></campaign-characters>
         </div>
       </div>
@@ -63,17 +56,18 @@
 
   <div class="floating-buttons">
     <div *ngIf="enabledEditing">
-      <button class="btn btn-primary btn-sm btn-block" type="submit">
-        <glyph icon="floppy-save"></glyph>
+      <button class="btn btn-primary btn-sm btn-block" type="submit"
+          [disabled]="campaignForm.invalid">
+        <i class="fa fa-save fa-2x"></i>
       </button>
       <button class="btn btn-danger btn-sm btn-block" type="button"
           (click)="setEditing(false)">
-        <glyph icon="ban-circle"></glyph>
+        <i class="fa fa-ban fa-2x"></i>
       </button>
     </div>
-    <button class="btn btn-default btn-outline btn-sm btn-block" type="button"
+    <button class="btn btn-secondary btn-outline btn-sm btn-block" type="button"
         (click)="setEditing(true)" *ngIf="!enabledEditing">
-      <glyph icon="pencil"></glyph>
+      <i class="fa fa-pencil fa-2x"></i>
     </button>
   </div>
 </form>

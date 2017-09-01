@@ -8,7 +8,7 @@ $icon-font-path: '../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
 /* You can add global styles to this file, and also import other style files */
 // body { background-color: #FBF4E8; }
 
-.content { margin-top: 70px; }
+.content { margin-top: 90px; }
 
 .page-header { margin: 10px 0; }
 
@@ -194,3 +194,26 @@ fieldset[disabled] .form-control.ninja-input,
       background: #D1371B;
   }
 }
+
+.card-picture-top {
+  height: 250px;
+  max-height: 250px;
+  overflow: hidden;
+
+  &.small {
+    height: 200px;
+    max-height: 200px;
+  }
+
+  &.large {
+    height: 300px;
+    max-height: 300px;
+  }
+
+  img {
+    object-fit: cover;
+    width: 100%;
+  }
+}
+
+.card { margin: 10px 0; }
