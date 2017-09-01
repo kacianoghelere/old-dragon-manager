@@ -4,6 +4,8 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import { Router } from '@angular/router';
 
+import { User } from '../shared/entities/user';
+
 @Injectable()
 export class AuthenticationService {
 
@@ -84,6 +86,24 @@ export class AuthenticationService {
   // ---------------------------------------------------------------------------
 
   /**
+   * Verifica se o usuário parametro tem privilégios de administração
+   * @param  {User}    user Usuário parametro
+   * @return {boolean}      É administrador?
+   */
+  isAdmin(user: User): boolean {
+    if (!user.role) return false;
+    return user.role.admin;
+  }
+
+  /**
+   * Verifica se o usuário atual tem privilégios de administração
+   * @return {boolean} É uma sessão de administrador?
+   */
+  isAdminUser(): boolean {
+    return this.isAdmin(this.currentUser);
+  }
+
+  /**
    * Signout method
    * @param {boolean} redirect Redirect router to the root page
    */
@@ -99,9 +119,9 @@ export class AuthenticationService {
   /**
    * API authentication method
    * Sends the user email and password to the API in order to receive de JWT
-   * @param {any} user User login data
+   * @param {User} user User login data
    */
-  signin(user) {
+  signin(user: any) {
     let options = { headers: this.headers };
     this.http.post(`${this.url}/authentication`, JSON.stringify(user), options)
       .map((res) => { return res.json() })

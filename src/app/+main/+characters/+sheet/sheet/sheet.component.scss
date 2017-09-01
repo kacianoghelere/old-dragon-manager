@@ -1,6 +1,6 @@
-/deep/ .row-fluid {
-  float: left;
-  width: 100%;
+/deep/ .row {
+  margin-left: -5px;
+  margin-right: -5px;
 
   > div[class^="col-"] { padding: 5px; }
 
@@ -10,6 +10,10 @@
     label { font-size: 80%; }
   }
 }
-/deep/ .panel {
-  .panel-body { padding: 5px; }
+
+/deep/ .card {
+
+  p.card-title { margin: 0; }
+
+  .card-body { padding: 10px 15px; }
 }

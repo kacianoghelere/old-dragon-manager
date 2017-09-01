@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { AbstractControl } from '@angular/forms';
+import { AbstractControl, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'form-group',
@@ -13,6 +13,7 @@ export class FormGroupComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.field = this.field || new FormControl();
   }
 
   /**

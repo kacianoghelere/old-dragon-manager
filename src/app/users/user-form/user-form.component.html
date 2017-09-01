@@ -1,11 +1,9 @@
-<form class="form-horizontal" [formGroup]="userForm" (submit)="submitChanges()">
-
+<form [formGroup]="userForm" (ngSubmit)="onSubmit(userForm)">
   <form-group [field]="userForm.controls.userLogin">
-    <label for="userLogin">Código de acesso</label>
+    <label for="userCode">Código de usuário</label>
     <input class="form-control"
-        id="userLogin"
-        formControlName="userLogin"
-        [(ngModel)]="user.login"
+        id="userCode"
+        formControlName="user_code"
         type="text"
         placeholder="joao.teste">
   </form-group>
@@ -14,8 +12,7 @@
     <label for="userName">Nome</label>
     <input class="form-control"
         id="userName"
-        formControlName="userName"
-        [(ngModel)]="user.name"
+        formControlName="name"
         type="text"
         placeholder="Nome">
   </form-group>
@@ -24,8 +21,7 @@
     <label for="userEmail">E-mail</label>
     <input class="form-control"
         id="userEmail"
-        formControlName="userEmail"
-        [(ngModel)]="user.email"
+        formControlName="email"
         type="email"
         placeholder="joao.teste@exemplo.com">
   </form-group>
@@ -34,8 +30,7 @@
     <label for="userPassword">Senha</label>
     <input class="form-control"
         id="userPassword"
-        formControlName="userPassword"
-        [(ngModel)]="user.password"
+        formControlName="password"
         type="password"
         placeholder="******">
   </form-group>
@@ -44,22 +39,18 @@
     <label for="userConfirm">Confirmação</label>
     <input class="form-control"
         id="userConfirm"
-        formControlName="userConfirm"
-        [(ngModel)]="user.confirm"
+        formControlName="confirm"
         type="password"
         placeholder="******">
   </form-group>
 
   <form-group [field]="userForm.controls.userRole" *ngIf="currentUser.admin">
     <label for="userRole">Perfil</label>
-    <select class="form-control"
-        id="userRole"
-        formControlName="userRole"
-        [(ngModel)]="user.role_id">
+    <select class="form-control" id="userRole" formControlName="role_id">
       <option value="">Selecione</option>
       <option *ngFor="let role of roles"
           [ngValue]="role.id"
-          [selected]="selectedRole(role)">
+          [selected]="isSelectedRole(role)">
         {{role.name}}
       </option>
     </select>
@@ -67,12 +58,11 @@
 
   <div class="form-group">
     <button type='submit' class='btn btn-primary'
-        [disabled]="!userForm.valid || submitted">
-      <glyph icon="floppy-save"></glyph> Salvar
+        [disabled]="userForm.invalid || submitted">
+      <i class="fa fa-save"></i> <b>Salvar</b>
     </button>
-    <button type='button' class='btn btn-default' (click)="resetChanges()">
-      <glyph icon="trash"></glyph> Limpar
+    <button type='button' class='btn btn-secondary' (click)="resetChanges()">
+      <i class="fa fa-trash-o"></i> Limpar
     </button>
   </div>
-
 </form>

@@ -9,7 +9,8 @@ import { ClassInfoComponent } from './class-details/class-info/class-info.compon
 import { ClassModsComponent } from './class-details/class-mods/class-mods.component';
 import { ClassThiefTalentsComponent } from './class-details/class-thief-talents/class-thief-talents.component';
 import { ClassMagicCirclesComponent } from './class-details/class-magic-circles/class-magic-circles.component';
-import { ClassesService } from './classes.service';
+import { ClassesListComponent } from './classes-list/classes-list.component';
+import { ClassesService } from './shared/classes.service';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { ClassesService } from './classes.service';
     ClassInfoComponent,
     ClassModsComponent,
     ClassThiefTalentsComponent,
-    ClassMagicCirclesComponent
+    ClassMagicCirclesComponent,
+    ClassesListComponent
   ],
   providers: [ClassesService]
 })

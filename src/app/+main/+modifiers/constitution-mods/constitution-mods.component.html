@@ -1,42 +1,36 @@
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Modificadores de Constituição</h3>
+<table class='table table-striped table-hover table-sm'
+    *ngIf="constitutionMods.length">
+  <thead>
+    <tr>
+      <th class="text-center">Constituição</th>
+      <th class="text-center">Ajuste de pontos de vida<br>e proteção</th>
+      <th class="text-center">Chance de ressurreição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="text-center" *ngFor="let mod of constitutionMods">
+      <td>{{mod?.value}}</td>
+      <td>{{mod?.hitpoints_mod}}</td>
+      <td>{{mod?.resurrection_mod}}%</td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="!constitutionMods.length">
+  <h3 class="text-center">Carregando...</h3>
+</div>
+
+<div class="list-group">
+  <div class="list-group-item">
+    <b>Ajuste de pontos de vida</b>: indica o bônus ou penalidade nos pontos
+    de vida para cada dado de vida do personagem.
   </div>
-
-  <table class='table table-striped table-hover table-condensed'
-      *ngIf="constitutionMods.length">
-    <thead>
-      <tr>
-        <th class="text-center">Constituição</th>
-        <th class="text-center">Ajuste de pontos de vida<br>e proteção</th>
-        <th class="text-center">Chance de ressurreição</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="text-center" *ngFor="let mod of constitutionMods">
-        <td>{{mod?.value}}</td>
-        <td>{{mod?.hitpoints_mod}}</td>
-        <td>{{mod?.resurrection_mod}}%</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="panel-body" *ngIf="!constitutionMods.length">
-    <h3 class="text-center">Carregando...</h3>
+  <div class="list-group-item">
+    <b>Ajuste de proteção</b>: indica o bônus ou penalidade nas jogadas de
+    proteção que envolvam vigor ou resistência física.
   </div>
-
-  <div class="list-group">
-    <div class="list-group-item">
-      <b>Ajuste de pontos de vida</b>: indica o bônus ou penalidade nos pontos
-      de vida para cada dado de vida do personagem.
-    </div>
-    <div class="list-group-item">
-      <b>Ajuste de proteção</b>: indica o bônus ou penalidade nas jogadas de
-      proteção que envolvam vigor ou resistência física.
-    </div>
-    <div class="list-group-item">
-      <b>Chance de ressurreição</b>: representa a chance que o personagem tem
-      de ser ressuscitado.
-    </div>
+  <div class="list-group-item">
+    <b>Chance de ressurreição</b>: representa a chance que o personagem tem
+    de ser ressuscitado.
   </div>
 </div>

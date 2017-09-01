@@ -1,12 +1,16 @@
-<div class="card-deck">
-  <a class="card" *ngFor="let campaign of campaigns"
-      [routerLink]="[campaign.id]">
-    <div class="card-picture-top small">
-      <img class="card-img-top" [src]="campaign.cover_picture" alt="picture">
-    </div>
-    <div class="card-body">
-      <h4 class="card-title">{{campaign.title}}</h4>
-      <p class="card-text">{{campaign.description}}</p>
-    </div>
-  </a>
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-12">
+    <h2 class="title">Campanhas</h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let campaign of campaigns">
+    <a class="card card-blurred" [routerLink]="[campaign.id]">
+      <img class="card-img" [src]="campaign.cover_picture" alt="picture">
+      <div class="card-img-overlay">
+        <h4 class="card-title">{{campaign.title}}</h4>
+        <p class="card-text">{{campaign.description}}</p>
+      </div>
+    </a>
+  </div>
 </div>

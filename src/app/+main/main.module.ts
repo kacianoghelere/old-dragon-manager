@@ -5,7 +5,7 @@ import { MainComponent } from './main/main.component';
 import { AuthenticatedComponent } from './authenticated/authenticated.component';
 import { MainRoutingModule } from './main-routing.module';
 import { UtilModule } from '../util/util.module';
-import { MainFeedComponent } from './main-feed/main-feed.component';
+import { MainHomeComponent } from './main-home/main-home.component';
 import { CharactersService } from "./shared/characters.service";
 
 @NgModule({
@@ -17,7 +17,7 @@ import { CharactersService } from "./shared/characters.service";
   declarations: [
     MainComponent,
     AuthenticatedComponent,
-    MainFeedComponent
+    MainHomeComponent
   ],
   exports: [MainComponent],
   providers: [CharactersService]

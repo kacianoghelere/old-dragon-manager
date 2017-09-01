@@ -1,0 +1,9 @@
+<div class="card-deck">
+  <a class="card card-blurred" [routerLink]="[link.route]"
+      *ngFor="let link of links">
+    <img class="card-img" [src]="link.picture" alt="link.title">
+    <div class="card-img-overlay">
+      <h4 class="card-title"><b>{{link.title}}</b></h4>
+    </div>
+  </a>
+</div>

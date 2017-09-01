@@ -71,6 +71,42 @@ export class CampaignsService extends EntityService<Campaign> {
           {description: this.getLorem(), dm_only: false},
         ],
         user: authService.currentUser
+      },
+      {
+        id: 3,
+        title: 'Campanha 3',
+        description: 'Descrição da Campanha 3',
+        characters: this.charactersService.list().filter((c) => c.id % 2 == 0),
+        cover_picture: 'https://images3.alphacoders.com/152/152779.jpg',
+        journals: [
+          {
+            title: 'Primeira sessão',
+            description: this.getLorem()
+          },
+          {
+            title: 'Segunda sessão',
+            description: this.getLorem()
+          },
+          {
+            title: 'Terceira sessão',
+            description: this.getLorem()
+          },
+          {
+            title: 'Quarta sessão',
+            description: this.getLorem()
+          }
+        ],
+        notes: [
+          {description: this.getLorem(), dm_only: false},
+          {description: this.getLorem(), dm_only: true},
+          {description: this.getLorem(), dm_only: false},
+          {description: this.getLorem(), dm_only: false},
+          {description: this.getLorem(), dm_only: true},
+          {description: this.getLorem(), dm_only: true},
+          {description: this.getLorem(), dm_only: true},
+          {description: this.getLorem(), dm_only: false},
+        ],
+        user: authService.currentUser
       }
     ];
   }

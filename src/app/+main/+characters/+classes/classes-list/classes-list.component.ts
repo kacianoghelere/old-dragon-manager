@@ -3,27 +3,27 @@ import { Subscription } from 'rxjs/Subscription';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { AuthenticationService } from '../../../../authentication/authentication.service';
-import { CharacterRace } from '../../../../shared/entities/character-race';
-import { RacesService } from '../shared/races.service';
+import { CharacterClass } from '../../../../shared/entities/character-class';
+import { ClassesService } from '../shared/classes.service';
 
 @Component({
-  selector: 'app-races',
-  templateUrl: './races-list.component.html',
-  styleUrls: ['./races-list.component.scss']
+  selector: 'classes-list',
+  templateUrl: './classes-list.component.html',
+  styleUrls: ['./classes-list.component.scss']
 })
-export class RacesListComponent implements OnInit, OnDestroy {
+export class ClassesListComponent implements OnInit {
 
   // Public variables
   // ---------------------------------------------------------------------------
   subscription: Subscription;
-  races: CharacterRace[];
+  classes: CharacterClass[];
 
   //
   // Functions
   // ===========================================================================
   constructor(
     private authService: AuthenticationService,
-    private racesService: RacesService
+    private classesService: ClassesService
   ) { }
 
   //
@@ -31,8 +31,8 @@ export class RacesListComponent implements OnInit, OnDestroy {
   // ---------------------------------------------------------------------------
 
   ngOnInit() {
-    this.subscription = this.racesService.list()
-      .subscribe((response) => this.races = response);
+    this.subscription = this.classesService.list()
+      .subscribe((response) => this.classes = response);
   }
 
   ngOnDestroy() {

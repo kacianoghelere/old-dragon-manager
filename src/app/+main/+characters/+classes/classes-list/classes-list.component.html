@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <h3 class="title">Classes</h3>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let class of classes">
+    <a class="card" [routerLink]="['details', class.id]">
+      <div class="card-picture-top small">
+        <img class="card-img-top" [src]="class.picture"
+          [alt]="class.name">
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">{{class?.name}}</h3>
+      </div>
+    </a>
+  </div>
+</div>

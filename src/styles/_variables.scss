@@ -388,7 +388,7 @@ $input-focus-border-color:       lighten(theme-color("primary"), 25%) !default;
 $input-focus-box-shadow:         $input-box-shadow, $btn-focus-box-shadow !default;
 $input-focus-color:              $input-color !default;
 
-$input-placeholder-color:        $gray-600 !default;
+$input-placeholder-color:        $gray-100 !default;
 
 $input-height-border:           $input-btn-border-width * 2 !default;
 
@@ -613,8 +613,8 @@ $pagination-hover-bg:                  $gray-200 !default;
 $pagination-hover-border-color:        #ddd !default;
 
 $pagination-active-color:              $white !default;
-$pagination-active-bg:                 theme-color("primary") !default;
-$pagination-active-border-color:       theme-color("primary") !default;
+$pagination-active-bg:                 $gray-300 !default;
+$pagination-active-border-color:       $gray-300 !default;
 
 $pagination-disabled-color:            $gray-600 !default;
 $pagination-disabled-bg:               $white !default;
@@ -624,7 +624,7 @@ $pagination-disabled-border-color:     #ddd !default;
 // Jumbotron
 
 $jumbotron-padding:              2rem !default;
-$jumbotron-bg:                   $gray-200 !default;
+$jumbotron-bg:                   $gray-100 !default;
 $jumbotron-box-shadow:           inset 0 0 15px rgba($gray-700, .6) !default;
 
 

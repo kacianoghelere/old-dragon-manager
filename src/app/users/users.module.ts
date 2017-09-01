@@ -6,11 +6,9 @@ import { HttpModule } from '@angular/http';
 import { UsersComponent } from './users/users.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { UserListComponent } from './user-list/user-list.component';
-import { UserListItemComponent } from './user-list-item/user-list-item.component';
+import { UserListItemComponent } from './user-list/user-list-item/user-list-item.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import {
-  UserRegistrationComponent
-} from './user-registration/user-registration.component';
+import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { UsersService } from './users.service';
 import { UtilModule } from '../util/util.module';

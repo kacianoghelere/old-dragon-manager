@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { MainComponent } from './main/main.component';
-import { MainFeedComponent } from './main-feed/main-feed.component';
+import { MainHomeComponent } from './main-home/main-home.component';
 import { AuthenticationGuard } from '../authentication/authentication.guard';
 
 const mainRoutes: Routes = [
@@ -22,7 +22,7 @@ const mainRoutes: Routes = [
         path: 'campaigns',
         loadChildren: `app/+main/+campaigns/campaigns.module#CampaignsModule`
       },
-      {path: '', component: MainFeedComponent}
+      {path: '', component: MainHomeComponent}
     ]
   }
 ];

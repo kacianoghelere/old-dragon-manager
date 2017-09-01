@@ -1,38 +1,26 @@
 <div class="col-xs-12">
   <h2 class="title">Modificadores</h2>
 
-  <ul class="nav nav-pills nav-justified">
-    <li role="presentation" [routerLinkActive]="['active']">
-      <a [routerLink]="['strength']">
-        <img src="./assets/strength-icon.png" alt=">>" width="32"> Força
-      </a>
-    </li>
-    <li role="presentation" [routerLinkActive]="['active']">
-      <a [routerLink]="['dexterity']">
-        <img src="./assets/dexterity-icon.png" alt=">>" width="32"> Destreza
-      </a>
-    </li>
-    <li role="presentation" [routerLinkActive]="['active']">
-      <a [routerLink]="['constitution']">
-        <img src="./assets/constitution-icon.png" alt=">>" width="32"> Constituição
-      </a>
-    </li>
-    <li role="presentation" [routerLinkActive]="['active']">
-      <a [routerLink]="['intelligence']">
-        <img src="./assets/intelligence-icon.png" alt=">>" width="32"> Inteligência
-      </a>
-    </li>
-    <li role="presentation" [routerLinkActive]="['active']">
-      <a [routerLink]="['wisdom']">
-        <img src="./assets/wisdom-icon.png" alt=">>" width="32"> Sabedoria
-      </a>
-    </li>
-    <li role="presentation" [routerLinkActive]="['active']">
-      <a [routerLink]="['charisma']">
-        <img src="./assets/charisma-icon.png" alt=">>" width="32"> Carisma
-      </a>
-    </li>
-  </ul>
+  <nav class="nav nav-pills nav-fill">
+    <a class="nav-link" [routerLink]="['strength']" [routerLinkActive]="['active']">
+      <img src="./assets/strength-icon.png" alt=">>" width="32"> Força
+    </a>
+    <a class="nav-link" [routerLink]="['dexterity']" [routerLinkActive]="['active']">
+      <img src="./assets/dexterity-icon.png" alt=">>" width="32"> Destreza
+    </a>
+    <a class="nav-link" [routerLink]="['constitution']" [routerLinkActive]="['active']">
+      <img src="./assets/constitution-icon.png" alt=">>" width="32"> Constituição
+    </a>
+    <a class="nav-link" [routerLink]="['intelligence']" [routerLinkActive]="['active']">
+      <img src="./assets/intelligence-icon.png" alt=">>" width="32"> Inteligência
+    </a>
+    <a class="nav-link" [routerLink]="['wisdom']" [routerLinkActive]="['active']">
+      <img src="./assets/wisdom-icon.png" alt=">>" width="32"> Sabedoria
+    </a>
+    <a class="nav-link" [routerLink]="['charisma']" [routerLinkActive]="['active']">
+      <img src="./assets/charisma-icon.png" alt=">>" width="32"> Carisma
+    </a>
+  </nav>
 
   <div class="tab-content">
     <router-outlet></router-outlet>

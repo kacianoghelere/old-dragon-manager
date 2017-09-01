@@ -1,8 +1,6 @@
 import { Subscription } from 'rxjs/Subscription';
 
-import {
-  Component, OnInit, OnDestroy, Input, Output, EventEmitter
-} from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -10,9 +8,7 @@ import { Role } from '../../shared/entities/role';
 import { RolesService } from '../../roles/roles.service';
 import { User } from '../../shared/entities/user';
 import { UsersService } from '../users.service';
-import {
-  AuthenticationService
-} from '../../authentication/authentication.service';
+import { AuthenticationService } from '../../authentication/authentication.service';
 import { ValidatorsService } from '../../shared/services/validators.service';
 
 @Component({
@@ -47,21 +43,6 @@ export class UserFormComponent implements OnInit, OnDestroy {
     private rolesService: RolesService,
     private validators: ValidatorsService
   ) {
-    this.userForm = this.builder.group({
-      userLogin: ['', Validators.required],
-      userName: ['', Validators.required],
-      userEmail: ['', Validators.required],
-      userPassword: ['', Validators.compose(
-        [Validators.required, Validators.minLength(6)]
-      )],
-      userConfirm: ['', Validators.compose(
-        [Validators.required, Validators.minLength(6)]
-      )],
-      userRole: [{}, Validators.required]
-    },
-    {
-      validator: this.validators.matchingPasswords('userPassword', 'userConfirm')
-    });
     this.userReseted = new EventEmitter();
     this.userSubmitted = new EventEmitter();
   }
@@ -81,9 +62,11 @@ export class UserFormComponent implements OnInit, OnDestroy {
     this.user.password = '';
     this.user.confirm = '';
     if (this.currentUser.admin) {
-      this.subscription = this.rolesService.list()
-        .subscribe((response) => this.roles = response);
+      this.subscription = this.rolesService.list().subscribe((response) => {
+        this.roles = response;
+      });
     }
+    this.userForm = this.toFormGroup(this.user);
   }
 
   //
@@ -103,6 +86,32 @@ export class UserFormComponent implements OnInit, OnDestroy {
   // ==========================================================================
 
   /**
+   * Check if the role in the select input is the same of the user
+   * @param  {Role}    role Role in the select input
+   * @return {boolean}      Verification result
+   */
+  isSelectedRole(role: Role): boolean {
+    if (!this.roles.length) return false;
+    return role.id === this.user.role_id;
+  }
+
+  /**
+   * Emit the save event
+   */
+  onSubmit({ value, valid }: { value: User, valid: boolean }) {
+    let data: any = {
+      name: value.name,
+      user_code: value.user_code,
+      password: value.password,
+      password_confirmation: value.confirm,
+      email: value.email,
+      role_id: value.role_id
+    };
+    this.userSubmitted.emit(data);
+    this.submitted = true;
+  }
+
+  /**
    * Emit the reset event
    */
   resetChanges(): void {
@@ -111,29 +120,25 @@ export class UserFormComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Check if the role in the select input is the same of the user
-   * @param  {Role}    role Role in the select input
-   * @return {boolean}      Verification result
+   * [toFormGroup description]
+   * @param  {User}      user [description]
+   * @return {FormGroup}      [description]
    */
-  selectedRole(role: Role): boolean {
-    return role.id === this.user.id;
-  }
-
-  /**
-   * Emit the save event
-   */
-  submitChanges(): void {
-    // :name, :login, :pass, :inc_date, :last_login, :email, :role_id)
-
-    this.userSubmitted.emit({
-      name: this.user.name,
-      login: this.user.login,
-      password: this.user.password,
-      password_confirmation: this.user.confirm,
-      email: this.user.email,
-      role_id: this.user.role.id
+  toFormGroup(user: User): FormGroup {
+    return this.builder.group({
+      user_code: [user.user_code, Validators.required],
+      name: [user.name, Validators.required],
+      email: [user.email, Validators.required],
+      password: [user.password, Validators.compose(
+        [Validators.required, Validators.minLength(6)]
+      )],
+      confirm: [user.confirm, Validators.compose(
+        [Validators.required, Validators.minLength(6)]
+      )],
+      role_id: [user.role_id]
+    },
+    {
+      validator: this.validators.matchingPasswords('password', 'confirm')
     });
-    this.submitted = !this.submitted;
   }
-
 }

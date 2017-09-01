@@ -1,49 +1,41 @@
-<div class="col-xs-12 col-sm-4 col-md-3">
-  <h2 class="title">{{user?.name}}</h2>
-
-  <img class="img-responsive img-thumbnail img-avatar"
-      [src]="avatar"
-      [alt]="user?.name">
-
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <div class="panel-title">Dados do Usuário</div>
-    </div>
-
-    <ul class="list-group">
-      <li class="list-group-item">
-        <small>
+<div class="row">
+  <div class="col-xs-12 col-sm-4 col-md-3">
+    <h2 class="title">{{user?.name}}</h2>
+    <div class="card">
+      <img class="card-img-top" [src]="avatar" [alt]="user?.name">
+      <div class="card-body">
+        <small class="card-text">
           <b>Perfil:</b> {{user?.role?.name}}
         </small>
-      </li>
-      <li class="list-group-item">
-        <small>
+        <small class="card-text">
           <b>E-mail:</b> {{user?.email}}
         </small>
-      </li>
-      <li class="list-group-item">
-        <small>
+        <small class="card-text">
           <b>Último acesso em:</b> {{user?.last_login | date }}
         </small>
-      </li>
-    </ul>
-
-    <div class="panel-footer">
-      <router-link classes="btn btn-primary btn-sm"
-          path="settings"
-          *ngIf="canChange">
-        <glyph icon="cog"></glyph> Opções
-      </router-link>
+      </div>
+      <div class="card-footer" *ngIf="canChange">
+        <router-link classes="btn btn-primary btn-sm" path="settings">
+          <i class="fa fa-cog"></i> Opções
+        </router-link>
+      </div>
     </div>
-
   </div>
-</div>
 
-<div class="col-xs-12 col-sm-8 col-md-9">
-  <h2 class="title">Criações</h2>
-  <ul class="nav nav-pills">
-    <li role="presentation" class="active"><a href="#">Home</a></li>
-    <li role="presentation"><a href="#">Profile</a></li>
-    <li role="presentation"><a href="#">Messages</a></li>
-  </ul>
+  <div class="col-xs-12 col-sm-8 col-md-9">
+    <h2 class="title">Criações</h2>
+    <div class="card">
+      <div class="card-header">
+        <nav class="nav nav-tabs nav-fill card-header-tabs">
+          <a class="nav-link text-center pointer active">
+            <i class="fa fa-book"></i> Campanhas
+          </a>
+          <a class="nav-link text-center pointer">
+            <i class="fa fa-users"></i> Personagens
+          </a>
+        </nav>
+      </div>
+      <div class="card-body"></div>
+    </div>
+  </div>
 </div>

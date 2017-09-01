@@ -1,49 +1,43 @@
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Modificadores de Carisma</h3>
+<table class='table table-striped table-hover table-sm'
+    *ngIf="charismaMods.length">
+  <thead>
+    <tr>
+      <th class="text-center">Carisma</th>
+      <th class="text-center">Número máximo de<br>seguidores</th>
+      <th class="text-center">Ajuste de reação</th>
+      <th class="text-center">Mortos-vivos afastados</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="text-center" *ngFor="let mod of charismaMods">
+      <td>{{mod?.value}}</td>
+      <td>{{mod?.followers_mod}}</td>
+      <td>{{mod?.reaction_mod}}</td>
+      <td>{{mod?.undead_mod}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="!charismaMods.length">
+  <h3 class="text-center">Carregando...</h3>
+</div>
+
+<div class="list-group">
+  <div class="list-group-item">
+    <b>Número máximo de seguidores</b>: representa o número de seguidores
+    fixos que acompanham e obedecem às ordens do personagem. Esse número não
+    envolve quaisquer personagens contratados, como mercenários ou
+    escudeiros, por exemplo.
   </div>
-
-  <table class='table table-striped table-hover table-condensed'
-      *ngIf="charismaMods.length">
-    <thead>
-      <tr>
-        <th class="text-center">Carisma</th>
-        <th class="text-center">Número máximo de<br>seguidores</th>
-        <th class="text-center">Ajuste de reação</th>
-        <th class="text-center">Mortos-vivos afastados</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="text-center" *ngFor="let mod of charismaMods">
-        <td>{{mod?.value}}</td>
-        <td>{{mod?.followers_mod}}</td>
-        <td>{{mod?.reaction_mod}}</td>
-        <td>{{mod?.undead_mod}}</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="panel-body" *ngIf="!charismaMods.length">
-    <h3 class="text-center">Carregando...</h3>
+  <div class="list-group-item">
+    <b>Ajuste de reação</b>: indica o bônus ou penalidade que o personagem
+    recebe nas situações em que deve se relacionar ou dialogar com pessoas ou
+    criaturas encontradas.
   </div>
-
-  <div class="list-group">
-    <div class="list-group-item">
-      <b>Número máximo de seguidores</b>: representa o número de seguidores
-      fixos que acompanham e obedecem às ordens do personagem. Esse número não
-      envolve quaisquer personagens contratados, como mercenários ou
-      escudeiros, por exemplo.
-    </div>
-    <div class="list-group-item">
-      <b>Ajuste de reação</b>: indica o bônus ou penalidade que o personagem
-      recebe nas situações em que deve se relacionar ou dialogar com pessoas ou
-      criaturas encontradas.
-    </div>
-    <div class="list-group-item">
-      <b>Mortos-vivos afastados</b>: determina a quantidade de mortos-vivos que
-      o clérigo consegue afastar ao usar seu poder divino para tal.<br>
-      Os mortos-vivos mais próximos do clérigo são afastados primeiramente em
-      relação aos mais distantes, e os mais fracos no lugar dos mais fortes.
-    </div>
+  <div class="list-group-item">
+    <b>Mortos-vivos afastados</b>: determina a quantidade de mortos-vivos que
+    o clérigo consegue afastar ao usar seu poder divino para tal.<br>
+    Os mortos-vivos mais próximos do clérigo são afastados primeiramente em
+    relação aos mais distantes, e os mais fracos no lugar dos mais fortes.
   </div>
 </div>

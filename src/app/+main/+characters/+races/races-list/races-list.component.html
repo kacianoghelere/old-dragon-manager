@@ -1,38 +1,17 @@
-<div class="row-fluid">
-  <h3 class="title">Raças</h3>
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <h3 class="title">Raças</h3>
+  </div>
 
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let race of races">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">
-          <a [routerLink]="['details', race.id]">{{race?.name}}</a>
-        </h3>
+    <a class="card" [routerLink]="['details', race.id]">
+      <div class="card-picture-top small">
+        <img class="card-img-top" [src]="race.picture"
+          [alt]="race.name">
       </div>
-
-      <div class="panel-body">
-        <a [routerLink]="['details', race.id]">
-          <img class="img-responsive" src="http://fakeimg.pl/250x200/"
-            [alt]="race.name">
-        </a>
+      <div class="card-body">
+        <h3 class="card-title">{{race?.name}}</h3>
       </div>
-
-      <ul class="list-group">
-        <li class="list-group-item">
-          <b>Méd. Altura: </b>{{race?.min_height}}m ~ {{race?.max_height}}m
-        </li>
-        <li class="list-group-item">
-          <b>Méd. Peso: </b>
-        </li>
-        <li class="list-group-item">
-          <b>Maturidade: </b>{{race?.maturity}} anos
-        </li>
-        <li class="list-group-item">
-          <b>Idade Máx.: </b>{{race?.max_age}} anos
-        </li>
-        <li class="list-group-item">
-          <b>Base Movimento: </b>{{race?.movement_base}} metros
-        </li>
-      </ul>
-    </div>
+    </a>
   </div>
 </div>

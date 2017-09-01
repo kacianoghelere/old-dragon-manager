@@ -3,9 +3,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import {
-  AuthenticationService
-} from '../../authentication/authentication.service';
+import { AuthenticationService } from '../../authentication/authentication.service';
 import { User } from '../../shared/entities/user';
 import { UsersService } from '../users.service';
 
@@ -71,15 +69,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
    * @return {boolean} Profile can be changed by de the current user?
    */
   get canChange(): boolean {
-    return (this.isAdmin === true) || (this.isCurrentUser === true);
-  }
-
-  /**
-   * Checks if the current user is sys admin
-   * @return {boolean} Current user is sys admin?
-   */
-  get isAdmin(): boolean {
-    return this.authService.currentUser.admin;
+    return this.authService.isAdminUser() || (this.isCurrentUser === true);
   }
 
   /**

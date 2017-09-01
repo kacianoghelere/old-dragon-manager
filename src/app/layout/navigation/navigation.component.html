@@ -13,38 +13,40 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" *ngIf="authenticated" [routerLinkActive]="['active']">
         <a class="nav-link" [routerLink]="['/main']">
-          <glyph icon="home"></glyph> Principal
+          <i class="fa fa-home"></i> Principal
         </a>
       </li>
       <li class="nav-item" *ngIf="authenticated" [routerLinkActive]="['active']">
         <a class="nav-link" [routerLink]="['/users']">
-          <glyph icon="user"></glyph> Usuários
+          <i class="fa fa-users"></i> Usuários
         </a>
       </li>
     </ul>
 
     <ul class="navbar-nav my-2 my-lg-0">
       <li class="nav-item" [routerLinkActive]="['active']">
-        <a class="nav-link" [routerLink]="['/example']">Templates</a>
+        <a class="nav-link" [routerLink]="['/example']">
+          <i class="fa fa-list-alt"></i> Templates
+        </a>
       </li>
       <li class="nav-item" *ngIf="!authenticated" [routerLinkActive]="['active']">
         <a class="nav-link" [routerLink]="['/users/registration']">
-          <glyph icon="plus-sign"></glyph> Registrar-se
+          <i class="fa fa-user-plus"></i> Registrar-se
         </a>
       </li>
       <li class="nav-item" *ngIf="!authenticated" [routerLinkActive]="['active']">
         <a class="nav-link" [routerLink]="['/login']">
-          <glyph icon="log-in"></glyph> Entrar
+          <i class="fa fa-sign-in"></i> Entrar
         </a>
       </li>
       <li class="nav-item" *ngIf="authenticated" [routerLinkActive]="['active']">
         <a class="nav-link" [routerLink]="['/users/profile/', currentUser.id]">
-          <glyph icon="user"></glyph> Minha Conta
+          <i class="fa fa-user-circle-o"></i> Minha Conta
         </a>
       </li>
       <li class="nav-item" *ngIf="authenticated" [routerLinkActive]="['active']">
         <a class="nav-link" [routerLink]="['/welcome']" (click)="logout()">
-          <glyph icon="log-out"></glyph> Sair
+          <i class="fa fa-sign-out"></i> Sair
         </a>
       </li>
     </ul>

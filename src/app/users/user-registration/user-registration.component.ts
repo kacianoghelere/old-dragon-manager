@@ -56,9 +56,9 @@ export class UserRegistrationComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
+    // if (this.subscription) {
+    //   this.subscription.unsubscribe();
+    // }
     if (this.authSubscription) {
       this.authSubscription.unsubscribe();
     }
@@ -73,20 +73,14 @@ export class UserRegistrationComponent implements OnInit, OnDestroy {
    * @param {User} user User data
    */
   registerUser(user: User) {
-    let fail = (error) => {
-      this.message.error = true;
-      this.message.text = 'Ocorreu um erro ao enviar os dados.';
-    };
-    let success = (response: User) => {
+    this.usersService.create(user).subscribe((response: User) => {
       this.message.error = false;
       this.message.text = `Dados cadastrados com sucesso! ID #${response.id}`;
-      this.authService.signin(user);
-    };
-
-    let sendMessage = () => console.log(this.message);
-
-    this.subscription = this.usersService.create(user)
-      .subscribe(success, fail, sendMessage);
+      this.authService.signin({email: user.email, password: user.password});
+    },  (error) => {
+      this.message.error = true;
+      this.message.text = 'Ocorreu um erro ao enviar os dados.';
+    }, () => console.log(this.message));
   }
 
 }

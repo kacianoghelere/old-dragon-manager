@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../../../../authentication/authentication.service';
 import { CharacterClass } from '../../../../shared/entities/character-class';
 import { CharacterClassType } from '../../../../shared/entities/character-class-type';
-import { ClassesService } from '../classes.service';
+import { ClassesService } from '../shared/classes.service';
 
 @Component({
   selector: 'app-class-details',

@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { AuthenticationService } from '../../../../authentication/authentication.service';
 import { CharacterRace } from '../../../../shared/entities/character-race';
-import { RacesService } from '../races.service';
+import { RacesService } from '../shared/races.service';
 
 @Component({
   selector: 'app-race-details',

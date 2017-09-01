@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { User } from '../../shared/entities/user';
-import { UsersService } from '../users.service';
+import { User } from '../../../shared/entities/user';
+import { UsersService } from '../../users.service';
 
 @Component({
   selector: 'user-list-item',
