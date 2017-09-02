@@ -1,68 +1,61 @@
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">{{characterClass.id}} - {{characterClass.name}}</h3>
-  </div>
+<div class="card card-blurred">
+  <img class="card-img" [src]="characterClass.picture"
+    [alt]="characterClass.name">
 
-  <div class="panel-body">
-    {{characterClass.description}}
+  <div class="card-img-overlay">
+    <h3 class="card-title">{{characterClass.name}}</h3>
+    <p class="card-text">{{characterClass.description}}</p>
   </div>
 </div>
 
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Informações</h3>
-  </div>
-
-  <div class="panel-body">
+<div class="card">
+  <div class="card-body">
     <div class="row">
-      <div class="col-xs-12">
-        <b>Atributo chave</b>: {{characterClass?.class_type?.key_attr}}
+      <div class="col-sm-12">
+        <b>Usuário de magia?</b>
+        {{yesNoFormat(characterClass.type, 'magic')}}
       </div>
-      <div class="col-xs-12">
-        <b>Usuário de magia?</b> {{yesNoFormat(characterClass.class_type, 'magic')}}
+      <div class="col-sm-12">
+        <b>Pode Banir Mortos-vivos?</b>
+        {{yesNoFormat(characterClass.type, 'can_bane_undead')}}
       </div>
-      <div class="col-xs-12">
-        <b>Pode Banir Mortos-vivos?</b> {{yesNoFormat(characterClass.class_type, 'can_bane_undead')}}
-      </div>
-      <div class="col-xs-12">
-        <b>Possui talentos ladinos?</b> {{yesNoFormat(characterClass.class_type, 'has_thief_talents')}}
+      <div class="col-sm-12">
+        <b>Possui talentos ladinos?</b>
+        {{yesNoFormat(characterClass.type, 'has_thief_talents')}}
       </div>
     </div>
   </div>
 </div>
 
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Requerimentos</h3>
-  </div>
-
-  <div class="panel-body">
+<div class="card">
+  <div class="card-header">Requerimentos</div>
+  <div class="card-body">
     <div class="row">
-      <div class="col-xs-4">
+      <div class="col-sm-4">
         <b>FOR</b>: {{characterClass?.requirement?.str_mod}}
       </div>
-      <div class="col-xs-4">
+      <div class="col-sm-4">
         <b>DES</b>: {{characterClass?.requirement?.dex_mod}}
       </div>
-      <div class="col-xs-4">
+      <div class="col-sm-4">
         <b>CON</b>: {{characterClass?.requirement?.cons_mod}}
       </div>
-      <div class="col-xs-4">
+      <div class="col-sm-4">
         <b>INT</b>: {{characterClass?.requirement?.int_mod}}
       </div>
-      <div class="col-xs-4">
+      <div class="col-sm-4">
         <b>SAB</b>: {{characterClass?.requirement?.wis_mod}}
       </div>
-      <div class="col-xs-4">
+      <div class="col-sm-4">
         <b>CAR</b>: {{characterClass?.requirement?.char_mod}}
       </div>
     </div>
   </div>
 </div>
 
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h4 class="panel-title">Especializações</h4>
+<div class="card">
+  <div class="card-header">
+    <p class="card-title">Especializações</p>
   </div>
 
   <div class="list-group">

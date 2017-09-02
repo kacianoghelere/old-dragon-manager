@@ -1,38 +1,46 @@
 <div class="row">
-  <div class="col-xs-4">
+  <div class="col-sm-12 col-md-12">
+    <nav class="breadcrumb">
+      <a class="breadcrumb-item" [routerLink]="['/main/characters']">
+        <b>Personagens</b>
+      </a>
+      <a class="breadcrumb-item" [routerLink]="['/main/characters/classes']">
+        <b>Classes</b>
+      </a>
+      <span class="breadcrumb-item active">{{characterClass.name}}</span>
+    </nav>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-5 col-md-4">
     <class-info [characterClass]="characterClass"></class-info>
   </div>
-  <div class="col-xs-8">
-    <ul class="nav nav-pills">
-      <li role="presentation"
-          [ngClass]="{active: isSelectedTab(0)}"
-          (click)="selectTab(0)">
-        <a>Evolução</a>
-      </li>
-      <li role="presentation"
-          [ngClass]="{active: isSelectedTab(1)}"
-          (click)="selectTab(1)">
-        <a>Talentos Ladinos</a>
-      </li>
-      <li role="presentation"
-          [ngClass]="{active: isSelectedTab(2)}"
-          (click)="selectTab(2)">
-        <a>Magias</a>
-      </li>
-    </ul>
-
-    <div class="tab-content">
-      <div class="tab-pane" role="tabpanel"
-          [ngClass]="{active: isSelectedTab(0)}">
-        <class-mods [characterClass]="characterClass"></class-mods>
+  <div class="col-sm-7 col-md-8">
+    <div class="card">
+      <div class="card-header">
+        <div class="nav nav-tabs card-header-tabs justify-content-center">
+          <a class="nav-link" [ngClass]="{active: isSelectedTab(1)}"
+              (click)="selectTab(1)">
+            Evolução
+          </a>
+          <a class="nav-link" [ngClass]="{active: isSelectedTab(2)}"
+              (click)="selectTab(2)">
+            Talentos Ladinos
+          </a>
+          <a class="nav-link" [ngClass]="{active: isSelectedTab(3)}"
+              (click)="selectTab(3)">
+            Magias
+          </a>
+        </div>
       </div>
-      <div class="tab-pane" role="tabpanel"
-          [ngClass]="{active: isSelectedTab(1)}">
-        <class-thief-talents [characterClass]="characterClass"></class-thief-talents>
-      </div>
-      <div class="tab-pane" role="tabpanel"
-          [ngClass]="{active: isSelectedTab(2)}">
-        <class-magic-circles [characterClass]="characterClass"></class-magic-circles>
+      <div class="card-body" [ngSwitch]="currentTab">
+        <class-mods *ngSwitchCase="1"
+          [characterClass]="characterClass"></class-mods>
+        <class-thief-talents *ngSwitchCase="2"
+          [characterClass]="characterClass"></class-thief-talents>
+        <class-magic-circles *ngSwitchCase="3"
+          [characterClass]="characterClass"></class-magic-circles>
       </div>
     </div>
   </div>

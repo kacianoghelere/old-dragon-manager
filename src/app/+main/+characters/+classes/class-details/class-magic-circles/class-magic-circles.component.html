@@ -1,16 +1,16 @@
-<div class="panel panel-default" *ngIf="!emptyCollection(characterClass.magic_circles)">
-  <div class="panel-body">
+<div class="card" *ngIf="!emptyCollection(characterClass.magic_circles)">
+  <div class="card-body">
     Esta classe não possui acesso à circulos de magia
   </div>
 </div>
 
-<div class="panel panel-default" *ngIf="emptyCollection(characterClass.magic_circles)">
-  <div class="panel-heading">
-    <h3 class="panel-title">Magias por círculo de {{characterClass.name}}</h3>
+<div class="card" *ngIf="emptyCollection(characterClass.magic_circles)">
+  <div class="card-header">
+    <h3 class="card-title">Magias por círculo de {{characterClass.name}}</h3>
   </div>
 
   <div class='table-responsive'>
-    <table class='table table-striped table-hover table-condensed'>
+    <table class='table table-striped table-hover table-sm'>
       <thead>
         <tr>
           <th class="text-center" rowspan="2">Nível</th>

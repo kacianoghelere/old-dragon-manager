@@ -126,6 +126,43 @@ export class CharactersService extends EntityService<Character> {
           wisdom: 11,
           charisma: 13
         }
+      },
+      {
+        id: 4,
+        name: 'Al-zahed',
+        player: 'Godofredo',
+        title: 'Lord Commander of the Grigaida',
+        level: 8,
+        race: {
+          id: 1,
+          name: 'Humano',
+          user: this.authService.currentUser
+        },
+        class: {
+          id: 1,
+          name: 'Homem de Armas',
+          user: this.authService.currentUser
+        },
+        specialization: {
+          id: 1,
+          name: 'Guerreiro',
+          user: this.authService.currentUser
+        },
+        alignment: {
+          id: 1,
+          name: 'Orderio',
+          className: 'lawfull'
+        },
+        picture: 'http://tzi.github.io/chewing-grid.css/image/6.jpg',
+        description: 'Really loves his sister. Really.',
+        attributes: {
+          strength: 11,
+          dexterity: 14,
+          constitution: 12,
+          intelligence: 12,
+          wisdom: 11,
+          charisma: 13
+        }
       }
     ];
   }

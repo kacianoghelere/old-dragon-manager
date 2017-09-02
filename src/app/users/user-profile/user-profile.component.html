@@ -1,9 +1,9 @@
 <div class="row">
   <div class="col-xs-12 col-sm-4 col-md-3">
-    <h2 class="title">{{user?.name}}</h2>
     <div class="card">
       <img class="card-img-top" [src]="avatar" [alt]="user?.name">
       <div class="card-body">
+        <h3 class="card-title">{{user?.name}}</h3>
         <small class="card-text">
           <b>Perfil:</b> {{user?.role?.name}}
         </small>
@@ -15,7 +15,7 @@
         </small>
       </div>
       <div class="card-footer" *ngIf="canChange">
-        <router-link classes="btn btn-primary btn-sm" path="settings">
+        <router-link classes="card-link" path="settings">
           <i class="fa fa-cog"></i> Opções
         </router-link>
       </div>

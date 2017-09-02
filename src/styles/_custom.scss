@@ -1,5 +1,22 @@
 .jumbotron { box-shadow: $jumbotron-box-shadow; }
 
+.card {
+  -webkit-box-shadow: $card-box-shadow;
+  -moz-box-shadow: $card-box-shadow;
+  box-shadow: $card-box-shadow;
+  border: none;
+  margin: 10px 0;
+
+  .card-body {
+    .card {
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none;
+      border: 1px solid $gray-300;
+    }
+  }
+}
+
 .card-picture {
   width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
   @include border-radius($card-inner-border-radius);
@@ -34,12 +51,32 @@
 
 .card.card-blurred {
   border-radius: $border-radius;
-  max-height: 250px;
 
   .card-img-overlay { border-radius: $border-radius; }
 
   .card-img {
     max-height: 100%;
     object-fit: cover;
+  }
+}
+
+.card-picture-top {
+  height: 250px;
+  max-height: 250px;
+  overflow: hidden;
+
+  &.small {
+    height: 150px;
+    max-height: 150px;
+  }
+
+  &.large {
+    height: 300px;
+    max-height: 300px;
+  }
+
+  img {
+    object-fit: cover;
+    width: 100%;
   }
 }

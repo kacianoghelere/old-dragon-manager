@@ -12,11 +12,11 @@ export class CharacterClass {
 
   id: number;
   name: string;
-  description?: string= '';
-  dice?: Dice = null;
-  perk?: Perk = null;
-  requirement?: AttributeRequirement  = null;
-  class_type?: CharacterClassType = null;
+  description?: string;
+  dice?: Dice;
+  perk?: Perk;
+  requirement?: AttributeRequirement;
+  type?: CharacterClassType;
   evolutions?: CharacterClassEvolution[] = [];
   specializations?: CharacterClassSpecialization[] = [];
   magic_circles?: CharacterClassMagicCircle[] = [];

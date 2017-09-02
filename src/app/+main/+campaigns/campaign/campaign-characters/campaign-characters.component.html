@@ -1,42 +1,29 @@
-<div class="row-fluid">
-  <h4 class="title">Personagens</h4>
+<div class="row">
+  <div class="col-sm-12">
+    <h4 class="title">Personagens</h4>
+  </div>
 </div>
 
 <div class="row">
-  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3"
-      *ngFor="let character of campaign.characters">
-    <!-- <div class="character">
-      <div class="character-avatar">
-        <img [src]="character.picture" [alt]="character.name" />
-      <img [src]="character.picture" [alt]="character.name" />
-      <div class="character-info">
-        <p class="character-name">
-          <strong>{{character?.name}}</strong>
-          <span class="character-level">{{character?.level}}</span>
-        </p>
-        <p class="character-class">
-          {{character?.class?.name}} <i>({{character?.specialization?.name}})</i>
-        </p>
-        <p class="character-race">{{character?.race?.name}}</p>
-      </div>
-    </div> -->
-    <a class="character-card {{character?.alignment?.className}}">
-      <div class="header">
-        <div class="avatar">
-            <img [src]="character.picture" [alt]="character.name" />
+  <div class="col-sm-12">
+    <div class="card-deck">
+      <a class="card" *ngFor="let character of campaign.characters">
+        <img class="card-img-top" [src]="character.picture"
+          [alt]="character.name">
+        <div class="card-block px-3">
+          <h4 class="card-title">{{character.name}}</h4>
+          <small class="card-text">{{character.title}}</small>
+          <small class="card-text">
+            {{character?.race?.name}}
+          </small>
+          <small class="card-text">
+            {{character?.class?.name}} ({{character?.specialization?.name}})
+          </small>
+          <small class="card-text">
+            {{character?.description}}
+          </small>
         </div>
-        <div class="body">
-          <div class="name">
-              {{character.name}}
-          </div>
-          <small class="title">{{character.title}}</small>
-        </div>
-      </div>
-      <ul class="infos">
-          <li>{{character?.race?.name}}</li>
-          <li>{{character?.class?.name}} ({{character?.specialization?.name}})</li>
-          <li>{{character?.description}}</li>
-      </ul>
-    </a>
+      </a>
+    </div>
   </div>
 </div>

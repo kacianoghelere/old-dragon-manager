@@ -23,7 +23,7 @@ export class MainHomeComponent implements OnInit {
       {
         title: 'Modificadores',
         description: 'Consulta rápida de modificadores de atributos.',
-      picture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM8W9ssrtpehHVqZIZ1EVypzoUZnHfJvEaqEzwEs1k80ifwZbc',
+      picture: 'http://3.bp.blogspot.com/-9AmZogWe9MA/UCkvMqvOjpI/AAAAAAAAA0w/EpyAQ-L8IjY/s1600/rolling_stats.jpg',
         route: 'modifiers'
       },
       {

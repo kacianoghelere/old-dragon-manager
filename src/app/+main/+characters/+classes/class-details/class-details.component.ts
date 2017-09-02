@@ -19,7 +19,7 @@ export class ClassDetailsComponent implements OnInit {
   // ---------------------------------------------------------------------------
   subscription: Subscription;
   characterClass: CharacterClass;
-  currentTab: number = 0;
+  currentTab: number = 1;
 
   //
   // Functions
@@ -38,7 +38,6 @@ export class ClassDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.characterClass = new CharacterClass;
-    this.characterClass.class_type = new CharacterClassType;
     this.route.params.subscribe((params) => {
       let id = params['id'];
       if (id) {

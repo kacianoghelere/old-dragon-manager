@@ -20,7 +20,7 @@ export class CharactersHomeComponent implements OnInit {
       },
       {
         title: 'Classes',
-        picture: 'http://cdn.playbuzz.com/cdn/83c79868-c191-4800-8c16-f3235d2a181a/8d3a2042-df29-4510-860d-17fe492303af_560_420.jpg',
+        picture: 'https://i.ytimg.com/vi/MUC53AYiEjQ/maxresdefault.jpg',
         route: 'classes'
       },
       {
