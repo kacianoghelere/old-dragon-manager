@@ -88,6 +88,19 @@ export abstract class EntityService<T> {
   }
 
   /**
+   * [_find description]
+   * @param  {string} resource [description]
+   * @param  {string} custom   [description]
+   * @return {[type]}          [description]
+   */
+  protected _custom(resource: string, custom: string) {
+    return (id: any): Observable<any> => {
+      let customUrl = `${this.url}/${resource}/${id}/${custom}`;
+      return this.http.get(customUrl, this.options).map(this.responseToJson);
+    }
+  }
+
+  /**
    * [_destroy description]
    * @param  {string} resource [description]
    * @return {[type]}          [description]

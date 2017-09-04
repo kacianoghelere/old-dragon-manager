@@ -4,6 +4,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { AuthenticationService } from '../../../../authentication/authentication.service';
 import { CharacterClass } from '../../../../shared/entities/character-class';
+import { Link } from '../../../../shared/entities/link';
 import { ClassesService } from '../shared/classes.service';
 
 @Component({
@@ -17,6 +18,7 @@ export class ClassesListComponent implements OnInit {
   // ---------------------------------------------------------------------------
   subscription: Subscription;
   classes: CharacterClass[];
+  trail: Link[];
 
   //
   // Functions
@@ -24,7 +26,11 @@ export class ClassesListComponent implements OnInit {
   constructor(
     private authService: AuthenticationService,
     private classesService: ClassesService
-  ) { }
+  ) {
+    this.trail = [
+      {title: 'Personagens', route: '/main/characters'}
+    ]
+  }
 
   //
   // Lifecycle hooks functions

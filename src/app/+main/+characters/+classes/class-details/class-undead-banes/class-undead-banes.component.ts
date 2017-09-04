@@ -3,11 +3,11 @@ import { Component, OnInit, Input } from '@angular/core';
 import { CharacterClass } from '../../../../../shared/entities/character-class';
 
 @Component({
-  selector: 'class-magic-circles',
-  templateUrl: './class-magic-circles.component.html',
-  styleUrls: ['./class-magic-circles.component.scss']
+  selector: 'class-undead-banes',
+  templateUrl: './class-undead-banes.component.html',
+  styleUrls: ['./class-undead-banes.component.scss']
 })
-export class ClassMagicCirclesComponent implements OnInit {
+export class ClassUndeadBanesComponent implements OnInit {
 
   // Public variables
   // ---------------------------------------------------------------------------

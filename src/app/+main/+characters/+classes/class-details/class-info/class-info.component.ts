@@ -26,12 +26,21 @@ export class ClassInfoComponent implements OnInit {
   ngOnInit() {
   }
 
-  yesNoFormat(
+  /**
+   * Transforma valor booleano em valores literais
+   * @param  {any}    source     Objeto fonte de dados
+   * @param  {string} property   Propriedade a ser verificada
+   * @param  {string} trueParam  Texto caso seja verdadeiro
+   * @param  {string} falseParam Texto caso seja falso
+   * @return {string}            Texto resultante da verificação
+   */
+  boolFormat(
     source: any,
     property: string,
-    yesParam: string = 'Sim',
-    noParam: string = 'Não'
+    trueParam: string = 'Sim',
+    falseParam: string = 'Não'
   ): string {
-    return source[property] ? yesParam : noParam;
+    if (!source || !property || !source[property]) return falseParam;
+    return source[property] ? trueParam : falseParam;
   }
 }

@@ -1,34 +1,31 @@
 <div class="card card-blurred">
-  <img class="card-img" [src]="characterClass.picture"
+  <img class="card-img-top" [src]="characterClass.picture"
     [alt]="characterClass.name">
 
-  <div class="card-img-overlay">
-    <h3 class="card-title">{{characterClass.name}}</h3>
-    <p class="card-text">{{characterClass.description}}</p>
+  <div class="card-body">
+    <p class="card-text description">"{{characterClass.description}}"</p>
   </div>
-</div>
 
-<div class="card">
   <div class="card-body">
     <div class="row">
       <div class="col-sm-12">
         <b>Usuário de magia?</b>
-        {{yesNoFormat(characterClass.type, 'magic')}}
+        {{boolFormat(characterClass?.type, 'can_use_magic')}}
       </div>
       <div class="col-sm-12">
         <b>Pode Banir Mortos-vivos?</b>
-        {{yesNoFormat(characterClass.type, 'can_bane_undead')}}
+        {{boolFormat(characterClass?.type, 'can_bane_undead')}}
       </div>
       <div class="col-sm-12">
         <b>Possui talentos ladinos?</b>
-        {{yesNoFormat(characterClass.type, 'has_thief_talents')}}
+        {{boolFormat(characterClass?.type, 'has_thief_talents')}}
       </div>
     </div>
   </div>
 </div>
 
 <div class="card">
-  <div class="card-header">Requerimentos</div>
+  <div class="card-header">Requerimentos mínimos</div>
   <div class="card-body">
     <div class="row">
       <div class="col-sm-4">

@@ -4,6 +4,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { AuthenticationService } from '../../../../authentication/authentication.service';
 import { CharacterRace } from '../../../../shared/entities/character-race';
+import { Link } from '../../../../shared/entities/link';
 import { RacesService } from '../shared/races.service';
 
 @Component({
@@ -17,6 +18,7 @@ export class RacesListComponent implements OnInit, OnDestroy {
   // ---------------------------------------------------------------------------
   subscription: Subscription;
   races: CharacterRace[];
+  trail: Link[];
 
   //
   // Functions
@@ -24,7 +26,11 @@ export class RacesListComponent implements OnInit, OnDestroy {
   constructor(
     private authService: AuthenticationService,
     private racesService: RacesService
-  ) { }
+  ) {
+    this.trail = [
+      {title: 'Personagens', route: '/main/characters'}
+    ]
+  }
 
   //
   // Lifecycle hooks functions

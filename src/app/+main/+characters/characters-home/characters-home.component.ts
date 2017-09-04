@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Link } from "../../shared/link";
+import { Link } from "../../../shared/entities/link";
 
 @Component({
   selector: 'characters-home',

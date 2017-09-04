@@ -31,4 +31,13 @@ export class ClassesService extends EntityService<CharacterClass> {
     return super._list("character_classes")();
   }
 
+  /**
+   * [find description]
+   * @param  {number}          id [description]
+   * @return {Observable<any>}    [description]
+   */
+  showcase(id: number): Observable<any> {
+    return super._custom("character_classes", "showcase")(id);
+  }
+
 }

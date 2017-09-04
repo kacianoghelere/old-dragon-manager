@@ -11,6 +11,7 @@ import { ClassThiefTalentsComponent } from './class-details/class-thief-talents/
 import { ClassMagicCirclesComponent } from './class-details/class-magic-circles/class-magic-circles.component';
 import { ClassesListComponent } from './classes-list/classes-list.component';
 import { ClassesService } from './shared/classes.service';
+import { ClassUndeadBanesComponent } from './class-details/class-undead-banes/class-undead-banes.component';
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import { ClassesService } from './shared/classes.service';
     ClassModsComponent,
     ClassThiefTalentsComponent,
     ClassMagicCirclesComponent,
-    ClassesListComponent
+    ClassesListComponent,
+    ClassUndeadBanesComponent
   ],
   providers: [ClassesService]
 })

@@ -1,14 +1,8 @@
+<breadcrumb [trail]="trail" [currentPage]="characterClass.name"></breadcrumb>
+
 <div class="row">
   <div class="col-sm-12 col-md-12">
-    <nav class="breadcrumb">
-      <a class="breadcrumb-item" [routerLink]="['/main/characters']">
-        <b>Personagens</b>
-      </a>
-      <a class="breadcrumb-item" [routerLink]="['/main/characters/classes']">
-        <b>Classes</b>
-      </a>
-      <span class="breadcrumb-item active">{{characterClass.name}}</span>
-    </nav>
+    <h3 class="title">{{characterClass.name}}</h3>
   </div>
 </div>
 
@@ -30,16 +24,22 @@
           </a>
           <a class="nav-link" [ngClass]="{active: isSelectedTab(3)}"
               (click)="selectTab(3)">
+            Afastar Mortos-Vivos
+          </a>
+          <a class="nav-link" [ngClass]="{active: isSelectedTab(4)}"
+              (click)="selectTab(4)">
             Magias
           </a>
         </div>
       </div>
-      <div class="card-body" [ngSwitch]="currentTab">
+      <div class="card-body card-table" [ngSwitch]="currentTab">
         <class-mods *ngSwitchCase="1"
           [characterClass]="characterClass"></class-mods>
         <class-thief-talents *ngSwitchCase="2"
           [characterClass]="characterClass"></class-thief-talents>
-        <class-magic-circles *ngSwitchCase="3"
+        <class-undead-banes *ngSwitchCase="3"
+          [characterClass]="characterClass"></class-undead-banes>
+        <class-magic-circles *ngSwitchCase="4"
           [characterClass]="characterClass"></class-magic-circles>
       </div>
     </div>
