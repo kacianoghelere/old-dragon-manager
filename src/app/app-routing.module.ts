@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { WelcomeComponent } from './layout/welcome/welcome.component';
-import { AuthenticationGuard } from './authentication/authentication.guard';
+import { AuthenticationGuard } from './shared/guards//authentication.guard';
+import { AuthenticatedGuard } from './shared/guards//authenticated.guard';
 
 const appRoutes: Routes = [
   {path: "", redirectTo: 'welcome', pathMatch: 'full'},
@@ -19,7 +20,11 @@ const appRoutes: Routes = [
     canActivate: [AuthenticationGuard],
     loadChildren: `app/+main/main.module#MainModule`
   },
-  {path: "welcome", component: WelcomeComponent}
+  {
+    path: "welcome",
+    canActivate: [AuthenticatedGuard],
+    component: WelcomeComponent
+  }
 ];
 
 @NgModule({

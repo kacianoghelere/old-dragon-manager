@@ -26,7 +26,9 @@
   </tbody>
   <tfoot>
     <tr *ngFor="let category of categories">
-      <td colspan="8"><small>{{category}}</small></td>
+      <td colspan="8">
+        <small><b>{{category.label}}</b>: {{category.description}}</small>
+      </td>
     </tr>
   </tfoot>
 </table>

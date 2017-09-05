@@ -89,3 +89,16 @@ h5, .h5,
 h6, .h6 {
   font-family: $font-family-sans-serif;
 }
+
+.mega-menu {
+  background-color: $gray-800;
+  display: none;
+  height: auto;
+  left: 0;
+  padding: 10px;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+
+  ul { margin: 0; }
+}

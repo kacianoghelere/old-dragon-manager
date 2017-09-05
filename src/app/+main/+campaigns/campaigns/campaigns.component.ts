@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+
+import { TrailBuilder }  from "../../../shared/entities/trail-builder";
+import { TrailService }  from "../../../shared/services/trail.service";
 
 @Component({
   selector: 'campaigns',
-  templateUrl: './campaigns.component.html',
+  template: '<router-outlet></router-outlet>',
   styleUrls: ['./campaigns.component.scss']
 })
-export class CampaignsComponent implements OnInit {
+export class CampaignsComponent extends TrailBuilder {
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(trailService: TrailService) {
+    super(trailService, {
+      title: 'Campanhas',
+      route: '/main/campaigns'
+    });
   }
-
 }

@@ -1,10 +1,17 @@
+// .navbar {
+//   padding: 0;
+// }
+
 .navbar-brand {
-  padding: 7px 15px;
+  font-family: "PT Serif";
+  padding: 0;
+  margin: 0;
 
   .brand-logo {
     width: 150px;
   }
 }
+
 .navbar-nav {
   a {
     &.user {

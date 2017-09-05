@@ -1,28 +1,16 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
+
+import { TrailBuilder }  from "../../../../shared/entities/trail-builder";
+import { TrailService }  from "../../../../shared/services/trail.service";
 
 @Component({
-  selector: 'app-races',
-  templateUrl: './races.component.html',
+  selector: 'races',
+  template: '<router-outlet></router-outlet>',
   styleUrls: ['./races.component.scss']
 })
-export class RacesComponent implements OnInit, OnDestroy {
+export class RacesComponent extends TrailBuilder {
 
-  // Public variables
-  // ---------------------------------------------------------------------------
-
-  //
-  // Functions
-  // ===========================================================================
-  constructor() { }
-
-  //
-  // Lifecycle hooks functions
-  // ---------------------------------------------------------------------------
-
-  ngOnInit() {
+  constructor(trailService: TrailService) {
+    super(trailService, {title: 'Raças', route: '/main/characters/races'});
   }
-
-  ngOnDestroy() {
-  }
-
 }

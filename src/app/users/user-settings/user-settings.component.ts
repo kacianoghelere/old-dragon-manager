@@ -8,7 +8,7 @@ import { User } from '../../shared/entities/user';
 import { UsersService } from '../users.service';
 
 @Component({
-  selector: 'app-user-settings',
+  selector: 'user-settings',
   templateUrl: './user-settings.component.html',
   styleUrls: ['./user-settings.component.scss']
 })

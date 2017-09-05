@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { CommonModule } from '@angular/common';
 
-import { AuthenticationGuard } from "./authentication.guard";
-import { AuthenticatedGuard } from "./authenticated.guard";
+import { AuthenticationGuard } from "../shared/guards/authentication.guard";
+import { AuthenticatedGuard } from "../shared/guards/authenticated.guard";
 import { AuthenticationService } from "./authentication.service";
 
 @NgModule({

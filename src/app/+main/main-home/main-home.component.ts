@@ -32,6 +32,12 @@ export class MainHomeComponent implements OnInit {
           + ' criatividade é o único limite aqui!',
         picture: 'https://i.kinja-img.com/gawker-media/image/upload/s--R0QEn5Y_--/c_scale,f_auto,fl_progressive,q_80,w_800/18loz956fez9ujpg.jpg',
         route: 'characters'
+      },
+      {
+        title: 'Usuários',
+        description: 'Adicione amigos, encontre mestres e jogadores.',
+        picture: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Role_playing_gamers.jpg/330px-Role_playing_gamers.jpg',
+        route: '/users'
       }
     ]
   }

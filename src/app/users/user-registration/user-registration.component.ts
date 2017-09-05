@@ -11,7 +11,7 @@ import {
 } from '../../authentication/authentication.service';
 
 @Component({
-  selector: 'app-user-registration',
+  selector: 'user-registration',
   templateUrl: './user-registration.component.html',
   styleUrls: ['./user-registration.component.scss']
 })

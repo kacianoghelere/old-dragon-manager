@@ -1,13 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import {
-  AuthenticationService
-} from '../../authentication/authentication.service';
+import { AuthenticationService } from '../../authentication/authentication.service';
 import { User } from '../../shared/entities/user';
 import { UsersService } from '../../users/users.service';
 
 @Component({
-  selector: 'app-navigation',
+  selector: 'layout-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss']
 })

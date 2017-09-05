@@ -8,7 +8,7 @@ import { User } from '../../shared/entities/user';
 import { UsersService } from '../users.service';
 
 @Component({
-  selector: 'app-user-profile',
+  selector: 'user-profile',
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.scss']
 })

@@ -3,25 +3,26 @@ import { Subscription } from 'rxjs/Subscription';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
+import { ClassesService } from '../shared/classes.service';
 import { AuthenticationService } from '../../../../authentication/authentication.service';
 import { CharacterClass } from '../../../../shared/entities/character-class';
-import { CharacterClassType } from '../../../../shared/entities/character-class-type';
 import { Link } from '../../../../shared/entities/link';
-import { ClassesService } from '../shared/classes.service';
+import { TrailItem }  from "../../../../shared/entities/trail-item";
+import { TrailService }  from "../../../../shared/services/trail.service";
 
 @Component({
-  selector: 'app-class-details',
+  selector: 'class-details',
   templateUrl: './class-details.component.html',
   styleUrls: ['./class-details.component.scss']
 })
-export class ClassDetailsComponent implements OnInit {
+export class ClassDetailsComponent implements OnInit, OnDestroy {
 
   // Public variables
   // ---------------------------------------------------------------------------
   subscription: Subscription;
   characterClass: CharacterClass;
   currentTab: number = 1;
-  trail: Link[];
+  trailItem: TrailItem;
 
   //
   // Functions
@@ -31,17 +32,18 @@ export class ClassDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthenticationService,
-    private classesService: ClassesService
-  ) {
-    this.trail = [
-      {title: 'Personagens', route: '/main/characters'},
-      {title: 'Classes', route: '/main/characters/classes'}
-    ]
-  }
+    private classesService: ClassesService,
+    private trailService: TrailService
+  ) {  }
 
   //
   // Lifecycle hooks functions
   // ---------------------------------------------------------------------------
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+    this.trailService.remove(this.trailItem);
+  }
 
   ngOnInit() {
     this.characterClass = new CharacterClass;
@@ -51,10 +53,15 @@ export class ClassDetailsComponent implements OnInit {
         this.subscription = this.classesService.showcase(id)
           .subscribe((response) => {
             this.characterClass = response;
-            console.log(this.characterClass);
+            this.fireTrailChange();
           });
       }
     });
+  }
+
+  fireTrailChange() {
+    this.trailItem = {title: this.characterClass.name};
+    this.trailService.add(this.trailItem);
   }
 
   isSelectedTab(index: number): boolean {

@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+
+import { TrailBuilder }  from "../../../../shared/entities/trail-builder";
+import { TrailService }  from "../../../../shared/services/trail.service";
 
 @Component({
-  selector: 'app-classes',
-  templateUrl: './classes.component.html',
+  selector: 'classes',
+  template: '<router-outlet></router-outlet>',
   styleUrls: ['./classes.component.scss']
 })
-export class ClassesComponent implements OnInit {
+export class ClassesComponent extends TrailBuilder {
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(trailService: TrailService) {
+    super(trailService, {title: 'Classes', route: '/main/characters/classes'});
   }
-
 }

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { SharedModule } from '../../../shared/shared.module';
 import { UtilModule } from '../../../util/util.module';
 import { SheetRoutingModule} from './sheet-routing.module';
 import { SheetComponent } from './sheet/sheet.component';
@@ -18,7 +17,6 @@ import { SheetCharacterThiefTalentsComponent } from './sheet-character-thief-tal
 @NgModule({
   imports: [
     CommonModule,
-    SharedModule,
     SheetRoutingModule,
     UtilModule
   ],

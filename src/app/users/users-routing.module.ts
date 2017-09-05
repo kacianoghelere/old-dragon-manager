@@ -4,12 +4,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { UsersComponent } from './users/users.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import {
-  UserRegistrationComponent
-} from './user-registration/user-registration.component';
+import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
-import { AuthenticationGuard } from '../authentication/authentication.guard';
-import { AuthenticatedGuard } from '../authentication/authenticated.guard';
+import { AuthenticationGuard } from '../shared/guards/authentication.guard';
+import { AuthenticatedGuard } from '../shared/guards/authenticated.guard';
 
 const usersRoutes: Routes = [
   {

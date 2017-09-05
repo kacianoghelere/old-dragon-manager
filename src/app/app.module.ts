@@ -5,6 +5,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { AppComponent } from './app.component';
 import { ValidatorsService } from './shared/services/validators.service';
 import { AuthenticationModule } from './authentication/authentication.module';
@@ -20,6 +22,7 @@ import { AppRoutingModule } from './app-routing.module';
     BrowserModule,
     FormsModule,
     HttpModule,
+    NgbModule.forRoot(),
     AuthenticationModule,
     SharedModule,
     UtilModule,

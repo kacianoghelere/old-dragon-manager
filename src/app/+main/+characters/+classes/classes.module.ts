@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { SharedModule } from '../../../shared/shared.module';
 import { ClassesRoutingModule } from './classes-routing.module';
 import { ClassesComponent } from './classes/classes.component';
 import { ClassDetailsComponent } from './class-details/class-details.component';
@@ -16,7 +15,6 @@ import { ClassUndeadBanesComponent } from './class-details/class-undead-banes/cl
 @NgModule({
   imports: [
     CommonModule,
-    SharedModule,
     ClassesRoutingModule
   ],
   declarations: [

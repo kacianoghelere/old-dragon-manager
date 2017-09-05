@@ -1,6 +1,7 @@
 <div class="card-deck">
-  <a class="card card-blurred" [routerLink]="[link.route]" *ngFor="let link of links">
-    <div class="card-picture-top">
+  <a class="card card-blurred" [routerLink]="[link.route]"
+      *ngFor="let link of links">
+    <div class="card-picture-top small">
       <img class="card-img-top" [src]="link.picture" alt="link.title">
     </div>
     <div class="card-body">

@@ -1,54 +1,52 @@
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">
-    <img class="brand-logo" src="./assets/od_logo.png" [alt]="title">
-  </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse"
-          data-target="#navbarTogglableContent"
-          aria-controls="navbarTogglableContent"
-          aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" [routerLink]="['/']">
+      <img class="brand-logo" src="./assets/od_logo.png" [alt]="title">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarTogglableContent"
+            aria-controls="navbarTogglableContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <div class="collapse navbar-collapse" id="navbarTogglableContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item" *ngIf="authenticated" [routerLinkActive]="['active']">
-        <a class="nav-link" [routerLink]="['/main']">
-          <i class="fa fa-home fa-lg"></i> Principal
-        </a>
-      </li>
-      <li class="nav-item" *ngIf="authenticated" [routerLinkActive]="['active']">
-        <a class="nav-link" [routerLink]="['/users']">
-          <i class="fa fa-users fa-lg"></i> Usuários
-        </a>
-      </li>
-    </ul>
+    <div class="collapse navbar-collapse" id="navbarTogglableContent">
+      <ul class="navbar-nav mr-auto"></ul>
 
-    <ul class="navbar-nav my-2 my-lg-0">
-      <li class="nav-item" [routerLinkActive]="['active']">
-        <a class="nav-link" [routerLink]="['/example']">
-          <i class="fa fa-list-alt fa-lg"></i> Templates
-        </a>
-      </li>
-      <li class="nav-item" *ngIf="!authenticated" [routerLinkActive]="['active']">
-        <a class="nav-link" [routerLink]="['/users/registration']">
-          <i class="fa fa-user-plus fa-lg"></i> Registrar-se
-        </a>
-      </li>
-      <li class="nav-item" *ngIf="!authenticated" [routerLinkActive]="['active']">
-        <a class="nav-link" [routerLink]="['/login']">
-          <i class="fa fa-sign-in fa-lg"></i> Entrar
-        </a>
-      </li>
-      <li class="nav-item" *ngIf="authenticated" [routerLinkActive]="['active']">
-        <a class="nav-link" [routerLink]="['/users/profile/', currentUser.id]">
-          <i class="fa fa-user-circle-o fa-lg"></i> Minha Conta
-        </a>
-      </li>
-      <li class="nav-item" *ngIf="authenticated" [routerLinkActive]="['active']">
-        <a class="nav-link" [routerLink]="['/welcome']" (click)="logout()">
-          <i class="fa fa-sign-out fa-lg"></i> Sair
-        </a>
-      </li>
-    </ul>
+      <ul class="navbar-nav my-2 my-lg-0">
+        <li class="nav-item" [routerLinkActive]="['active']">
+          <a class="nav-link" [routerLink]="['/example']">
+            <i class="fa fa-list-alt fa-lg"></i> Templates
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="!authenticated"
+            [routerLinkActive]="['active']">
+          <a class="nav-link" [routerLink]="['/users/registration']">
+            <i class="fa fa-user-plus fa-lg"></i> Registrar-se
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="!authenticated"
+            [routerLinkActive]="['active']">
+          <a class="nav-link" [routerLink]="['/login']">
+            <i class="fa fa-sign-in fa-lg"></i> Entrar
+          </a>
+        </li>
+        <li class="nav-item dropdown" ngbDropdown *ngIf="authenticated">
+          <a class="nav-link pointer" id="options" ngbDropdownToggle>
+            <i class="fa fa-cog fa-lg"></i> Opções
+          </a>
+          <div class="bg-dark" ngbDropdownMenu aria-labelledby="options">
+            <a class="dropdown-item text-light"
+                [routerLink]="['/users/profile/', currentUser.id]">
+              <i class="fa fa-user-circle-o fa-lg"></i> Minha Conta
+            </a>
+            <a class="dropdown-item text-light" [routerLink]="['/welcome']"
+                (click)="logout()">
+              <i class="fa fa-sign-out fa-lg"></i> Sair
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>

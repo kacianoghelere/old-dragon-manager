@@ -1,0 +1,23 @@
+.breadcrumb {
+  background-color: #444;
+  border-radius: 0;
+  font-size: 90%;
+  margin: 0;
+  padding: 0;
+
+  .breadcrumb-item { padding: 5px 0; }
+
+  .breadcrumb-item + .breadcrumb-item::before {
+    color: #aaa;
+    content: "/";
+  }
+
+  a { color: #fff; }
+
+  span { color: #eee; }
+
+  .brand:hover > a { text-decoration: underline; }
+
+  .brand:hover > .mega-menu { display: block; }
+
+}
