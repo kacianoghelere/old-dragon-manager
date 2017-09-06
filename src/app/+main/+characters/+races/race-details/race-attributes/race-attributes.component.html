@@ -1,0 +1,64 @@
+<!--
+      t.decimal  :min_height,                 precision: 10, default: 0
+      t.decimal  :max_height,                 precision: 10, default: 0
+      t.decimal  :min_weight,                 precision: 10
+      t.decimal  :max_weight,                 precision: 10
+      t.integer  :maturity,        limit: 4
+      t.integer  :max_age,         limit: 4
+      t.integer  :movement_base,   limit: 4,                 default: 1, null: false
+      t.integer  :armor_class_mod, limit: 4,                 default: 0, null: false
+      t.integer  :str_mod,         limit: 4,                 default: 0, null: false
+      t.integer  :dex_mod,         limit: 4,                 default: 0, null: false
+      t.integer  :cons_mod,        limit: 4,                 default: 0, null: false
+      t.integer  :int_mod,         limit: 4,                 default: 0, null: false
+      t.integer  :wis_mod,         limit: 4,                 default: 0, null: false
+      t.integer  :char_mod,        limit: 4,                 default: 0, null: false
+      t.integer  :alignment_id,    limit: 8,                             null: false
+      t.integer  :dice_id,         limit: 8
+      t.integer  :user_id,         limit: 8,
+ -->
+<div class="card race-attributes">
+  <div class="card-header">
+    <p class="card-title">{{characterRace.name}} em Jogo</p>
+  </div>
+  <div class="card-body">
+    <div class="row col-sm-12 col-md-4">
+      <b>Maturidade:</b> {{characterRace.maturity}} anos
+    </div>
+    <div class="row col-sm-12 col-md-4">
+      <b>Idade Máx. Aprox.:</b> {{characterRace.max_age}} anos
+    </div>
+    <div class="row col-sm-12 col-md-4">
+      <b>Altura:</b> {{characterRace.min_height}} ~ {{characterRace.max_height}}
+    </div>
+    <div class="row col-sm-12 col-md-4">
+      <b>Peso:</b>  {{characterRace.min_weight}} ~ {{characterRace.max_weight}}
+    </div>
+    <div class="row col-sm-12 col-md-4">
+      <b>Mov. Base:</b> {{characterRace.movement_base}} metros
+    </div>
+  </div>
+  <div class="card-header">
+    Modificadores
+  </div>
+  <div class="card-body">
+    <div class="row col-sm-6 col-md-4">
+      <b>FOR:</b> {{characterRace.val}}
+    </div>
+    <div class="row col-sm-6 col-md-4">
+      <b>DES:</b> {{characterRace.val}}
+    </div>
+    <div class="row col-sm-6 col-md-4">
+      <b>CON:</b> {{characterRace.val}}
+    </div>
+    <div class="row col-sm-6 col-md-4">
+      <b>INT:</b> {{characterRace.val}}
+    </div>
+    <div class="row col-sm-6 col-md-4">
+      <b>SAB:</b> {{characterRace.val}}
+    </div>
+    <div class="row col-sm-6 col-md-4">
+      <b>INT:</b> {{characterRace.val}}
+    </div>
+  </div>
+</div>

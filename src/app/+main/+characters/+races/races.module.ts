@@ -6,6 +6,8 @@ import { RacesComponent } from './races/races.component';
 import { RaceDetailsComponent } from './race-details/race-details.component';
 import { RacesListComponent } from './races-list/races-list.component';
 import { RacesService } from './shared/races.service';
+import { RaceLoreComponent } from './race-details/race-lore/race-lore.component';
+import { RaceAttributesComponent } from './race-details/race-attributes/race-attributes.component';
 
 @NgModule({
   imports: [
@@ -15,7 +17,9 @@ import { RacesService } from './shared/races.service';
   declarations: [
     RacesComponent,
     RaceDetailsComponent,
-    RacesListComponent
+    RacesListComponent,
+    RaceLoreComponent,
+    RaceAttributesComponent
   ],
   providers: [RacesService]
 })
