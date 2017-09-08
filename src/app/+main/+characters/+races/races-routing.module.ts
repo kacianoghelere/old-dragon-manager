@@ -10,8 +10,8 @@ const racesRoutes: Routes = [
     path: '',
     component: RacesComponent,
     children: [
-      {path: '', component: RacesListComponent},
-      {path: 'details/:id', component: RaceDetailsComponent}
+      {path: ':id', component: RaceDetailsComponent},
+      {path: '', component: RacesListComponent}
     ]
   }
 ];

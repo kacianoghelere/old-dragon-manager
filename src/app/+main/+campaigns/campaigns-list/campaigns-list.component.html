@@ -4,11 +4,13 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let campaign of campaigns">
+  <div class="col-sm-12 col-md-6 col-lg-4"
+      *ngFor="let campaign of campaigns">
     <a class="card card-blurred" [routerLink]="[campaign.id]">
       <img class="card-img" [src]="campaign.cover_picture" alt="picture">
       <div class="card-img-overlay">
         <h4 class="card-title">{{campaign.title}}</h4>
+        <p class="card-text">{{campaign.characters.length}} persongagens</p>
         <p class="card-text">{{campaign.description}}</p>
       </div>
     </a>

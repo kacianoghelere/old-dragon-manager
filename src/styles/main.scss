@@ -6,9 +6,17 @@ $icon-font-path: '../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
 // @import "assets/_bootswatch.scss";
 
 /* You can add global styles to this file, and also import other style files */
-// body { background-color: #FBF4E8; }
+body {
+  background: url('/assets/dices-bg.jpg') repeat;
+  background-color: #333;
+}
 
-.content { margin-top: 90px; }
+.content {
+  background-color: #fff;
+  -webkit-box-shadow: 0 1px 15px rgba(255,255,255,.12), 0 1px 2px rgba(255,255,255,.24);
+  -moz-box-shadow: 0 1px 15px rgba(255,255,255,.12), 0 1px 2px rgba(255,255,255,.24);
+  box-shadow: 0 1px 15px rgba(255,255,255,.12), 0 1px 2px rgba(255,255,255,.24);
+}
 
 .page-header { margin: 10px 0; }
 
@@ -154,7 +162,7 @@ fieldset[disabled] .form-control.ninja-input,
     text-decoration: none;
   }
 
-  .title {
+  .character-title {
     color: #888;
     display: block;
     font-size: 70%;
@@ -162,7 +170,7 @@ fieldset[disabled] .form-control.ninja-input,
     font-style: italic;
   }
 
-  .infos {
+  .character-info {
     padding: 0;
     border-top: 1px solid #ccc;
     margin: 0;

@@ -1,3 +1,5 @@
+<h5 class="title">Afastar Mortos-Vivos</h5>
+
 <table class="table table-striped table-hover table-sm table-responsive"
     *ngIf="!emptyCollection(characterClass.undead_banes)">
   <thead>
@@ -48,19 +50,19 @@
   </tbody>
   <tfoot>
     <tr>
-      <th colspan="19">
-        N = sem efeito, o poder do personagem não é suficiente para afastá-los.
-      </th>
+      <td colspan="19">
+        <b>N:</b> sem efeito, o poder do personagem não é suficiente para afastá-los.
+      </td>
     </tr>
     <tr>
-      <th colspan="19">
-        A = automaticamente afasta os mortos-vivos.
-      </th>
+      <td colspan="19">
+        <b>A:</b> automaticamente afasta os mortos-vivos.
+      </td>
     </tr>
     <tr>
-      <th colspan="19">
-        D = destrói os mortos-vivos.
-      </th>
+      <td colspan="19">
+        <b>D:</b> destrói os mortos-vivos.
+      </td>
     </tr>
   </tfoot>
 </table>

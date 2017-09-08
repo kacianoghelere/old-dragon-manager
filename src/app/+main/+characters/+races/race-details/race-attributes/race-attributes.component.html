@@ -1,64 +1,43 @@
-<!--
-      t.decimal  :min_height,                 precision: 10, default: 0
-      t.decimal  :max_height,                 precision: 10, default: 0
-      t.decimal  :min_weight,                 precision: 10
-      t.decimal  :max_weight,                 precision: 10
-      t.integer  :maturity,        limit: 4
-      t.integer  :max_age,         limit: 4
-      t.integer  :movement_base,   limit: 4,                 default: 1, null: false
-      t.integer  :armor_class_mod, limit: 4,                 default: 0, null: false
-      t.integer  :str_mod,         limit: 4,                 default: 0, null: false
-      t.integer  :dex_mod,         limit: 4,                 default: 0, null: false
-      t.integer  :cons_mod,        limit: 4,                 default: 0, null: false
-      t.integer  :int_mod,         limit: 4,                 default: 0, null: false
-      t.integer  :wis_mod,         limit: 4,                 default: 0, null: false
-      t.integer  :char_mod,        limit: 4,                 default: 0, null: false
-      t.integer  :alignment_id,    limit: 8,                             null: false
-      t.integer  :dice_id,         limit: 8
-      t.integer  :user_id,         limit: 8,
- -->
-<div class="card race-attributes">
-  <div class="card-header">
-    <p class="card-title">{{characterRace.name}} em Jogo</p>
-  </div>
-  <div class="card-body">
-    <div class="row col-sm-12 col-md-4">
-      <b>Maturidade:</b> {{characterRace.maturity}} anos
+<section>
+  <article class="card">
+    <div class="card-body">
+      <h5 class="card-title">Características</h5>
+      <p class="card-text">Atingem a maturidade aos {{characterRace.maturity}}
+        anos.</p>
+      <p class="card-text">Tendem a viver até {{characterRace.max_age}} anos</p>
+      <p class="card-text">Em média, sua altura varia entre
+        {{characterRace.min_height}} e {{characterRace.max_height}} metros</p>
+      <p class="card-text">Seu peso médio varia entre
+        {{characterRace.min_weight}} kg e {{characterRace.max_weight}} kg</p>
+      <p class="card-text">A movimentação base é {{characterRace.movement_base}}
+        metros</p>
     </div>
-    <div class="row col-sm-12 col-md-4">
-      <b>Idade Máx. Aprox.:</b> {{characterRace.max_age}} anos
+  </article>
+
+  <article class="card">
+    <div class="card-body">
+      <h5 class="card-title">Modificadores</h5>
+      <p *ngIf="characterRace.str_mod != 0">
+        <b>Força:</b> {{characterRace.str_mod}}
+      </p>
+      <p *ngIf="characterRace.dex_mod != 0">
+        <b>Destreza:</b> {{characterRace.dex_mod}}
+      </p>
+      <p *ngIf="characterRace.cons_mod != 0">
+        <b>Constituição:</b> {{characterRace.cons_mod}}
+      </p>
+      <p *ngIf="characterRace.int_mod != 0">
+        <b>Inteligência:</b> {{characterRace.int_mod}}
+      </p>
+      <p *ngIf="characterRace.wis_mod != 0">
+        <b>Sabedoria:</b> {{characterRace.wis_mod}}
+      </p>
+      <p *ngIf="characterRace.char_mod != 0">
+        <b>Carisma:</b> {{characterRace.char_mod}}
+      </p>
+      <p *ngIf="characterRace.versatile_mod">
+        O jogador pode escolher os atributos. +2 em um atributo e -2 em outro.
+      </p>
     </div>
-    <div class="row col-sm-12 col-md-4">
-      <b>Altura:</b> {{characterRace.min_height}} ~ {{characterRace.max_height}}
-    </div>
-    <div class="row col-sm-12 col-md-4">
-      <b>Peso:</b>  {{characterRace.min_weight}} ~ {{characterRace.max_weight}}
-    </div>
-    <div class="row col-sm-12 col-md-4">
-      <b>Mov. Base:</b> {{characterRace.movement_base}} metros
-    </div>
-  </div>
-  <div class="card-header">
-    Modificadores
-  </div>
-  <div class="card-body">
-    <div class="row col-sm-6 col-md-4">
-      <b>FOR:</b> {{characterRace.val}}
-    </div>
-    <div class="row col-sm-6 col-md-4">
-      <b>DES:</b> {{characterRace.val}}
-    </div>
-    <div class="row col-sm-6 col-md-4">
-      <b>CON:</b> {{characterRace.val}}
-    </div>
-    <div class="row col-sm-6 col-md-4">
-      <b>INT:</b> {{characterRace.val}}
-    </div>
-    <div class="row col-sm-6 col-md-4">
-      <b>SAB:</b> {{characterRace.val}}
-    </div>
-    <div class="row col-sm-6 col-md-4">
-      <b>INT:</b> {{characterRace.val}}
-    </div>
-  </div>
-</div>
+  </article>
+</section>

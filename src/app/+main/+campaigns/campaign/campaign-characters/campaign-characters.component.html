@@ -5,25 +5,24 @@
 </div>
 
 <div class="row">
-  <div class="col-sm-12">
-    <div class="card-deck">
-      <a class="card" *ngFor="let character of campaign.characters">
-        <img class="card-img-top" [src]="character.picture"
-          [alt]="character.name">
-        <div class="card-block px-3">
-          <h4 class="card-title">{{character.name}}</h4>
-          <small class="card-text">{{character.title}}</small>
-          <small class="card-text">
-            {{character?.race?.name}}
-          </small>
-          <small class="card-text">
-            {{character?.class?.name}} ({{character?.specialization?.name}})
-          </small>
-          <small class="card-text">
-            {{character?.description}}
-          </small>
+  <div class="col-sm-12 col-md-6 col-lg-4" *ngFor="let character of campaign.characters">
+    <a class="character-card {{character?.alignment?.className}}">
+      <div class="header">
+        <div class="avatar">
+            <img [src]="character.picture" [alt]="character.name" />
         </div>
-      </a>
-    </div>
+        <div class="body">
+          <div class="character-name">
+              {{character.name}}
+          </div>
+          <small class="character-title">{{character.title}}</small>
+        </div>
+      </div>
+      <ul class="character-info">
+          <li>{{character?.race?.name}}</li>
+          <li>{{character?.class?.name}} ({{character?.specialization?.name}})</li>
+          <li>{{character?.description}}</li>
+      </ul>
+    </a>
   </div>
 </div>

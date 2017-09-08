@@ -25,8 +25,9 @@
 </div>
 
 <div class="card">
-  <div class="card-header">Requerimentos mínimos</div>
   <div class="card-body">
+    <p class="card-title">Requerimentos mínimos</p>
+
     <div class="row">
       <div class="col-sm-4">
         <b>FOR</b>: {{characterClass?.requirement?.str_mod}}
@@ -51,10 +52,9 @@
 </div>
 
 <div class="card">
-  <div class="card-header">
+  <div class="card-body">
     <p class="card-title">Especializações</p>
   </div>
-
   <div class="list-group">
     <a class="list-group-item"
         *ngFor="let specialization of characterClass.specializations">

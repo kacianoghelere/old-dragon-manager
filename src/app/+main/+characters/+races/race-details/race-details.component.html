@@ -1,21 +1,20 @@
 <h3 class="title">{{characterRace.name}}</h3>
 
-<div class="row">
+<section class="row">
   <div class="col-sm-5 col-md-4">
     <div class="card bg-dark text-white">
       <img class="card-img"
         src="http://fakeimg.pl/720x1280/?text={{characterRace.name}}"
         [alt]="characterRace.name">
     </div>
+
+    <race-attributes [race]="characterRace"></race-attributes>
   </div>
   <div class="col-sm-7 col-md-8">
-    <div class="row">
-      <div class="col-sm-12 col-md-12">
-        <race-lore [race]="characterRace"></race-lore>
-      </div>
-      <div class="col-sm-12 col-md-12">
-        <race-attributes [race]="characterRace"></race-attributes>
-      </div>
-    </div>
+    <race-lore [race]="characterRace"></race-lore>
+
+    <race-traits [race]="characterRace"></race-traits>
+
+    <race-skills [race]="characterRace"></race-skills>
   </div>
-</div>
+</section>

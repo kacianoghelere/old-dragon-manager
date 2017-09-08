@@ -5,37 +5,12 @@
     <class-info [characterClass]="characterClass"></class-info>
   </div>
   <div class="col-sm-7 col-md-8">
-    <div class="card">
-      <div class="card-header">
-        <div class="nav nav-tabs card-header-tabs justify-content-center">
-          <a class="nav-link" [ngClass]="{active: isSelectedTab(1)}"
-              (click)="selectTab(1)">
-            Evolução
-          </a>
-          <a class="nav-link" [ngClass]="{active: isSelectedTab(2)}"
-              (click)="selectTab(2)">
-            Talentos Ladinos
-          </a>
-          <a class="nav-link" [ngClass]="{active: isSelectedTab(3)}"
-              (click)="selectTab(3)">
-            Afastar Mortos-Vivos
-          </a>
-          <a class="nav-link" [ngClass]="{active: isSelectedTab(4)}"
-              (click)="selectTab(4)">
-            Magias
-          </a>
-        </div>
-      </div>
-      <div class="card-body card-table" [ngSwitch]="currentTab">
-        <class-mods *ngSwitchCase="1"
-          [characterClass]="characterClass"></class-mods>
-        <class-thief-talents *ngSwitchCase="2"
-          [characterClass]="characterClass"></class-thief-talents>
-        <class-undead-banes *ngSwitchCase="3"
-          [characterClass]="characterClass"></class-undead-banes>
-        <class-magic-circles *ngSwitchCase="4"
-          [characterClass]="characterClass"></class-magic-circles>
-      </div>
-    </div>
+    <class-mods [characterClass]="characterClass"></class-mods>
+
+    <class-thief-talents [characterClass]="characterClass"></class-thief-talents>
+
+    <class-undead-banes [characterClass]="characterClass"></class-undead-banes>
+
+    <class-magic-circles [characterClass]="characterClass"></class-magic-circles>
   </div>
 </div>

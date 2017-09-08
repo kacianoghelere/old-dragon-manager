@@ -8,6 +8,8 @@ import { RacesListComponent } from './races-list/races-list.component';
 import { RacesService } from './shared/races.service';
 import { RaceLoreComponent } from './race-details/race-lore/race-lore.component';
 import { RaceAttributesComponent } from './race-details/race-attributes/race-attributes.component';
+import { RaceTraitsComponent } from './race-details/race-traits/race-traits.component';
+import { RaceSkillsComponent } from './race-details/race-skills/race-skills.component';
 
 @NgModule({
   imports: [
@@ -19,7 +21,9 @@ import { RaceAttributesComponent } from './race-details/race-attributes/race-att
     RaceDetailsComponent,
     RacesListComponent,
     RaceLoreComponent,
-    RaceAttributesComponent
+    RaceAttributesComponent,
+    RaceTraitsComponent,
+    RaceSkillsComponent
   ],
   providers: [RacesService]
 })

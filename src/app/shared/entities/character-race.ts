@@ -1,5 +1,7 @@
 import { Alignment } from './alignment';
 import { Dice } from './dice';
+import { Trait } from './trait';
+import { Skill } from './skill';
 import { User } from './user';
 
 export class CharacterRace {
@@ -22,6 +24,8 @@ export class CharacterRace {
   wis_mod?: number = 0;
   char_mod?: number = 0;
   alignment?: Alignment = null;
+  traits?: Trait[];
+  skills?: Skill[];
   dice?: Dice = null;
   user: User;
 }
