@@ -22,6 +22,15 @@ export class CampaignComponent implements OnInit {
   subscription: Subscription;
   private enabledEditing: Boolean;
 
+  /**
+   * [constructor description]
+   * @param  {ActivatedRoute}         route            [description]
+   * @param  {Router}                 router           [description]
+   * @param  {FormBuilder}            formBuilder      [description]
+   * @param  {AuthenticationService}  authService      [description]
+   * @param  {CampaignsService}       campaignsService [description]
+   * @param  {CampaignWatcherService} watcherService   [description]
+   */
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -34,13 +43,16 @@ export class CampaignComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe((params) => {
       let id = params['id'];
+
       if (id) {
-        // this.subscription = this.campaignsService.find(id)
-        //   .subscribe((response) => {
-        //     this.campaign = response;
-        //     console.log(this.campaign);
-        //   });
-        this.campaign = this.campaignsService.find(id);
+        this.subscription = this.campaignsService.find(id)
+          .subscribe((response) => {
+            this.campaign = response;
+            console.log(this.campaign);
+            this.campaignForm = this.toFormGroup(this.campaign);
+          });
+      } else {
+        this.campaign = {title: '', description: ''};
         this.campaignForm = this.toFormGroup(this.campaign);
       }
     });

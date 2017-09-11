@@ -1,9 +1,10 @@
-<form [formGroup]="campaignForm" (ngSubmit)="onSubmit(campaignForm)">
+<form *ngIf="campaignForm" [formGroup]="campaignForm"
+    (ngSubmit)="onSubmit(campaignForm)">
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <a class="card">
         <div class="card-picture-top">
-          <img class="card-img-top" [src]="campaign.cover_picture"
+          <img class="card-img-top" [src]="campaign.picture"
             alt="picture">
         </div>
         <fieldset class="card-body" [disabled]="!enabledEditing">
@@ -40,12 +41,14 @@
           </nav>
         </div>
         <div class="card-body" [hidden]="!isActiveTab('J')">
-          <campaign-journals [campaignForm]="campaignForm"
-          [journals]="campaign.journals"></campaign-journals>
+          <campaign-journals *ngIf="campaignForm"
+            [campaignForm]="campaignForm"
+            [journals]="campaign.journals"></campaign-journals>
         </div>
         <div class="card-body" [hidden]="!isActiveTab('N')">
-          <campaign-notes [campaignForm]="campaignForm"
-          [notes]="campaign.notes"></campaign-notes>
+          <campaign-notes *ngIf="campaignForm"
+            [campaignForm]="campaignForm"
+            [notes]="campaign.notes"></campaign-notes>
         </div>
         <div class="card-body" [hidden]="!isActiveTab('C')">
           <campaign-characters [campaign]="campaign"></campaign-characters>

@@ -25,7 +25,7 @@ export class CampaignsService extends EntityService<Campaign> {
         title: 'Campanha 1',
         description: 'Descrição da Campanha 1',
         characters: this.charactersService.list(),
-        cover_picture: 'https://images.alphacoders.com/125/125091.jpg',
+        picture: 'https://images.alphacoders.com/125/125091.jpg',
         journals: [
           {
             title: 'Primeira sessão',
@@ -50,7 +50,7 @@ export class CampaignsService extends EntityService<Campaign> {
         title: 'Campanha 2',
         description: 'Descrição da Campanha 2',
         characters: this.charactersService.list().filter((c) => c.id % 2 == 0),
-        cover_picture: 'https://images3.alphacoders.com/152/152779.jpg',
+        picture: 'https://images3.alphacoders.com/152/152779.jpg',
         journals: [
           {
             title: 'Primeira sessão',
@@ -77,7 +77,7 @@ export class CampaignsService extends EntityService<Campaign> {
         title: 'Campanha 3',
         description: 'Descrição da Campanha 3',
         characters: this.charactersService.list().filter((c) => c.id % 2 == 0),
-        cover_picture: 'https://images3.alphacoders.com/152/152779.jpg',
+        picture: 'https://images3.alphacoders.com/152/152779.jpg',
         journals: [
           {
             title: 'Primeira sessão',
@@ -113,21 +113,21 @@ export class CampaignsService extends EntityService<Campaign> {
 
   /**
    * [find description]
-   * @param  {number}          id [description]
-   * @return {Observable<any>}    [description]
+   * @param  {number}               id [description]
+   * @return {Observable<Campaign>}    [description]
    */
-  find(id: number): Campaign {
-    // return super._find("campaigns")(id);
-    return this.campaigns.find((campaign) => campaign.id == id);
+  find(id: number): Observable<Campaign> {
+    return super._find("campaigns")(id);
+    // return this.campaigns.find((campaign) => campaign.id == id);
   }
 
   /**
    * [list description]
    * @return {Observable<any>} [description]
    */
-  list(): Campaign[] {
-    // return super._list("campaigns")();
-    return this.campaigns;
+  list(): Observable<Campaign[]> {
+    return super._list("campaigns")();
+    // return this.campaigns;
   }
 
 }

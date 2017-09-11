@@ -26,15 +26,11 @@
       <td class="text-center">x{{talents.sneak_attack}}</td>
     </tr>
   </tbody>
-  <tfoot>
-    <tr *ngFor="let category of categories">
-      <td colspan="8">
-        <small><b>{{category.label}}</b>: {{category.description}}</small>
-      </td>
-    </tr>
-  </tfoot>
 </table>
 
-<div *ngIf="emptyCollection(characterClass.thief_talents)">
-  <p>Esta classe não possui acesso à talentos ladinos</p>
+<div class="list-group-flush"
+    *ngIf="emptyCollection(characterClass.thief_talents)">
+  <p class="list-group-item" *ngFor="let category of categories">
+    <b>{{category.label}}</b>: {{category.description}}
+  </p>
 </div>

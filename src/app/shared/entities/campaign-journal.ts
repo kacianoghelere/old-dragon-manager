@@ -5,4 +5,5 @@ export class CampaignJournal {
   title: string;
   description: string;
   cover_image?: string;
+  idactive?: boolean;
 }

@@ -15,7 +15,9 @@ export class CampaignsListComponent implements OnInit {
   constructor(private campaignsService: CampaignsService) { }
 
   ngOnInit() {
-    this.campaigns = this.campaignsService.list();
+    this.campaignsService.list().subscribe((campaigns) => {
+      this.campaigns = campaigns;
+    });
   }
 
 }

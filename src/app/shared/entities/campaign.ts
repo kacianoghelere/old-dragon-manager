@@ -6,10 +6,10 @@ import { User } from './user';
 export class Campaign {
   characters?: Character[];
   description: string;
-  cover_picture?: string;
+  picture?: string;
   id?: number;
   journals?: CampaignJournal[];
   notes?: CampaignNote[];
   title: string;
-  user: User
+  user?: User
 }
