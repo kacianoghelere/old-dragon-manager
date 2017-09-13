@@ -1,11 +1,14 @@
 <div class="card bg-light journal-form" [formGroup]="journalForm">
   <div class="card-body">
-    <input class="form-control ninja-input card-title" type="text"
+    <input class="form-control ninja-input card-title form-title"
+      type="text"
       formControlName="title">
     <textarea class="form-control ninja-input card-text"
       formControlName="description"></textarea>
-    <a class="card-link text-right pointer" (click)="remove()">
-      <i class="fa fa-trash-o"></i> Remover
-    </a>
+    <div class="d-flex justify-content-end" *ngIf="canEdit()">
+      <a class="card-link text-right pointer" (click)="remove()">
+        <i class="fa fa-trash-o"></i> Remover
+      </a>
+    </div>
   </div>
 </div>

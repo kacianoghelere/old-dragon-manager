@@ -3,6 +3,7 @@ import { FormBuilder, FormArray, FormGroup, Validators } from '@angular/forms';
 
 import { Campaign } from '../../../../../shared/entities/campaign';
 import { CampaignJournal } from '../../../../../shared/entities/campaign-journal';
+import { CampaignService } from "../../shared/campaign.service";
 
 @Component({
   selector: 'campaign-journal-form',
@@ -16,13 +17,24 @@ export class CampaignJournalFormComponent implements OnInit {
   @Output('removeJournal') removeJournal: EventEmitter<CampaignJournal>;
   private journalForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private campaignService: CampaignService
+  ) {
     this.removeJournal = new EventEmitter();
   }
 
   ngOnInit() {
     this.journalForm = this.toFormGroup(this.journal);
     this.journals.push(this.journalForm);
+  }
+
+  /**
+   * Verifica se o usuário atual pode editar a campanha
+   * @return {boolean} Resultado da verificação
+   */
+  canEdit(): boolean {
+    return this.campaignService.canEdit();
   }
 
   /**

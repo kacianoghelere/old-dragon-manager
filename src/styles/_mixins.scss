@@ -1,19 +1,16 @@
 @import "~bootstrap/scss/mixins";
 
 @mixin button-background($background) {
-  background: -webkit-linear-gradient($background, darken($background, 3%));
-  background: -o-linear-gradient($background, darken($background, 3%));
-  background: linear-gradient($background, darken($background, 3%));
+  background: -webkit-linear-gradient($background, darken($background, 2%));
+  background: -o-linear-gradient($background, darken($background, 2%));
+  background: linear-gradient($background, darken($background, 2%));
 }
-
-@mixin border-config($color) { border-bottom: 2px solid lighten($color, 10%); }
 
 @mixin button-variant($background, $border, $active-background: darken($background, 7.5%), $active-border: darken($border, 10%)) {
   @include color-yiq($background);
   @include button-background($background);
   @include box-shadow($btn-box-shadow);
-  @include border-config($background);
-  text-shadow: $btn-focus-text-shadow;
+  // text-shadow: $btn-focus-text-shadow;
 
   &:hover {
     @include color-yiq($background);
@@ -41,7 +38,6 @@
   &.active,
   .show > &.dropdown-toggle {
     @include button-background($active-background);
-    // @include border-config;
     @include box-shadow($btn-active-box-shadow);
   }
 }
@@ -50,14 +46,12 @@
   color: $color;
   background-color: transparent;
   background-image: none;
-  // @include border-config;
   box-shadow: $btn-focus-box-shadow;
 
   @include hover {
     color: $color-hover;
     @include button-background($color);
-    // @include border-config;
-    text-shadow: $btn-focus-text-shadow;
+    // text-shadow: $btn-focus-text-shadow;
   }
 
   &:focus,
@@ -76,8 +70,7 @@
   .show > &.dropdown-toggle {
     color: $color-hover;
     @include button-background($active-color);
-    // @include border-config;
-    text-shadow: $btn-focus-text-shadow;
+    // text-shadow: $btn-focus-text-shadow;
   }
 }
 
@@ -85,14 +78,12 @@
   color: $color;
   background-color: transparent;
   background-image: none;
-  // @include border-config;
   border-color: transparent;
 
   @include hover {
     color: $color-hover;
     background-color: $color;
-    // @include border-config;
-    text-shadow: $btn-focus-text-shadow;
+    // text-shadow: $btn-focus-text-shadow;
   }
 
   &:focus,
@@ -100,7 +91,6 @@
     background-color: $color;
     box-shadow: 0 0 0 3px rgba($color, .5);
     color: $color-hover;
-    // @include border-config;
     border-color: $color;
   }
 
@@ -115,6 +105,5 @@
   .show > &.dropdown-toggle {
     color: $color-hover;
     @include button-background($active-color);
-    // @include border-config;
   }
 }

@@ -102,3 +102,12 @@ h6, .h6 {
 
   ul { margin: 0; }
 }
+
+.form-title {
+  font-family: "PT Serif";
+  font-size: 110%;
+
+  &.large { font-size: 150%; }
+
+  &.small { font-size: 130%; }
+}

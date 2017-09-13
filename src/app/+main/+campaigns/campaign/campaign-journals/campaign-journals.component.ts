@@ -3,7 +3,7 @@ import { FormBuilder, FormArray, FormGroup, Validators } from '@angular/forms';
 
 import { Campaign } from '../../../../shared/entities/campaign';
 import { CampaignJournal } from '../../../../shared/entities/campaign-journal';
-import { CampaignWatcherService } from "../../shared/campaign-watcher.service";
+import { CampaignService } from "../shared/campaign.service";
 
 @Component({
   selector: 'campaign-journals',
@@ -20,12 +20,12 @@ export class CampaignJournalsComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private changeDetectorRef: ChangeDetectorRef,
-    private watcherService: CampaignWatcherService
+    private campaignService: CampaignService
   ) { }
 
   ngOnInit() {
     this.campaignForm.addControl('journals', new FormArray([]));
-    this.watcherService.editingEmitter.subscribe((status) => {
+    this.campaignService.editingEmitter.subscribe((status) => {
       console.log("Mudou status de edição nos diários", status);
       this.enabledEditing = status.editing;
     });
@@ -41,6 +41,14 @@ export class CampaignJournalsComponent implements OnInit {
     };
     this.journals.push(child);
     this.changeDetectorRef.detectChanges();
+  }
+
+  /**
+   * Verifica se o usuário atual pode editar a campanha
+   * @return {boolean} Resultado da verificação
+   */
+  canEdit(): boolean {
+    return this.campaignService.canEdit();
   }
 
   /**

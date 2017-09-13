@@ -1,76 +1,43 @@
-<form *ngIf="campaignForm" [formGroup]="campaignForm"
-    (ngSubmit)="onSubmit(campaignForm)">
-  <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <a class="card">
-        <div class="card-picture-top">
-          <img class="card-img-top" [src]="campaign.picture"
-            alt="picture">
-        </div>
-        <fieldset class="card-body" [disabled]="!enabledEditing">
-          <input class="form-control ninja-input card-title"
+<layout-base [title]="campaign.title" [cover]="campaign.picture">
+  <div class="alert alert-info" role="alert">
+    <b>Informativo:</b> Este formulário atualiza os dados automaticamente
+    sempre que uma nova modificação for detectada.
+  </div>
+
+  <form *ngIf="campaignForm" [formGroup]="campaignForm"
+      (ngSubmit)="onSubmit(campaignForm)">
+    <div class="card">
+      <div class="card-body">
+        <fieldset [disabled]="!canEdit()">
+          <input class="form-control ninja-input card-title form-title large"
             type="text"
             formControlName="title">
           <textarea class="form-control ninja-input card-text"
             formControlName="description"></textarea>
         </fieldset>
-      </a>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <div class="card">
-        <div class="card-header">
-          <nav class="nav nav-tabs nav-fill card-header-tabs">
-            <a class="nav-link text-center pointer"
-                [ngClass]="activeTabClass('J')"
-                (click)="setActiveTab('J')">
-              <i class="fa fa-book"></i> Diários
-            </a>
-            <a class="nav-link text-center pointer"
-                [ngClass]="activeTabClass('N')"
-                (click)="setActiveTab('N')">
-              <i class="fa fa-sticky-note"></i> Notas
-            </a>
-            <a class="nav-link text-center pointer"
-                [ngClass]="activeTabClass('C')"
-                (click)="setActiveTab('C')">
-              <i class="fa fa-users"></i> Personagens
-            </a>
-          </nav>
-        </div>
-        <div class="card-body" [hidden]="!isActiveTab('J')">
-          <campaign-journals *ngIf="campaignForm"
-            [campaignForm]="campaignForm"
-            [journals]="campaign.journals"></campaign-journals>
-        </div>
-        <div class="card-body" [hidden]="!isActiveTab('N')">
-          <campaign-notes *ngIf="campaignForm"
-            [campaignForm]="campaignForm"
-            [notes]="campaign.notes"></campaign-notes>
-        </div>
-        <div class="card-body" [hidden]="!isActiveTab('C')">
-          <campaign-characters [campaign]="campaign"></campaign-characters>
-        </div>
       </div>
     </div>
-  </div>
 
-  <div class="floating-buttons">
-    <div *ngIf="enabledEditing">
-      <button class="btn btn-primary btn-sm btn-block" type="submit"
-          [disabled]="campaignForm.invalid">
-        <i class="fa fa-save fa-2x"></i>
-      </button>
-      <button class="btn btn-danger btn-sm btn-block" type="button"
-          (click)="setEditing(false)">
-        <i class="fa fa-ban fa-2x"></i>
-      </button>
+    <div class="card">
+      <div class="card-body">
+        <campaign-journals *ngIf="campaignForm"
+          [campaignForm]="campaignForm"
+          [journals]="campaign.journals"></campaign-journals>
+      </div>
     </div>
-    <button class="btn btn-secondary btn-outline btn-sm btn-block" type="button"
-        (click)="setEditing(true)" *ngIf="!enabledEditing">
-      <i class="fa fa-pencil fa-2x"></i>
-    </button>
-  </div>
-</form>
+
+    <div class="card">
+      <div class="card-body">
+        <campaign-notes *ngIf="campaignForm"
+          [campaignForm]="campaignForm"
+          [notes]="campaign.notes"></campaign-notes>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <campaign-characters [campaign]="campaign"></campaign-characters>
+      </div>
+    </div>
+  </form>
+</layout-base>

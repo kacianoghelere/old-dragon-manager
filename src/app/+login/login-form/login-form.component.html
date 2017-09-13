@@ -1,39 +1,43 @@
-<div class="row">
-  <div class="col-xs-12 col-sm-6 col-md-4">
-    <app-message [message]="message"></app-message>
+<layout-base title="Entrar"
+    cover="https://s-media-cache-ak0.pinimg.com/originals/d5/35/fd/d535fd18fc4a69c71fbbdc4017569216.jpg">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <app-message [message]="message"></app-message>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <form [formGroup]="loginForm" (submit)="authenticate()">
+        <form-group [field]="loginForm.controls.loginEmail">
+          <label for="loginEmail">E-mail</label>
+          <input class="form-control"
+              id="loginEmail"
+              formControlName="loginEmail"
+              [(ngModel)]="user.email"
+              type="email"
+              placeholder="exemplo@teste.com">
+        </form-group>
+
+        <form-group [field]="loginForm.controls.loginPassword">
+          <label for="loginPassword">Senha</label>
+          <input class="form-control"
+              id="loginPassword"
+              formControlName="loginPassword"
+              [(ngModel)]="user.password"
+              type="password"
+              placeholder="*******">
+        </form-group>
+
+        <div class="form-group">
+          <button class="btn btn-primary btn-block" type="submit"
+              [disabled]="!loginForm.valid">
+            <i class="fa fa-sign-in"></i> Sign-in
+          </button>
+          <a class="btn btn-default btn-block"
+              [routerLink]="['/users/registration']">
+            <i class="fa fa-user-plus"></i> Sign-up
+          </a>
+        </div>
+      </form>
+    </div>
   </div>
-
-  <div class="col-xs-12 col-sm-6 col-md-4">
-    <h2 class="title">Entrar</h2>
-    <form [formGroup]="loginForm" (submit)="authenticate()">
-      <form-group [field]="loginForm.controls.loginEmail">
-        <input class="form-control"
-            id="loginEmail"
-            formControlName="loginEmail"
-            [(ngModel)]="user.email"
-            type="email"
-            placeholder="exemplo@teste.com">
-      </form-group>
-
-      <form-group [field]="loginForm.controls.loginPassword">
-        <input class="form-control"
-            id="loginPassword"
-            formControlName="loginPassword"
-            [(ngModel)]="user.password"
-            type="password"
-            placeholder="*******">
-      </form-group>
-
-      <div class="form-group">
-        <button class="btn btn-primary btn-block" type="submit"
-            [disabled]="!loginForm.valid">
-          <i class="fa fa-sign-in"></i> Sign-in
-        </button>
-        <a class="btn btn-default btn-block"
-            [routerLink]="['/users/registration']">
-          <i class="fa fa-user-plus"></i> Sign-up
-        </a>
-      </div>
-    </form>
-  </div>
-</div>
+</layout-base>

@@ -7,9 +7,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UtilModule } from '../util/util.module';
 import { SharedModule } from '../shared/shared.module';
 import { WelcomeComponent } from './welcome/welcome.component';
-import { NavigationComponent } from './navigation/navigation.component';
-import { HeaderComponent } from './header/header.component';
+import { LayoutNavigationComponent } from './layout-navigation/layout-navigation.component';
+import { LayoutHeaderComponent } from './layout-header/layout-header.component';
 import { LayoutBreadcrumbComponent } from './layout-breadcrumb/layout-breadcrumb.component';
+import { LayoutBaseComponent } from './layout-base/layout-base.component';
 
 @NgModule({
   imports: [
@@ -21,13 +22,15 @@ import { LayoutBreadcrumbComponent } from './layout-breadcrumb/layout-breadcrumb
   ],
   declarations: [
     WelcomeComponent,
-    NavigationComponent,
-    HeaderComponent,
-    LayoutBreadcrumbComponent
+    LayoutNavigationComponent,
+    LayoutHeaderComponent,
+    LayoutBreadcrumbComponent,
+    LayoutBaseComponent
   ],
   exports: [
     WelcomeComponent,
-    HeaderComponent
+    LayoutHeaderComponent,
+    LayoutBaseComponent
   ]
 })
 export class LayoutModule { }

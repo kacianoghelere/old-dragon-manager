@@ -1,6 +1,6 @@
 <fieldset class="campaign-journals" [formGroup]="campaignForm"
-    [disabled]="!enabledEditing">
-  <h4 class="title">Diários de Campanha</h4>
+    [disabled]="!canEdit()">
+  <h4>Diários de Campanha</h4>
 
   <div formArrayName="journals">
     <div *ngFor="let journal of journals; let idx=index">
@@ -10,7 +10,7 @@
     </div>
   </div>
 
-  <div>
+  <div class="d-flex justify-content-start" *ngIf="canEdit()">
     <a class="pointer" (click)="addJournal()">
       <i class="fa fa-plus-circle"></i> Novo diário
     </a>

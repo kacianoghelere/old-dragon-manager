@@ -1,19 +1,18 @@
 <fieldset class="campaign-notes" [formGroup]="campaignForm"
-    [disabled]="!enabledEditing">
-  <h4 class="title">Anotações</h4>
+    [disabled]="!canEdit()">
+  <h4>Anotações</h4>
 
   <div class="row" formArrayName="notes">
-    <div class="col-xs-12 col-sm-6 col-md-4"
-        *ngFor="let note of notes; let idx=index">
+    <div class="col-sm-6 col-md-4" *ngFor="let note of notes; let idx=index">
       <campaign-note-form [note]="note"
         [notes]="campaignForm.controls.notes"
-        (removeJournal)="removeNote($event)"></campaign-note-form>
+        (removeNote)="removeNote($event)"></campaign-note-form>
     </div>
   </div>
 
-  <div class="row-fluid">
+  <div class="d-flex justify-content-start" *ngIf="canEdit()">
     <a class="pointer" (click)="addNote()">
-      <i class="user-plus"></i> Adicionar anotação
+      <i class="fa fa-plus-circle"></i> Adicionar anotação
     </a>
   </div>
 </fieldset>

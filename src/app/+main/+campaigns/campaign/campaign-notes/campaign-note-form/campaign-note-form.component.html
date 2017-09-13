@@ -1,7 +1,13 @@
-<div class="note rounded" [formGroup]="noteForm">
+<div class="note rounded" [formGroup]="noteForm"
+    [ngClass]="{'bg-danger': noteForm.controls.dm_only}">
   <textarea class="form-control ninja-input"
     formControlName="description"></textarea>
-  <label for="">
-    Restrito <input type="checkbox" formControlName="dm_only">
-  </label>
+  <div class="d-flex justify-content-between">
+    <label for="">
+       <input type="checkbox" formControlName="dm_only"> Material do Mestre
+    </label>
+    <a class="card-link text-right pointer" (click)="remove()">
+      <i class="fa fa-trash-o"></i> Remover
+    </a>
+  </div>
 </div>

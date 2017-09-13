@@ -1,44 +1,47 @@
-<div class="card-deck">
-  <a class="card card-blurred" [routerLink]="[link.route]"
-      *ngFor="let link of links">
-    <img class="card-img" [src]="link.picture" alt="link.title">
-    <div class="card-img-overlay">
-      <h4 class="card-title"><b>{{link.title}}</b></h4>
-      <p class="card-text">{{link.description}}</p>
-    </div>
-  </a>
-</div>
-
-<div class="page-header">
-  <h2>
-    Feed
-    <span class="pull-right">
-      <button class="btn btn-secondary btn-sm btn-minimal">
-        <i class="fa fa-refresh"></i> Atualizar
-      </button>
-      <button class="btn btn-secondary btn-sm btn-minimal">
-        <i class="fa fa-sort-amount-asc"></i> Ordenar
-      </button>
-    </span>
-  </h2>
-</div>
-
-<section class="list-group">
-  <article class="list-group-item">
-    <div class="feed-img">
-      <a href="#">
-        <img class="feed-avatar img-thumbnail" src="" alt="name">
-      </a>
-    </div>
-
-    <div class="feed-content">
-      <div class="feed-author">
-        author
-        <span class="pull-right">
-          <small class="text-muted">dd MMM yyyy - H:m</small>
-        </span>
+<layout-base title="A aventura começa aqui"
+    cover="https://2.bp.blogspot.com/-3sx0Aj6HPP4/WNFTPgoHxZI/AAAAAAAACII/QyWSx4rYm2IF4JxYx5yT_kWvPpFKVGetQCLcB/s1600/od-dm-kit.jpg">
+  <div class="card-deck">
+    <a class="card card-blurred" [routerLink]="[link.route]"
+        *ngFor="let link of links">
+      <img class="card-img" [src]="link.picture" alt="link.title">
+      <div class="card-img-overlay">
+        <h4 class="card-title"><b>{{link.title}}</b></h4>
+        <p class="card-text">{{link.description}}</p>
       </div>
-      <div class="feed-text">text</div>
-    </div>
-  </article>
-</section>
+    </a>
+  </div>
+
+  <div class="page-header">
+    <h2>
+      Feed
+      <span class="pull-right">
+        <button class="btn btn-secondary btn-sm btn-minimal">
+          <i class="fa fa-refresh"></i> Atualizar
+        </button>
+        <button class="btn btn-secondary btn-sm btn-minimal">
+          <i class="fa fa-sort-amount-asc"></i> Ordenar
+        </button>
+      </span>
+    </h2>
+  </div>
+
+  <section class="list-group">
+    <article class="list-group-item">
+      <div class="feed-img">
+        <a href="#">
+          <img class="feed-avatar img-thumbnail" src="" alt="name">
+        </a>
+      </div>
+
+      <div class="feed-content">
+        <div class="feed-author">
+          author
+          <span class="pull-right">
+            <small class="text-muted">dd MMM yyyy - H:m</small>
+          </span>
+        </div>
+        <div class="feed-text">text</div>
+      </div>
+    </article>
+  </section>
+</layout-base>

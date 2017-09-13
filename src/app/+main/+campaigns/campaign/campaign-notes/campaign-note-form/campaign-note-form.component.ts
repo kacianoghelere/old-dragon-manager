@@ -3,6 +3,7 @@ import { FormBuilder, FormArray, FormGroup, Validators } from '@angular/forms';
 
 import { Campaign } from '../../../../../shared/entities/campaign';
 import { CampaignNote } from '../../../../../shared/entities/campaign-note';
+import { CampaignService } from "../../shared/campaign.service";
 
 @Component({
   selector: 'campaign-note-form',
@@ -11,18 +12,29 @@ import { CampaignNote } from '../../../../../shared/entities/campaign-note';
 })
 export class CampaignNoteFormComponent implements OnInit {
 
-  @Input('notes') notes: FormArray;
   @Input('note') note: CampaignNote;
+  @Input('notes') notes: FormArray;
   @Output('removeNote') removeNote: EventEmitter<CampaignNote>;
   private noteForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private campaignService: CampaignService
+  ) {
     this.removeNote = new EventEmitter();
   }
 
   ngOnInit() {
     this.noteForm = this.toFormGroup(this.note);
     this.notes.push(this.noteForm);
+  }
+
+  /**
+   * Verifica se o usuário atual pode editar a campanha
+   * @return {boolean} Resultado da verificação
+   */
+  canEdit(): boolean {
+    return this.campaignService.canEdit();
   }
 
   /**

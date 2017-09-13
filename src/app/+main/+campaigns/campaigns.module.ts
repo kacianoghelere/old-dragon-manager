@@ -13,13 +13,14 @@ import { CampaignCharactersComponent } from './campaign/campaign-characters/camp
 import { CampaignJournalFormComponent } from './campaign/campaign-journals/campaign-journal-form/campaign-journal-form.component';
 import { CampaignNoteFormComponent } from './campaign/campaign-notes/campaign-note-form/campaign-note-form.component';
 import { CampaignsService } from "./shared/campaigns.service";
-import { CampaignWatcherService } from "./shared/campaign-watcher.service";
+import { LayoutModule } from '../../layout/layout.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    LayoutModule,
     CampaignsRoutingModule,
     UtilModule
   ],
@@ -34,8 +35,7 @@ import { CampaignWatcherService } from "./shared/campaign-watcher.service";
     CampaignNoteFormComponent
   ],
   providers: [
-    CampaignsService,
-    CampaignWatcherService
+    CampaignsService
   ]
 })
 export class CampaignsModule { }

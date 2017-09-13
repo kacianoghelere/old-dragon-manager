@@ -24,10 +24,13 @@ body {
 
 .pointer { cursor: pointer; }
 
+// -----------------------------------------------------------------------------
+// ninja-input
 fieldset:not([disabled]) .form-control.ninja-input,
 .form-control.ninja-input:not([readonly]) {
   background-color: transparent;
-  border: 1px dotted rgba(0, 0, 0, .3);
+  // border: 1px dotted rgba(0, 0, 0, .15);
+  border: none;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
@@ -37,7 +40,8 @@ fieldset:not([disabled]) .form-control.ninja-input,
 fieldset:not([disabled]) .form-control.ninja-input:focus,
 .form-control.ninja-input:focus:not([readonly]) {
   background-color: #fff;
-  border: 1px dotted rgba(0, 0, 0, .5);
+  // border: 1px dotted rgba(0, 0, 0, .3);
+  outline: 1px dotted rgba(0, 0, 0, .3);
   border-radius: 4px;
 }
 
@@ -59,6 +63,8 @@ fieldset[disabled] .form-control.ninja-input,
   padding: 5px;
 }
 
+// -----------------------------------------------------------------------------
+// note
 .note {
   background: #ffc;
   -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
@@ -118,6 +124,8 @@ fieldset[disabled] .form-control.ninja-input,
   border-radius: 0 0 0 5px;
 }
 
+// -----------------------------------------------------------------------------
+// character-card
 .character-card {
   background: #f0f0f0;
   border-radius: 4px;

@@ -6,13 +6,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AuthenticationService } from '../../../authentication/authentication.service';
 import { Campaign } from '../../../shared/entities/campaign';
+import { CampaignService } from './shared/campaign.service';
 import { CampaignsService } from '../shared/campaigns.service';
-import { CampaignWatcherService } from '../shared/campaign-watcher.service';
 
 @Component({
   selector: 'campaign',
   templateUrl: './campaign.component.html',
-  styleUrls: ['./campaign.component.scss']
+  styleUrls: ['./campaign.component.scss'],
+  providers: [CampaignService]
 })
 export class CampaignComponent implements OnInit {
 
@@ -20,16 +21,15 @@ export class CampaignComponent implements OnInit {
   campaign: Campaign;
   campaignForm: FormGroup;
   subscription: Subscription;
-  private enabledEditing: Boolean;
 
   /**
    * [constructor description]
-   * @param  {ActivatedRoute}         route            [description]
-   * @param  {Router}                 router           [description]
-   * @param  {FormBuilder}            formBuilder      [description]
-   * @param  {AuthenticationService}  authService      [description]
-   * @param  {CampaignsService}       campaignsService [description]
-   * @param  {CampaignWatcherService} watcherService   [description]
+   * @param  {ActivatedRoute}        route            [description]
+   * @param  {Router}                router           [description]
+   * @param  {FormBuilder}           formBuilder      [description]
+   * @param  {AuthenticationService} authService      [description]
+   * @param  {CampaignsService}      campaignsService [description]
+   * @param  {CampaignService}       campaignService  [description]
    */
   constructor(
     private route: ActivatedRoute,
@@ -37,7 +37,7 @@ export class CampaignComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthenticationService,
     private campaignsService: CampaignsService,
-    private watcherService: CampaignWatcherService
+    private campaignService: CampaignService
   ) { }
 
   ngOnInit() {
@@ -47,18 +47,14 @@ export class CampaignComponent implements OnInit {
       if (id) {
         this.subscription = this.campaignsService.find(id)
           .subscribe((response) => {
-            this.campaign = response;
-            console.log(this.campaign);
-            this.campaignForm = this.toFormGroup(this.campaign);
+            this.campaignService.campaign = this.campaign = response;
+            this.toFormGroup(this.campaign);
           });
       } else {
         this.campaign = {title: '', description: ''};
-        this.campaignForm = this.toFormGroup(this.campaign);
+        this.campaignService.campaign = this.campaign;
+        this.toFormGroup(this.campaign);
       }
-    });
-    this.watcherService.editingEmitter.subscribe((status) => {
-      console.log("Mudou status de edição nos dados principais", status);
-      this.enabledEditing = status.editing;
     });
   }
 
@@ -72,6 +68,14 @@ export class CampaignComponent implements OnInit {
   }
 
   /**
+   * Verifica se o usuário atual pode editar a campanha
+   * @return {boolean} Resultado da verificação
+   */
+  canEdit(): boolean {
+    return this.campaignService.canEdit();
+  }
+
+  /**
    * Verifica se uma aba é a aba ativa
    * @param  {any}     index Índice da aba
    * @return {Boolean}       Objeto de classe de aba ativa
@@ -80,9 +84,9 @@ export class CampaignComponent implements OnInit {
     return index === this.activeTab;
   }
 
-  onSubmit({ value, valid }: { value: Campaign, valid: boolean }) {
+  onSubmit({value, valid}: {value: Campaign, valid: boolean}) {
     console.log("Salvou!", value);
-    this.watcherService.broadcast({editing: false});
+    this.campaignService.broadcast({editing: false});
   }
 
   /**
@@ -98,18 +102,21 @@ export class CampaignComponent implements OnInit {
    * @param {Boolean} status Permissão de edição
    */
   setEditing(status: Boolean) {
-    this.watcherService.broadcast({editing: status});
+    this.campaignService.broadcast({editing: status});
   }
 
   /**
-   * Generates a new FormGroup form the campaign
+   * Cria novo FormGroup para a campanha
    * @param  {Campaign}  journal Campaign entity
    * @return {FormGroup}         The new FormGroup
    */
-  toFormGroup(campaign: Campaign): FormGroup {
-    return this.campaignForm = this.formBuilder.group({
+  toFormGroup(campaign: Campaign) {
+    this.campaignForm = this.formBuilder.group({
       title: [this.campaign.title, Validators.required],
       description: [this.campaign.description, Validators.required]
+    });
+    this.campaignForm.valueChanges.subscribe((value) => {
+      console.log("campaignForm.valueChanges", value);
     });
   }
 }

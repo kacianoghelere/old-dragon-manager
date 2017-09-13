@@ -7,10 +7,12 @@ import { MainRoutingModule } from './main-routing.module';
 import { UtilModule } from '../util/util.module';
 import { MainHomeComponent } from './main-home/main-home.component';
 import { CharactersService } from "./shared/characters.service";
+import { LayoutModule } from '../layout/layout.module';
 
 @NgModule({
   imports: [
     CommonModule,
+    LayoutModule,
     UtilModule,
     MainRoutingModule
   ],

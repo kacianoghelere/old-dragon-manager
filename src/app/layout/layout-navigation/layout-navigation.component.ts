@@ -6,10 +6,10 @@ import { UsersService } from '../../users/users.service';
 
 @Component({
   selector: 'layout-navigation',
-  templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.scss']
+  templateUrl: './layout-navigation.component.html',
+  styleUrls: ['./layout-navigation.component.scss']
 })
-export class NavigationComponent implements OnInit {
+export class LayoutNavigationComponent implements OnInit {
 
   @Input('title') title: string = '';
 

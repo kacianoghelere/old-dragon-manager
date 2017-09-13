@@ -8,9 +8,9 @@ import { Component, OnInit, Input } from '@angular/core';
       <layout-breadcrumb></layout-breadcrumb>
     </div>
   `,
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./layout-header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class LayoutHeaderComponent implements OnInit {
 
   @Input() title: string = '';
 

@@ -11,7 +11,7 @@ export class AuthenticationService {
 
   // Public variables
   // ---------------------------------------------------------------------------
-  fakeAuth: boolean = true;
+  fakeAuth: boolean = false;
   authentication: EventEmitter<boolean>;
   // currentUser: any = {
   //   admin: true,
