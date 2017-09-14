@@ -33,7 +33,8 @@
         </li>
         <li class="nav-item dropdown" ngbDropdown *ngIf="authenticated">
           <a class="nav-link pointer" id="options" ngbDropdownToggle>
-            <i class="fa fa-cog fa-lg"></i> Opções
+            <img class="rounded-circle avatar" [src]="avatar"
+              alt="avatar"> {{currentUser.name}}
           </a>
           <div class="bg-dark" ngbDropdownMenu aria-labelledby="options">
             <a class="dropdown-item text-light"

@@ -2,22 +2,27 @@
     *ngIf="dexterityMods.length">
   <thead>
     <tr>
-      <th class="text-center">Destreza</th>
-      <th class="text-center">
+      <th class="text-center" rowspan="2">Destreza</th>
+      <th class="text-center" rowspan="2">
         Ajuste de ataque e surpresa,<br>defesa e proteção
       </th>
-      <th class="text-center">Localizar e desarmar<br>armadilhas</th>
-      <th class="text-center">Mover-se em silêncio<br>e Abrir fechaduras</th>
-      <th class="text-center">Esconder-se nas<br> sombras e Pungar</th>
+      <th class="text-center" colspan="4">Talentos Ladinos</th>
+    </tr>
+    <tr>
+      <th class="text-center">Abrir fechaduras</th>
+      <th class="text-center">Armadilhas</th>
+      <th class="text-center">Furtividade</th>
+      <th class="text-center">Pungar</th>
     </tr>
   </thead>
   <tbody>
     <tr class="text-center" *ngFor="let mod of dexterityMods">
       <td>{{mod?.value}}</td>
       <td>{{mod?.attack_mod}}</td>
-      <td>{{mod?.find_traps_mod}}</td>
-      <td>{{mod?.silent_movement_mod}}</td>
-      <td>{{mod?.stealth_mod}}</td>
+      <td>{{mod?.lockpick}}</td>
+      <td>{{mod?.traps}}</td>
+      <td>{{mod?.stealth}}</td>
+      <td>{{mod?.pickpocket}}</td>
     </tr>
   </tbody>
 </table>

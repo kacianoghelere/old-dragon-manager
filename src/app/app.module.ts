@@ -16,6 +16,7 @@ import { SharedModule } from './shared/shared.module';
 import { RolesModule } from './roles/roles.module';
 import { UsersModule } from './users/users.module';
 import { AppRoutingModule } from './app-routing.module';
+import { TrailService }  from "./shared/services/trail.service";
 
 @NgModule({
   imports: [
@@ -34,7 +35,10 @@ import { AppRoutingModule } from './app-routing.module';
   declarations: [
     AppComponent
   ],
-  providers: [ValidatorsService],
+  providers: [
+    ValidatorsService,
+    TrailService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,14 @@
+.feed {
+  .feed-img { flex-grow: 0; }
+
+  .feed-content {
+    flex-flow: column;
+    flex-grow: 1;
+    margin-left: 15px;
+
+    .feed-author {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}

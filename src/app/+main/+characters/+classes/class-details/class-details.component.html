@@ -1,16 +1,18 @@
-<h3 class="title">{{characterClass.name}}</h3>
+<layout-base *ngIf="characterClass" [title]="characterClass.name"
+    [cover]="characterClass.picture"
+    [description]="characterClass.short_description">
+  <div class="row">
+    <div class="col-sm-5 col-md-4">
+      <class-info [characterClass]="characterClass"></class-info>
+    </div>
+    <div class="col-sm-7 col-md-8">
+      <class-mods [characterClass]="characterClass"></class-mods>
 
-<div class="row">
-  <div class="col-sm-5 col-md-4">
-    <class-info [characterClass]="characterClass"></class-info>
+      <class-thief-talents [characterClass]="characterClass"></class-thief-talents>
+
+      <class-undead-banes [characterClass]="characterClass"></class-undead-banes>
+
+      <class-magic-circles [characterClass]="characterClass"></class-magic-circles>
+    </div>
   </div>
-  <div class="col-sm-7 col-md-8">
-    <class-mods [characterClass]="characterClass"></class-mods>
-
-    <class-thief-talents [characterClass]="characterClass"></class-thief-talents>
-
-    <class-undead-banes [characterClass]="characterClass"></class-undead-banes>
-
-    <class-magic-circles [characterClass]="characterClass"></class-magic-circles>
-  </div>
-</div>
+</layout-base>

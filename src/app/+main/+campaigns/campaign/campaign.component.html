@@ -1,43 +1,26 @@
-<layout-base [title]="campaign.title" [cover]="campaign.picture">
-  <div class="alert alert-info" role="alert">
-    <b>Informativo:</b> Este formulário atualiza os dados automaticamente
-    sempre que uma nova modificação for detectada.
+<layout-base *ngIf="campaign" [title]="campaign.title"
+    [cover]="campaign.picture" [description]="campaign.description">
+  <section>
+    <h4>Diários de Campanha</h4>
+    <campaign-journals [journals]="campaign.journals"></campaign-journals>
+  </section>
+
+  <section>
+    <h4>Anotações</h4>
+    <campaign-notes [notes]="campaign.notes"></campaign-notes>
+  </section>
+
+  <section>
+    <h4>Personagens</h4>
+    <campaign-characters [campaign]="campaign"></campaign-characters>
+  </section>
+
+  <div class="layout-controls">
+    <a class="btn btn-primary" [routerLink]="['edit']">
+      <i class="fa fa-edit"></i> EDITAR
+    </a>
+    <button class="btn btn-secondary" type="button">
+      <i class="fa fa-check-circle"></i> ENCERRAR
+    </button>
   </div>
-
-  <form *ngIf="campaignForm" [formGroup]="campaignForm"
-      (ngSubmit)="onSubmit(campaignForm)">
-    <div class="card">
-      <div class="card-body">
-        <fieldset [disabled]="!canEdit()">
-          <input class="form-control ninja-input card-title form-title large"
-            type="text"
-            formControlName="title">
-          <textarea class="form-control ninja-input card-text"
-            formControlName="description"></textarea>
-        </fieldset>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-body">
-        <campaign-journals *ngIf="campaignForm"
-          [campaignForm]="campaignForm"
-          [journals]="campaign.journals"></campaign-journals>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-body">
-        <campaign-notes *ngIf="campaignForm"
-          [campaignForm]="campaignForm"
-          [notes]="campaign.notes"></campaign-notes>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-body">
-        <campaign-characters [campaign]="campaign"></campaign-characters>
-      </div>
-    </div>
-  </form>
 </layout-base>

@@ -1,0 +1,32 @@
+<section class="home-feed">
+  <header class="d-flex justify-content-between">
+    <h2>Feed</h2>
+    <div>
+      <button class="btn btn-secondary btn-sm btn-minimal">
+        <i class="fa fa-refresh"></i> Atualizar
+      </button>
+      <button class="btn btn-secondary btn-sm btn-minimal">
+        <i class="fa fa-sort-amount-asc"></i> Ordenar
+      </button>
+    </div>
+  </header>
+  <article class="list-group">
+    <div class="list-group-item" *ngFor="let feed of feedList">
+      <div class="feed d-flex">
+        <div class="feed-img">
+          <a href="#">
+            <img class="feed-avatar img-thumbnail"
+              [src]="feed.author.picture" [alt]="feed.author.name">
+          </a>
+        </div>
+        <div class="feed-content">
+          <p class="feed-author">
+            <b>{{feed.author.name}}</b>
+            <small class="text-muted">{{feed.timestamp | date}}</small>
+          </p>
+          <p class="feed-text">{{feed.description}}</p>
+        </div>
+      </div>
+    </div>
+  </article>
+</section>

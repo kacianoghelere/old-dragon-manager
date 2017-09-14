@@ -1,10 +1,9 @@
-<div class="row">
-  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-    <app-message [message]="message"></app-message>
+<layout-base title="Editar Configurações">
+  <div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4">
+      <app-message [message]="message"></app-message>
+      <h2 class="title">Formulário de Cadastro</h2>
+      <user-form [user]="user" (userSubmitted)="registerUser($event)"></user-form>
+    </div>
   </div>
-
-  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-    <h2 class="title">Formulário de Cadastro</h2>
-    <user-form [user]="user" (userSubmitted)="registerUser($event)"></user-form>
-  </div>
-</div>
+</layout-base>

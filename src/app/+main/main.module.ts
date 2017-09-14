@@ -8,6 +8,7 @@ import { UtilModule } from '../util/util.module';
 import { MainHomeComponent } from './main-home/main-home.component';
 import { CharactersService } from "./shared/characters.service";
 import { LayoutModule } from '../layout/layout.module';
+import { MainFeedComponent } from './main-feed/main-feed.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { LayoutModule } from '../layout/layout.module';
   declarations: [
     MainComponent,
     AuthenticatedComponent,
-    MainHomeComponent
+    MainHomeComponent,
+    MainFeedComponent
   ],
   exports: [MainComponent],
   providers: [CharactersService]

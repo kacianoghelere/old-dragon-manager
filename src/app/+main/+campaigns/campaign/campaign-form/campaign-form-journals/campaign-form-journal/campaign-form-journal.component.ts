@@ -1,16 +1,16 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormArray, FormGroup, Validators } from '@angular/forms';
 
-import { Campaign } from '../../../../../shared/entities/campaign';
-import { CampaignJournal } from '../../../../../shared/entities/campaign-journal';
-import { CampaignService } from "../../shared/campaign.service";
+import { Campaign } from '../../../../../../shared/entities/campaign';
+import { CampaignJournal } from '../../../../../../shared/entities/campaign-journal';
+import { CampaignFormService } from '../../shared/campaign-form.service';
 
 @Component({
-  selector: 'campaign-journal-form',
-  templateUrl: './campaign-journal-form.component.html',
-  styleUrls: ['./campaign-journal-form.component.scss']
+  selector: 'campaign-form-journal',
+  templateUrl: './campaign-form-journal.component.html',
+  styleUrls: ['./campaign-form-journal.component.scss']
 })
-export class CampaignJournalFormComponent implements OnInit {
+export class CampaignFormJournalComponent implements OnInit {
 
   @Input('journals') journals: FormArray;
   @Input('journal') journal: CampaignJournal;
@@ -19,7 +19,7 @@ export class CampaignJournalFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private campaignService: CampaignService
+    private campaignService: CampaignFormService
   ) {
     this.removeJournal = new EventEmitter();
   }

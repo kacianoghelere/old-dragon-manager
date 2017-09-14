@@ -12,10 +12,12 @@ import { WisdomModsComponent } from './wisdom-mods/wisdom-mods.component';
 import { CharismaModsComponent } from './charisma-mods/charisma-mods.component';
 import { ModifiersService } from './modifiers.service';
 import { ModifiersRoutingModule } from './modifiers-routing.module';
+import { LayoutModule } from '../../layout/layout.module';
 
 @NgModule({
   imports: [
     CommonModule,
+    LayoutModule,
     ModifiersRoutingModule,
     SharedModule
   ],

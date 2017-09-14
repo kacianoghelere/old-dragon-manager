@@ -7,11 +7,15 @@ import { CampaignsRoutingModule } from './campaigns-routing.module';
 import { CampaignsListComponent } from './campaigns-list/campaigns-list.component';
 import { CampaignsComponent } from './campaigns/campaigns.component';
 import { CampaignComponent } from './campaign/campaign.component';
+import { CampaignCharactersComponent } from './campaign/campaign-characters/campaign-characters.component';
 import { CampaignJournalsComponent } from './campaign/campaign-journals/campaign-journals.component';
 import { CampaignNotesComponent } from './campaign/campaign-notes/campaign-notes.component';
-import { CampaignCharactersComponent } from './campaign/campaign-characters/campaign-characters.component';
-import { CampaignJournalFormComponent } from './campaign/campaign-journals/campaign-journal-form/campaign-journal-form.component';
-import { CampaignNoteFormComponent } from './campaign/campaign-notes/campaign-note-form/campaign-note-form.component';
+import { CampaignFormComponent } from './campaign/campaign-form/campaign-form.component';
+import { CampaignFormCharactersComponent } from './campaign/campaign-form/campaign-form-characters/campaign-form-characters.component';
+import { CampaignFormNoteComponent } from './campaign/campaign-form/campaign-form-notes/campaign-form-note/campaign-form-note.component';
+import { CampaignFormNotesComponent } from './campaign/campaign-form/campaign-form-notes/campaign-form-notes.component';
+import { CampaignFormJournalComponent } from './campaign/campaign-form/campaign-form-journals/campaign-form-journal/campaign-form-journal.component';
+import { CampaignFormJournalsComponent } from './campaign/campaign-form/campaign-form-journals/campaign-form-journals.component';
 import { CampaignsService } from "./shared/campaigns.service";
 import { LayoutModule } from '../../layout/layout.module';
 
@@ -31,8 +35,12 @@ import { LayoutModule } from '../../layout/layout.module';
     CampaignJournalsComponent,
     CampaignNotesComponent,
     CampaignCharactersComponent,
-    CampaignJournalFormComponent,
-    CampaignNoteFormComponent
+    CampaignFormComponent,
+    CampaignFormJournalsComponent,
+    CampaignFormNotesComponent,
+    CampaignFormJournalComponent,
+    CampaignFormNoteComponent,
+    CampaignFormCharactersComponent
   ],
   providers: [
     CampaignsService

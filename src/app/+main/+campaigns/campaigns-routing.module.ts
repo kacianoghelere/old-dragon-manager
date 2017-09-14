@@ -4,15 +4,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { CampaignsComponent } from './campaigns/campaigns.component';
 import { CampaignsListComponent } from './campaigns-list/campaigns-list.component';
 import { CampaignComponent } from './campaign/campaign.component';
-import { CampaignJournalsComponent } from './campaign/campaign-journals/campaign-journals.component';
-import { CampaignNotesComponent } from './campaign/campaign-notes/campaign-notes.component';
-import { CampaignCharactersComponent } from './campaign/campaign-characters/campaign-characters.component';
+import { CampaignFormComponent } from './campaign/campaign-form/campaign-form.component';
 
 const routes: Routes = [
   {
     path: '',
     component: CampaignsComponent,
     children: [
+      { path: ':id/edit', component: CampaignFormComponent },
       { path: ':id', component: CampaignComponent },
       { path: '', component: CampaignsListComponent }
     ]

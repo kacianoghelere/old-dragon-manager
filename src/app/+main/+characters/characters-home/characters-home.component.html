@@ -1,12 +1,14 @@
-<div class="card-deck">
-  <a class="card card-blurred" [routerLink]="[link.route]"
-      *ngFor="let link of links">
-    <div class="card-picture-top">
-      <img class="card-img-top" [src]="link.picture" alt="link.title">
-    </div>
-    <div class="card-body">
-      <h4 class="card-title">{{link.title}}</h4>
-      <p class="card-text">{{link.description}}</p>
-    </div>
-  </a>
-</div>
+<layout-base title="Personagens">
+  <div class="card-deck">
+    <a class="card card-blurred" [routerLink]="[link.route]"
+        *ngFor="let link of links">
+      <div class="card-picture-top">
+        <img class="card-img-top" [src]="link.picture" alt="link.title">
+      </div>
+      <div class="card-body">
+        <h4 class="card-title">{{link.title}}</h4>
+        <p class="card-text">{{link.description}}</p>
+      </div>
+    </a>
+  </div>
+</layout-base>

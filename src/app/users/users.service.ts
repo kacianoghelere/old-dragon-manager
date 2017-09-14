@@ -17,7 +17,7 @@ export class UsersService extends EntityService<User> {
   }
 
   /**
-   * Generates the link to gravatar using the user email address
+   * Cria o link para o gravatar usando o e=mail do usuário
    * @param  {string} email User email address
    * @return {string}       Link to gravatar
    */

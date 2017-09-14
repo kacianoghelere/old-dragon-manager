@@ -1,16 +1,16 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormArray, FormGroup, Validators } from '@angular/forms';
 
-import { Campaign } from '../../../../../shared/entities/campaign';
-import { CampaignNote } from '../../../../../shared/entities/campaign-note';
-import { CampaignService } from "../../shared/campaign.service";
+import { Campaign } from '../../../../../../shared/entities/campaign';
+import { CampaignNote } from '../../../../../../shared/entities/campaign-note';
+import { CampaignFormService } from '../../shared/campaign-form.service';
 
 @Component({
-  selector: 'campaign-note-form',
-  templateUrl: './campaign-note-form.component.html',
-  styleUrls: ['./campaign-note-form.component.scss']
+  selector: 'campaign-form-note',
+  templateUrl: './campaign-form-note.component.html',
+  styleUrls: ['./campaign-form-note.component.scss']
 })
-export class CampaignNoteFormComponent implements OnInit {
+export class CampaignFormNoteComponent implements OnInit {
 
   @Input('note') note: CampaignNote;
   @Input('notes') notes: FormArray;
@@ -19,7 +19,7 @@ export class CampaignNoteFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private campaignService: CampaignService
+    private campaignService: CampaignFormService
   ) {
     this.removeNote = new EventEmitter();
   }

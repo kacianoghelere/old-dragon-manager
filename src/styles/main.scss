@@ -6,16 +6,18 @@ $icon-font-path: '../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
 // @import "assets/_bootswatch.scss";
 
 /* You can add global styles to this file, and also import other style files */
-body {
-  // background: url('/assets/dices-bg.jpg') repeat;
-  // background-color: #333;
+html, body {
+  height: 100%;
+  width: 100%;
 }
+
+body { background-color: #c43030; }
 
 .content {
   background-color: #fff;
-  -webkit-box-shadow: 0 1px 15px rgba(255,255,255,.12), 0 1px 2px rgba(255,255,255,.24);
-  -moz-box-shadow: 0 1px 15px rgba(255,255,255,.12), 0 1px 2px rgba(255,255,255,.24);
-  box-shadow: 0 1px 15px rgba(255,255,255,.12), 0 1px 2px rgba(255,255,255,.24);
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .page-header { margin: 10px 0; }

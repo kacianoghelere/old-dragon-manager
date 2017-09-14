@@ -13,6 +13,7 @@ import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { UsersService } from './users.service';
 import { UtilModule } from '../util/util.module';
 import { UsersRoutingModule } from './users-routing.module';
+import { LayoutModule } from '../layout/layout.module';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { UsersRoutingModule } from './users-routing.module';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    LayoutModule,
     UtilModule,
     UsersRoutingModule
   ],

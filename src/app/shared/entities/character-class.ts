@@ -13,6 +13,7 @@ export class CharacterClass {
   id: number;
   name: string;
   description?: string;
+  short_description?: string;
   dice?: Dice;
   perk?: Perk;
   requirement?: AttributeRequirement;

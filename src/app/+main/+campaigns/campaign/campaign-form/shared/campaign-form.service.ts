@@ -1,13 +1,13 @@
 import { Injectable, EventEmitter } from '@angular/core';
 
-import { Campaign } from '../../../../shared/entities/campaign';
-import { AuthenticationService } from '../../../../authentication/authentication.service';
+import { Campaign } from '../../../../../shared/entities/campaign';
+import { AuthenticationService } from '../../../../../authentication/authentication.service';
 
 @Injectable()
 /**
  * Service de controle de formulário de campanhas
  */
-export class CampaignService {
+export class CampaignFormService {
 
   campaign: Campaign;
   editingEmitter: EventEmitter<{editing: Boolean}>;

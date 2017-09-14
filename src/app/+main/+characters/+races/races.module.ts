@@ -10,10 +10,12 @@ import { RaceLoreComponent } from './race-details/race-lore/race-lore.component'
 import { RaceAttributesComponent } from './race-details/race-attributes/race-attributes.component';
 import { RaceTraitsComponent } from './race-details/race-traits/race-traits.component';
 import { RaceSkillsComponent } from './race-details/race-skills/race-skills.component';
+import { LayoutModule } from '../../../layout/layout.module';
 
 @NgModule({
   imports: [
     CommonModule,
+    LayoutModule,
     RacesRoutingModule
   ],
   declarations: [

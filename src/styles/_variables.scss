@@ -95,16 +95,16 @@ $grays: (
   900: $gray-900
 ) !default;
 
-$blue:    #2b5e8a !default;
+$blue:    #306795 !default;
 $cyan:    #3eb5cf !default;
-$green:   #549e54 !default;
+$green:   #5ba65b !default;
 $indigo:  #64498f !default;
 $orange:  #f0ad4e !default;
 $pink:    #ff5b77 !default;
 $purple:  #613d7c !default;
-$red:     #b64643 !default;
+$red:     #be4d4a !default;
 $teal:    #66b7cf !default;
-$yellow:  #d2bb42 !default;
+$yellow:  #dfbd42 !default;
 
 $colors: (
   blue: $blue,
@@ -124,7 +124,7 @@ $colors: (
 
 $theme-colors: (
   primary: $blue,
-  secondary: $gray-400,
+  secondary: $gray-200,
   success: $green,
   info: $cyan,
   warning: $yellow,
@@ -369,10 +369,10 @@ $input-btn-padding-x-lg:    1rem !default;
 $input-btn-line-height-lg:  1.5 !default;
 
 $btn-font-weight:                $font-weight-normal !default;
-$btn-box-shadow:                 inset 0 3px 15px rgba($white, .2), 0 1px 1px rgba($black, .2) !default;
-$btn-focus-box-shadow:           inset 0 0 10px rgba($black,.5) !default;
+$btn-box-shadow:                 0 4px 6px rgba(50,50,93,0.3), 0 1px 3px rgba(0,0,0,0.3) !default;
+$btn-focus-box-shadow:           $btn-box-shadow !default;
 $btn-focus-text-shadow:          0 1px 1px rgba($black, .5) !default;
-$btn-active-box-shadow:          inset 0 3px 5px rgba($white, .125) !default;
+$btn-active-box-shadow:          0 4px 6px rgba(50,50,93,0.3) !default;
 
 $btn-link-disabled-color:        $gray-600 !default;
 

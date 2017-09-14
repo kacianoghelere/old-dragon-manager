@@ -25,7 +25,7 @@ export class LayoutNavigationComponent implements OnInit {
     private authService: AuthenticationService,
     private usersService: UsersService
   ) {
-    this.authService.authentication.subscribe((authenticated) => {
+    this.authService.authentication.subscribe((authenticated: boolean) => {
       this.authenticated = authenticated;
     });
   }

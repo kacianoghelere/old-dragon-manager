@@ -4,23 +4,14 @@ import { RouterModule } from '@angular/router';
 
 import { ApiService } from './api.service';
 import { ToasterService } from './toaster.service';
-import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
-import { TrailService }  from "./services/trail.service";
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule
   ],
-  declarations: [
-    BreadcrumbComponent
-  ],
-  exports: [
-    BreadcrumbComponent
-  ],
   providers: [
-    ApiService,
-    TrailService
+    ApiService
   ]
 })
 export class SharedModule { }

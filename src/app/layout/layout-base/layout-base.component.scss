@@ -1,36 +1,62 @@
 .layout-base {
-  box-shadow: 0 1px 3px rgba(0,0,0, .3);
-  border-radius: 4px;
+  // background-color: #c43030;
+  background: linear-gradient(transparent, #c43030 300px),
+              url('/assets/cover-cropped.jpg');
+  background-attachment: fixed;
+  background-color: #c43030;
+  background-position: center 80px;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
   float: left;
-  height: auto;
-  margin-top: 100px;
+  height: 100%;
   width: 100%;
+  padding: 105px 0 15px 0;
 
-  header {
-    background-color: #ddd;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-bottom: 3px solid #ccc;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    float: left;
-    height: 200px;
-    max-height: 200px;
-    min-height: 200px;
-    padding: 15px;
-    width: 100%;
-
-    h1 {
-      color: #fff;
-      text-shadow: 0 1px 5px rgba(0, 0, 0, .7);
-    }
-  }
-
-  main {
+  .content {
+    background-color: #fff;
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 4px;
     float: left;
     height: auto;
-    padding: 15px;
+    // margin-top: 105px;
     width: 100%;
+
+    header {
+      background-color: #ddd;
+      background-image: url('/assets/cover-sliced.jpg');
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      border-bottom: 3px solid #ccc;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+      float: left;
+      height: 200px;
+      max-height: 200px;
+      min-height: 200px;
+      padding: 15px;
+      position: relative;
+      width: 100%;
+
+      h1, p {
+        color: #fff;
+        text-shadow: 0 0px 30px rgba(0, 0, 0, 1), 0 1px 3px rgba(0, 0, 0, .8);
+      }
+
+      /deep/ .layout-controls {
+        align-self: flex-end;
+        bottom: -16px;
+        position: absolute;
+      }
+    }
+
+    main {
+      float: left;
+      height: auto;
+      padding: 15px;
+      width: 100%;
+    }
   }
 }

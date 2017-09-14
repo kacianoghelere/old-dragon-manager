@@ -11,6 +11,8 @@ export class TrailService {
   constructor() {
     this.trail = [];
     this.trailUpdate = new EventEmitter();
+    let date = new Date();
+    console.log("Inicializou em:", date.toString(), date.getMilliseconds());
   }
 
   /**

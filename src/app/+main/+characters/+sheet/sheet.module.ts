@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { UtilModule } from '../../../util/util.module';
+import { LayoutModule } from '../../../layout/layout.module';
 import { SheetRoutingModule} from './sheet-routing.module';
 import { SheetComponent } from './sheet/sheet.component';
 import { SheetCharacterInfoComponent } from './sheet-character-info/sheet-character-info.component';
@@ -18,6 +19,7 @@ import { SheetCharacterThiefTalentsComponent } from './sheet-character-thief-tal
   imports: [
     CommonModule,
     SheetRoutingModule,
+    LayoutModule,
     UtilModule
   ],
   declarations: [

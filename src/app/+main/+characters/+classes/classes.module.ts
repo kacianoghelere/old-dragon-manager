@@ -11,10 +11,12 @@ import { ClassMagicCirclesComponent } from './class-details/class-magic-circles/
 import { ClassesListComponent } from './classes-list/classes-list.component';
 import { ClassesService } from './shared/classes.service';
 import { ClassUndeadBanesComponent } from './class-details/class-undead-banes/class-undead-banes.component';
+import { LayoutModule } from '../../../layout/layout.module';
 
 @NgModule({
   imports: [
     CommonModule,
+    LayoutModule,
     ClassesRoutingModule
   ],
   declarations: [
