@@ -51,7 +51,6 @@ export class CampaignFormNoteComponent implements OnInit {
    */
   toFormGroup(note: CampaignNote): FormGroup {
     return this.formBuilder.group({
-      id: [ note.id ],
       description: [ note.description || '', Validators.required ],
       dm_only: [ note.dm_only ]
     });

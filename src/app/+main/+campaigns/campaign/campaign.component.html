@@ -1,16 +1,16 @@
 <layout-base *ngIf="campaign" [title]="campaign.title"
     [cover]="campaign.picture" [description]="campaign.description">
-  <section>
+  <section [hidden]="emptyCollection(campaign.journals)">
     <h4>Diários de Campanha</h4>
     <campaign-journals [journals]="campaign.journals"></campaign-journals>
   </section>
 
-  <section>
+  <section [hidden]="emptyCollection(campaign.notes)">
     <h4>Anotações</h4>
     <campaign-notes [notes]="campaign.notes"></campaign-notes>
   </section>
 
-  <section>
+  <section [hidden]="emptyCollection(campaign.characters)">
     <h4>Personagens</h4>
     <campaign-characters [campaign]="campaign"></campaign-characters>
   </section>

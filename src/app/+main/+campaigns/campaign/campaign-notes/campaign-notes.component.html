@@ -2,7 +2,7 @@
   <div class="col-sm-6 col-md-4" *ngFor="let note of notes; let idx=index">
     <div class="note rounded">
       <p>{{note.description}}</p>
-      <small>Material do Mestre</small>
+      <small [hidden]="!note.dm_only">Material do Mestre</small>
     </div>
   </div>
 </div>

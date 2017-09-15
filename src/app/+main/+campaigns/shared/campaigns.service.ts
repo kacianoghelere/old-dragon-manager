@@ -11,7 +11,7 @@ import { CharactersService } from '../../shared/characters.service';
 @Injectable()
 export class CampaignsService extends EntityService<Campaign> {
 
-  campaigns: Campaign[];
+  resource: string = 'campaigns';
 
   constructor(
     authService: AuthenticationService,
@@ -19,96 +19,15 @@ export class CampaignsService extends EntityService<Campaign> {
     private charactersService: CharactersService
   ) {
     super(authService, http);
-    this.campaigns = [
-      {
-        id: 1,
-        title: 'Campanha 1',
-        description: 'Descrição da Campanha 1',
-        characters: this.charactersService.list(),
-        picture: 'https://images.alphacoders.com/125/125091.jpg',
-        journals: [
-          {
-            title: 'Primeira sessão',
-            description: this.getLorem()
-          },
-          {
-            title: 'Segunda sessão',
-            description: this.getLorem()
-          }
-        ],
-        notes: [
-          {description: this.getLorem(), dm_only: true},
-          {description: this.getLorem(), dm_only: true},
-          {description: this.getLorem(), dm_only: false},
-          {description: this.getLorem(), dm_only: false},
-          {description: this.getLorem(), dm_only: true}
-        ],
-        user: authService.currentUser
-      },
-      {
-        id: 2,
-        title: 'Campanha 2',
-        description: 'Descrição da Campanha 2',
-        characters: this.charactersService.list().filter((c) => c.id % 2 == 0),
-        picture: 'https://images3.alphacoders.com/152/152779.jpg',
-        journals: [
-          {
-            title: 'Primeira sessão',
-            description: this.getLorem()
-          },
-          {
-            title: 'Segunda sessão',
-            description: this.getLorem()
-          },
-          {
-            title: 'Terceira sessão',
-            description: this.getLorem()
-          }
-        ],
-        notes: [
-          {description: this.getLorem(), dm_only: true},
-          {description: this.getLorem(), dm_only: true},
-          {description: this.getLorem(), dm_only: false},
-        ],
-        user: authService.currentUser
-      },
-      {
-        id: 3,
-        title: 'Campanha 3',
-        description: 'Descrição da Campanha 3',
-        characters: this.charactersService.list().filter((c) => c.id % 2 == 0),
-        picture: 'https://images3.alphacoders.com/152/152779.jpg',
-        journals: [
-          {
-            title: 'Primeira sessão',
-            description: this.getLorem()
-          },
-          {
-            title: 'Segunda sessão',
-            description: this.getLorem()
-          },
-          {
-            title: 'Terceira sessão',
-            description: this.getLorem()
-          },
-          {
-            title: 'Quarta sessão',
-            description: this.getLorem()
-          }
-        ],
-        notes: [
-          {description: this.getLorem(), dm_only: false},
-          {description: this.getLorem(), dm_only: true},
-          {description: this.getLorem(), dm_only: false},
-          {description: this.getLorem(), dm_only: false},
-          {description: this.getLorem(), dm_only: true},
-          {description: this.getLorem(), dm_only: true},
-          {description: this.getLorem(), dm_only: true},
-          {description: this.getLorem(), dm_only: false},
-        ],
-        user: authService.currentUser
-      }
-    ];
+  }
+
+  /**
+   * [create description]
+   * @param  {Campaign}               params [description]
+   * @return {Observable<Campaign[]>}        [description]
+   */
+  create(params: Campaign): Observable<any> {
+    return super._create(this.resource)({campaign: params});
   }
 
   /**
@@ -117,8 +36,20 @@ export class CampaignsService extends EntityService<Campaign> {
    * @return {Observable<Campaign>}    [description]
    */
   find(id: number): Observable<Campaign> {
-    return super._find("campaigns")(id);
-    // return this.campaigns.find((campaign) => campaign.id == id);
+    return super._find(this.resource)(id);
+  }
+
+  /**
+   * Identifica se o registro deve ser criado ou atualizado e direciona para a
+   * função de tratamento correta
+   * @param  {any}             params Informações do registro
+   * @return {Observable<any>}        Observavel de retorno do request
+   */
+  handle(params: any): Observable<any> {
+    if (params.id) {
+      return this.update(params.id, params);
+    }
+    return this.create(params);
   }
 
   /**
@@ -126,8 +57,10 @@ export class CampaignsService extends EntityService<Campaign> {
    * @return {Observable<any>} [description]
    */
   list(): Observable<Campaign[]> {
-    return super._list("campaigns")();
-    // return this.campaigns;
+    return super._list(this.resource)();
   }
 
+  update(id: number, params: Campaign): Observable<any> {
+    return super._update(this.resource)(id, {campaign: params});
+  }
 }

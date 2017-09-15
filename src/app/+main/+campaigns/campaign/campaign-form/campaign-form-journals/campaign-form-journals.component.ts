@@ -51,8 +51,13 @@ export class CampaignFormJournalsComponent implements OnInit {
     return this.campaignService.canEdit();
   }
 
+  filterUndestroyed(collection: any[]): any[] {
+    if (!collection || !collection.length) return [];
+    return collection.filter((v) => !v._delete);
+  }
+
   /**
-   * Removes a journal by its index
+   * Remove o diário do FormArray
    * @param {CampaignJournal} journal Journal entity
    */
   removeJournal(journal: CampaignJournal) {

@@ -51,8 +51,13 @@ export class CampaignFormNotesComponent implements OnInit {
     return this.campaignService.canEdit();
   }
 
+  filterUndestroyed(collection: any[]): any[] {
+    if (!collection || !collection.length) return [];
+    return collection.filter((v) => !v._delete);
+  }
+
   /**
-   * Removes a note by its index
+   * Remove a nota do FormArray
    * @param {CampaignNote} note Campaign note entity
    */
   removeNote(note: CampaignNote) {

@@ -34,7 +34,7 @@ export class CampaignComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    if (this.subscription) this.subscription.unsubscribe();
   }
 
   ngOnInit() {
@@ -43,9 +43,7 @@ export class CampaignComponent implements OnInit, OnDestroy {
 
       if (id) {
         this.subscription = this.campaignsService.find(id)
-          .subscribe((response) => {
-            this.campaign = response;
-          });
+          .subscribe((response) => this.campaign = response);
       }
     });
   }
@@ -56,5 +54,14 @@ export class CampaignComponent implements OnInit, OnDestroy {
    */
   canEdit(): boolean {
     return false;
+  }
+
+  /**
+   * Verifica se uma coleção é válida e não vazia
+   * @param  {any[]}   collection Coleção
+   * @return {boolean}            Resultado da verificação
+   */
+  emptyCollection(collection: any[]): boolean {
+    return !(collection && collection.length);
   }
 }

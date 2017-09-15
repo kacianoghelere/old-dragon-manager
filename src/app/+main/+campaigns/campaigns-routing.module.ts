@@ -12,6 +12,7 @@ const routes: Routes = [
     component: CampaignsComponent,
     children: [
       { path: ':id/edit', component: CampaignFormComponent },
+      { path: 'new', component: CampaignFormComponent },
       { path: ':id', component: CampaignComponent },
       { path: '', component: CampaignsListComponent }
     ]

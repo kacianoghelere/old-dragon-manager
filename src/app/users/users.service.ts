@@ -12,8 +12,8 @@ import { User } from '../shared/entities/user';
 @Injectable()
 export class UsersService extends EntityService<User> {
 
-  constructor(auth: AuthenticationService, http: Http) {
-    super(auth, http);
+  constructor(authService: AuthenticationService, http: Http) {
+    super(authService, http);
   }
 
   /**
@@ -71,7 +71,6 @@ export class UsersService extends EntityService<User> {
    * @return {Observable<any>}        [description]
    */
   update(id: number, params: User): Observable<any> {
-    // console.log(params);
     return super._update("users")(id, {user: params});
   }
 

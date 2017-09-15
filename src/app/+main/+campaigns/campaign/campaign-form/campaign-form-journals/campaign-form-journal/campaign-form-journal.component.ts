@@ -51,9 +51,8 @@ export class CampaignFormJournalComponent implements OnInit {
    */
   toFormGroup(journal: CampaignJournal): FormGroup {
     return this.formBuilder.group({
-      id: [ journal.id ],
       title: [ journal.title || '', Validators.required ],
-      description: [ journal.description || '', Validators.required ],
+      description: [ journal.description || '', Validators.required ]
     });
   }
 }

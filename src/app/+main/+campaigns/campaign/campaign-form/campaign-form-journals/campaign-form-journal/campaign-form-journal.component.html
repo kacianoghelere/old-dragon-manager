@@ -1,16 +1,28 @@
 <div class="card bg-light journal-form" [formGroup]="journalForm">
   <div class="card-body">
-    <label>Título</label>
-    <input class="form-control card-title"
-      type="text"
-      formControlName="title">
-    <label>Descrição</label>
-    <textarea class="form-control card-text"
-      formControlName="description"></textarea>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">
+        Título
+      </label>
+      <div class="col-sm-10 col-md-6">
+        <input class="form-control card-title"
+          type="text"
+          formControlName="title">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Descrição</label>
+      <div class="col-sm-10 col-md-10">
+        <textarea class="form-control card-text"
+          rows="5"
+          formControlName="description"></textarea>
+      </div>
+    </div>
     <div class="d-flex justify-content-end" *ngIf="canEdit()">
-      <a class="card-link text-right pointer" (click)="remove()">
+      <button class="btn btn-minimal-danger btn-sm" type="button"
+          (click)="remove()">
         <i class="fa fa-trash-o"></i> Remover
-      </a>
+      </button>
     </div>
   </div>
 </div>

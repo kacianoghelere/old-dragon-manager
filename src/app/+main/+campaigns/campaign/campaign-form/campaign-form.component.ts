@@ -40,7 +40,7 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    if (this.subscription) this.subscription.unsubscribe();
   }
 
   ngOnInit() {
@@ -54,11 +54,52 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
             this.toFormGroup(this.campaign);
           });
       } else {
-        this.campaign = {title: '', description: ''};
+        this.campaign = {
+          id: null,
+          title: '',
+          picture: '',
+          description: '',
+          journals: [],
+          notes: [],
+          user: this.authService.currentUser
+        };
         this.campaignFormService.campaign = this.campaign;
         this.toFormGroup(this.campaign);
       }
     });
+  }
+
+  /**
+   * Executa rota de navegação adequada
+   */
+  goBack() {
+    if (this.campaign.id) {
+      this.router.navigate(['/main/campaigns', this.campaign.id]);
+    } else {
+      this.router.navigate(['/main/campaigns/']);
+    }
+  }
+
+  onSubmit({value, valid}: {value: Campaign, valid: boolean}) {
+    console.log("Submetido!", value);
+    let params = {
+      id: value.id,
+      title: value.title,
+      picture: value.picture,
+      description: value.description,
+      journals_attributes: value.journals,
+      notes_attributes: value.notes
+    };
+    this.campaignsService.handle(params).subscribe(
+      (response: Campaign) => {
+        console.log("Salvou!", response);
+        if (!this.campaign.id) {
+          this.campaign.id = response.id;
+        }
+        this.goBack();
+      },
+      (error) => console.log("Deu PT!", error)
+    );
   }
 
   /**
@@ -68,11 +109,17 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
    */
   toFormGroup(campaign: Campaign) {
     this.campaignForm = this.formBuilder.group({
-      title: [this.campaign.title, Validators.required],
+      id : this.campaign.id,
+      title: [
+        this.campaign.title, [
+          Validators.required, Validators.maxLength(45), Validators.minLength(6)
+        ]
+      ],
+      picture: [this.campaign.picture, Validators.maxLength(300)],
       description: [this.campaign.description, Validators.required]
     });
-    this.campaignForm.valueChanges.subscribe((value) => {
-      console.log("campaignForm.valueChanges", value);
-    });
+    // this.campaignForm.valueChanges.subscribe((value) => {
+    //   console.log("campaignForm.valueChanges", value);
+    // });
   }
 }

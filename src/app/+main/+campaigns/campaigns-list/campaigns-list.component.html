@@ -6,7 +6,14 @@
         <img class="card-img-top" [src]="campaign.picture" [alt]="campaign.title">
         <div class="card-body">
           <h4 class="card-title">{{campaign.title}}</h4>
-          <p class="card-text">{{campaign.characters.length}} personagens</p>
+          <p class="card-text">
+            <span class="badge badge-primary">
+              {{campaign.characters.length}} personagens
+            </span>
+            <span class="badge badge-primary">
+              {{campaign.journals.length}} sessões jogadas
+            </span>
+          </p>
           <p class="card-text">{{campaign.description}}</p>
         </div>
       </a>
@@ -14,8 +21,8 @@
   </div>
 
   <div class="layout-controls">
-    <button class="btn btn-primary" type="button">
+    <a class="btn btn-primary" [routerLink]="['new']">
       <i class="fa fa-plus"></i> NOVA CAMPANHA
-    </button>
+    </a>
   </div>
 </layout-base>
