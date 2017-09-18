@@ -1,4 +1,4 @@
-<div class="row">
+<!-- <div class="row">
   <div class="col-sm-12 col-md-6 col-lg-4" *ngFor="let character of campaign.characters">
     <a class="character-card {{character?.alignment?.className}}">
       <div class="header">
@@ -17,6 +17,18 @@
           <li>{{character?.class?.name}} ({{character?.specialization?.name}})</li>
           <li>{{character?.description}}</li>
       </ul>
+    </a>
+  </div>
+</div> -->
+<div class="row">
+  <div class="col-sm-12 col-md-6 col-lg-3" *ngFor="let character of campaign.characters">
+    <a class="card" [routerLink]="['/main/characters', character.id]">
+      <img class="card-img-top" [src]="character.picture" [alt]="character.name">
+      <div class="card-body">
+        <h6 class="card-title">{{character.name}}</h6>
+        <small class="card-text row col">{{character?.race?.name}}</small>
+        <small class="card-text row col">{{character?.class?.name}}</small>
+      </div>
     </a>
   </div>
 </div>
