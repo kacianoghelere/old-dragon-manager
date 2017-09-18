@@ -1,8 +1,6 @@
-<div class="journals">
-  <div class="card bg-light" *ngFor="let journal of journals">
-    <div class="card-body">
-      <h5 class="card-title">{{journal.title}}</h5>
-      <p class="card-text">{{journal.description}}</p>
-    </div>
-  </div>
+<div class="journals timeline">
+	<div class="timeline-item" *ngFor="let journal of journals">
+		<h5>{{journal.title}}</h5>
+		<p>{{journal.description}}</p>
+	</div>
 </div>

@@ -12,6 +12,8 @@ import { User } from '../shared/entities/user';
 @Injectable()
 export class UsersService extends EntityService<User> {
 
+  resource: string = "users";
+
   constructor(authService: AuthenticationService, http: Http) {
     super(authService, http);
   }
@@ -35,7 +37,7 @@ export class UsersService extends EntityService<User> {
    * @return {Observable<any>}        [description]
    */
   create(params: User): Observable<any> {
-    return super._create("users")({user: params});
+    return super._create(this.resource)({user: params});
   }
 
   /**
@@ -44,7 +46,7 @@ export class UsersService extends EntityService<User> {
    * @return {Observable<any>}    [description]
    */
   destroy(id: number): Observable<any> {
-    return super._destroy("users")(id);
+    return super._destroy(this.resource)(id);
   }
 
   /**
@@ -53,7 +55,7 @@ export class UsersService extends EntityService<User> {
    * @return {Observable<any>}    [description]
    */
   find(id: number): Observable<any> {
-    return super._find("users")(id);
+    return super._find(this.resource)(id);
   }
 
   /**
@@ -61,7 +63,15 @@ export class UsersService extends EntityService<User> {
    * @return {Observable<any>} [description]
    */
   list(): Observable<any> {
-    return super._list("users")();
+    return super._list(this.resource)();
+  }
+
+  /**
+   * [list description]
+   * @return {Observable<any>} [description]
+   */
+  listInvitable(campaign_id): Observable<any> {
+    return super._find("invitable_users")(campaign_id);
   }
 
   /**
@@ -71,7 +81,7 @@ export class UsersService extends EntityService<User> {
    * @return {Observable<any>}        [description]
    */
   update(id: number, params: User): Observable<any> {
-    return super._update("users")(id, {user: params});
+    return super._update(this.resource)(id, {user: params});
   }
 
 }

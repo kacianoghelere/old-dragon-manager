@@ -7,6 +7,6 @@ export class User {
   user_code: string = '';
   role: Role = {id: null, name: '', admin: false};
   role_id: number;
-  password: string = '';
-  confirm: string = '';
+  password?: string = '';
+  confirm?: string = '';
 }

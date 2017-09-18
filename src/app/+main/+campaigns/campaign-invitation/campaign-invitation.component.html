@@ -1,0 +1,15 @@
+<h5>Adicionar Jogador</h5>
+<form class="form-inline" [formGroup]="invitationForm"
+    (ngSubmit)="onSubmit(invitationForm)">
+  <label class="sr-only" for="user">Usuário</label>
+  <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="user"
+      formControlName="user">
+    <option value="" selected>Selecione</option>
+    <option *ngFor="let user of users" [value]="user.id">{{user.name}}</option>
+  </select>
+
+  <button class="btn btn-primary" type="submit"
+      [disabled]="invitationForm.invalid">
+    <i class="fa fa-send"></i> Convidar
+  </button>
+</form>

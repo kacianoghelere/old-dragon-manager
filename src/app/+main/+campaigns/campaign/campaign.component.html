@@ -13,6 +13,8 @@
   <section [hidden]="emptyCollection(campaign.characters)">
     <h4>Personagens</h4>
     <campaign-characters [campaign]="campaign"></campaign-characters>
+
+    <campaign-invitation [campaign]="campaign"></campaign-invitation>
   </section>
 
   <div class="layout-controls">

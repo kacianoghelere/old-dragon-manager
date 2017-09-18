@@ -16,8 +16,10 @@ import { CampaignFormNoteComponent } from './campaign/campaign-form/campaign-for
 import { CampaignFormNotesComponent } from './campaign/campaign-form/campaign-form-notes/campaign-form-notes.component';
 import { CampaignFormJournalComponent } from './campaign/campaign-form/campaign-form-journals/campaign-form-journal/campaign-form-journal.component';
 import { CampaignFormJournalsComponent } from './campaign/campaign-form/campaign-form-journals/campaign-form-journals.component';
+import { CampaignInvitationService } from "./shared/campaign-invitation.service";
 import { CampaignsService } from "./shared/campaigns.service";
 import { LayoutModule } from '../../layout/layout.module';
+import { CampaignInvitationComponent } from './campaign-invitation/campaign-invitation.component';
 
 @NgModule({
   imports: [
@@ -40,9 +42,11 @@ import { LayoutModule } from '../../layout/layout.module';
     CampaignFormNotesComponent,
     CampaignFormJournalComponent,
     CampaignFormNoteComponent,
-    CampaignFormCharactersComponent
+    CampaignFormCharactersComponent,
+    CampaignInvitationComponent
   ],
   providers: [
+    CampaignInvitationService,
     CampaignsService
   ]
 })
