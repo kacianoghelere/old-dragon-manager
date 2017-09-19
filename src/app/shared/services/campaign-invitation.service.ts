@@ -3,11 +3,10 @@ import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 
-import { AuthenticationService } from '../../../authentication/authentication.service';
-import { EntityService } from '../../../shared/services/entity.service';
-import { Campaign } from '../../../shared/entities/campaign';
-import { CampaignInvitation } from '../../../shared/entities/campaign-invitation';
-import { CharactersService } from '../../shared/characters.service';
+import { AuthenticationService } from '../../authentication/authentication.service';
+import { EntityService } from './entity.service';
+import { Campaign } from '../entities/campaign';
+import { CampaignInvitation } from '../entities/campaign-invitation';
 
 @Injectable()
 export class CampaignInvitationService extends EntityService<any> {
@@ -16,9 +15,18 @@ export class CampaignInvitationService extends EntityService<any> {
   constructor(
     authService: AuthenticationService,
     http: Http,
-    private charactersService: CharactersService
   ) {
     super(authService, http);
+  }
+
+  /**
+   * [acceptInvitation description]
+   * @param  {CampaignInvitation} invitation [description]
+   * @return {Observable<any>}               [description]
+   */
+  acceptInvitation(invitation: CampaignInvitation) {
+    invitation.accepted = true;
+    return this.update(invitation.id, invitation);
   }
 
   /**
@@ -28,6 +36,16 @@ export class CampaignInvitationService extends EntityService<any> {
    */
   create(params: any): Observable<any> {
     return super._create(this.resource)({campaign_invitation: params});
+  }
+
+  /**
+   * [denyInvitation description]
+   * @param  {CampaignInvitation} invitation [description]
+   * @return {Observable<any>}               [description]
+   */
+  denyInvitation(invitation: CampaignInvitation) {
+    invitation.denied = true;
+    return this.update(invitation.id, invitation);
   }
 
   /**
@@ -47,6 +65,12 @@ export class CampaignInvitationService extends EntityService<any> {
     return super._list(this.resource)();
   }
 
+  /**
+   * [update description]
+   * @param  {number}             id     [description]
+   * @param  {CampaignInvitation} params [description]
+   * @return {Observable<any>}           [description]
+   */
   update(id: number, params: CampaignInvitation): Observable<any> {
     return super._update(this.resource)(id, {campaign_invitation: params});
   }

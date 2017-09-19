@@ -4,8 +4,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from './app.component';
 import { ValidatorsService } from './shared/services/validators.service';
@@ -17,13 +20,16 @@ import { RolesModule } from './roles/roles.module';
 import { UsersModule } from './users/users.module';
 import { AppRoutingModule } from './app-routing.module';
 import { TrailService }  from "./shared/services/trail.service";
+import { CampaignInvitationService } from "./shared/services/campaign-invitation.service";
 
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpModule,
     NgbModule.forRoot(),
+    ToastrModule.forRoot(),
     AuthenticationModule,
     SharedModule,
     UtilModule,
@@ -36,6 +42,7 @@ import { TrailService }  from "./shared/services/trail.service";
     AppComponent
   ],
   providers: [
+    CampaignInvitationService,
     ValidatorsService,
     TrailService
   ],

@@ -1,6 +1,7 @@
 <h5>Adicionar Jogador</h5>
 <form class="form-inline" [formGroup]="invitationForm"
-    (ngSubmit)="onSubmit(invitationForm)">
+    (ngSubmit)="onSubmit(invitationForm)"
+    *ngIf="hasUsers()">
   <label class="sr-only" for="user">Usuário</label>
   <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="user"
       formControlName="user">
@@ -13,3 +14,8 @@
     <i class="fa fa-send"></i> Convidar
   </button>
 </form>
+
+<p class="alert alert-secondary mb-2 mr-sm-2 mb-sm-0" role="alert"
+    *ngIf="!hasUsers()">
+  Parece que todos os heróis disponíveis já foram convocados.
+</p>

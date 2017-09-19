@@ -27,15 +27,42 @@
       <div class="card">
         <div class="card-header">
           <nav class="nav nav-tabs nav-fill card-header-tabs">
-            <a class="nav-link text-center pointer active">
+            <a class="nav-link text-center pointer" (click)="setActiveTab('C')"
+                [ngClass]="{active: isActiveTab('C')}">
               <i class="fa fa-book"></i> Campanhas
             </a>
-            <a class="nav-link text-center pointer">
+            <a class="nav-link text-center pointer" (click)="setActiveTab('P')"
+                [ngClass]="{active: isActiveTab('P')}">
               <i class="fa fa-users"></i> Personagens
+            </a>
+            <a class="nav-link text-center pointer" (click)="setActiveTab('I')"
+                [ngClass]="{active: isActiveTab('I')}">
+              <i class="fa fa-envelope-o"></i> Convites
             </a>
           </nav>
         </div>
-        <div class="card-body"></div>
+        <div class="card-body" *ngIf="isActiveTab('C')">
+          <ul class="list-group">
+            <ul class="list-group">
+              <li class="list-group-item"></li>
+            </ul>
+          </ul>
+        </div>
+        <div class="card-body" *ngIf="isActiveTab('P')">
+          <ul class="list-group">
+            <li class="list-group-item"></li>
+          </ul>
+        </div>
+        <div class="card-body" *ngIf="isActiveTab('I')">
+          <ul class="list-group">
+            <li class="list-group-item"
+                *ngFor="let invitation of user.invitations">
+              <user-campaign-invitation [invitation]="invitation"
+                (invitationCompleted)="refresh()"
+                ></user-campaign-invitation>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>

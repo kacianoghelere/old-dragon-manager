@@ -14,6 +14,7 @@ import { UsersService } from './users.service';
 import { UtilModule } from '../util/util.module';
 import { UsersRoutingModule } from './users-routing.module';
 import { LayoutModule } from '../layout/layout.module';
+import { UserCampaignInvitationComponent } from './user-profile/user-campaign-invitation/user-campaign-invitation.component';
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import { LayoutModule } from '../layout/layout.module';
     UserListItemComponent,
     UserProfileComponent,
     UserRegistrationComponent,
-    UserSettingsComponent
+    UserSettingsComponent,
+    UserCampaignInvitationComponent
   ],
   exports: [UserFormComponent],
   providers: [UsersService]

@@ -16,8 +16,10 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
   // Public variables
   // ---------------------------------------------------------------------------
+  index: string = 'I';
   subscription: Subscription;
   user: User;
+  user_id: number;
 
   //
   // Functions
@@ -30,6 +32,30 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     private usersService: UsersService
   ) { }
 
+  /**
+   * Verifica se o indice recebido é o índice da aba ativa
+   * @param  {string}  index Indice a ser comparado
+   * @return {boolean}       Resultado da verificação
+   */
+  isActiveTab(index: string): boolean {
+    return this.index === index;
+  }
+
+  refresh() {
+    if (this.user_id) {
+      this.subscription = this.usersService.find(this.user_id)
+        .subscribe((response) => this.user = response);
+    }
+  }
+
+  /**
+   * Modifica a aba ativa
+   * @param {string} index Novo índice
+   */
+  setActiveTab(index: string) {
+    this.index = index;
+  }
+
   //
   // Lifecycle hooks functions
   // ---------------------------------------------------------------------------
@@ -38,11 +64,8 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     this.user = new User;
     console.log("currentUser:", this.authService.currentUser);
     this.route.params.subscribe((params) => {
-      let id = params['id'];
-      if (id) {
-        this.subscription = this.usersService.find(id)
-          .subscribe((response) => this.user = response);
-      }
+      this.user_id = params['id'];
+      this.refresh();
     });
   }
 

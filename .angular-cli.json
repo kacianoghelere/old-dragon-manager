@@ -20,7 +20,8 @@
       "prefix": "",
       "styles": [
         "styles/vendor.scss",
-        "styles/main.scss"
+        "styles/main.scss",
+        "../node_modules/ngx-toastr/toastr.css"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",

@@ -1,3 +1,4 @@
+import { CampaignInvitation } from './campaign-invitation';
 import { Role } from './role';
 
 export class User {
@@ -9,4 +10,5 @@ export class User {
   role_id: number;
   password?: string = '';
   confirm?: string = '';
+  invitations?: CampaignInvitation[];
 }

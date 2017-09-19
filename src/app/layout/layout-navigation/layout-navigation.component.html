@@ -31,10 +31,21 @@
             <i class="fa fa-sign-in fa-lg"></i> Entrar
           </a>
         </li>
+
+        <li class="nav-item dropdown" ngbDropdown *ngIf="authenticated">
+          <a class="nav-link">
+            <span class="btn btn-danger btn-sm">
+              <i class="fa fa-envelope"></i>
+              <span class="badge badge-secondary">0</span>
+            </span>
+          </a>
+        </li>
         <li class="nav-item dropdown" ngbDropdown *ngIf="authenticated">
           <a class="nav-link pointer" id="options" ngbDropdownToggle>
-            <img class="rounded-circle avatar" [src]="avatar"
-              alt="avatar"> {{currentUser.name}}
+              <span class="btn btn-inverse btn-sm">
+                <img class="rounded-circle avatar" [src]="avatar"
+                  alt="avatar"> {{currentUser.name}}
+              </span>
           </a>
           <div class="bg-dark" ngbDropdownMenu aria-labelledby="options">
             <a class="dropdown-item text-light"
