@@ -17,6 +17,7 @@ import { CampaignFormNotesComponent } from './campaign/campaign-form/campaign-fo
 import { CampaignFormJournalComponent } from './campaign/campaign-form/campaign-form-journals/campaign-form-journal/campaign-form-journal.component';
 import { CampaignFormJournalsComponent } from './campaign/campaign-form/campaign-form-journals/campaign-form-journals.component';
 import { CampaignsService } from "./shared/campaigns.service";
+import { SharedModule } from '../../shared/shared.module';
 import { LayoutModule } from '../../layout/layout.module';
 import { CampaignInviteUsersComponent } from './campaign-invite-users/campaign-invite-users.component';
 
@@ -27,7 +28,8 @@ import { CampaignInviteUsersComponent } from './campaign-invite-users/campaign-i
     ReactiveFormsModule,
     LayoutModule,
     CampaignsRoutingModule,
-    UtilModule
+    UtilModule,
+    SharedModule
   ],
   declarations: [
     CampaignsListComponent,

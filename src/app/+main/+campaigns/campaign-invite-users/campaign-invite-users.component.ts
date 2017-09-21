@@ -78,7 +78,7 @@ export class CampaignInviteUsersComponent implements OnInit, OnDestroy {
       },
       (error) => {
         console.log("Deu PT!", error);
-        this.toastrService.success('Ooops! Ocorreu um erro.',
+        this.toastrService.warning('Ooops! Ocorreu um erro.',
           'Parace que algum kobold andou mexendo nos cabos de rede.');
       }
     );

@@ -1,0 +1,7 @@
+<div class="list-group list-group-flush">
+  <a class="list-group-item" *ngFor="let campaign of user.campaigns"
+      [routerLink]="['/main/campaigns', campaign.id]">
+    <h5 class="card-title">{{campaign.title}}</h5>
+    <p class="card-text row col">{{campaign?.description}}</p>
+  </a>
+</div>

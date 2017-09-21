@@ -41,28 +41,20 @@
             </a>
           </nav>
         </div>
-        <div class="card-body" *ngIf="isActiveTab('C')">
-          <ul class="list-group">
-            <ul class="list-group">
-              <li class="list-group-item"></li>
-            </ul>
-          </ul>
-        </div>
-        <div class="card-body" *ngIf="isActiveTab('P')">
-          <ul class="list-group">
-            <li class="list-group-item"></li>
-          </ul>
-        </div>
-        <div class="card-body" *ngIf="isActiveTab('I')">
-          <ul class="list-group">
-            <li class="list-group-item"
-                *ngFor="let invitation of user.invitations">
-              <user-campaign-invitation [invitation]="invitation"
-                (invitationCompleted)="refresh()"
-                ></user-campaign-invitation>
-            </li>
-          </ul>
-        </div>
+
+        <user-campaigns [user]="user" *ngIf="isActiveTab('C')"></user-campaigns>
+
+        <user-characters [user]="user" *ngIf="isActiveTab('P')"></user-characters>
+
+        <ul class="list-group list-group-flush" *ngIf="isActiveTab('I')">
+          <li class="list-group-item"
+              *ngFor="let invitation of user.invitations">
+            <user-campaign-invitation [user]="user"
+              [invitation]="invitation"
+              (invitationCompleted)="refresh()"
+              ></user-campaign-invitation>
+          </li>
+        </ul>
       </div>
     </div>
   </div>

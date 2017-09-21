@@ -1,0 +1,18 @@
+<a class="character-card {{character?.alignment?.className}}">
+  <div class="header">
+    <div class="avatar">
+        <img [src]="character.picture" [alt]="character.name" />
+    </div>
+    <div class="body">
+      <div class="character-name">
+          {{character.name}}
+      </div>
+      <small class="character-title">{{character.title}}</small>
+    </div>
+  </div>
+  <ul class="character-info">
+      <li>{{character?.race?.name}}</li>
+      <li>{{character?.class?.name}} ({{character?.specialization?.name}})</li>
+      <li>{{character?.description}}</li>
+  </ul>
+</a>

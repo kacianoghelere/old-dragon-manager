@@ -1,8 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-    <a class="navbar-brand" [routerLink]="['/']">
-      <img class="brand-logo" src="./assets/od_logo.png" [alt]="title">
-    </a>
+    <a class="navbar-brand" [routerLink]="['/']">OD Manager</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarTogglableContent"
             aria-controls="navbarTogglableContent"
@@ -11,7 +9,23 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarTogglableContent">
-      <ul class="navbar-nav mr-auto"></ul>
+      <ul class="navbar-nav mr-auto" *ngIf="authenticated">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/main/campaigns']">
+            Campanhas
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/main/characters']">
+            Personagens
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/users']">
+            Usuários
+          </a>
+        </li>
+      </ul>
 
       <ul class="navbar-nav my-2 my-lg-0">
         <li class="nav-item" [routerLinkActive]="['active']">
@@ -34,7 +48,7 @@
 
         <li class="nav-item dropdown" ngbDropdown *ngIf="authenticated">
           <a class="nav-link">
-            <span class="btn btn-danger btn-sm">
+            <span>
               <i class="fa fa-envelope"></i>
               <span class="badge badge-secondary">0</span>
             </span>
@@ -42,7 +56,7 @@
         </li>
         <li class="nav-item dropdown" ngbDropdown *ngIf="authenticated">
           <a class="nav-link pointer" id="options" ngbDropdownToggle>
-              <span class="btn btn-inverse btn-sm">
+              <span>
                 <img class="rounded-circle avatar" [src]="avatar"
                   alt="avatar"> {{currentUser.name}}
               </span>

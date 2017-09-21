@@ -1,0 +1,6 @@
+<div class="card-body row">
+  <div class="col-sm-12 col-md-6 col-lg-6"
+      *ngFor="let character of user.characters">
+    <character-card [character]="character"></character-card>
+  </div>
+</div>

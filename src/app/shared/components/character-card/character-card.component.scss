@@ -1,0 +1,92 @@
+// -----------------------------------------------------------------------------
+// character-card
+.character-card {
+  background: #f0f0f0;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px #aaa;
+  display: block;
+  margin-bottom: 10px;
+  overflow: hidden;
+  position: relative;
+  text-decoration: none;
+
+  .header {
+    padding: 0.5em;
+    background: white;
+
+    .avatar {
+      display: inline-block;
+      object-fit: scale-down;
+      padding: 0 0.2em;
+      vertical-align: middle;
+
+      > img {
+        background: #f0f0f0;
+        border: 1px solid #aaa;
+        border-radius: 50%;
+        height: 70px;
+        padding: 2px;
+        width: 70px;
+      }
+    }
+
+    .body {
+      display: inline-block;
+      vertical-align: middle;
+      padding: 0 0.2em;
+      line-height: 1.2;
+    }
+  }
+
+  .name {
+    color: #333;
+    font-family: 'MedievalSharp', cursive;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .character-title {
+    color: #888;
+    display: block;
+    font-size: 70%;
+    font-weight: normal;
+    font-style: italic;
+  }
+
+  .character-info {
+    padding: 0;
+    border-top: 1px solid #ccc;
+    margin: 0;
+    color: #555;
+    font-size: 70%;
+    list-style: none;
+
+    > li {
+      padding: 0.5em;
+    }
+
+    > li + li {
+      border-top: 1px solid #ccc;
+    }
+  }
+}
+
+.lawfull {
+  .title {
+      color: #006EC8;
+  }
+
+  .avatar > img {
+      background: #008CFF;
+  }
+}
+
+.chaotic {
+  .title {
+      color: #D1371B;
+  }
+
+  .avatar > img {
+      background: #D1371B;
+  }
+}

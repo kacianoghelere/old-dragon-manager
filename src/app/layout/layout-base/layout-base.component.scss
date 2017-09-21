@@ -4,13 +4,13 @@
               url('/assets/cover-cropped.jpg');
   background-attachment: fixed;
   background-color: #c43030;
-  background-position: center 80px;
+  background-position: center 60px;
   background-size: 100% auto;
   background-repeat: no-repeat;
   float: left;
   height: 100%;
   width: 100%;
-  padding: 105px 0 15px 0;
+  padding: 85px 0 15px 0;
 
   .content {
     background-color: #fff;
@@ -46,6 +46,8 @@
       }
 
       /deep/ .layout-controls {
+        -webkit-align-self: flex-end;
+        -moz-align-self: flex-end;
         align-self: flex-end;
         bottom: -16px;
         position: absolute;

@@ -3,18 +3,21 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { UsersComponent } from './users/users.component';
+import { LayoutModule } from '../layout/layout.module';
+import { SharedModule } from '../shared/shared.module';
+import { UtilModule } from '../util/util.module';
+import { UserCampaignInvitationComponent } from './user-profile/user-campaign-invitation/user-campaign-invitation.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserListItemComponent } from './user-list/user-list-item/user-list-item.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
+import { UsersComponent } from './users/users.component';
 import { UsersService } from './users.service';
-import { UtilModule } from '../util/util.module';
 import { UsersRoutingModule } from './users-routing.module';
-import { LayoutModule } from '../layout/layout.module';
-import { UserCampaignInvitationComponent } from './user-profile/user-campaign-invitation/user-campaign-invitation.component';
+import { UserCharactersComponent } from './user-profile/user-characters/user-characters.component';
+import { UserCampaignsComponent } from './user-profile/user-campaigns/user-campaigns.component';
 
 @NgModule({
   imports: [
@@ -23,6 +26,7 @@ import { UserCampaignInvitationComponent } from './user-profile/user-campaign-in
     ReactiveFormsModule,
     HttpModule,
     LayoutModule,
+    SharedModule,
     UtilModule,
     UsersRoutingModule
   ],
@@ -34,7 +38,9 @@ import { UserCampaignInvitationComponent } from './user-profile/user-campaign-in
     UserProfileComponent,
     UserRegistrationComponent,
     UserSettingsComponent,
-    UserCampaignInvitationComponent
+    UserCampaignInvitationComponent,
+    UserCharactersComponent,
+    UserCampaignsComponent
   ],
   exports: [UserFormComponent],
   providers: [UsersService]
