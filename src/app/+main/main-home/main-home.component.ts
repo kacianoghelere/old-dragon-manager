@@ -16,8 +16,8 @@ export class MainHomeComponent implements OnInit {
     this.links = [
       {
         title: 'Campanhas',
-        description: 'Gerencie suas aventuras, crie diários, monitore a'
-          + ' evolução dos protagonistas e muito mais!',
+        description: 'Gerencie suas aventuras, crie diários, monitore os '
+          + ' protagonistas e muito mais!',
         picture: 'http://critforbrains.com/wp-content/uploads/2016/06/IMG_4066.jpg',
         route: 'campaigns'
       },
@@ -29,8 +29,8 @@ export class MainHomeComponent implements OnInit {
       },
       {
         title: 'Personagens',
-        description: 'Crie seu próprio protagonista, npc ou vilão, a'
-          + ' criatividade é o único limite aqui!',
+        description: 'Crie seu próprio personagem, a criatividade é o único '
+          + ' limite aqui!',
         picture: 'https://i.kinja-img.com/gawker-media/image/upload/s--R0QEn5Y_--/c_scale,f_auto,fl_progressive,q_80,w_800/18loz956fez9ujpg.jpg',
         route: 'characters'
       },
