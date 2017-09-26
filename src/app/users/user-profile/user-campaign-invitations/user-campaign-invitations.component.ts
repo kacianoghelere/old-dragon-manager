@@ -8,15 +8,14 @@ import { CampaignInvitation } from '../../../shared/entities/campaign-invitation
 import { User } from '../../../shared/entities/user';
 
 @Component({
-  selector: 'user-campaign-invitation',
-  templateUrl: './user-campaign-invitation.component.html',
-  styleUrls: ['./user-campaign-invitation.component.scss']
+  selector: 'user-campaign-invitations',
+  templateUrl: './user-campaign-invitations.component.html',
+  styleUrls: ['./user-campaign-invitations.component.scss']
 })
-export class UserCampaignInvitationComponent implements OnInit {
+export class UserCampaignInvitationsComponent implements OnInit {
 
   @Input('user') user: User;
-  @Input('invitation') invitation: CampaignInvitation;
-  @Output('invitationCompleted') invitationCompleted: EventEmitter<any>;
+  @Output('invitationChanged') invitationChanged: EventEmitter<any>;
   invitationForm: FormGroup;
 
   constructor(
@@ -24,32 +23,33 @@ export class UserCampaignInvitationComponent implements OnInit {
     private invitationService: CampaignInvitationService,
     private toastrService: ToastrService
   ) {
-    this.invitationCompleted = new EventEmitter();
+    this.invitationChanged = new EventEmitter();
   }
 
   ngOnInit() {
     this.invitationForm = this.formBuilder.group({
-      userCharacter: [ '', Validators.required ]
+      character_id: [ '', Validators.required ]
     });
   }
 
   acceptInvitation({value, valid}: {value: any, valid: boolean}) {
-    this.invitation.character_id = parseInt(value.userCharacter);
-    this.invitationService.acceptInvitation(this.invitation).subscribe((res) => {
+    let invitation = {};
+    invitation['character_id'] = parseInt(value.character_id);
+    this.invitationService.acceptInvitation(invitation).subscribe((res) => {
       this.toastrService.success('Solicitação confirmada',
         'Você atendeu ao chamado da aventura. Não esqueça de seus itens mágicos!');
-      this.invitationCompleted.emit(true);
+      this.invitationChanged.emit(true);
     }, (error) => {
         this.toastrService.warning('Ooops! ',
           'Aconteceu alguma coisa com o corvo mensageiro! Tente novamente.');
     });
   }
 
-  denyInvitation() {
-    this.invitationService.denyInvitation(this.invitation).subscribe((res) => {
+  denyInvitation(invitation: CampaignInvitation) {
+    this.invitationService.denyInvitation(invitation).subscribe((res) => {
       this.toastrService.info('Solicitação recusada',
         'Muitas vezes recusar o chamado é uma decisão sábia. Ou não...');
-      this.invitationCompleted.emit(true);
+      this.invitationChanged.emit(true);
     });
   }
 }

@@ -21,10 +21,10 @@ export class CampaignInvitationService extends EntityService<any> {
 
   /**
    * [acceptInvitation description]
-   * @param  {CampaignInvitation} invitation [description]
+   * @param  {any} invitation [description]
    * @return {Observable<any>}               [description]
    */
-  acceptInvitation(invitation: CampaignInvitation) {
+  acceptInvitation(invitation: any) {
     invitation.accepted = true;
     return this.update(invitation.id, invitation);
   }
@@ -40,10 +40,10 @@ export class CampaignInvitationService extends EntityService<any> {
 
   /**
    * [denyInvitation description]
-   * @param  {CampaignInvitation} invitation [description]
+   * @param  {any} invitation [description]
    * @return {Observable<any>}               [description]
    */
-  denyInvitation(invitation: CampaignInvitation) {
+  denyInvitation(invitation: any) {
     invitation.denied = true;
     return this.update(invitation.id, invitation);
   }

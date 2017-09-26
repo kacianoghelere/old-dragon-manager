@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 import { LayoutModule } from '../layout/layout.module';
 import { SharedModule } from '../shared/shared.module';
 import { UtilModule } from '../util/util.module';
-import { UserCampaignInvitationComponent } from './user-profile/user-campaign-invitation/user-campaign-invitation.component';
+import { UserCampaignInvitationsComponent } from './user-profile/user-campaign-invitations/user-campaign-invitations.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserCardComponent } from './user-card/user-card.component';
@@ -38,7 +38,7 @@ import { UserCampaignsComponent } from './user-profile/user-campaigns/user-campa
     UserProfileComponent,
     UserRegistrationComponent,
     UserSettingsComponent,
-    UserCampaignInvitationComponent,
+    UserCampaignInvitationsComponent,
     UserCharactersComponent,
     UserCampaignsComponent
   ],

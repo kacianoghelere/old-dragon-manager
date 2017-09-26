@@ -1,6 +1,6 @@
 <layout-base *ngIf="user" [title]="user.name">
   <div class="row">
-    <div class="col-xs-12 col-sm-4 col-md-3">
+    <div class="col-sm-12 col-md-4 col-lg-3">
       <div class="card">
         <img class="card-img-top" [src]="avatar" [alt]="user?.name">
         <div class="card-body">
@@ -22,7 +22,7 @@
       </div>
     </div>
 
-    <div class="col-xs-12 col-sm-8 col-md-9">
+    <div class="col-sm-12 col-md-8 col-lg-9">
       <h2>Criações</h2>
       <div class="card">
         <div class="card-header">
@@ -38,23 +38,20 @@
             <a class="nav-link text-center pointer" (click)="setActiveTab('I')"
                 [ngClass]="{active: isActiveTab('I')}">
               <i class="fa fa-envelope-o"></i> Convites
+              badge
             </a>
           </nav>
         </div>
 
-        <user-campaigns [user]="user" *ngIf="isActiveTab('C')"></user-campaigns>
+        <user-campaigns [user]="user"
+          *ngIf="isActiveTab('C')"></user-campaigns>
 
-        <user-characters [user]="user" *ngIf="isActiveTab('P')"></user-characters>
+        <user-characters [user]="user"
+          *ngIf="isActiveTab('P')"></user-characters>
 
-        <ul class="list-group list-group-flush" *ngIf="isActiveTab('I')">
-          <li class="list-group-item"
-              *ngFor="let invitation of user.invitations">
-            <user-campaign-invitation [user]="user"
-              [invitation]="invitation"
-              (invitationCompleted)="refresh()"
-              ></user-campaign-invitation>
-          </li>
-        </ul>
+        <user-campaign-invitations [user]="user"
+          *ngIf="isActiveTab('I')"
+          (invitationChanged)="refresh()"></user-campaign-invitations>
       </div>
     </div>
   </div>
