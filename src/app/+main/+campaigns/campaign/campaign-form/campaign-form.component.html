@@ -45,8 +45,9 @@
       [campaignForm]="campaignForm"
       [notes]="campaign.notes"></campaign-form-notes>
 
-    <campaign-form-characters [campaign]="campaign"
-      ></campaign-form-characters>
+    <campaign-form-characters *ngIf="campaignForm"
+      [campaignForm]="campaignForm"
+      [characters]="campaign.characters"></campaign-form-characters>
 
     <div class="form-group d-flex justify-content-end">
       <button class="btn btn-secondary" type="button" (click)="goBack()">

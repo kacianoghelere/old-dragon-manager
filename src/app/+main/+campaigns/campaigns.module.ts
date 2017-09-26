@@ -20,6 +20,7 @@ import { CampaignsService } from "./shared/campaigns.service";
 import { SharedModule } from '../../shared/shared.module';
 import { LayoutModule } from '../../layout/layout.module';
 import { CampaignInviteUsersComponent } from './campaign-invite-users/campaign-invite-users.component';
+import { CampaignFormCharacterComponent } from './campaign/campaign-form/campaign-form-characters/campaign-form-character/campaign-form-character.component';
 
 @NgModule({
   imports: [
@@ -44,7 +45,8 @@ import { CampaignInviteUsersComponent } from './campaign-invite-users/campaign-i
     CampaignFormJournalComponent,
     CampaignFormNoteComponent,
     CampaignFormCharactersComponent,
-    CampaignInviteUsersComponent
+    CampaignInviteUsersComponent,
+    CampaignFormCharacterComponent
   ],
   providers: [
     CampaignsService

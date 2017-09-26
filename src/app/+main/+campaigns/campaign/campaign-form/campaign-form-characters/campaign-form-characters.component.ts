@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormArray, FormGroup, Validators } from '@angular/forms';
 
-import { Campaign } from '../../../../../shared/entities/campaign';
+import { Character } from '../../../../../shared/entities/character';
 
 @Component({
   selector: 'campaign-form-characters',
@@ -9,11 +10,27 @@ import { Campaign } from '../../../../../shared/entities/campaign';
 })
 export class CampaignFormCharactersComponent implements OnInit {
 
-  @Input() campaign: Campaign;
+  @Input('campaignForm') campaignForm: FormGroup;
+  @Input('characters') characters: Character[];
 
-  constructor() { }
+  constructor(private changeDetectorRef: ChangeDetectorRef) { }
 
   ngOnInit() {
+    this.campaignForm.addControl('characters', new FormArray([]));
   }
 
+  /**
+   * Remove personagem do FormArray
+   * @param {Character} character Objeto do personagem
+   */
+  removeCharacter(character: Character) {
+    if (this.characters.length) {
+      let index = this.characters.indexOf(character);
+      if (index >= 0) {
+        this.characters.splice(index, 1);
+        (<FormArray>this.campaignForm.get('characters')).removeAt(index);
+        this.changeDetectorRef.detectChanges();
+      }
+    }
+  }
 }

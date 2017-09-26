@@ -9,7 +9,7 @@ import { UtilModule } from '../util/util.module';
 import { UserCampaignInvitationComponent } from './user-profile/user-campaign-invitation/user-campaign-invitation.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { UserListComponent } from './user-list/user-list.component';
-import { UserListItemComponent } from './user-list/user-list-item/user-list-item.component';
+import { UserCardComponent } from './user-card/user-card.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
@@ -34,7 +34,7 @@ import { UserCampaignsComponent } from './user-profile/user-campaigns/user-campa
     UsersComponent,
     UserFormComponent,
     UserListComponent,
-    UserListItemComponent,
+    UserCardComponent,
     UserProfileComponent,
     UserRegistrationComponent,
     UserSettingsComponent,

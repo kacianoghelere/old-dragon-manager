@@ -47,10 +47,9 @@
         </li>
 
         <li class="nav-item dropdown" ngbDropdown *ngIf="authenticated">
-          <a class="nav-link">
-            <span>
-              <i class="fa fa-envelope"></i>
-              <span class="badge badge-secondary">0</span>
+          <a class="nav-link" [routerLink]="['/users/profile/', currentUser.id]">
+            <span [ngClass]="{danger: currentUser?.invitations?.length}">
+              <i class="fa fa-bell"></i>
             </span>
           </a>
         </li>

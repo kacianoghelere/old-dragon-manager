@@ -88,7 +88,8 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
       picture: value.picture,
       description: value.description,
       journals_attributes: value.journals,
-      notes_attributes: value.notes
+      notes_attributes: value.notes,
+      characters: value.characters
     };
     this.campaignsService.handle(params).subscribe(
       (response: Campaign) => {

@@ -1,9 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormArray, FormGroup, Validators } from '@angular/forms';
 
-import { Campaign } from '../../../../../../shared/entities/campaign';
 import { CampaignNote } from '../../../../../../shared/entities/campaign-note';
-import { CampaignFormService } from '../../shared/campaign-form.service';
 
 @Component({
   selector: 'campaign-form-note',
@@ -17,10 +15,7 @@ export class CampaignFormNoteComponent implements OnInit {
   @Output('removeNote') removeNote: EventEmitter<CampaignNote>;
   private noteForm: FormGroup;
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private campaignService: CampaignFormService
-  ) {
+  constructor(private formBuilder: FormBuilder) {
     this.removeNote = new EventEmitter();
   }
 
@@ -30,24 +25,16 @@ export class CampaignFormNoteComponent implements OnInit {
   }
 
   /**
-   * Verifica se o usuário atual pode editar a campanha
-   * @return {boolean} Resultado da verificação
-   */
-  canEdit(): boolean {
-    return this.campaignService.canEdit();
-  }
-
-  /**
-   * Emits the removal event
+   * Emite evento de remoção
    */
   remove() {
     this.removeNote.emit(this.note);
   }
 
   /**
-   * Generates a new FormGroup form the current note
-   * @param  {CampaignNote} note Campaign note entity
-   * @return {FormGroup}         The new FormGroup
+   * Cria um novo FormGroup para a nota de campanha
+   * @param  {CampaignNote} note Nota de campanha
+   * @return {FormGroup}         Novo FormGroup
    */
   toFormGroup(note: CampaignNote): FormGroup {
     return this.formBuilder.group({

@@ -1,9 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormArray, FormGroup, Validators } from '@angular/forms';
 
-import { Campaign } from '../../../../../shared/entities/campaign';
 import { CampaignNote } from '../../../../../shared/entities/campaign-note';
-import { CampaignFormService } from '../shared/campaign-form.service';
 
 @Component({
   selector: 'campaign-form-notes',
@@ -14,21 +12,11 @@ export class CampaignFormNotesComponent implements OnInit {
 
   @Input('campaignForm') campaignForm: FormGroup;
   @Input('notes') notes: CampaignNote[];
-  private noteForm: FormGroup;
-  private enabledEditing: Boolean;
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private changeDetectorRef: ChangeDetectorRef,
-    private campaignService: CampaignFormService
-  ) { }
+  constructor(private changeDetectorRef: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.campaignForm.addControl('notes', new FormArray([]));
-    this.campaignService.editingEmitter.subscribe((status) => {
-      console.log("Mudou status de edição nas notas", status);
-      this.enabledEditing = status.editing;
-    });
   }
 
   /**
@@ -41,19 +29,6 @@ export class CampaignFormNotesComponent implements OnInit {
     };
     this.notes.push(child);
     this.changeDetectorRef.detectChanges();
-  }
-
-  /**
-   * Verifica se o usuário atual pode editar a campanha
-   * @return {boolean} Resultado da verificação
-   */
-  canEdit(): boolean {
-    return this.campaignService.canEdit();
-  }
-
-  filterUndestroyed(collection: any[]): any[] {
-    if (!collection || !collection.length) return [];
-    return collection.filter((v) => !v._delete);
   }
 
   /**

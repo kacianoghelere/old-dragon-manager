@@ -3,7 +3,7 @@
 
   <div class="row" formArrayName="notes">
     <div class="col-sm-6 col-md-6"
-        *ngFor="let note of filterUndestroyed(notes); let idx=index">
+        *ngFor="let note of notes; let idx=index">
       <campaign-form-note [note]="note"
         [notes]="campaignForm.controls.notes"
         (removeNote)="removeNote($event)"></campaign-form-note>
