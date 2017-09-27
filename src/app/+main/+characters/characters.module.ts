@@ -5,6 +5,7 @@ import { CharactersRoutingModule } from './characters-routing.module';
 import { CharactersComponent } from './characters/characters.component';
 import { CharactersHomeComponent } from './characters-home/characters-home.component';
 import { LayoutModule } from '../../layout/layout.module';
+import { CharacterProfileComponent } from './character-profile/character-profile.component';
 
 @NgModule({
   imports: [
@@ -12,6 +13,10 @@ import { LayoutModule } from '../../layout/layout.module';
     LayoutModule,
     CharactersRoutingModule
   ],
-  declarations: [CharactersComponent, CharactersHomeComponent]
+  declarations: [
+    CharactersComponent,
+    CharactersHomeComponent,
+    CharacterProfileComponent
+  ]
 })
 export class CharactersModule { }

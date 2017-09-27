@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormArray, FormGroup, Validators } from '@angular/forms';
 
-import { Character } from '../../../../../shared/entities/character';
+import { Character } from '../../../../shared/entities/character';
 
 @Component({
   selector: 'campaign-form-characters',

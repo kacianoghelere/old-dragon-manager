@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormArray, FormGroup, Validators } from '@angular/forms';
 
-import { CampaignNote } from '../../../../../shared/entities/campaign-note';
+import { CampaignNote } from '../../../../shared/entities/campaign-note';
 
 @Component({
   selector: 'campaign-form-notes',

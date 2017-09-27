@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { CharactersComponent } from './characters/characters.component';
+import { CharacterProfileComponent } from './character-profile/character-profile.component';
 import { CharactersHomeComponent } from './characters-home/characters-home.component';
 
 const charactersRoutes: Routes = [
@@ -9,6 +10,7 @@ const charactersRoutes: Routes = [
     path: '',
     component: CharactersComponent,
     children: [
+      { path: ':id', component: CharacterProfileComponent },
       { path: '', component: CharactersHomeComponent },
       {
         path: 'classes',

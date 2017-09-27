@@ -11,11 +11,12 @@ import { CampaignsService } from '../shared/campaigns.service';
 
 
 @Component({
-  selector: 'campaign',
-  templateUrl: './campaign.component.html',
-  styleUrls: ['./campaign.component.scss']
+  selector: 'campaign-profile',
+  templateUrl: './campaign-profile.component.html',
+  styleUrls: ['./campaign-profile.component.scss']
 })
-export class CampaignComponent extends CoreComponent implements OnInit, OnDestroy {
+export class CampaignProfileComponent extends CoreComponent
+    implements OnInit, OnDestroy {
 
   campaign: Campaign;
   subscription: Subscription;

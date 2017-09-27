@@ -1,8 +1,8 @@
 import { ChangeDetectorRef, Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormArray, FormGroup, Validators } from '@angular/forms';
 
-import { Campaign } from '../../../../../shared/entities/campaign';
-import { CampaignJournal } from '../../../../../shared/entities/campaign-journal';
+import { Campaign } from '../../../../shared/entities/campaign';
+import { CampaignJournal } from '../../../../shared/entities/campaign-journal';
 import { CampaignFormService } from '../shared/campaign-form.service';
 
 @Component({

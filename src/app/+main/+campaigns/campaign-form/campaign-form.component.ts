@@ -4,9 +4,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { AuthenticationService } from '../../../../authentication/authentication.service';
-import { Campaign } from '../../../../shared/entities/campaign';
-import { CampaignsService } from '../../shared/campaigns.service';
+import { AuthenticationService } from '../../../authentication/authentication.service';
+import { Campaign } from '../../../shared/entities/campaign';
+import { CampaignsService } from '../shared/campaigns.service';
 import { CampaignFormService } from './shared/campaign-form.service';
 
 @Component({
