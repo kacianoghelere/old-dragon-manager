@@ -20,7 +20,7 @@ export class AuthenticationService {
   //   name: "Administrador"
   // };
   // token: string = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.oR-IHkxvncZCvEJ9HXZ67I5rH2-hROijD4WF73U08Nk';
-  currentUser: any;
+  currentUser: User;
   token: string;
 
   // Private & Protected variables
@@ -41,7 +41,9 @@ export class AuthenticationService {
     this.headers.append('Content-Type', 'application/json');
     if (this.fakeAuth) {
       this.currentUser = {
-        admin: true,
+        role: {
+          admin: true
+        },
         email: "themohawkeagle@gmail.com",
         id: 1,
         name: "Administrador"
@@ -101,6 +103,15 @@ export class AuthenticationService {
    */
   isAdminUser(): boolean {
     return this.isAdmin(this.currentUser);
+  }
+
+  /**
+   * Verifica se os dados recebidos são iguais aos do usuário da sessão atual
+   * @param  {any}     user Usuário parâmetro
+   * @return {boolean}      Resultado da verificação
+   */
+  isCurrentUser(user: any): boolean {
+    return user['id'] == this.currentUser.id;
   }
 
   /**

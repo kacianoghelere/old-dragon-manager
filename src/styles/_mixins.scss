@@ -45,7 +45,7 @@
 
 @mixin button-outline-variant($color, $color-hover: #fff, $active-color: darken($color, 10%)) {
   color: darken($color, 7.5%);
-  background-color: transparent;
+  background-color: $white;
   background-image: none;
   border-color: $color;
   box-shadow: $btn-box-shadow;
@@ -79,7 +79,7 @@
 
 @mixin button-minimal-variant($color, $color-hover: #fff, $active-color: darken($color, 10%)) {
   color: darken($color, 7.5%);
-  background-color: transparent;
+  background-color: $white;
   background-image: none;
   box-shadow: $btn-box-shadow;
 

@@ -20,13 +20,13 @@ export class CampaignInvitationService extends EntityService<any> {
   }
 
   /**
-   * [acceptInvitation description]
-   * @param  {any} invitation [description]
-   * @return {Observable<any>}               [description]
+   * Aceita convite para campanha
+   * @param  {any}             invitation Dados do convite
+   * @return {Observable<any>}            Retorno do request
    */
   acceptInvitation(invitation: any) {
-    invitation.accepted = true;
-    return this.update(invitation.id, invitation);
+    invitation['accepted'] = true;
+    return this.update(invitation['id'], invitation);
   }
 
   /**
@@ -39,13 +39,13 @@ export class CampaignInvitationService extends EntityService<any> {
   }
 
   /**
-   * [denyInvitation description]
-   * @param  {any} invitation [description]
-   * @return {Observable<any>}               [description]
+   * Recusa convite para campanha
+   * @param  {any}             invitation Dados do convite
+   * @return {Observable<any>}            Retorno do request
    */
   denyInvitation(invitation: any) {
-    invitation.denied = true;
-    return this.update(invitation.id, invitation);
+    invitation['denied'] = true;
+    return this.update(invitation['id'], invitation);
   }
 
   /**
@@ -66,12 +66,12 @@ export class CampaignInvitationService extends EntityService<any> {
   }
 
   /**
-   * [update description]
-   * @param  {number}             id     [description]
-   * @param  {CampaignInvitation} params [description]
-   * @return {Observable<any>}           [description]
+   * Atualiza dados do convite para campanha
+   * @param  {number}             id     ID do convite para campanha
+   * @param  {CampaignInvitation} params Dados do convite para campanha
+   * @return {Observable<any>}           Retorno do request
    */
-  update(id: number, params: CampaignInvitation): Observable<any> {
+  update(id: number, params: any): Observable<any> {
     return super._update(this.resource)(id, {campaign_invitation: params});
   }
 }

@@ -61,7 +61,7 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
           description: '',
           journals: [],
           notes: [],
-          user: this.authService.currentUser
+          dungeonMaster: this.authService.currentUser
         };
         this.campaignFormService.campaign = this.campaign;
         this.toFormGroup(this.campaign);

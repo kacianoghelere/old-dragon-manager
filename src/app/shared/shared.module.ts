@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { ApiService } from './api.service';
 import { ToasterService } from './toaster.service';
 import { CharacterCardComponent } from './components/character-card/character-card.component';
+import { CoreComponent } from './components/core/core.component';
 
 @NgModule({
   imports: [
@@ -14,7 +15,7 @@ import { CharacterCardComponent } from './components/character-card/character-ca
   providers: [
     ApiService
   ],
-  declarations: [CharacterCardComponent],
+  declarations: [CharacterCardComponent, CoreComponent],
   exports: [CharacterCardComponent]
 })
 export class SharedModule { }

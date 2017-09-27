@@ -1,23 +1,25 @@
 <layout-base *ngIf="campaign" [title]="campaign.title"
     [cover]="campaign.picture" [description]="campaign.description">
-  <section [hidden]="emptyCollection(campaign.journals)">
+  <section [hidden]="shouldHide(campaign.journals)">
     <h4>Diários de Campanha</h4>
     <campaign-journals [journals]="campaign.journals"></campaign-journals>
   </section>
 
-  <section [hidden]="emptyCollection(campaign.notes)">
+  <section [hidden]="shouldHide(campaign.notes)">
     <h4>Anotações</h4>
-    <campaign-notes [notes]="campaign.notes"></campaign-notes>
+    <campaign-notes [campaign]="campaign"
+      [notes]="campaign.notes"></campaign-notes>
   </section>
 
-  <section [hidden]="emptyCollection(campaign.characters)">
+  <section [hidden]="shouldHide(campaign.characters)">
     <h4>Personagens</h4>
     <campaign-characters [campaign]="campaign"></campaign-characters>
 
-    <campaign-invite-users [campaign]="campaign"></campaign-invite-users>
+    <campaign-invite-users *ngIf="isCampaignOwner()"
+      [campaign]="campaign"></campaign-invite-users>
   </section>
 
-  <div class="layout-controls">
+  <div class="layout-controls" *ngIf="isCampaignOwner()">
     <a class="btn btn-primary" [routerLink]="['edit']">
       <i class="fa fa-edit"></i> EDITAR
     </a>

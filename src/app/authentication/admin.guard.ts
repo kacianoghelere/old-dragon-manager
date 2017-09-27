@@ -15,10 +15,10 @@ export class AdminGuard implements CanActivate {
   ) {}
 
   canActivate(
-    route: ActivatedRouteSnapshot, state: RouterStateSnapshot
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
   ): boolean {
     let currentUser = this.authService.currentUser;
-    return !currentUser ? currentUser.admin : false;
+    return !currentUser ? currentUser.role.admin : false;
   }
-
 }

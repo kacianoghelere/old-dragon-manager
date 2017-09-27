@@ -60,19 +60,18 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   // Lifecycle hooks functions
   // ---------------------------------------------------------------------------
 
-  ngOnInit() {
-    this.user = new User;
-    console.log("currentUser:", this.authService.currentUser);
-    this.route.params.subscribe((params) => {
-      this.user_id = params['id'];
-      this.refresh();
-    });
-  }
-
   ngOnDestroy() {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
+  }
+
+  ngOnInit() {
+    this.user = new User;
+    this.route.params.subscribe((params) => {
+      this.user_id = params['id'];
+      this.refresh();
+    });
   }
 
   //

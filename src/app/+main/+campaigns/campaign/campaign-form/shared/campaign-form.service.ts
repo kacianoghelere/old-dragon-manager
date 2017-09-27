@@ -29,7 +29,7 @@ export class CampaignFormService {
    * @return {boolean} Resultado da verificação
    */
   canEdit(): boolean {
-    return this.authService.currentUser.id === this.campaign.user.id
+    return this.authService.currentUser.id === this.campaign.dungeonMaster.id
       || this.authService.isAdminUser();
   }
 }

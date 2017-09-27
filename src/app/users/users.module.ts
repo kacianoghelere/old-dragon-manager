@@ -18,6 +18,7 @@ import { UsersService } from './users.service';
 import { UsersRoutingModule } from './users-routing.module';
 import { UserCharactersComponent } from './user-profile/user-characters/user-characters.component';
 import { UserCampaignsComponent } from './user-profile/user-campaigns/user-campaigns.component';
+import { CampaignInvitationFormComponent } from './user-profile/user-campaign-invitations/campaign-invitation-form/campaign-invitation-form.component';
 
 @NgModule({
   imports: [
@@ -40,7 +41,8 @@ import { UserCampaignsComponent } from './user-profile/user-campaigns/user-campa
     UserSettingsComponent,
     UserCampaignInvitationsComponent,
     UserCharactersComponent,
-    UserCampaignsComponent
+    UserCampaignsComponent,
+    CampaignInvitationFormComponent
   ],
   exports: [UserFormComponent],
   providers: [UsersService]

@@ -32,7 +32,7 @@ export class UsersService extends EntityService<User> {
   }
 
   /**
-   * [create description]
+   * Cria novo usuário
    * @param  {User}            params [description]
    * @return {Observable<any>}        [description]
    */
@@ -41,44 +41,71 @@ export class UsersService extends EntityService<User> {
   }
 
   /**
-   * [destroy description]
-   * @param  {number}          id [description]
-   * @return {Observable<any>}    [description]
+   * Destrói usuário
+   * @param  {number}          id ID do usuário
+   * @return {Observable<any>}    Retorno do Request
    */
   destroy(id: number): Observable<any> {
     return super._destroy(this.resource)(id);
   }
 
   /**
-   * [find description]
-   * @param  {number}          id [description]
-   * @return {Observable<any>}    [description]
+   * Busca usuário partir do ID
+   * @param  {number}          id ID do usuário
+   * @return {Observable<any>}    Retorno do Request
    */
   find(id: number): Observable<any> {
     return super._find(this.resource)(id);
   }
 
   /**
-   * [list description]
-   * @return {Observable<any>} [description]
+   * Busca todas as campanhas do usuário
+   * @param  {number}          id ID do usuário
+   * @return {Observable<any>}    Retorno do Request
+   */
+  findCampaigns(id: number): Observable<any> {
+    return super._custom(this.resource, 'campaigns')(id);
+  }
+
+  /**
+   * Busca todos os convites de campanha do usuário
+   * @param  {number}          id ID do usuário
+   * @return {Observable<any>}    Retorno do Request
+   */
+  findCampaignInvitations(id: number): Observable<any> {
+    return super._custom(this.resource, 'campaign_invitations')(id);
+  }
+
+  /**
+   * Busca todas os personagens do usuário
+   * @param  {number}          id ID do usuário
+   * @return {Observable<any>}    Retorno do Request
+   */
+  findCharacters(id: number): Observable<any> {
+    return super._custom(this.resource, 'characters')(id);
+  }
+
+  /**
+   * Busca lista de usuários
+   * @return {Observable<any>} Retorno do Request
    */
   list(): Observable<any> {
     return super._list(this.resource)();
   }
 
   /**
-   * [list description]
-   * @return {Observable<any>} [description]
+   * Busca lista de usuários aptos para receberes convite de campanha
+   * @return {Observable<any>} Retorno do Request
    */
   listInvitable(campaign_id): Observable<any> {
     return super._find("invitable_users")(campaign_id);
   }
 
   /**
-   * [update description]
-   * @param  {number}          id     [description]
-   * @param  {User}            params [description]
-   * @return {Observable<any>}        [description]
+   * Atualiza dados do usuário
+   * @param  {number}          id     ID do usuario
+   * @param  {User}            params Dados do usuário
+   * @return {Observable<any>}        Retorno do Request
    */
   update(id: number, params: User): Observable<any> {
     return super._update(this.resource)(id, {user: params});

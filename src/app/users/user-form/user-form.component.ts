@@ -61,7 +61,7 @@ export class UserFormComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.user.password = '';
     this.user.confirm = '';
-    if (this.currentUser.admin) {
+    if (this.currentUser.role.admin) {
       this.subscription = this.rolesService.list().subscribe((response) => {
         this.roles = response;
       });
@@ -78,7 +78,7 @@ export class UserFormComponent implements OnInit, OnDestroy {
    * @return {any} Authenticated current user information
    */
   get currentUser(): any {
-    return this.authService.currentUser || {admin: false};
+    return this.authService.currentUser || {role: {admin: false}};
   }
 
   //

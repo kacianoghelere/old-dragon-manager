@@ -23,36 +23,11 @@
     </div>
 
     <div class="col-sm-12 col-md-8 col-lg-9">
-      <h2>Criações</h2>
-      <div class="card">
-        <div class="card-header">
-          <nav class="nav nav-tabs nav-fill card-header-tabs">
-            <a class="nav-link text-center pointer" (click)="setActiveTab('C')"
-                [ngClass]="{active: isActiveTab('C')}">
-              <i class="fa fa-book"></i> Campanhas
-            </a>
-            <a class="nav-link text-center pointer" (click)="setActiveTab('P')"
-                [ngClass]="{active: isActiveTab('P')}">
-              <i class="fa fa-users"></i> Personagens
-            </a>
-            <a class="nav-link text-center pointer" (click)="setActiveTab('I')"
-                [ngClass]="{active: isActiveTab('I')}">
-              <i class="fa fa-envelope-o"></i> Convites
-              badge
-            </a>
-          </nav>
-        </div>
+      <h2 class="title">Criações</h2>
 
-        <user-campaigns [user]="user"
-          *ngIf="isActiveTab('C')"></user-campaigns>
-
-        <user-characters [user]="user"
-          *ngIf="isActiveTab('P')"></user-characters>
-
-        <user-campaign-invitations [user]="user"
-          *ngIf="isActiveTab('I')"
-          (invitationChanged)="refresh()"></user-campaign-invitations>
-      </div>
+      <user-campaigns></user-campaigns>
+      <user-characters></user-characters>
+      <user-campaign-invitations></user-campaign-invitations>
     </div>
   </div>
 </layout-base>

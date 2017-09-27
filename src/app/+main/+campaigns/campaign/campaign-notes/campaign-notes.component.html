@@ -1,7 +1,7 @@
 <div class="notes">
   <div class="row">
     <div class="col-sm-12 col-md-6 col-lg-4"
-        *ngFor="let note of notes; let idx=index">
+        *ngFor="let note of filteredNotes">
       <div class="note">
         <p>{{note.description}}</p>
         <small [hidden]="!note.dm_only">Material do Mestre</small>

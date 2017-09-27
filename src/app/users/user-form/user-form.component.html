@@ -44,7 +44,8 @@
         placeholder="******">
   </form-group>
 
-  <form-group [field]="userForm.controls.userRole" *ngIf="currentUser.admin">
+  <form-group [field]="userForm.controls.userRole"
+      *ngIf="currentUser.role.admin">
     <label for="userRole">Perfil</label>
     <select class="form-control" id="userRole" formControlName="role_id">
       <option value="">Selecione</option>

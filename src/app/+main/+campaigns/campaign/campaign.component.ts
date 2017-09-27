@@ -5,6 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { AuthenticationService } from '../../../authentication/authentication.service';
 import { Campaign } from '../../../shared/entities/campaign';
+import { Character } from '../../../shared/entities/character';
+import { CoreComponent } from '../../../shared/components/core/core.component';
 import { CampaignsService } from '../shared/campaigns.service';
 
 
@@ -13,7 +15,7 @@ import { CampaignsService } from '../shared/campaigns.service';
   templateUrl: './campaign.component.html',
   styleUrls: ['./campaign.component.scss']
 })
-export class CampaignComponent implements OnInit, OnDestroy {
+export class CampaignComponent extends CoreComponent implements OnInit, OnDestroy {
 
   campaign: Campaign;
   subscription: Subscription;
@@ -31,7 +33,9 @@ export class CampaignComponent implements OnInit, OnDestroy {
     private router: Router,
     private authService: AuthenticationService,
     private campaignsService: CampaignsService
-  ) { }
+  ) {
+    super();
+  }
 
   ngOnDestroy() {
     if (this.subscription) this.subscription.unsubscribe();
@@ -57,11 +61,31 @@ export class CampaignComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Verifica se uma coleção é válida e não vazia
-   * @param  {any[]}   collection Coleção
+   * Verifica se o usuário atual é o mestre de jogo da campanha
+   * @return {boolean} Resultado da verificação
+   */
+  isCampaignMember(): boolean {
+    return this.campaign.characters.map((character: Character) => {
+      return character.player.id;
+    }).indexOf(this.authService.currentUser.id) >= 0;
+  }
+
+  /**
+   * Verifica se o usuário atual é o mestre de jogo da campanha
+   * @return {boolean} Resultado da verificação
+   */
+  isCampaignOwner(): boolean {
+    return this.authService.isCurrentUser(this.campaign.dungeonMaster);
+  }
+
+  /**
+   * Verifica se uma coleção deve ser ocultada, checando se o usuário é o
+   * criador da campanha, membro da campanha ou a coleção de dados está vazia
+   * @param  {any[]}   collection Coleção de dados
    * @return {boolean}            Resultado da verificação
    */
-  emptyCollection(collection: any[]): boolean {
-    return !(collection && collection.length);
+  shouldHide(collection: any[]): boolean {
+    return !this.isCampaignOwner()
+      && (!this.isCampaignMember() || !this.hasData(collection));
   }
 }

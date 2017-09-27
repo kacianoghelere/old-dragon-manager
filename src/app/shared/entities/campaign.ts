@@ -9,7 +9,8 @@ export class Campaign {
   picture?: string;
   id?: number;
   journals?: CampaignJournal[];
+  members?: User[];
   notes?: CampaignNote[];
   title: string;
-  user?: User
+  dungeonMaster?: User
 }
