@@ -1,0 +1,28 @@
+<div class="card">
+  <div class="list-group list-group-flush">
+    <p class="list-group-item d-flex justify-content-between">
+      <span>{{character?.status?.strength}} Força</span>
+      <span><b>Mod.:</b> {{getModifier(character?.status?.strength)}}</span>
+    </p>
+    <p class="list-group-item d-flex justify-content-between">
+      <span>{{character?.status?.dexterity}} Destreza</span>
+      <span><b>Mod.:</b> {{getModifier(character?.status?.dexterity)}}</span>
+    </p>
+    <p class="list-group-item d-flex justify-content-between">
+      <span>{{character?.status?.constitution}} Constituição</span>
+      <span><b>Mod.:</b> {{getModifier(character?.status?.constitution)}}</span>
+    </p>
+    <p class="list-group-item d-flex justify-content-between">
+      <span>{{character?.status?.intelligence}} Inteligência</span>
+      <span><b>Mod.:</b> {{getModifier(character?.status?.intelligence)}}</span>
+    </p>
+    <p class="list-group-item d-flex justify-content-between">
+      <span>{{character?.status?.wisdom}} Sabedoria</span>
+      <span><b>Mod.:</b> {{getModifier(character?.status?.wisdom)}}</span>
+    </p>
+    <p class="list-group-item d-flex justify-content-between">
+      <span>{{character?.status?.charisma}} Carisma</span>
+      <span><b>Mod.:</b> {{getModifier(character?.status?.charisma)}}</span>
+    </p>
+  </div>
+</div>

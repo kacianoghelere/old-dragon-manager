@@ -1,4 +1,18 @@
 <layout-base *ngIf="character" [title]="character.name"
-    [cover]="character.picture" [description]="character.description">
+    [cover]="character.picture" [description]="character.title">
+  <section class="row">
+    <article class="col-sm-12 col-md-4 col-lg-3">
+      <character-attributes [character]="character"></character-attributes>
+    </article>
+    <article class="col-sm-12 col-md-8 col-lg-9">
+      <character-info [character]="character"></character-info>
+    </article>
+  </section>
 
+  <div class="layout-controls layout-end">
+    <a class="btn btn-dark"
+        [routerLink]="['/users/profile', character?.player?.id]">
+      <b>Interpretado por:</b> {{character?.player?.name}}
+    </a>
+  </div>
 </layout-base>

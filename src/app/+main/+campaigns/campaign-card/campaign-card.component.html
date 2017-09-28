@@ -1,0 +1,15 @@
+<a class="card" [routerLink]="[campaign.id]">
+  <img class="card-img-top" [src]="campaign.picture" [alt]="campaign.title">
+  <div class="card-body">
+    <h4 class="card-title">{{campaign.title}}</h4>
+    <p class="card-text">
+      <span class="badge badge-primary">
+        {{campaign.characters.length}} personagens
+      </span>
+      <span class="badge badge-primary">
+        {{campaign.journals.length}} sessões jogadas
+      </span>
+    </p>
+    <p class="card-text">{{campaign.description}}</p>
+  </div>
+</a>

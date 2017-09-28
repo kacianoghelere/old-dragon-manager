@@ -1,6 +1,6 @@
 <layout-base *ngIf="campaign" [title]="campaign.title"
     [cover]="campaign.picture" [description]="campaign.description">
-  <section [hidden]="shouldHide(campaign.journals)">
+  <section>
     <h4>Diários de Campanha</h4>
     <campaign-journals [journals]="campaign.journals"></campaign-journals>
   </section>
@@ -18,6 +18,13 @@
     <campaign-invite-users *ngIf="isCampaignOwner()"
       [campaign]="campaign"></campaign-invite-users>
   </section>
+
+  <div class="layout-controls layout-end">
+    <a class="btn btn-dark"
+        [routerLink]="['/users/profile', campaign?.dungeonMaster?.id]">
+      <b>Narrador:</b> {{campaign?.dungeonMaster?.name}}
+    </a>
+  </div>
 
   <div class="layout-controls" *ngIf="isCampaignOwner()">
     <a class="btn btn-primary" [routerLink]="['edit']">

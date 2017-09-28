@@ -1,0 +1,40 @@
+<div class="card">
+  <div class="card-body row">
+    <div class="col-sm-12 col-md-6 col-lg-3">
+      <b>Idade</b><br>{{character?.age}} anos
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-3">
+      <b>Altura</b><br>{{character?.height}}cm
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-3">
+      <b>Peso</b><br>{{character?.weight}}kg
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-3">
+      <b>Alinhamento</b><br>{{character?.status?.alignment?.name}}
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body row">
+    <div class="col-sm-12 col-md-6 col-lg-3">
+      <b>Alinhamento</b><br>{{character?.status?.alignment?.name}}
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-3">
+      <b>Raça</b><br>{{character?.race?.name}}
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-3">
+      <b>Classe</b><br>{{character?.class?.name}}
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-3">
+      <b>Especialização</b><br>{{character?.specialization?.name}}
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title"><i>{{character?.quote}}</i></h5>
+    <p class="card-text">{{character?.description}}</p>
+  </div>
+</div>

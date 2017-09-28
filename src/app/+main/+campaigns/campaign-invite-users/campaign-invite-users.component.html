@@ -1,21 +1,26 @@
-<h5>Adicionar Jogador</h5>
-<form class="form-inline" [formGroup]="invitationForm"
-    (ngSubmit)="onSubmit(invitationForm)"
-    *ngIf="hasUsers()">
-  <label class="sr-only" for="user">Usuário</label>
-  <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="user"
-      formControlName="user">
-    <option value="" selected>Selecione</option>
-    <option *ngFor="let user of users" [value]="user.id">{{user.name}}</option>
-  </select>
+<div class="card">
+  <div class="card-header">
+    <h5>Adicionar Jogador</h5>
+  </div>
+  <div class="card-body">
+    <p class="alert alert-secondary mb-2 mr-sm-2 mb-sm-0" role="alert"
+        *ngIf="!hasUsers()">
+      Parece que todos os heróis disponíveis já foram convocados.
+    </p>
+    <form class="form-inline" [formGroup]="invitationForm"
+        (ngSubmit)="onSubmit(invitationForm)"
+        *ngIf="hasUsers()">
+      <label class="sr-only" for="user">Usuário</label>
+      <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="user"
+          formControlName="user">
+        <option value="" selected>Selecione</option>
+        <option *ngFor="let user of users" [value]="user.id">{{user.name}}</option>
+      </select>
 
-  <button class="btn btn-primary" type="submit"
-      [disabled]="invitationForm.invalid">
-    <i class="fa fa-send"></i> Convidar
-  </button>
-</form>
-
-<p class="alert alert-secondary mb-2 mr-sm-2 mb-sm-0" role="alert"
-    *ngIf="!hasUsers()">
-  Parece que todos os heróis disponíveis já foram convocados.
-</p>
+      <button class="btn btn-primary" type="submit"
+          [disabled]="invitationForm.invalid">
+        <i class="fa fa-send"></i> Convidar
+      </button>
+    </form>
+  </div>
+</div>

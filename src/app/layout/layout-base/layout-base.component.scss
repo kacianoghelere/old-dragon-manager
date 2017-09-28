@@ -46,12 +46,36 @@
       }
 
       /deep/ .layout-controls {
-        -webkit-align-self: flex-end;
-        -moz-align-self: flex-end;
-        align-self: flex-end;
+        -webkit-align-self: flex-start;
+        -moz-align-self: flex-start;
+        align-self: flex-start;
         bottom: -16px;
         position: absolute;
+
+        .title {
+          color: #fff;
+          text-shadow: 0 0px 30px rgba(0, 0, 0, 1), 0 1px 3px rgba(0, 0, 0, .8);
+        }
+
+        &.layout-start {
+          -webkit-align-self: flex-start;
+          -moz-align-self: flex-start;
+          align-self: flex-start;
+        }
+
+        &.layout-center {
+          -webkit-align-self: center;
+          -moz-align-self: center;
+          align-self: center;
+        }
+
+        &.layout-end {
+          -webkit-align-self: flex-end;
+          -moz-align-self: flex-end;
+          align-self: flex-end;
+        }
       }
+
     }
 
     main {

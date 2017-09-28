@@ -6,6 +6,7 @@ import { ApiService } from './api.service';
 import { ToasterService } from './toaster.service';
 import { CharacterCardComponent } from './components/character-card/character-card.component';
 import { CoreComponent } from './components/core/core.component';
+import { UserCardComponent } from './components/user-card/user-card.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,14 @@ import { CoreComponent } from './components/core/core.component';
   providers: [
     ApiService
   ],
-  declarations: [CharacterCardComponent, CoreComponent],
-  exports: [CharacterCardComponent]
+  declarations: [
+    CharacterCardComponent,
+    UserCardComponent,
+    CoreComponent
+  ],
+  exports: [
+    CharacterCardComponent,
+    UserCardComponent
+  ]
 })
 export class SharedModule { }

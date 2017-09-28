@@ -10,6 +10,7 @@ import { Character } from '../../entities/character';
 export class CharacterCardComponent implements OnInit {
 
   @Input('character') character: Character;
+  @Input('showPlayer') showPlayer: boolean = true;
 
   constructor() { }
 

@@ -1,17 +1,27 @@
-<a class="character-card {{character?.alignment?.className}}">
-  <div class="header">
-    <div class="avatar">
+<article class="character-card {{character?.status?.alignment?.style}}">
+  <a class="character-header" [routerLink]="['/main/characters', character.id]">
+    <div class="character-avatar">
         <img [src]="character.picture" [alt]="character.name" />
     </div>
-    <div class="body">
-      <div class="character-name">
-          {{character.name}}
+    <div class="character-body">
+      <div class="character-name d-flex justify-content-between">
+          <span>{{character.name}}</span>
+          <span class="badge badge-pill badge-dark">
+            {{character?.status?.current_level}}
+          </span>
       </div>
       <small class="character-title">{{character.title}}</small>
+      <small class="character-text">
+        {{character?.race?.singular_name}} /
+        {{character?.class?.name}} /
+        {{character?.specialization?.name}}
+      </small>
     </div>
+  </a>
+  <div class="character-info" *ngIf="showPlayer">
+    <a class="character-info-item"
+        [routerLink]="['/users/profile', character.player.id]">
+      <b>Jogador:</b> {{character?.player?.name}}
+    </a>
   </div>
-  <ul class="character-info">
-      <li>{{character?.race?.name}}</li>
-      <li>{{character?.class?.name}} ({{character?.specialization?.name}})</li>
-  </ul>
-</a>
+</article>

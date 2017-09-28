@@ -8,6 +8,7 @@ export class CharacterRace {
 
   id: number;
   name: string;
+  singular_name: string;
   min_height?: number = 0;
   max_height?: number = 0;
   min_weight?: number = 0;

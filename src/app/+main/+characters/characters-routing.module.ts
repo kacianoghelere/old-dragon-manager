@@ -10,8 +10,6 @@ const charactersRoutes: Routes = [
     path: '',
     component: CharactersComponent,
     children: [
-      { path: ':id', component: CharacterProfileComponent },
-      { path: '', component: CharactersHomeComponent },
       {
         path: 'classes',
         loadChildren: 'app/+main/+characters/+classes/classes.module#ClassesModule'
@@ -23,7 +21,9 @@ const charactersRoutes: Routes = [
       {
         path: 'sheet',
         loadChildren: 'app/+main/+characters/+sheet/sheet.module#SheetModule'
-      }
+      },
+      { path: ':id', component: CharacterProfileComponent },
+      { path: '', component: CharactersHomeComponent }
     ]
   }
 ];

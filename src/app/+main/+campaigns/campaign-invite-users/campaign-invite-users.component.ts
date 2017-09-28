@@ -50,6 +50,7 @@ export class CampaignInviteUsersComponent implements OnInit, OnDestroy {
       (response) => this.users = response,
       (error) => console.log(error)
     );
+    this.invitationForm.controls.user.setValue('');
   }
 
   ngOnDestroy() {
@@ -71,13 +72,11 @@ export class CampaignInviteUsersComponent implements OnInit, OnDestroy {
     console.log("Submetido!", params);
     this.campaignInvitationService.create(params).subscribe(
       (response: any) => {
-        console.log("Salvou!", response);
         this.toastrService.success('Convite enviado',
           'O chamado da aventura já está a caminho do herói!');
         this.loadUsers();
       },
       (error) => {
-        console.log("Deu PT!", error);
         this.toastrService.warning('Ooops! Ocorreu um erro.',
           'Parace que algum kobold andou mexendo nos cabos de rede.');
       }
