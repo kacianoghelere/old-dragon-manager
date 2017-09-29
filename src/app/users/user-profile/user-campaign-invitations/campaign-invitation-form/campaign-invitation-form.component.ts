@@ -4,9 +4,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { ToastrService } from 'ngx-toastr';
 
+import { AuthenticationService } from '../../../../authentication/authentication.service';
 import { CampaignInvitationService } from '../../../../shared/services/campaign-invitation.service';
 import { CampaignInvitation } from '../../../../shared/entities/campaign-invitation';
 import { Character } from '../../../../shared/entities/character';
+import { User } from '../../../../shared/entities/user';
 import { UsersService } from '../../../users.service';
 
 @Component({
@@ -17,6 +19,7 @@ import { UsersService } from '../../../users.service';
 export class CampaignInvitationFormComponent implements OnInit {
 
   @Input('invitation') invitation: CampaignInvitation;
+  @Input('user') user: User;
   @Output('invitationChanged') invitationChanged: EventEmitter<any>;
   invitationForm: FormGroup;
   userCharacters: Character[];
@@ -25,22 +28,12 @@ export class CampaignInvitationFormComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
+    private authService: AuthenticationService,
     private invitationService: CampaignInvitationService,
     private usersService: UsersService,
     private toastrService: ToastrService
   ) {
     this.invitationChanged = new EventEmitter();
-  }
-
-  ngOnInit() {
-    this.route.params.subscribe((params) => {
-      this.user_id = params['id'];
-      this.loadCollections(this.user_id);
-    });
-    this.invitationForm = this.formBuilder.group({
-      id: [ this.invitation.id, Validators.required ],
-      character_id: [ '', Validators.required ]
-    });
   }
 
   /**
@@ -53,6 +46,7 @@ export class CampaignInvitationFormComponent implements OnInit {
     this.invitationService.acceptInvitation(invitation).subscribe((res) => {
       this.toastrService.success('Solicitação confirmada',
         'Você atendeu ao chamado da aventura. Não esqueça de seus itens mágicos!');
+      this.removeInvitation(invitation.id);
       this.invitationChanged.emit();
     }, (error) => {
         this.toastrService.warning('Ooops! ',
@@ -69,6 +63,7 @@ export class CampaignInvitationFormComponent implements OnInit {
     this.invitationService.denyInvitation(invitation).subscribe((res) => {
       this.toastrService.info('Solicitação recusada',
         'Muitas vezes recusar o chamado é uma decisão sábia. Ou não...');
+      this.removeInvitation(invitation.id);
       this.invitationChanged.emit();
     });
   }
@@ -82,6 +77,27 @@ export class CampaignInvitationFormComponent implements OnInit {
       (response) => this.userCharacters = response,
       (error) => console.log('Erro ao buscar personagens do usuário')
     );
+  }
+
+  ngOnInit() {
+    this.route.params.subscribe((params) => {
+      this.user_id = params['id'];
+      this.loadCollections(this.user_id);
+    });
+    this.invitationForm = this.formBuilder.group({
+      id: [ this.invitation.id, Validators.required ],
+      character_id: [ '', Validators.required ]
+    });
+  }
+
+  /**
+   * Remove convite para campanha do usuário atual a partir do ID do convite
+   * @param {number} id ID do convite
+   */
+  removeInvitation(invitation_id: number) {
+    if (this.authService.isCurrentUser(this.user)) {
+      this.authService.removeInvitation(invitation_id);
+    }
   }
 
 }

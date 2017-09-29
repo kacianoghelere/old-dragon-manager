@@ -7,6 +7,13 @@
   // border: none;
   margin: 10px 0;
 
+  &.feature-link,
+  &.feature-link .card-img {
+    border-radius: $card-inner-border-radius;
+    max-height: 200px;
+    object-fit: cover;
+  }
+
   .card-header {
     h1, .h1,
     h2, .h2,
@@ -16,6 +23,19 @@
     h6, .h6 {
       margin: 0;
       padding: 0;
+    }
+  }
+
+  .card-img-overlay {
+    background-color: $card-img-overlay-bg;
+    border-radius: $card-border-radius;
+
+    &:hover { background-color: $card-img-overlay-bg; }
+
+    .card-text, .card-title {
+      -webkit-text-shadow: 0 0px 30px rgba(0, 0, 0, 1), 0 1px 3px rgba(0, 0, 0, .8);
+      -moz-text-shadow: 0 0px 30px rgba(0, 0, 0, 1), 0 1px 3px rgba(0, 0, 0, .8);
+      text-shadow: 0 0px 30px rgba(0, 0, 0, 1), 0 1px 3px rgba(0, 0, 0, .8);
     }
   }
 
@@ -100,6 +120,8 @@ h4, .h4,
 h5, .h5,
 h6, .h6 {
   font-family: $font-family-sans-serif;
+
+  &.title { margin: .5em 0; }
 }
 
 .mega-menu {

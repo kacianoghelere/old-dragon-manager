@@ -4,6 +4,7 @@
     <li class="list-group-item" *ngFor="let invitation of invitations">
       <p>{{invitation.message}}</p>
       <campaign-invitation-form [invitation]="invitation"
+        [user]="user"
         (invitationChanged)="loadCollection()"></campaign-invitation-form>
     </li>
   </ul>

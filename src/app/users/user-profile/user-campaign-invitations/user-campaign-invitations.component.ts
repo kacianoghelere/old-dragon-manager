@@ -18,6 +18,7 @@ import { UsersService } from '../../users.service';
 export class UserCampaignInvitationsComponent extends CoreComponent
   implements OnInit {
 
+  @Input('user') user: User;
   @Output('invitationChanged') invitationChanged: EventEmitter<any>;
   invitationForm: FormGroup;
   invitations: CampaignInvitation[];

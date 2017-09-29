@@ -1,12 +1,7 @@
 <div class="card">
-  <div class="card-header">
-    <h5>Adicionar Jogador</h5>
-  </div>
   <div class="card-body">
-    <p class="alert alert-secondary mb-2 mr-sm-2 mb-sm-0" role="alert"
-        *ngIf="!hasUsers()">
-      Parece que todos os heróis disponíveis já foram convocados.
-    </p>
+    <h6 class="card-title">Adicionar Jogador</h6>
+    <p class="card-text" *ngIf="!hasUsers()">Nenhum herói disponível</p>
     <form class="form-inline" [formGroup]="invitationForm"
         (ngSubmit)="onSubmit(invitationForm)"
         *ngIf="hasUsers()">

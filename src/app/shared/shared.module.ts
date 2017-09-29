@@ -4,8 +4,9 @@ import { RouterModule } from '@angular/router';
 
 import { ApiService } from './api.service';
 import { ToasterService } from './toaster.service';
-import { CharacterCardComponent } from './components/character-card/character-card.component';
 import { CoreComponent } from './components/core/core.component';
+import { CampaignCardComponent } from './components/campaign-card/campaign-card.component';
+import { CharacterCardComponent } from './components/character-card/character-card.component';
 import { UserCardComponent } from './components/user-card/user-card.component';
 
 @NgModule({
@@ -17,11 +18,13 @@ import { UserCardComponent } from './components/user-card/user-card.component';
     ApiService
   ],
   declarations: [
+    CampaignCardComponent,
     CharacterCardComponent,
     UserCardComponent,
     CoreComponent
   ],
   exports: [
+    CampaignCardComponent,
     CharacterCardComponent,
     UserCardComponent
   ]

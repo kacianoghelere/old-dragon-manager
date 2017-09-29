@@ -1,4 +1,4 @@
-<layout-base *ngIf="user" [title]="user.name">
+<layout-base *ngIf="user" [pageTitle]="user.name">
   <div class="row">
     <div class="col-sm-12 col-md-4 col-lg-3">
       <div class="card">
@@ -27,7 +27,7 @@
 
       <user-campaigns></user-campaigns>
       <user-characters></user-characters>
-      <user-campaign-invitations></user-campaign-invitations>
+      <user-campaign-invitations [user]="user"></user-campaign-invitations>
     </div>
   </div>
 </layout-base>

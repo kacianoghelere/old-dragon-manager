@@ -15,19 +15,19 @@ export class CharactersHomeComponent implements OnInit {
     this.links = [
       {
         title: 'Raças',
-        picture: 'https://dmleviathan.files.wordpress.com/2017/02/10-races.jpg?w=541&h=371',
+        picture: '/assets/races_card.jpg',
         description: 'Criação e consulta de dados sobre as raças jogáveis.',
         route: 'races'
       },
       {
         title: 'Classes',
-        picture: 'https://i.ytimg.com/vi/MUC53AYiEjQ/maxresdefault.jpg',
+        picture: 'assets/classes_card.jpg',
         description: 'Informações essênciais sobre classes de personagens!',
         route: 'classes'
       },
       {
         title: 'Ficha',
-        picture: 'https://rpgrunkleplaysgames.files.wordpress.com/2016/02/21b8d-sheet.jpg?w=798',
+        picture: '/assets/sheet_card.jpg',
         description: 'Monte aqui seu personagem.',
         route: 'sheet'
       }

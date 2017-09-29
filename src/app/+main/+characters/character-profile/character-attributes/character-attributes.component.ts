@@ -17,13 +17,6 @@ export class CharacterAttributesComponent extends CoreComponent
     super();
   }
 
-  getModifier(attribute: number): string {
-    let modifier = (attribute - 10) / 2;
-    let signal = modifier !== 0 ? (modifier > 0 ? '+' : '-') : '';
-    let absModifier = Math.abs(modifier).toFixed(0);
-    return `${signal}${absModifier}`;
-  }
-
   ngOnDestroy() {
   }
 

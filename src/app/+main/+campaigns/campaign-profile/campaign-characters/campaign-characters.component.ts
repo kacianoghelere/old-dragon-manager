@@ -9,7 +9,7 @@ import { Campaign } from '../../../../shared/entities/campaign';
 })
 export class CampaignCharactersComponent implements OnInit {
 
-  @Input() campaign: Campaign;
+  @Input('campaign') campaign: Campaign;
 
   constructor() { }
 

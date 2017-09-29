@@ -1,14 +1,18 @@
-<layout-base title="Personagens">
-  <div class="card-deck">
-    <a class="card card-blurred" [routerLink]="[link.route]"
+<layout-base pageTitle="Personagens">
+  <section class="card-deck">
+    <a class="card feature-link" [routerLink]="[link.route]"
         *ngFor="let link of links">
-      <div class="card-picture-top">
-        <img class="card-img-top" [src]="link.picture" alt="link.title">
-      </div>
-      <div class="card-body">
-        <h4 class="card-title">{{link.title}}</h4>
+      <img class="card-img" [src]="link.picture" alt="link.title">
+      <div class="card-img-overlay d-flex justify-content-end flex-column">
+        <h3 class="card-title">{{link.title}}</h3>
         <p class="card-text">{{link.description}}</p>
       </div>
     </a>
-  </div>
+  </section>
+
+  <section>
+    <article>
+      <characters-list></characters-list>
+    </article>
+  </section>
 </layout-base>

@@ -128,23 +128,35 @@ export class AuthenticationService {
   }
 
   /**
+   * Remove convite para campanha do usuário atual a partir do ID do convite
+   * @param {number} id ID do convite
+   */
+  removeInvitation(id: number) {
+    let invitation = this.currentUser.invitations.find((invitation) => {
+      return invitation.id == id;
+    });
+    if (invitation) {
+      let index = this.currentUser.invitations.indexOf(invitation);
+      this.currentUser.invitations.splice(index, 1);
+    }
+  }
+
+  /**
    * API authentication method
    * Sends the user email and password to the API in order to receive de JWT
    * @param {User} user User login data
    */
   signin(user: any) {
     let options = { headers: this.headers };
-    this.http.post(`${this.url}/authentication`, JSON.stringify(user), options)
-      .map((res) => { return res.json() })
-      .subscribe((response) => {
+    let jsonUser = JSON.stringify(user);
+    this.http.post(`${this.url}/authentication`, jsonUser, options)
+      .map((res) => res.json()).subscribe((response) => {
         this.token = response.auth_token;
         this.currentUser = response.user;
         this.router.navigate(['/main']);
-      },
-      (error) => {
+      }, (error) => {
         this.logout();
-      },
-      () => {
+      }, () => {
         this.authentication.emit(this.authenticated);
       });
   }

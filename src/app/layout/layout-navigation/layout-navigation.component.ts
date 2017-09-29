@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import { AuthenticationService } from '../../authentication/authentication.service';
+import { CoreComponent } from '../../shared/components/core/core.component';
 import { User } from '../../shared/entities/user';
 import { UsersService } from '../../users/users.service';
 
@@ -9,7 +10,7 @@ import { UsersService } from '../../users/users.service';
   templateUrl: './layout-navigation.component.html',
   styleUrls: ['./layout-navigation.component.scss']
 })
-export class LayoutNavigationComponent implements OnInit {
+export class LayoutNavigationComponent extends CoreComponent implements OnInit {
 
   @Input('title') title: string = '';
 
@@ -25,6 +26,7 @@ export class LayoutNavigationComponent implements OnInit {
     private authService: AuthenticationService,
     private usersService: UsersService
   ) {
+    super();
     this.authService.authentication.subscribe((authenticated: boolean) => {
       this.authenticated = authenticated;
     });

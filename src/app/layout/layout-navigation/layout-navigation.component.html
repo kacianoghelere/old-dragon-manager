@@ -48,17 +48,21 @@
 
         <li class="nav-item dropdown" ngbDropdown *ngIf="authenticated">
           <a class="nav-link" [routerLink]="['/users/profile/', currentUser.id]">
-            <span [ngClass]="{danger: currentUser?.invitations?.length}">
+            <span [ngClass]="{'text-danger': hasData(currentUser.invitations)}">
               <i class="fa fa-bell"></i>
+            </span>
+            <span class="badge badge-pill badge-light text-dark"
+                *ngIf="hasData(currentUser.invitations)">
+              {{currentUser?.invitations?.length}}
             </span>
           </a>
         </li>
         <li class="nav-item dropdown" ngbDropdown *ngIf="authenticated">
           <a class="nav-link pointer" id="options" ngbDropdownToggle>
-              <span>
-                <img class="rounded-circle avatar" [src]="avatar"
-                  alt="avatar"> {{currentUser.name}}
-              </span>
+            <span>
+              <img class="rounded-circle avatar" [src]="avatar"
+                alt="avatar"> {{currentUser.name}}
+            </span>
           </a>
           <div class="bg-dark" ngbDropdownMenu aria-labelledby="options">
             <a class="dropdown-item text-light"

@@ -1,10 +1,8 @@
-import { Http, Headers } from '@angular/http';
-
 import { Observable } from 'rxjs/Observable';
 
-import {
-  AuthenticationService
-} from '../../authentication/authentication.service';
+import { Http, Headers } from '@angular/http';
+
+import { AuthenticationService } from '../../authentication/authentication.service';
 
 /**
  * Abstract class that contains useful methods and information for entity

@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class LayoutBaseComponent implements OnInit {
 
-  @Input() title: String = '';
+  @Input('pageTitle') title: String = '';
   @Input() description: String = '';
   @Input() cover: String = '';
 

@@ -16,6 +16,13 @@ export class CoreComponent {
     return !(collection && collection.length);
   }
 
+  protected getModifier(attribute: number): string {
+    let modifier = (attribute - 10) / 2;
+    let signal = modifier !== 0 ? (modifier > 0 ? '+' : '-') : '';
+    let absModifier = Math.abs(modifier).toFixed(0);
+    return `${signal}${absModifier}`;
+  }
+
   /**
    * Verifica se uma coleção é válida e tem dados preenchidos
    * @param  {any[]}  collection Coleção de dados

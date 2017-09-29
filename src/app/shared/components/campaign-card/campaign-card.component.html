@@ -1,8 +1,9 @@
-<a class="card" [routerLink]="[campaign.id]">
-  <img class="card-img-top" [src]="campaign.picture" [alt]="campaign.title">
-  <div class="card-body">
+<a class="card" [routerLink]="['/main/campaigns', campaign.id]">
+  <img [ngClass]="getCoverClass()" [src]="campaign.picture"
+    [alt]="campaign.title">
+  <div [ngClass]="getBodyClass()">
     <h4 class="card-title">{{campaign.title}}</h4>
-    <p class="card-text">
+    <p class="card-text" *ngIf="showDetails">
       <span class="badge badge-primary">
         {{campaign.characters.length}} personagens
       </span>

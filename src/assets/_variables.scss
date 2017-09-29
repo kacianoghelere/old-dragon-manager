@@ -723,12 +723,13 @@ $card-bg:                  $white !default;
 $card-link-hover-color:    $white !default;
 
 $card-img-overlay-padding: 1.25rem !default;
+$card-img-overlay-bg:      rgba(34, 34, 34, 0.5) !default;
 
-$card-deck-margin:          ($grid-gutter-width-base / 2) !default;
+$card-deck-margin:         ($grid-gutter-width-base / 2) !default;
 
-$card-columns-count:        3 !default;
-$card-columns-gap:          1.25rem !default;
-$card-columns-margin:       $card-spacer-y !default;
+$card-columns-count:       3 !default;
+$card-columns-gap:         1.25rem !default;
+$card-columns-margin:      $card-spacer-y !default;
 
 
 // Tooltips

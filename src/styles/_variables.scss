@@ -657,7 +657,9 @@ $card-inner-border-radius: calc(#{$card-border-radius} - #{$card-border-width}) 
 $card-cap-bg:              rgba($black, .03) !default;
 $card-bg:                  $really-white !default;
 
-$card-img-overlay-padding: 1.25rem !default;
+$card-img-overlay-padding:  1.25rem !default;
+$card-img-overlay-bg:       rgba(34, 34, 34, 0.5) !default;
+$card-img-overlay-bg-hover: rgba(34, 34, 34, 0.7) !default;
 
 $card-deck-margin:          ($grid-gutter-width / 2) !default;
 
