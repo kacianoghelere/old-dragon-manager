@@ -17,55 +17,55 @@
     </div>
   </a>
   <div class="character-info">
+    <div class="character-info-item">
+      <div class="row no-gutters text-center justify-content-end align-items-end">
+        <div class="col attribute">
+          <p><b>FOR</b></p>
+          <p>
+            {{character?.status?.strength}}
+            <span>({{getModifier(character?.status?.strength)}})</span>
+          </p>
+        </div>
+        <div class="col attribute">
+          <p><b>DES</b></p>
+          <p>
+            {{character?.status?.dexterity}}
+            <span>({{getModifier(character?.status?.dexterity)}})</span>
+          </p>
+        </div>
+        <div class="col attribute">
+          <p><b>CON</b></p>
+          <p>
+            {{character?.status?.constitution}}
+            <span>({{getModifier(character?.status?.constitution)}})</span>
+          </p>
+        </div>
+        <div class="col attribute">
+          <p><b>INT</b></p>
+          <p>
+            {{character?.status?.intelligence}}
+            <span>({{getModifier(character?.status?.intelligence)}})</span>
+          </p>
+        </div>
+        <div class="col attribute">
+          <p><b>SAB</b></p>
+          <p>
+            {{character?.status?.wisdom}}
+            <span>({{getModifier(character?.status?.wisdom)}})</span>
+          </p>
+        </div>
+        <div class="col attribute">
+          <p><b>CAR</b></p>
+          <p>
+            {{character?.status?.charisma}}
+            <span>({{getModifier(character?.status?.charisma)}})</span>
+          </p>
+        </div>
+      </div>
+    </div>
     <a class="character-info-item" *ngIf="showPlayer"
         [routerLink]="['/users/profile', character.player.id]">
       <b>Jogador:</b> {{character?.player?.name}}
     </a>
-    <div class="character-info-item">
-      <div class="row no-gutters text-center justify-content-end align-items-end">
-        <div class="col">
-          <h6><b>FOR</b></h6>
-          <h6>
-            {{character?.status?.strength}}
-            <span>({{getModifier(character?.status?.strength)}})</span>
-          </h6>
-        </div>
-        <div class="col">
-          <h6><b>DES</b></h6>
-          <h6>
-            {{character?.status?.dexterity}}
-            <span>({{getModifier(character?.status?.dexterity)}})</span>
-          </h6>
-        </div>
-        <div class="col">
-          <h6><b>CON</b></h6>
-          <h6>
-            {{character?.status?.constitution}}
-            <span>({{getModifier(character?.status?.constitution)}})</span>
-          </h6>
-        </div>
-        <div class="col">
-          <h6><b>INT</b></h6>
-          <h6>
-            {{character?.status?.intelligence}}
-            <span>({{getModifier(character?.status?.intelligence)}})</span>
-          </h6>
-        </div>
-        <div class="col">
-          <h6><b>SAB</b></h6>
-          <h6>
-            {{character?.status?.wisdom}}
-            <span>({{getModifier(character?.status?.wisdom)}})</span>
-          </h6>
-        </div>
-        <div class="col">
-          <h6><b>CAR</b></h6>
-          <h6>
-            {{character?.status?.charisma}}
-            <span>({{getModifier(character?.status?.charisma)}})</span>
-          </h6>
-        </div>
-      </div>
-    </div>
   </div>
 </article>

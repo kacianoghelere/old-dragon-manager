@@ -75,10 +75,10 @@ $gray-200: #ddd !default;
 $gray-300: #ccc !default;
 $gray-400: #bbb !default;
 $gray-500: #aaa !default;
-$gray-600: #111 !default;
-$gray-700: #222 !default;
-$gray-800: #333 !default;
-$gray-900: #444 !default;
+$gray-600: #444 !default;
+$gray-700: #333 !default;
+$gray-800: #222 !default;
+$gray-900: #111 !default;
 
 $black:  #222 !default;
 
@@ -605,7 +605,7 @@ $navbar-dark-toggler-border-color:  rgba($white,.1) !default;
 
 $navbar-light-color:                rgba($black,.5) !default;
 $navbar-light-hover-color:          rgba($black,.7) !default;
-$navbar-light-active-color:         rgba($black,.9) !default;
+$navbar-light-active-color:         rgba($black,.95) !default;
 $navbar-light-disabled-color:       rgba($black,.3) !default;
 $navbar-light-toggler-icon-bg: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#{$navbar-light-color}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"), "#", "%23") !default;
 $navbar-light-toggler-border-color: rgba($black,.1) !default;

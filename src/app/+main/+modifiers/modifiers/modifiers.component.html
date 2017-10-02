@@ -1,23 +1,37 @@
 <layout-base pageTitle="Modificadores">
-  <nav class="nav nav-pills nav-fill">
-    <a class="nav-link" [routerLink]="['strength']" [routerLinkActive]="['active']">
-      <img src="./assets/strength-icon.png" alt=">>" width="32"> Força
-    </a>
-    <a class="nav-link" [routerLink]="['dexterity']" [routerLinkActive]="['active']">
-      <img src="./assets/dexterity-icon.png" alt=">>" width="32"> Destreza
-    </a>
-    <a class="nav-link" [routerLink]="['constitution']" [routerLinkActive]="['active']">
-      <img src="./assets/constitution-icon.png" alt=">>" width="32"> Constituição
-    </a>
-    <a class="nav-link" [routerLink]="['intelligence']" [routerLinkActive]="['active']">
-      <img src="./assets/intelligence-icon.png" alt=">>" width="32"> Inteligência
-    </a>
-    <a class="nav-link" [routerLink]="['wisdom']" [routerLinkActive]="['active']">
-      <img src="./assets/wisdom-icon.png" alt=">>" width="32"> Sabedoria
-    </a>
-    <a class="nav-link" [routerLink]="['charisma']" [routerLinkActive]="['active']">
-      <img src="./assets/charisma-icon.png" alt=">>" width="32"> Carisma
-    </a>
+  <nav class="navbar navbar-expand-sm navbar-light bg-secondary layout-toolbar">
+    <ul class="navbar-nav mx-auto">
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="['strength']">
+          <img src="./assets/strength-icon.png" alt=">>" width="24"> Força
+        </a>
+      </li>
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="['dexterity']">
+          <img src="./assets/dexterity-icon.png" alt=">>" width="24"> Destreza
+        </a>
+      </li>
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="['constitution']">
+          <img src="./assets/constitution-icon.png" alt=">>" width="24"> Constituição
+        </a>
+      </li>
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="['intelligence']">
+          <img src="./assets/intelligence-icon.png" alt=">>" width="24"> Inteligência
+        </a>
+      </li>
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="['wisdom']">
+          <img src="./assets/wisdom-icon.png" alt=">>" width="24"> Sabedoria
+        </a>
+      </li>
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="['charisma']">
+          <img src="./assets/charisma-icon.png" alt=">>" width="24"> Carisma
+        </a>
+      </li>
+    </ul>
   </nav>
 
   <div class="tab-content">

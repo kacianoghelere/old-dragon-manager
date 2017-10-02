@@ -1,4 +1,16 @@
 <layout-base pageTitle="Campanhas">
+  <nav class="navbar navbar-expand-sm navbar-light bg-secondary layout-toolbar">
+    <ul class="navbar-nav mr-auto"></ul>
+    <ul class="navbar-nav my-2 my-lg-0">
+      <li class="nav-item">
+        <a class="nav-link text-primary" [routerLink]="['new']">
+          <i class="fa fa-plus"></i>
+          <span class="d-sm-none d-md-inline">Nova Campanha</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
   <section>
     <article *ngFor="let campaign of campaigns">
       <div class="card">
@@ -51,10 +63,4 @@
       </div>
     </article>
   </section>
-
-  <div class="layout-controls">
-    <a class="btn btn-primary" [routerLink]="['new']">
-      <i class="fa fa-plus"></i> NOVA CAMPANHA
-    </a>
-  </div>
 </layout-base>

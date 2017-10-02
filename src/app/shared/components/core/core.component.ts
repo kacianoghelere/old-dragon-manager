@@ -7,6 +7,8 @@ import { Component } from '@angular/core';
 })
 export class CoreComponent {
 
+  protected activeTab: number = 0;
+
   /**
    * Verifica se uma coleção é válida e não vazia
    * @param  {any[]}   collection Coleção
@@ -30,5 +32,32 @@ export class CoreComponent {
    */
   protected hasData(collection: any[]): boolean {
     return !this.emptyCollection(collection);
+  }
+
+  /**
+   * [isActiveClass description]
+   * @param  {number} index [description]
+   * @return {[type]}       [description]
+   */
+  protected isActiveClass(index: number): {active: boolean} {
+    return {active: this.isActiveTab(index)};
+  }
+
+  /**
+   * [isActiveTab description]
+   * @param  {number}  index [description]
+   * @return {boolean}       [description]
+   */
+  protected isActiveTab(index: number): boolean {
+    return index === this.activeTab;
+  }
+
+  /**
+   * [setActiveTab description]
+   * @param  {number} index [description]
+   * @return {[type]}       [description]
+   */
+  protected setActiveTab(index: number) {
+    this.activeTab = index;
   }
 }

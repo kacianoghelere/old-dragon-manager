@@ -1,36 +1,74 @@
 <layout-base *ngIf="campaign" [pageTitle]="campaign.title"
     [cover]="campaign.picture" [description]="campaign.description">
-  <section>
+
+  <nav class="navbar navbar-expand-sm navbar-light bg-secondary layout-toolbar">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link pointer"
+            [ngClass]="isActiveClass(0)" (click)="setActiveTab(0)">
+          <i class="fa fa-book"></i>
+          <span class="d-sm-none d-md-inline">Diários</span>
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link pointer"
+            [ngClass]="isActiveClass(1)" (click)="setActiveTab(1)">
+          <i class="fa fa-sticky-note"></i>
+          <span class="d-sm-none d-md-inline">Anotações</span>
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link pointer"
+            [ngClass]="isActiveClass(2)" (click)="setActiveTab(2)">
+          <i class="fa fa-group"></i>
+          <span class="d-sm-none d-md-inline">Personagens</span>
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav my-2 my-lg-0" *ngIf="!isCampaignOwner()">
+      <li class="nav-item">
+        <a class="nav-link"
+            [routerLink]="['/users/profile', campaign?.dungeonMaster?.id]">
+          <b>Narrador:</b> {{campaign?.dungeonMaster?.name}}
+        </a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav my-2 my-lg-0" *ngIf="isCampaignOwner()">
+      <li class="nav-item">
+        <a class="nav-link text-primary" [routerLink]="['edit']">
+          <i class="fa fa-edit"></i>
+          <span class="d-sm-none d-md-inline">Editar</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-success" href="#">
+          <i class="fa fa-check-circle"></i>
+          <span class="d-sm-none d-md-inline">Encerrar</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <section [hidden]="!isActiveTab(0)">
     <h4>Diários de Campanha</h4>
     <campaign-journals [journals]="campaign.journals"></campaign-journals>
   </section>
 
-  <section [hidden]="shouldHide(campaign.notes)">
+  <section [hidden]="shouldHideNotes()">
     <h4>Anotações</h4>
     <campaign-notes [campaign]="campaign"
       [notes]="campaign.notes"></campaign-notes>
   </section>
 
-  <section [hidden]="shouldHide(campaign.characters)">
+  <section [hidden]="shouldHideCharacters()">
     <h4>Personagens</h4>
     <campaign-characters [campaign]="campaign"></campaign-characters>
     <campaign-invite-users *ngIf="isCampaignOwner()"
       [campaign]="campaign"></campaign-invite-users>
   </section>
-
-  <div class="layout-controls layout-end">
-    <a class="btn btn-dark"
-        [routerLink]="['/users/profile', campaign?.dungeonMaster?.id]">
-      <b>Narrador:</b> {{campaign?.dungeonMaster?.name}}
-    </a>
-  </div>
-
-  <div class="layout-controls" *ngIf="isCampaignOwner()">
-    <a class="btn btn-primary" [routerLink]="['edit']">
-      <i class="fa fa-edit"></i> EDITAR
-    </a>
-    <button class="btn btn-secondary" type="button">
-      <i class="fa fa-check-circle"></i> ENCERRAR
-    </button>
-  </div>
 </layout-base>

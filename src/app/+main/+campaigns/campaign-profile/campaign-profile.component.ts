@@ -89,4 +89,12 @@ export class CampaignProfileComponent extends CoreComponent
     return !this.isCampaignOwner()
       && (!this.isCampaignMember() || !this.hasData(collection));
   }
+
+  shouldHideCharacters(): boolean {
+    return !this.isActiveTab(2) || this.shouldHide(this.campaign.characters);
+  }
+
+  shouldHideNotes(): boolean {
+    return !this.isActiveTab(1) || this.shouldHide(this.campaign.notes);
+  }
 }

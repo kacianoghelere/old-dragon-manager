@@ -1,3 +1,12 @@
+@import "~bootstrap/scss/functions";
+@import "~styles/variables";
+
+@mixin text-shadow {
+  -webkit-text-shadow: 0 0px 30px rgba(0, 0, 0, 1), 0 1px 3px rgba(0, 0, 0, .8);
+  -moz-text-shadow: 0 0px 30px rgba(0, 0, 0, 1), 0 1px 3px rgba(0, 0, 0, .8);
+  text-shadow: 0 0px 30px rgba(0, 0, 0, 1), 0 1px 3px rgba(0, 0, 0, .8);
+}
+
 .layout-base {
   // background-color: #c43030;
   background: linear-gradient(transparent, #c43030 300px),
@@ -13,9 +22,8 @@
   padding: 100px 0 15px 0;
 
   .content {
-    background-color: #fff;
+    background-color: $white;
     -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 4px;
     float: left;
@@ -24,12 +32,12 @@
     width: 100%;
 
     header {
-      background-color: #ddd;
+      background-color: $gray-500;
       background-image: url('/assets/cover-sliced.jpg');
       background-position: center center;
       background-repeat: no-repeat;
       background-size: cover;
-      border-bottom: 3px solid #ccc;
+      // border-bottom: 3px solid #ccc;
       border-top-left-radius: 4px;
       border-top-right-radius: 4px;
       float: left;
@@ -41,45 +49,99 @@
       width: 100%;
 
       h1, p {
-        color: #fff;
-        -webkit-text-shadow: 0 0px 30px rgba(0, 0, 0, 1), 0 1px 3px rgba(0, 0, 0, .8);
-        -moz-text-shadow: 0 0px 30px rgba(0, 0, 0, 1), 0 1px 3px rgba(0, 0, 0, .8);
-        text-shadow: 0 0px 30px rgba(0, 0, 0, 1), 0 1px 3px rgba(0, 0, 0, .8);
+        color: $white;
+        @include text-shadow;
       }
 
       /deep/ .layout-controls {
-        -webkit-align-self: flex-start;
-        -moz-align-self: flex-start;
-        align-self: flex-start;
-        bottom: -16px;
-        position: absolute;
+        -webkit-align-self: flex-end;
+        -ms-flex-item-align: end;
+            align-self: flex-end;
+        -webkit-display: flex;
+        -moz-display: flex;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -moz-justify-content: space-between;
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
+        // bottom: -16px;
+        // position: absolute;
+        width: 100%;
 
         .title {
-          color: #fff;
-          -webkit-text-shadow: 0 0px 30px rgba(0, 0, 0, 1), 0 1px 3px rgba(0, 0, 0, .8);
-          -moz-text-shadow: 0 0px 30px rgba(0, 0, 0, 1), 0 1px 3px rgba(0, 0, 0, .8);
-          text-shadow: 0 0px 30px rgba(0, 0, 0, 1), 0 1px 3px rgba(0, 0, 0, .8);
+          color: $white;
+          @include text-shadow;
         }
 
         &.layout-start {
           -webkit-align-self: flex-start;
-          -moz-align-self: flex-start;
-          align-self: flex-start;
+          -ms-flex-item-align: start;
+              align-self: flex-start;
         }
 
         &.layout-center {
           -webkit-align-self: center;
-          -moz-align-self: center;
-          align-self: center;
+          -ms-flex-item-align: center;
+              align-self: center;
         }
 
         &.layout-end {
           -webkit-align-self: flex-end;
-          -moz-align-self: flex-end;
-          align-self: flex-end;
+          -ms-flex-item-align: end;
+              align-self: flex-end;
         }
       }
 
+    }
+
+    /deep/ .toolbar {
+      background: $gray-700;
+      border-color: $gray-500;
+      border-bottom-width: 1px;
+      border-style: solid;
+      border-left: none;
+      border-right: none;
+      border-top-width: 1px;
+      -webkit-display: flex;
+      -moz-display: flex;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      float: left;
+      margin: 0;
+      padding: .3em;
+      width: 100%;
+
+      .nav-item {
+        background-color: $gray-700;
+        color: $gray-200;
+        cursor: pointer;
+        border-radius: $border-radius;
+        margin: 0 3px;
+        padding: .5em;
+        text-decoration: none;
+
+        &:hover {
+          background-color: $gray-600;
+          color: $gray-100;
+        }
+
+        &:focus {
+          background-color: $gray-600;
+          color: $gray-100;
+        }
+
+        &.active,
+        &:active {
+          background-color: $gray-600;
+          color: $white;
+        }
+      }
     }
 
     main {

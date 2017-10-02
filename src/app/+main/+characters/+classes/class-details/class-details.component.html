@@ -1,18 +1,81 @@
 <layout-base *ngIf="characterClass" [pageTitle]="characterClass.name"
     [cover]="characterClass.picture"
     [description]="characterClass.short_description">
-  <div class="row">
-    <div class="col-sm-5 col-md-4">
-      <class-info [characterClass]="characterClass"></class-info>
-    </div>
-    <div class="col-sm-7 col-md-8">
-      <class-mods [characterClass]="characterClass"></class-mods>
 
-      <class-thief-talents [characterClass]="characterClass"></class-thief-talents>
+  <nav class="navbar navbar-expand-sm navbar-light bg-secondary layout-toolbar">
+    <ul class="navbar-nav mx-auto">
+      <li class="nav-item">
+        <a class="nav-link pointer"
+            [ngClass]="isActiveClass(0)" (click)="setActiveTab(0)">
+          <i class="fa fa-file-text-o"></i>
+          <span class="d-sm-none d-md-inline">Informações</span>
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link pointer"
+            [ngClass]="isActiveClass(1)" (click)="setActiveTab(1)">
+          <i class="fa fa-line-chart"></i>
+          <span class="d-sm-none d-md-inline">Evolução</span>
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link pointer"
+            [ngClass]="isActiveClass(2)" (click)="setActiveTab(2)">
+          <i class="fa fa-unlock-alt"></i>
+          <span class="d-sm-none d-md-inline">Talentos Ladinos</span>
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link pointer"
+            [ngClass]="isActiveClass(3)" (click)="setActiveTab(3)">
+          <i class="fa fa-sun-o"></i>
+          <span class="d-sm-none d-md-inline">Afastar Mortos-vivos</span>
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link pointer"
+            [ngClass]="isActiveClass(4)" (click)="setActiveTab(4)">
+          <i class="fa fa-magic"></i>
+          <span class="d-sm-none d-md-inline">Magias</span>
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link pointer"
+            [ngClass]="isActiveClass(5)" (click)="setActiveTab(5)">
+          <i class="fa fa-puzzle-piece"></i>
+          <span class="d-sm-none d-md-inline">Especializações</span>
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
 
-      <class-undead-banes [characterClass]="characterClass"></class-undead-banes>
+  <section *ngIf="isActiveTab(0)">
+    <class-info [characterClass]="characterClass"></class-info>
+  </section>
 
-      <class-magic-circles [characterClass]="characterClass"></class-magic-circles>
-    </div>
-  </div>
+  <section *ngIf="isActiveTab(1)">
+    <class-mods [characterClass]="characterClass"></class-mods>
+  </section>
+
+  <section *ngIf="isActiveTab(2)">
+    <class-thief-talents [characterClass]="characterClass"></class-thief-talents>
+  </section>
+
+  <section *ngIf="isActiveTab(3)">
+    <class-undead-banes [characterClass]="characterClass"></class-undead-banes>
+  </section>
+
+  <section *ngIf="isActiveTab(4)">
+    <class-magic-circles [characterClass]="characterClass"></class-magic-circles>
+  </section>
+
+  <section *ngIf="isActiveTab(5)">
+    Especializações
+  </section>
 </layout-base>
