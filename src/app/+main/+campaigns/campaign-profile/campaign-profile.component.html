@@ -27,6 +27,14 @@
           <span class="sr-only">(current)</span>
         </a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link pointer"
+            [ngClass]="isActiveClass(2)" (click)="setActiveTab(2)">
+          <i class="fa fa-wikipedia-w"></i>
+          <span class="d-sm-none d-md-inline">Wiki</span>
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
     </ul>
 
     <ul class="navbar-nav my-2 my-lg-0" *ngIf="!isCampaignOwner()">
