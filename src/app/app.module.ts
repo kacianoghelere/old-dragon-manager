@@ -10,6 +10,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { ToastrModule } from 'ngx-toastr';
 
+import { MarkdownModule } from 'angular2-markdown';
+
 import { AppComponent } from './app.component';
 import { ValidatorsService } from './shared/services/validators.service';
 import { AuthenticationModule } from './authentication/authentication.module';
@@ -30,6 +32,7 @@ import { CampaignInvitationService } from "./shared/services/campaign-invitation
     HttpModule,
     NgbModule.forRoot(),
     ToastrModule.forRoot(),
+    MarkdownModule.forRoot(),
     AuthenticationModule,
     SharedModule,
     UtilModule,

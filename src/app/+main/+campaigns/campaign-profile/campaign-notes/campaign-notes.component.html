@@ -3,7 +3,7 @@
     <div class="col-sm-12 col-md-6 col-lg-4"
         *ngFor="let note of filteredNotes">
       <div class="note">
-        <p>{{note.description}}</p>
+        <p><markdown>{{note.description}}</markdown></p>
         <small [hidden]="!note.dm_only">Material do Mestre</small>
       </div>
     </div>

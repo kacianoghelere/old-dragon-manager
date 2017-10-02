@@ -1,51 +1,103 @@
 <layout-base *ngIf="campaign" pageTitle="Gerenciar Campanha">
   <form *ngIf="campaignForm" [formGroup]="campaignForm"
       (ngSubmit)="onSubmit(campaignForm)">
-    <div class="form-group row">
-      <label class="col-sm-2 col-form-label" for="campaignTitle">
-        Título da Campanha
-      </label>
-      <div class="col-sm-10 col-md-6">
-        <input class="form-control form-control-lg"
-          type="text"
-          id="campaignTitle"
-          formControlName="title">
+    <section>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="campaignTitle">
+          Título da Campanha
+        </label>
+        <div class="col-sm-10 col-md-6">
+          <input class="form-control form-control-lg"
+            type="text"
+            id="campaignTitle"
+            formControlName="title">
+        </div>
       </div>
-    </div>
-    <div class="form-group row">
-      <label class="col-sm-2 col-form-label" for="campaignPicture">
-        Imagem de Capa
-      </label>
-      <div class="col-sm-10 col-md-6">
-        <input class="form-control"
-          type="url"
-          id="campaignPicture"
-          formControlName="picture">
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="campaignPicture">
+          Imagem de Capa
+        </label>
+        <div class="col-sm-10 col-md-6">
+          <input class="form-control"
+            type="url"
+            id="campaignPicture"
+            formControlName="picture">
+        </div>
       </div>
-    </div>
-    <div class="form-group row">
-      <label class="col-sm-2 col-form-label" for="campaignDescription">
-        Descrição da Campanha
-      </label>
-      <div class="col-sm-10">
-        <textarea class="form-control"
-          id="campaignDescription"
-          rows="5"
-          formControlName="description"></textarea>
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="campaignDescription">
+          Descrição da Campanha
+        </label>
+        <div class="col-sm-10">
+          <textarea class="form-control"
+            id="campaignDescription"
+            rows="5"
+            formControlName="description"></textarea>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <campaign-form-journals *ngIf="campaignForm"
-      [campaignForm]="campaignForm"
-      [journals]="campaign.journals"></campaign-form-journals>
+    <section>
+      <article class="card">
+        <div class="card-body">
+          <h4>Formatação de texto</h4>
+          <div class="row">
+            <div class="col">
+              <ul class="markdown-example">
+                <li><b>Texto simples:</b></li>
+                <li># Título 1</li>
+                <li>## Título 2</li>
+                <li>### Título 3...</li>
+                <li>*itálico*</li>
+                <li>**negrito**</li>
+              </ul>
+            </div>
+            <div class="col">
+              <ul class="markdown-example">
+                <li><b>Lista ordenada:</b></li>
+                <li>1 item</li>
+                <li>2 item</li>
+                <li><b>Lista não ordenada:</b></li>
+                <li>- item</li>
+                <li>- item</li>
+              </ul>
+            </div>
+            <div class="col">
+              <ul class="markdown-example">
+                <li><b>Link:</b> [Google](https://www.google.com)</li>
+                <li><b>Imagem:</b> ![old dragon](http://redboxeditora.com.br/od/imgs/logos.png "Old Dragon")</li>
+                <li>
+                  <a href="https://help.github.com/articles/basic-writing-and-formatting-syntax/"
+                      target="_blank">
+                    Mais exemplos...
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
 
-    <campaign-form-notes *ngIf="campaignForm"
-      [campaignForm]="campaignForm"
-      [notes]="campaign.notes"></campaign-form-notes>
+    <section>
+      <campaign-form-journals *ngIf="campaignForm"
+        [campaignForm]="campaignForm"
+        [journals]="campaign.journals"></campaign-form-journals>
+    </section>
 
-    <campaign-form-characters *ngIf="campaignForm"
-      [campaignForm]="campaignForm"
-      [characters]="campaign.characters"></campaign-form-characters>
+    <section>
+      <campaign-form-notes *ngIf="campaignForm"
+        [campaignForm]="campaignForm"
+        [notes]="campaign.notes"></campaign-form-notes>
+    </section>
+
+    <section>
+      <campaign-form-characters *ngIf="campaignForm"
+        [campaignForm]="campaignForm"
+        [characters]="campaign.characters"></campaign-form-characters>
+    </section>
 
     <div class="form-group d-flex justify-content-end">
       <button class="btn btn-secondary" type="button" (click)="goBack()">

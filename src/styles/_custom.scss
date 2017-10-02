@@ -147,3 +147,15 @@ h6, .h6 {
 }
 
 .pointer { cursor: pointer; }
+
+
+.markdown-example {
+  display: block;
+  font-size: 70%;
+  list-style: none;
+  padding: .5em;
+
+  li, .markdown-item {
+    padding: 0 .3em;
+  }
+}

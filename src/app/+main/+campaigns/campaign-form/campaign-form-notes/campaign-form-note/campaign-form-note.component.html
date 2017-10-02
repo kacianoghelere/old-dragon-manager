@@ -1,12 +1,12 @@
 <div class="card" [formGroup]="noteForm">
-  <div class="card-body">
-    <div class="form-group">
-      <label class="col-form-label">Descrição</label>
-      <textarea class="form-control card-text"
-        rows="4"
-        formControlName="description"></textarea>
-    </div>
+  <div class="card-body input-group">
+    <textarea class="form-control"
+      rows="4"
+      resize="off"
+      formControlName="description"></textarea>
+  </div>
 
+  <div class="card-footer">
     <div class="d-flex justify-content-between">
       <label class="custom-control custom-checkbox">
         <input class="custom-control-input" type="checkbox"
@@ -14,9 +14,9 @@
         <span class="custom-control-indicator"></span>
         <span class="custom-control-description">Material do Mestre</span>
       </label>
-      <button class="btn btn-minimal-danger" type="button" (click)="remove()">
+      <a class="text-danger pointer" (click)="remove()">
         <i class="fa fa-trash-o"></i> Remover
-      </button>
+      </a>
     </div>
   </div>
 </div>

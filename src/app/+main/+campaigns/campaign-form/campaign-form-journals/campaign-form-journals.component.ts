@@ -35,10 +35,7 @@ export class CampaignFormJournalsComponent implements OnInit {
    * Adds a new journal in the campaign
    */
   addJournal() {
-    const child: CampaignJournal = {
-      title: '',
-      description: ''
-    };
+    const child: CampaignJournal = {description: ''};
     this.journals.push(child);
     this.changeDetectorRef.detectChanges();
   }

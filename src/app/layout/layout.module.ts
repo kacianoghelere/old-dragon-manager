@@ -4,6 +4,8 @@ import { RouterModule } from '@angular/router';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { MarkdownModule } from 'angular2-markdown';
+
 import { UtilModule } from '../util/util.module';
 import { SharedModule } from '../shared/shared.module';
 import { WelcomeComponent } from './welcome/welcome.component';
@@ -17,6 +19,7 @@ import { LayoutBaseComponent } from './layout-base/layout-base.component';
     CommonModule,
     RouterModule,
     NgbModule,
+    MarkdownModule.forRoot(),
     UtilModule,
     SharedModule
   ],

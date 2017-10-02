@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { MarkdownModule } from 'angular2-markdown';
+
 import { UtilModule } from "../../util/util.module";
 import { CampaignsRoutingModule } from './campaigns-routing.module';
 import { CampaignsListComponent } from './campaigns-list/campaigns-list.component';
@@ -27,6 +29,7 @@ import { CampaignInviteUsersComponent } from './campaign-invite-users/campaign-i
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    MarkdownModule.forRoot(),
     LayoutModule,
     CampaignsRoutingModule,
     UtilModule,

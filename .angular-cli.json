@@ -21,7 +21,8 @@
       "styles": [
         "styles/vendor.scss",
         "styles/main.scss",
-        "../node_modules/ngx-toastr/toastr.css"
+        "../node_modules/ngx-toastr/toastr.css",
+        "../node_modules/prismjs/themes/prism-okaidia.css"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
