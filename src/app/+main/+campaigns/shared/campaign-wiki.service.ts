@@ -10,7 +10,7 @@ import { CampaignWikiPage } from '../../../shared/entities/campaign-wiki-page';
 import { CharactersService } from '../../shared/characters.service';
 
 @Injectable()
-export class CampaignsService extends EntityService<Campaign> {
+export class CampaignWikiService extends EntityService<CampaignWikiPage> {
 
   resource: string = 'campaigns';
 
@@ -24,19 +24,19 @@ export class CampaignsService extends EntityService<Campaign> {
 
   /**
    * [create description]
-   * @param  {Campaign}               params [description]
-   * @return {Observable<Campaign[]>}        [description]
+   * @param  {CampaignWikiPage}               params [description]
+   * @return {Observable<CampaignWikiPage[]>}        [description]
    */
-  create(params: Campaign): Observable<any> {
+  create(params: CampaignWikiPage): Observable<any> {
     return super._create(this.resource)({campaign: params});
   }
 
   /**
    * [find description]
    * @param  {number}               id [description]
-   * @return {Observable<Campaign>}    [description]
+   * @return {Observable<CampaignWikiPage>}    [description]
    */
-  find(id: number): Observable<Campaign> {
+  find(id: number): Observable<CampaignWikiPage> {
     return super._find(this.resource)(id);
   }
 
@@ -57,19 +57,11 @@ export class CampaignsService extends EntityService<Campaign> {
    * [list description]
    * @return {Observable<any>} [description]
    */
-  list(): Observable<Campaign[]> {
+  list(): Observable<CampaignWikiPage[]> {
     return super._list(this.resource)();
   }
 
-  /**
-   * [list description]
-   * @return {Observable<any>} [description]
-   */
-  listPages(id: number): Observable<CampaignWikiPage[]> {
-    return super._custom(this.resource, 'campaign_wiki_pages')(id);
-  }
-
-  update(id: number, params: Campaign): Observable<any> {
+  update(id: number, params: CampaignWikiPage): Observable<any> {
     return super._update(this.resource)(id, {campaign: params});
   }
 }

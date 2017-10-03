@@ -1,6 +1,7 @@
 import { Character } from './character';
 import { CampaignJournal } from './campaign-journal';
 import { CampaignNote } from './campaign-note';
+import { CampaignWikiPage } from './campaign-wiki-page';
 import { User } from './user';
 
 export class Campaign {
@@ -11,6 +12,7 @@ export class Campaign {
   journals?: CampaignJournal[];
   members?: User[];
   notes?: CampaignNote[];
+  pages?: CampaignWikiPage[];
   title: string;
   dungeonMaster?: User
 }

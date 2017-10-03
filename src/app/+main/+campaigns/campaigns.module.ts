@@ -20,9 +20,13 @@ import { CampaignFormNotesComponent } from './campaign-form/campaign-form-notes/
 import { CampaignFormJournalComponent } from './campaign-form/campaign-form-journals/campaign-form-journal/campaign-form-journal.component';
 import { CampaignFormJournalsComponent } from './campaign-form/campaign-form-journals/campaign-form-journals.component';
 import { CampaignsService } from "./shared/campaigns.service";
+import { CampaignWikiService } from "./shared/campaign-wiki.service";
 import { SharedModule } from '../../shared/shared.module';
 import { LayoutModule } from '../../layout/layout.module';
 import { CampaignInviteUsersComponent } from './campaign-invite-users/campaign-invite-users.component';
+import { CampaignWikiComponent } from './campaign-profile/campaign-wiki/campaign-wiki.component';
+import { CampaignWikiPageEditorComponent } from './campaign-profile/campaign-wiki/campaign-wiki-page-editor/campaign-wiki-page-editor.component';
+import { CampaignWikiPageComponent } from './campaign-profile/campaign-wiki/campaign-wiki-page/campaign-wiki-page.component';
 
 @NgModule({
   imports: [
@@ -49,10 +53,14 @@ import { CampaignInviteUsersComponent } from './campaign-invite-users/campaign-i
     CampaignFormNoteComponent,
     CampaignFormCharactersComponent,
     CampaignInviteUsersComponent,
-    CampaignFormCharacterComponent
+    CampaignFormCharacterComponent,
+    CampaignWikiComponent,
+    CampaignWikiPageEditorComponent,
+    CampaignWikiPageComponent
   ],
   providers: [
-    CampaignsService
+    CampaignsService,
+    CampaignWikiService
   ]
 })
 export class CampaignsModule { }

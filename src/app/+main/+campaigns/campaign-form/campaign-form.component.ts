@@ -45,7 +45,7 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
-      let id = params['id'];
+      let id = params['campaign_id'];
 
       if (id) {
         this.subscription = this.campaignsService.find(id)
@@ -105,8 +105,8 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
 
   /**
    * Cria novo FormGroup para a campanha
-   * @param  {Campaign}  journal Campaign entity
-   * @return {FormGroup}         The new FormGroup
+   * @param  {Campaign}  campaign Campaign entity
+   * @return {FormGroup}          The new FormGroup
    */
   toFormGroup(campaign: Campaign) {
     this.campaignForm = this.formBuilder.group({
@@ -119,8 +119,5 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
       picture: [this.campaign.picture, Validators.maxLength(300)],
       description: [this.campaign.description, Validators.required]
     });
-    // this.campaignForm.valueChanges.subscribe((value) => {
-    //   console.log("campaignForm.valueChanges", value);
-    // });
   }
 }

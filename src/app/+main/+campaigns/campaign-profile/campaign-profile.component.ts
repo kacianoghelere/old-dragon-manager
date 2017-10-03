@@ -44,7 +44,7 @@ export class CampaignProfileComponent extends CoreComponent
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
-      let id = params['id'];
+      let id = params['campaign_id'];
 
       if (id) {
         this.subscription = this.campaignsService.find(id)
@@ -96,5 +96,9 @@ export class CampaignProfileComponent extends CoreComponent
 
   shouldHideNotes(): boolean {
     return !this.isActiveTab(1) || this.shouldHide(this.campaign.notes);
+  }
+
+  shouldHideMap(): boolean {
+    return !this.isActiveTab(3);
   }
 }
