@@ -1,0 +1,6 @@
+<a class="card" [routerLink]="[page.wiki_name]">
+  <img class="card-img" *ngIf="page.picture" [src]="page.picture">
+  <div [ngClass]="bodyClass">
+    <h4 class="card-title">{{page.title}}</h4>
+  </div>
+</a>

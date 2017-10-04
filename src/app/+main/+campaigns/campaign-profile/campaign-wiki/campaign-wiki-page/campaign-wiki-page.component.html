@@ -1,3 +1,18 @@
-<p>
-  campaign-wiki-page works!
-</p>
+<layout-base *ngIf="page" [pageTitle]="page.title" [cover]="page.picture">
+  <nav class="navbar navbar-expand-sm navbar-light bg-secondary layout-toolbar">
+    <ul class="navbar-nav mr-auto"></ul>
+
+    <ul class="navbar-nav my-2 my-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['../']">
+          <i class="fa fa-angle-double-left"></i>
+          <span class="d-sm-none d-md-inline">Voltar</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <section id="page-body">
+    <htmlOutlet [html]="compileText(page.body)"></htmlOutlet>
+  </section>
+</layout-base>

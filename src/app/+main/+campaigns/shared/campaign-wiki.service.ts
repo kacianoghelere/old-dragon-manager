@@ -3,23 +3,41 @@ import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 
+import { MarkdownService } from 'angular2-markdown';
+
 import { AuthenticationService } from '../../../authentication/authentication.service';
 import { EntityService } from '../../../shared/services/entity.service';
 import { Campaign } from '../../../shared/entities/campaign';
 import { CampaignWikiPage } from '../../../shared/entities/campaign-wiki-page';
-import { CharactersService } from '../../shared/characters.service';
 
 @Injectable()
 export class CampaignWikiService extends EntityService<CampaignWikiPage> {
 
-  resource: string = 'campaigns';
+  resource: string = 'pages';
 
   constructor(
     authService: AuthenticationService,
     http: Http,
-    private charactersService: CharactersService
+    private markdownService: MarkdownService
   ) {
     super(authService, http);
+    this.markdownService.renderer.link = (href: string, title: string, text: string) => {
+      let regex = /^\s*\[\[[\sa-zA-Z0-9]+\]\]\s*/g;
+      // console.log("Converting", {href: href, title: title, text: text});
+      if (regex.test(href)) {
+        href = href.replace(/[\[\]]/g, '');
+        let wiki: string = href.trim().toLowerCase().replace(/\s/g, '_');
+        // console.log("Regex passes");
+        return `<a [routerLink]="['../${wiki}']" title="${title}">${text}</a>`;
+      } else {
+        // console.log("Regex rejected");
+        return `<a href="${href}" title="${title}">${text}</a>`;
+      }
+    }
+  }
+
+  compileText(text: string) {
+    return this.markdownService.compile(text);
   }
 
   /**
@@ -32,12 +50,13 @@ export class CampaignWikiService extends EntityService<CampaignWikiPage> {
   }
 
   /**
-   * [find description]
-   * @param  {number}               id [description]
-   * @return {Observable<CampaignWikiPage>}    [description]
+   * [findChild description]
+   * @param  {number}                       campaign_id [description]
+   * @param  {string}                       page        [description]
+   * @return {Observable<CampaignWikiPage>}             [description]
    */
-  find(id: number): Observable<CampaignWikiPage> {
-    return super._find(this.resource)(id);
+  findChild(campaign_id: number, page: string): Observable<CampaignWikiPage> {
+    return super._findChildren('campaigns', this.resource)(campaign_id, page);
   }
 
   /**
@@ -57,8 +76,8 @@ export class CampaignWikiService extends EntityService<CampaignWikiPage> {
    * [list description]
    * @return {Observable<any>} [description]
    */
-  list(): Observable<CampaignWikiPage[]> {
-    return super._list(this.resource)();
+  listChildren(campaign_id: number): Observable<CampaignWikiPage[]> {
+    return super._custom('campaigns', this.resource)(campaign_id);
   }
 
   update(id: number, params: CampaignWikiPage): Observable<any> {

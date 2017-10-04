@@ -21,7 +21,7 @@ export class CampaignWikiPageEditorComponent implements OnInit {
   campaignWikiPageForm: FormGroup;
   subscription: Subscription;
   campaign_id: number;
-  page_id: number;
+  pageName: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -37,7 +37,9 @@ export class CampaignWikiPageEditorComponent implements OnInit {
    */
   goBack() {
     if (this.campaignWikiPage.id) {
-      this.router.navigate(['/main/campaigns', this.campaign_id, 'wiki', this.page_id]);
+      this.router.navigate([
+        '/main/campaigns', this.campaign_id, 'wiki', this.pageName
+      ]);
     } else {
       this.router.navigate(['/main/campaigns', this.campaign_id, 'wiki']);
     }
@@ -50,10 +52,11 @@ export class CampaignWikiPageEditorComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe((params) => {
       this.campaign_id = params['campaign_id'];
-      this.page_id = params['page_id'];
+      this.pageName = params['page_id'];
 
-      if (this.page_id) {
-        this.subscription = this.campaignWikiService.find(this.page_id)
+      if (this.campaign_id) {
+        this.subscription = this.campaignWikiService
+          .findChild(this.campaign_id, this.pageName)
           .subscribe((response) => {
             this.campaignWikiPage = response;
             this.toFormGroup(this.campaignWikiPage);

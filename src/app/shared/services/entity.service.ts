@@ -30,7 +30,7 @@ export abstract class EntityService<T> {
   /**
    * Entity insertion function
    * @param  {T}               params Entity parameters
-   * @return {Observable<any>}        Response Observable
+   * @return {Observable<any>}        Observavel do request
    */
   protected create(params: T): Observable<any> | T {
     return null;
@@ -39,7 +39,7 @@ export abstract class EntityService<T> {
   /**
    * Entity removal function
    * @param  {number}          id Entity identification
-   * @return {Observable<any>}    Response Observable
+   * @return {Observable<any>}    Observavel do request
    */
   protected destroy(id: number): Observable<any> | T {
     return null;
@@ -48,15 +48,25 @@ export abstract class EntityService<T> {
   /**
    * Query function for single entity results
    * @param  {number}          id Entity identification
-   * @return {Observable<any>}    Response Observable
+   * @return {Observable<any>}    Observavel do request
    */
   protected find(id: number): Observable<any> | T {
     return null;
   }
 
   /**
+   * Query function for single child entity results
+   * @param  {number}          parent_id Id da entidade pai
+   * @param  {number}          child_id  Id da entidade filho
+   * @return {Observable<any>}           [description]
+   */
+  protected findChild(parent_id: number, child_id: any): Observable<any> | T {
+    return null;
+  }
+
+  /**
    * Query function for multiple entity results
-   * @return {Observable<any>} Response Observable
+   * @return {Observable<any>} Observavel do request
    */
   protected list(): Observable<any> | T[] {
     return null;
@@ -66,7 +76,7 @@ export abstract class EntityService<T> {
    * Entity update function
    * @param  {number}          id Entity identification
    * @param  {T}               params Entity parameters
-   * @return {Observable<any>}        Response Observable
+   * @return {Observable<any>}        Observavel do request
    */
   protected update(id: number, params: T): Observable<any> | T {
     return null;
@@ -118,6 +128,22 @@ export abstract class EntityService<T> {
   protected _find(resource: string) {
     return (id: any): Observable<any> => {
       return this.http.get(`${this.url}/${resource}/${id}`, this.options)
+        .map(this.responseToJson);
+    }
+  }
+
+  /**
+   * [_findChildren description]
+   * @param  {string}   parent_resource [description]
+   * @param  {string}   child_resource  [description]
+   * @return {function}                 [description]
+   */
+  protected _findChildren(parent_resource: string, child_resource: string) {
+    return (parent_id: any, child_id: any): Observable<any> => {
+      let parentUrl = `${parent_resource}/${parent_id}`;
+      let childUrl = `${child_resource}/${child_id}`;
+      let url = `${this.url}/${parentUrl}/${childUrl}`;
+      return this.http.get(url, this.options)
         .map(this.responseToJson);
     }
   }

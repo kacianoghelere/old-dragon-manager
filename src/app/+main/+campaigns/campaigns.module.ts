@@ -27,6 +27,7 @@ import { CampaignInviteUsersComponent } from './campaign-invite-users/campaign-i
 import { CampaignWikiComponent } from './campaign-profile/campaign-wiki/campaign-wiki.component';
 import { CampaignWikiPageEditorComponent } from './campaign-profile/campaign-wiki/campaign-wiki-page-editor/campaign-wiki-page-editor.component';
 import { CampaignWikiPageComponent } from './campaign-profile/campaign-wiki/campaign-wiki-page/campaign-wiki-page.component';
+import { CampaignWikiCardComponent } from './campaign-profile/campaign-wiki/campaign-wiki-card/campaign-wiki-card.component';
 
 @NgModule({
   imports: [
@@ -56,7 +57,8 @@ import { CampaignWikiPageComponent } from './campaign-profile/campaign-wiki/camp
     CampaignFormCharacterComponent,
     CampaignWikiComponent,
     CampaignWikiPageEditorComponent,
-    CampaignWikiPageComponent
+    CampaignWikiPageComponent,
+    CampaignWikiCardComponent
   ],
   providers: [
     CampaignsService,

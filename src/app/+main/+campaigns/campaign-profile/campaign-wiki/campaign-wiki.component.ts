@@ -3,8 +3,12 @@ import { Subscription } from 'rxjs/Subscription';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
+import { MarkdownService, MarkdownConfig } from 'angular2-markdown';
+
+import { Campaign } from '../../../../shared/entities/campaign';
 import { CampaignWikiPage } from '../../../../shared/entities/campaign-wiki-page';
 import { CampaignsService } from '../../shared/campaigns.service';
+import { CampaignWikiService } from '../../shared/campaign-wiki.service';
 import { TrailBuilder }  from "../../../../shared/entities/trail-builder";
 import { TrailService }  from "../../../../shared/services/trail.service";
 
@@ -15,6 +19,7 @@ import { TrailService }  from "../../../../shared/services/trail.service";
 })
 export class CampaignWikiComponent extends TrailBuilder implements OnInit, OnDestroy {
 
+  campaign: Campaign;
   pages: CampaignWikiPage[];
   subscription: Subscription;
 
@@ -22,9 +27,15 @@ export class CampaignWikiComponent extends TrailBuilder implements OnInit, OnDes
     trailService: TrailService,
     private route: ActivatedRoute,
     private router: Router,
-    private campaignsService: CampaignsService
+    private campaignsService: CampaignsService,
+    private campaignWikiService: CampaignWikiService,
+    private markdownService: MarkdownService,
   ) {
     super(trailService, {title: 'Wiki'});
+  }
+
+  get wikiTitle(): string {
+    return `"${this.campaign.title}" Wiki`;
   }
 
   ngOnDestroy() {
@@ -33,14 +44,14 @@ export class CampaignWikiComponent extends TrailBuilder implements OnInit, OnDes
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
-      let id = params['campaign_id'];
+      let campaign_id = params['campaign_id'];
 
-      if (id) {
-        this.subscription = this.campaignsService.listPages(id)
+      if (campaign_id) {
+        this.campaignsService.find(campaign_id)
+          .subscribe((response) => this.campaign = response);
+        this.subscription = this.campaignWikiService.listChildren(campaign_id)
           .subscribe((response) => this.pages = response);
       }
     });
   }
-
-
 }

@@ -12,6 +12,8 @@ import { CharacterCardComponent } from './components/character-card/character-ca
 import { UserCardComponent } from './components/user-card/user-card.component';
 import { MarkdownRendererComponent } from './components/markdown-renderer/markdown-renderer.component';
 import { WikiLinkDirective } from './directives/wiki-link.directive';
+import { MarkdownInstructionsComponent } from './components/markdown-instructions/markdown-instructions.component';
+import { HtmlOutletDirective } from './directives/html-outlet.directive';
 
 @NgModule({
   imports: [
@@ -26,15 +28,19 @@ import { WikiLinkDirective } from './directives/wiki-link.directive';
     CampaignCardComponent,
     CharacterCardComponent,
     CoreComponent,
+    MarkdownInstructionsComponent,
     MarkdownRendererComponent,
     UserCardComponent,
-    WikiLinkDirective
+    WikiLinkDirective,
+    HtmlOutletDirective
   ],
   exports: [
     CampaignCardComponent,
     CharacterCardComponent,
     MarkdownRendererComponent,
-    UserCardComponent
+    MarkdownInstructionsComponent,
+    UserCardComponent,
+    HtmlOutletDirective
   ]
 })
 export class SharedModule { }

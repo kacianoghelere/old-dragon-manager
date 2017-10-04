@@ -1,4 +1,4 @@
-<layout-base pageTitle="Wiki">
+<layout-base *ngIf="campaign" [pageTitle]="wikiTitle">
   <nav class="navbar navbar-expand-sm navbar-light bg-secondary layout-toolbar">
     <ul class="navbar-nav mr-auto"></ul>
 
@@ -12,12 +12,8 @@
     </ul>
   </nav>
 
-  <div class="card" *ngFor="let page of pages">
-    <div class="card-body">
-      <h4 class="card-title">{{page.title}}</h4>
-      <p class="card-text">
-        <markdown>{{page.body}}</markdown>
-      </p>
-    </div>
+  <div class="card-columns">
+    <campaign-wiki-card *ngFor="let page of pages"
+      [page]="page"></campaign-wiki-card>
   </div>
 </layout-base>
