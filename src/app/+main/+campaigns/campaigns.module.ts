@@ -28,6 +28,7 @@ import { CampaignWikiComponent } from './campaign-profile/campaign-wiki/campaign
 import { CampaignWikiPageEditorComponent } from './campaign-profile/campaign-wiki/campaign-wiki-page-editor/campaign-wiki-page-editor.component';
 import { CampaignWikiPageComponent } from './campaign-profile/campaign-wiki/campaign-wiki-page/campaign-wiki-page.component';
 import { CampaignWikiCardComponent } from './campaign-profile/campaign-wiki/campaign-wiki-card/campaign-wiki-card.component';
+import { CampaignMapsComponent } from './campaign-profile/campaign-maps/campaign-maps.component';
 
 @NgModule({
   imports: [
@@ -58,7 +59,8 @@ import { CampaignWikiCardComponent } from './campaign-profile/campaign-wiki/camp
     CampaignWikiComponent,
     CampaignWikiPageEditorComponent,
     CampaignWikiPageComponent,
-    CampaignWikiCardComponent
+    CampaignWikiCardComponent,
+    CampaignMapsComponent
   ],
   providers: [
     CampaignsService,

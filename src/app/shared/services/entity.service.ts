@@ -96,6 +96,21 @@ export abstract class EntityService<T> {
   }
 
   /**
+   * [_createChild description]
+   * @param  {string} parentResource [description]
+   * @param  {string} childResource  [description]
+   * @return {[type]}                 [description]
+   */
+  protected _createChild(parentResource: string, childResource: string) {
+    return (parent_id: any, params: any): Observable<any> => {
+      let _params = JSON.stringify(params);
+      let url = `${this.url}/${parentResource}/${parent_id}/${childResource}`;
+      return this.http.post(url, _params, this.options)
+        .map(this.responseToJson);
+    }
+  }
+
+  /**
    * [_find description]
    * @param  {string} resource [description]
    * @param  {string} custom   [description]
@@ -134,14 +149,14 @@ export abstract class EntityService<T> {
 
   /**
    * [_findChildren description]
-   * @param  {string}   parent_resource [description]
-   * @param  {string}   child_resource  [description]
+   * @param  {string}   parentResource [description]
+   * @param  {string}   childResource  [description]
    * @return {function}                 [description]
    */
-  protected _findChildren(parent_resource: string, child_resource: string) {
+  protected _findChildren(parentResource: string, childResource: string) {
     return (parent_id: any, child_id: any): Observable<any> => {
-      let parentUrl = `${parent_resource}/${parent_id}`;
-      let childUrl = `${child_resource}/${child_id}`;
+      let parentUrl = `${parentResource}/${parent_id}`;
+      let childUrl = `${childResource}/${child_id}`;
       let url = `${this.url}/${parentUrl}/${childUrl}`;
       return this.http.get(url, this.options)
         .map(this.responseToJson);
@@ -170,6 +185,22 @@ export abstract class EntityService<T> {
       let _params = JSON.stringify(params);
       return this.http.put(`${this.url}/${resource}/${id}`, _params, this.options)
         .map(this.responseToJson);
+    }
+  }
+
+  /**
+   * [_updateChild description]
+   * @param  {string} parentResource [description]
+   * @param  {string} childResource  [description]
+   * @return {[type]}                 [description]
+   */
+  protected _updateChild(parentResource: string, childResource: string) {
+    return (parent_id: any, child_id: any, params: any): Observable<any> => {
+      let _params = JSON.stringify(params);
+      let parentUrl = `${parentResource}/${parent_id}`;
+      let childUrl = `${childResource}/${child_id}`;
+      let url = `${this.url}/${parentUrl}/${childUrl}`;
+      return this.http.put(url, _params, this.options).map(this.responseToJson);
     }
   }
 

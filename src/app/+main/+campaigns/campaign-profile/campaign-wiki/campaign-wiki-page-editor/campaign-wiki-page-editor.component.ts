@@ -2,7 +2,7 @@ import { Subscription } from 'rxjs/Subscription';
 
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AuthenticationService } from '../../../../../authentication/authentication.service';
 import { Campaign } from '../../../../../shared/entities/campaign';
@@ -18,10 +18,10 @@ import { CampaignWikiService } from '../../../shared/campaign-wiki.service';
 export class CampaignWikiPageEditorComponent implements OnInit {
 
   campaignWikiPage: CampaignWikiPage;
-  campaignWikiPageForm: FormGroup;
+  wikiPageForm: FormGroup;
   subscription: Subscription;
   campaign_id: number;
-  pageName: string;
+  wiki_name: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -33,16 +33,35 @@ export class CampaignWikiPageEditorComponent implements OnInit {
   ) { }
 
   /**
+   * [getErrorClass description]
+   * @param  {string} field [description]
+   * @return {any}          [description]
+   */
+  getErrorClass(field: string): any {
+    let control: AbstractControl = this.wikiPageForm.controls[field];
+    return {'is-invalid': this.hasError(control)};
+  }
+
+  /**
    * Executa rota de navegação adequada
    */
   goBack() {
     if (this.campaignWikiPage.id) {
       this.router.navigate([
-        '/main/campaigns', this.campaign_id, 'wiki', this.pageName
+        '/main/campaigns', this.campaign_id, 'wiki', this.wiki_name
       ]);
     } else {
       this.router.navigate(['/main/campaigns', this.campaign_id, 'wiki']);
     }
+  }
+
+  /**
+   * [hasError description]
+   * @param  {AbstractControl} field [description]
+   * @return {boolean}               [description]
+   */
+  hasError(field: AbstractControl): boolean {
+    return (field.touched && !field.pristine && !field.valid);
   }
 
   ngOnDestroy() {
@@ -52,11 +71,11 @@ export class CampaignWikiPageEditorComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe((params) => {
       this.campaign_id = params['campaign_id'];
-      this.pageName = params['page_id'];
+      this.wiki_name = params['page_id'];
 
-      if (this.campaign_id) {
+      if (this.wiki_name) {
         this.subscription = this.campaignWikiService
-          .findChild(this.campaign_id, this.pageName)
+          .findChild(this.campaign_id, this.wiki_name)
           .subscribe((response) => {
             this.campaignWikiPage = response;
             this.toFormGroup(this.campaignWikiPage);
@@ -65,29 +84,29 @@ export class CampaignWikiPageEditorComponent implements OnInit {
         this.campaignWikiPage = {
           id: null,
           title: '',
-          body: ''
+          body: '',
+          picture: ''
         };
         this.toFormGroup(this.campaignWikiPage);
       }
     });
   }
 
-  onSubmit({value, valid}: {value: Campaign, valid: boolean}) {
+  onSubmit({value, valid}: {value: CampaignWikiPage, valid: boolean}) {
     console.log("Submetido!", value);
-    let params = {
+    let params: any = {
       id: value.id,
       title: value.title,
+      body: value.body,
       picture: value.picture,
-      description: value.description,
-      journals_attributes: value.journals,
-      notes_attributes: value.notes,
-      characters: value.characters
+      campaign_id: this.campaign_id
     };
-    this.campaignsService.handle(params).subscribe(
-      (response: Campaign) => {
+    this.campaignWikiService.handle(params).subscribe(
+      (response: CampaignWikiPage) => {
         console.log("Salvou!", response);
         if (!this.campaignWikiPage.id) {
           this.campaignWikiPage.id = response.id;
+          this.wiki_name = response.wiki_name;
         }
         this.goBack();
       },
@@ -100,14 +119,15 @@ export class CampaignWikiPageEditorComponent implements OnInit {
    * @return {FormGroup}                          The new FormGroup
    */
   toFormGroup(campaignWikiPage: CampaignWikiPage) {
-    this.campaignWikiPageForm = this.formBuilder.group({
+    this.wikiPageForm = this.formBuilder.group({
       id : this.campaignWikiPage.id,
       title: [
         this.campaignWikiPage.title, [
           Validators.required, Validators.maxLength(45), Validators.minLength(6)
         ]
       ],
-      body: [this.campaignWikiPage.body, Validators.required]
+      body: [this.campaignWikiPage.body, Validators.required],
+      picture: [this.campaignWikiPage.picture]
     });
   }
 }

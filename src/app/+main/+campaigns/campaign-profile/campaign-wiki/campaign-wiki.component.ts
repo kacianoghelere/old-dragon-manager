@@ -9,7 +9,7 @@ import { Campaign } from '../../../../shared/entities/campaign';
 import { CampaignWikiPage } from '../../../../shared/entities/campaign-wiki-page';
 import { CampaignsService } from '../../shared/campaigns.service';
 import { CampaignWikiService } from '../../shared/campaign-wiki.service';
-import { TrailBuilder }  from "../../../../shared/entities/trail-builder";
+import { TrailItem }  from "../../../../shared/entities/trail-item";
 import { TrailService }  from "../../../../shared/services/trail.service";
 
 @Component({
@@ -17,21 +17,21 @@ import { TrailService }  from "../../../../shared/services/trail.service";
   templateUrl: './campaign-wiki.component.html',
   styleUrls: ['./campaign-wiki.component.scss']
 })
-export class CampaignWikiComponent extends TrailBuilder implements OnInit, OnDestroy {
+export class CampaignWikiComponent implements OnInit, OnDestroy {
 
   campaign: Campaign;
   pages: CampaignWikiPage[];
   subscription: Subscription;
+  trailItem: TrailItem;
 
   constructor(
-    trailService: TrailService,
+    private trailService: TrailService,
     private route: ActivatedRoute,
     private router: Router,
     private campaignsService: CampaignsService,
     private campaignWikiService: CampaignWikiService,
     private markdownService: MarkdownService,
   ) {
-    super(trailService, {title: 'Wiki'});
   }
 
   get wikiTitle(): string {
@@ -40,6 +40,18 @@ export class CampaignWikiComponent extends TrailBuilder implements OnInit, OnDes
 
   ngOnDestroy() {
     if (this.subscription) this.subscription.unsubscribe();
+    this.trailService.remove(this.trailItem);
+  }
+
+  /**
+   * Cria novo item na trila do breadcrumb
+   */
+  fireTrailChange() {
+    this.trailItem = {
+      title: 'Wiki',
+      route: `/main/campaigns/${this.campaign.id}/wiki`
+    };
+    this.trailService.add(this.trailItem);
   }
 
   ngOnInit() {
@@ -47,8 +59,10 @@ export class CampaignWikiComponent extends TrailBuilder implements OnInit, OnDes
       let campaign_id = params['campaign_id'];
 
       if (campaign_id) {
-        this.campaignsService.find(campaign_id)
-          .subscribe((response) => this.campaign = response);
+        this.campaignsService.find(campaign_id).subscribe((response) => {
+          this.campaign = response;
+          this.fireTrailChange();
+        });
         this.subscription = this.campaignWikiService.listChildren(campaign_id)
           .subscribe((response) => this.pages = response);
       }

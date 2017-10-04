@@ -8,7 +8,7 @@ import { AbstractControl, FormControl } from '@angular/forms';
 })
 export class FormGroupComponent implements OnInit {
 
-  @Input() field: AbstractControl;
+  @Input('field') field: AbstractControl;
 
   constructor() { }
 

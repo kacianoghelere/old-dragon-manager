@@ -40,35 +40,55 @@
     </section>
 
     <section>
-      <markdown-instructions></markdown-instructions>
+      <div class="form-group row">
+        <div class="ml-auto col-sm-10">
+          <markdown-instructions></markdown-instructions>
+        </div>
+      </div>
     </section>
 
     <section>
-      <campaign-form-journals *ngIf="campaignForm"
-        [campaignForm]="campaignForm"
-        [journals]="campaign.journals"></campaign-form-journals>
+      <div class="form-group row">
+        <div class="ml-auto col-sm-10">
+          <campaign-form-journals *ngIf="campaignForm"
+            [campaignForm]="campaignForm"
+            [journals]="campaign.journals"></campaign-form-journals>
+        </div>
+      </div>
     </section>
 
     <section>
-      <campaign-form-notes *ngIf="campaignForm"
-        [campaignForm]="campaignForm"
-        [notes]="campaign.notes"></campaign-form-notes>
+      <div class="form-group row">
+        <div class="ml-auto col-sm-10">
+          <campaign-form-notes *ngIf="campaignForm"
+            [campaignForm]="campaignForm"
+            [notes]="campaign.notes"></campaign-form-notes>
+        </div>
+      </div>
     </section>
 
     <section>
-      <campaign-form-characters *ngIf="campaignForm"
-        [campaignForm]="campaignForm"
-        [characters]="campaign.characters"></campaign-form-characters>
+      <div class="form-group row">
+        <div class="ml-auto col-sm-10">
+          <campaign-form-characters *ngIf="campaignForm"
+            [campaignForm]="campaignForm"
+            [characters]="campaign.characters"></campaign-form-characters>
+        </div>
+      </div>
     </section>
 
-    <div class="form-group d-flex justify-content-end">
-      <button class="btn btn-secondary" type="button" (click)="goBack()">
-        <i class="fa fa-remove"></i> CANCELAR
-      </button>
-      <button class="btn btn-primary" type="submit"
-          [disabled]="campaignForm.invalid">
-        <i class="fa fa-edit"></i> SALVAR
-      </button>
-    </div>
+    <section>
+      <div class="form-group row">
+        <div class="ml-auto col-sm-10">
+          <button class="btn btn-primary" type="submit"
+              [disabled]="campaignForm.invalid">
+            <i class="fa fa-edit"></i> Salvar
+          </button>
+          <button class="btn btn-link" type="button" (click)="goBack()">
+            <i class="fa fa-remove"></i> Cancelar
+          </button>
+        </div>
+      </div>
+    </section>
   </form>
 </layout-base>

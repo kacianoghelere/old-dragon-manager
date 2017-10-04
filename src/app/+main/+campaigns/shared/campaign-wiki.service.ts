@@ -13,6 +13,7 @@ import { CampaignWikiPage } from '../../../shared/entities/campaign-wiki-page';
 @Injectable()
 export class CampaignWikiService extends EntityService<CampaignWikiPage> {
 
+  parentResource: string = 'campaigns';
   resource: string = 'pages';
 
   constructor(
@@ -21,6 +22,9 @@ export class CampaignWikiService extends EntityService<CampaignWikiPage> {
     private markdownService: MarkdownService
   ) {
     super(authService, http);
+    this.markdownService.renderer.blockquote = (quote: string) => {
+      return `<blockquote class="blockquote">${quote}</blockquote>`;
+    };
     this.markdownService.renderer.link = (href: string, title: string, text: string) => {
       let regex = /^\s*\[\[[\sa-zA-Z0-9]+\]\]\s*/g;
       // console.log("Converting", {href: href, title: title, text: text});
@@ -34,8 +38,23 @@ export class CampaignWikiService extends EntityService<CampaignWikiPage> {
         return `<a href="${href}" title="${title}">${text}</a>`;
       }
     }
+    this.markdownService.renderer.table = (header: string, body: string) => {
+      return '<table class="table table-sm">\n'
+        + '<thead>\n'
+        + header
+        + '</thead>\n'
+        + '<tbody>\n'
+        + body
+        + '</tbody>\n'
+        + '</table>\n';
+    };
   }
 
+  /**
+   * [compileText description]
+   * @param  {string} text [description]
+   * @return {[type]}      [description]
+   */
   compileText(text: string) {
     return this.markdownService.compile(text);
   }
@@ -45,8 +64,12 @@ export class CampaignWikiService extends EntityService<CampaignWikiPage> {
    * @param  {CampaignWikiPage}               params [description]
    * @return {Observable<CampaignWikiPage[]>}        [description]
    */
-  create(params: CampaignWikiPage): Observable<any> {
-    return super._create(this.resource)({campaign: params});
+  createChild(
+    campaign_id: number,
+    params: any
+  ): Observable<any> {
+    let _createChild = super._createChild(this.parentResource, this.resource);
+    return _createChild(campaign_id, {campaign_wiki_page: params});
   }
 
   /**
@@ -56,7 +79,7 @@ export class CampaignWikiService extends EntityService<CampaignWikiPage> {
    * @return {Observable<CampaignWikiPage>}             [description]
    */
   findChild(campaign_id: number, page: string): Observable<CampaignWikiPage> {
-    return super._findChildren('campaigns', this.resource)(campaign_id, page);
+    return super._findChildren(this.parentResource, this.resource)(campaign_id, page);
   }
 
   /**
@@ -67,20 +90,33 @@ export class CampaignWikiService extends EntityService<CampaignWikiPage> {
    */
   handle(params: any): Observable<any> {
     if (params.id) {
-      return this.update(params.id, params);
+      return this.updateChild(params.campaign_id, params.id, params);
     }
-    return this.create(params);
+    return this.createChild(params.campaign_id, params);
   }
 
   /**
-   * [list description]
-   * @return {Observable<any>} [description]
+   * [listChildren description]
+   * @param  {number}                         campaign_id [description]
+   * @return {Observable<CampaignWikiPage[]>}             [description]
    */
   listChildren(campaign_id: number): Observable<CampaignWikiPage[]> {
-    return super._custom('campaigns', this.resource)(campaign_id);
+    return super._custom(this.parentResource, this.resource)(campaign_id);
   }
 
-  update(id: number, params: CampaignWikiPage): Observable<any> {
-    return super._update(this.resource)(id, {campaign: params});
+  /**
+   * [updateChild description]
+   * @param  {number}          campaign_id [description]
+   * @param  {number}          page_id     [description]
+   * @param  {any}             params      [description]
+   * @return {Observable<any>}             [description]
+   */
+  updateChild(
+    campaign_id: number,
+    page_id: number,
+    params: any
+  ): Observable<any> {
+    let updateChild = super._updateChild(this.parentResource, this.resource);
+    return updateChild(campaign_id, page_id, {campaign_wiki_page: params});
   }
 }

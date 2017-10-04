@@ -8,7 +8,8 @@ import { Campaign } from '../../../shared/entities/campaign';
 import { Character } from '../../../shared/entities/character';
 import { CoreComponent } from '../../../shared/components/core/core.component';
 import { CampaignsService } from '../shared/campaigns.service';
-
+import { TrailItem }  from "../../../shared/entities/trail-item";
+import { TrailService }  from "../../../shared/services/trail.service";
 
 @Component({
   selector: 'campaign-profile',
@@ -20,6 +21,7 @@ export class CampaignProfileComponent extends CoreComponent
 
   campaign: Campaign;
   subscription: Subscription;
+  trailItem: TrailItem;
 
   /**
    * [constructor description]
@@ -33,24 +35,10 @@ export class CampaignProfileComponent extends CoreComponent
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthenticationService,
-    private campaignsService: CampaignsService
+    private campaignsService: CampaignsService,
+    private trailService: TrailService
   ) {
     super();
-  }
-
-  ngOnDestroy() {
-    if (this.subscription) this.subscription.unsubscribe();
-  }
-
-  ngOnInit() {
-    this.route.params.subscribe((params) => {
-      let id = params['campaign_id'];
-
-      if (id) {
-        this.subscription = this.campaignsService.find(id)
-          .subscribe((response) => this.campaign = response);
-      }
-    });
   }
 
   /**
@@ -59,6 +47,17 @@ export class CampaignProfileComponent extends CoreComponent
    */
   canEdit(): boolean {
     return false;
+  }
+
+  /**
+   * Cria novo item na trila do breadcrumb
+   */
+  fireTrailChange() {
+    this.trailItem = {
+      title: this.campaign.title,
+      route: `/main/campaigns/${this.campaign.id}`
+    };
+    this.trailService.add(this.trailItem);
   }
 
   /**
@@ -79,6 +78,24 @@ export class CampaignProfileComponent extends CoreComponent
     return this.authService.isCurrentUser(this.campaign.dungeonMaster);
   }
 
+  ngOnDestroy() {
+    if (this.subscription) this.subscription.unsubscribe();
+    this.trailService.remove(this.trailItem);
+  }
+
+  ngOnInit() {
+    this.route.params.subscribe((params) => {
+      let id = params['campaign_id'];
+
+      if (id) {
+        this.subscription = this.campaignsService.find(id).subscribe((res) => {
+          this.campaign = res;
+          this.fireTrailChange();
+        });
+      }
+    });
+  }
+
   /**
    * Verifica se uma coleção deve ser ocultada, checando se o usuário é o
    * criador da campanha, membro da campanha ou a coleção de dados está vazia
@@ -90,15 +107,27 @@ export class CampaignProfileComponent extends CoreComponent
       && (!this.isCampaignMember() || !this.hasData(collection));
   }
 
+  /**
+   * [shouldHideNotes description]
+   * @return {boolean} [description]
+   */
   shouldHideCharacters(): boolean {
     return !this.isActiveTab(2) || this.shouldHide(this.campaign.characters);
   }
 
+  /**
+   * [shouldHideNotes description]
+   * @return {boolean} [description]
+   */
   shouldHideNotes(): boolean {
     return !this.isActiveTab(1) || this.shouldHide(this.campaign.notes);
   }
 
-  shouldHideMap(): boolean {
+  /**
+   * [shouldHideNotes description]
+   * @return {boolean} [description]
+   */
+  shouldHideMaps(): boolean {
     return !this.isActiveTab(3);
   }
 }

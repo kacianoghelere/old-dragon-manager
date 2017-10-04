@@ -1,8 +1,46 @@
-<layout-base *ngIf="campaign" [pageTitle]="wikiTitle">
+<layout-base *ngIf="campaign" [pageTitle]="wikiTitle"
+    [cover]="campaign.picture">
   <nav class="navbar navbar-expand-sm navbar-light bg-secondary layout-toolbar">
-    <ul class="navbar-nav mr-auto"></ul>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link">
+          <i class="fa fa-th"></i>
+          <span class="d-sm-none d-md-inline">Todas as Páginas</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">
+          <i class="fa fa-history"></i>
+          <span class="d-sm-none d-md-inline">Acontecimentos</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">
+          <i class="fa fa-map-signs"></i>
+          <span class="d-sm-none d-md-inline">Localidades</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">
+          <i class="fa fa-user-o"></i>
+          <span class="d-sm-none d-md-inline">Personagens</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">
+          <i class="fa fa-group"></i>
+          <span class="d-sm-none d-md-inline">Organizações</span>
+        </a>
+      </li>
+    </ul>
 
     <ul class="navbar-nav my-2 my-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['../']">
+          <i class="fa fa-angle-double-left"></i>
+          <span class="d-sm-none d-md-inline">Campanha</span>
+        </a>
+      </li>
       <li class="nav-item">
         <a class="nav-link text-primary" [routerLink]="['new']">
           <i class="fa fa-plus"></i>
