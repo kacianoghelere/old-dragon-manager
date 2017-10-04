@@ -1,4 +1,4 @@
-<div class="journals timeline">
+<div class="journals timeline" *ngIf="campaign">
 	<div class="timeline-item" *ngFor="let journal of journals">
 		<h5>{{journal.title}}</h5>
 		<p><markdown>{{journal.description}}</markdown></p>

@@ -1,32 +1,9 @@
-<layout-base *ngIf="page" [pageTitle]="page.title" [cover]="page.picture">
-  <nav class="navbar navbar-expand-sm navbar-light bg-secondary layout-toolbar">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['../']">
-          <i class="fa fa-wikipedia-w"></i>
-          <span class="d-sm-none d-md-inline">Wiki</span>
-        </a>
-      </li>
-    </ul>
+<section class="align-items-end">
+  <a [routerLink]="['../']"><i class="fa fa-arrow-left"></i> Voltar</a>
+  <a [routerLink]="['edit']"><i class="fa fa-edit"></i> Editar</a>
+</section>
 
-    <ul class="navbar-nav my-2 my-lg-0">
-      <li class="nav-item">
-        <a class="nav-link text-primary" [routerLink]="['edit']">
-          <i class="fa fa-edit"></i>
-          <span class="d-sm-none d-md-inline">Editar</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['../']">
-          <i class="fa fa-angle-double-left"></i>
-          <span class="d-sm-none d-md-inline">Voltar</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
-
-  <section>
-    <h1 class="title">{{page.title}}</h1>
-    <htmlOutlet [html]="compileText(page.body)"></htmlOutlet>
-  </section>
-</layout-base>
+<section *ngIf="page">
+  <h2 class="title justify-content-between">{{page.title}}</h2>
+  <htmlOutlet [html]="compileText(page.body)"></htmlOutlet>
+</section>

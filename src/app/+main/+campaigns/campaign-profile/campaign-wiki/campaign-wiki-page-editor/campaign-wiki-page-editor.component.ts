@@ -69,26 +69,29 @@ export class CampaignWikiPageEditorComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.params.subscribe((params) => {
+    this.route.parent.parent.params.subscribe((params) => {
       this.campaign_id = params['campaign_id'];
-      this.wiki_name = params['page_id'];
+      this.route.params.subscribe((childParams) => {
+        console.log('route.params', childParams);
+        this.wiki_name = childParams['page_id'];
 
-      if (this.wiki_name) {
-        this.subscription = this.campaignWikiService
-          .findChild(this.campaign_id, this.wiki_name)
-          .subscribe((response) => {
-            this.campaignWikiPage = response;
-            this.toFormGroup(this.campaignWikiPage);
-          });
-      } else {
-        this.campaignWikiPage = {
-          id: null,
-          title: '',
-          body: '',
-          picture: ''
-        };
-        this.toFormGroup(this.campaignWikiPage);
-      }
+        if (this.wiki_name) {
+          this.subscription = this.campaignWikiService
+            .findChild(this.campaign_id, this.wiki_name)
+            .subscribe((response) => {
+              this.campaignWikiPage = response;
+              this.toFormGroup(this.campaignWikiPage);
+            });
+        } else {
+          this.campaignWikiPage = {
+            id: null,
+            title: '',
+            body: '',
+            picture: ''
+          };
+          this.toFormGroup(this.campaignWikiPage);
+        }
+      });
     });
   }
 
@@ -106,6 +109,8 @@ export class CampaignWikiPageEditorComponent implements OnInit {
         console.log("Salvou!", response);
         if (!this.campaignWikiPage.id) {
           this.campaignWikiPage.id = response.id;
+        }
+        if (!this.wiki_name) {
           this.wiki_name = response.wiki_name;
         }
         this.goBack();

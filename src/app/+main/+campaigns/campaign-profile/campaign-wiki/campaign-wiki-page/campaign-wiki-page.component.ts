@@ -39,16 +39,17 @@ export class CampaignWikiPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.route.params.subscribe((params) => {
+    this.route.parent.parent.params.subscribe((params) => {
       let campaign_id = params['campaign_id'];
-      let page_id = params['page_id'];
-
-      if (campaign_id && page_id) {
-        this.subscription = this.campaignWikiService
+      this.route.params.subscribe((childParams) => {
+        let page_id = childParams['page_id'];
+        if (campaign_id && page_id) {
+          this.subscription = this.campaignWikiService
           .findChild(campaign_id, page_id).subscribe((response) => {
             this.page = response;
           });
-      }
+        }
+      });
     });
   }
 

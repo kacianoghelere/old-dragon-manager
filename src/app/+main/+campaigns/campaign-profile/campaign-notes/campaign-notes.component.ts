@@ -1,8 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
+
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { AuthenticationService } from '../../../../authentication/authentication.service';
 import { Campaign } from '../../../../shared/entities/campaign';
 import { CampaignNote } from '../../../../shared/entities/campaign-note';
+import { CampaignsService } from '../../shared/campaigns.service';
 
 @Component({
   selector: 'campaign-notes',
@@ -11,12 +15,29 @@ import { CampaignNote } from '../../../../shared/entities/campaign-note';
 })
 export class CampaignNotesComponent implements OnInit {
 
-  @Input('campaign') campaign: Campaign;
-  @Input('notes') notes: CampaignNote[];
+  campaign: Campaign;
+  subscription: Subscription;
 
-  constructor(private authService: AuthenticationService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private authService: AuthenticationService,
+    private campaignsService: CampaignsService
+  ) { }
+
+  ngOnDestroy() {
+    if (this.subscription) this.subscription.unsubscribe();
+  }
 
   ngOnInit() {
+    this.route.parent.params.subscribe((params) => {
+      let id = params['campaign_id'];
+      console.log(params);
+      if (id) {
+        this.subscription = this.campaignsService.find(id)
+          .subscribe((res) => this.campaign = res);
+      }
+    });
   }
 
   /**
@@ -34,5 +55,9 @@ export class CampaignNotesComponent implements OnInit {
    */
   isCampaignOwner(): boolean {
     return this.authService.isCurrentUser(this.campaign.dungeonMaster);
+  }
+
+  get notes(): CampaignNote[] {
+    return this.campaign.notes || [];
   }
 }
