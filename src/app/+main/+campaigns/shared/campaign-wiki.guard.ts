@@ -8,7 +8,7 @@ import { AuthenticationService } from '../../../authentication/authentication.se
 import { CampaignsService } from './campaigns.service';
 
 @Injectable()
-export class CampaignGuard implements CanActivate {
+export class CampaignWikiGuard implements CanActivate {
 
   constructor(
     private router: Router,
@@ -20,7 +20,7 @@ export class CampaignGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> {
-    let campaign_id = next.params.campaign_id;
+    let campaign_id = next.parent.parent.params.campaign_id;
       console.log('canActivate', campaign_id);
       return this.campaignsService.find(campaign_id).map((campaign) => {
         let willActivate = this.authService.isCurrentUser(campaign.dungeonMaster)

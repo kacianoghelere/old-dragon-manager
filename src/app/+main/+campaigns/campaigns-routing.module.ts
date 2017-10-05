@@ -15,6 +15,7 @@ import { CampaignWikiPageComponent } from './campaign-profile/campaign-wiki/camp
 import { CampaignWikiPageEditorComponent } from './campaign-profile/campaign-wiki/campaign-wiki-page-editor/campaign-wiki-page-editor.component';
 
 import { CampaignGuard } from "./shared/campaign.guard";
+import { CampaignWikiGuard } from "./shared/campaign-wiki.guard";
 
 const routes: Routes = [
   {
@@ -39,11 +40,15 @@ const routes: Routes = [
             path: 'wiki',
             component: CampaignWikiComponent,
             children: [
-              { path: 'new', component: CampaignWikiPageEditorComponent },
+              {
+                path: 'new',
+                component: CampaignWikiPageEditorComponent,
+                canActivate: [CampaignWikiGuard]
+              },
               {
                 path: ':page_id/edit',
                 component: CampaignWikiPageEditorComponent,
-                canActivate: [CampaignGuard]
+                canActivate: [CampaignWikiGuard]
               },
               { path: ':page_id', component: CampaignWikiPageComponent },
               { path: '', component: CampaignWikiHomeComponent }

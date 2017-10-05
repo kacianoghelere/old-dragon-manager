@@ -39,6 +39,7 @@ import { CampaignWikiService } from "./shared/campaign-wiki.service";
 import { WikiCategoriesService } from "./shared/wiki-categories.service";
 
 import { CampaignGuard } from "./shared/campaign.guard";
+import { CampaignWikiGuard } from "./shared/campaign-wiki.guard";
 
 @NgModule({
   imports: [
@@ -80,7 +81,8 @@ import { CampaignGuard } from "./shared/campaign.guard";
     CampaignsService,
     CampaignWikiService,
     WikiCategoriesService,
-    CampaignGuard
+    CampaignGuard,
+    CampaignWikiGuard
   ]
 })
 export class CampaignsModule { }
