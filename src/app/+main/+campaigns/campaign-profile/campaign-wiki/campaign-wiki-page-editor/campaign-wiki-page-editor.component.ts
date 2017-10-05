@@ -7,8 +7,10 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { AuthenticationService } from '../../../../../authentication/authentication.service';
 import { Campaign } from '../../../../../shared/entities/campaign';
 import { CampaignWikiPage } from '../../../../../shared/entities/campaign-wiki-page';
+import { WikiCategory } from '../../../../../shared/entities/wiki-category';
 import { CampaignsService } from '../../../shared/campaigns.service';
 import { CampaignWikiService } from '../../../shared/campaign-wiki.service';
+import { WikiCategoriesService } from '../../../shared/wiki-categories.service';
 
 @Component({
   selector: 'campaign-wiki-page-editor',
@@ -17,7 +19,9 @@ import { CampaignWikiService } from '../../../shared/campaign-wiki.service';
 })
 export class CampaignWikiPageEditorComponent implements OnInit {
 
+  campaign: Campaign;
   campaignWikiPage: CampaignWikiPage;
+  wikiCategories: WikiCategory[];
   wikiPageForm: FormGroup;
   subscription: Subscription;
   campaign_id: number;
@@ -29,8 +33,17 @@ export class CampaignWikiPageEditorComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthenticationService,
     private campaignsService: CampaignsService,
-    private campaignWikiService: CampaignWikiService
+    private campaignWikiService: CampaignWikiService,
+    private wikiCategoriesService: WikiCategoriesService
   ) { }
+
+  /**
+   * Verifica se a página pode ser destruída
+   * @return {boolean} Resultado da verificação
+   */
+  canDestroy() {
+    return this.isCampaignOwner() && !!(this.campaignWikiPage.id);
+  }
 
   /**
    * [getErrorClass description]
@@ -68,41 +81,68 @@ export class CampaignWikiPageEditorComponent implements OnInit {
     if (this.subscription) this.subscription.unsubscribe();
   }
 
-  ngOnInit() {
-    this.route.parent.parent.params.subscribe((params) => {
-      this.campaign_id = params['campaign_id'];
-      this.route.params.subscribe((childParams) => {
-        console.log('route.params', childParams);
-        this.wiki_name = childParams['page_id'];
+  /**
+   * Verifica se o usuário atual é o mestre de jogo da campanha
+   * @return {boolean} Resultado da verificação
+   */
+  isCampaignOwner(): boolean {
+    return this.authService.isCurrentUser(this.campaign.dungeonMaster);
+  }
 
-        if (this.wiki_name) {
-          this.subscription = this.campaignWikiService
-            .findChild(this.campaign_id, this.wiki_name)
-            .subscribe((response) => {
-              this.campaignWikiPage = response;
+  /**
+   * Verifica se o formulário está pronto para edição
+   * @return {boolean} Resultado da verificação
+   */
+  isFormReady(): boolean {
+    return !!(this.campaign) && !!(this.wikiPageForm);
+  }
+
+  ngOnInit() {
+    // Busca categorias
+    this.wikiCategoriesService.list().subscribe((wikiCategories) => {
+      this.wikiCategories = wikiCategories;
+      // Observa parametros da rota principal
+      this.route.parent.parent.params.subscribe((params) => {
+        this.campaign_id = params['campaign_id'];
+
+        this.campaignsService.find(this.campaign_id).subscribe((campaign) => {
+          this.campaign = campaign;
+          // Observa parametros da rota secundária
+          this.route.params.subscribe((childParams) => {
+            // console.log('route.params', childParams);
+            this.wiki_name = childParams['page_id'];
+            if (this.wiki_name) {
+              this.subscription = this.campaignWikiService
+              .findChild(this.campaign_id, this.wiki_name)
+              .subscribe((wikiPage) => {
+                this.campaignWikiPage = wikiPage;
+                this.toFormGroup(this.campaignWikiPage);
+              });
+            } else {
+              this.campaignWikiPage = {
+                id: null,
+                title: '',
+                body: '',
+                picture: ''
+              };
               this.toFormGroup(this.campaignWikiPage);
-            });
-        } else {
-          this.campaignWikiPage = {
-            id: null,
-            title: '',
-            body: '',
-            picture: ''
-          };
-          this.toFormGroup(this.campaignWikiPage);
-        }
+            }
+          });
+        });
       });
     });
   }
 
-  onSubmit({value, valid}: {value: CampaignWikiPage, valid: boolean}) {
+  onSubmit({value, valid}: {value: any, valid: boolean}) {
     // console.log("Submetido!", value);
     let params: any = {
       id: value.id,
       title: value.title,
       body: value.body,
       picture: value.picture,
-      campaign_id: this.campaign_id
+      dm_only: value.dm_only,
+      campaign_id: this.campaign_id,
+      wiki_category_id: value.category
     };
     this.campaignWikiService.handle(params).subscribe(
       (response: CampaignWikiPage) => {
@@ -144,6 +184,9 @@ export class CampaignWikiPageEditorComponent implements OnInit {
    * @return {FormGroup}                          The new FormGroup
    */
   toFormGroup(campaignWikiPage: CampaignWikiPage): void {
+    let page = this.campaignWikiPage || {};
+    let category = page['wiki_category'] || {};
+    let wiki_category_id = category ? category['id'] : null;
     this.wikiPageForm = this.formBuilder.group({
       id : this.campaignWikiPage.id,
       title: [
@@ -152,7 +195,9 @@ export class CampaignWikiPageEditorComponent implements OnInit {
         ]
       ],
       body: [this.campaignWikiPage.body, Validators.required],
-      picture: [this.campaignWikiPage.picture]
+      picture: [this.campaignWikiPage.picture],
+      dm_only: [this.campaignWikiPage.dm_only || false],
+      category: wiki_category_id || ''
     });
   }
 }

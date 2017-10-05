@@ -61,14 +61,6 @@ export class CampaignsService extends EntityService<Campaign> {
     return super._list(this.resource)();
   }
 
-  /**
-   * [list description]
-   * @return {Observable<any>} [description]
-   */
-  listPages(id: number): Observable<CampaignWikiPage[]> {
-    return super._custom(this.resource, 'campaign_wiki_pages')(id);
-  }
-
   update(id: number, params: Campaign): Observable<any> {
     return super._update(this.resource)(id, {campaign: params});
   }

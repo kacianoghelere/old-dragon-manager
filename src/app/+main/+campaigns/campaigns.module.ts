@@ -28,13 +28,17 @@ import { CampaignNotesComponent } from './campaign-profile/campaign-notes/campai
 import { CampaignProfileComponent } from './campaign-profile/campaign-profile.component';
 import { CampaignsComponent } from './campaigns/campaigns.component';
 import { CampaignsListComponent } from './campaigns-list/campaigns-list.component';
-import { CampaignsService } from "./shared/campaigns.service";
 import { CampaignWikiCardComponent } from './campaign-profile/campaign-wiki/campaign-wiki-card/campaign-wiki-card.component';
 import { CampaignWikiComponent } from './campaign-profile/campaign-wiki/campaign-wiki.component';
 import { CampaignWikiPageComponent } from './campaign-profile/campaign-wiki/campaign-wiki-page/campaign-wiki-page.component';
 import { CampaignWikiPageEditorComponent } from './campaign-profile/campaign-wiki/campaign-wiki-page-editor/campaign-wiki-page-editor.component';
-import { CampaignWikiService } from "./shared/campaign-wiki.service";
 import { CampaignWikiHomeComponent } from './campaign-profile/campaign-wiki/campaign-wiki-home/campaign-wiki-home.component';
+
+import { CampaignsService } from "./shared/campaigns.service";
+import { CampaignWikiService } from "./shared/campaign-wiki.service";
+import { WikiCategoriesService } from "./shared/wiki-categories.service";
+
+import { CampaignGuard } from "./shared/campaign.guard";
 
 @NgModule({
   imports: [
@@ -42,9 +46,7 @@ import { CampaignWikiHomeComponent } from './campaign-profile/campaign-wiki/camp
     FormsModule,
     ReactiveFormsModule,
     MarkdownModule.forRoot(),
-    ConfirmationPopoverModule.forRoot({
-      confirmButtonType: 'danger' // set defaults here
-    }),
+    ConfirmationPopoverModule.forRoot({confirmButtonType: 'danger'}),
     LayoutModule,
     CampaignsRoutingModule,
     UtilModule,
@@ -76,7 +78,9 @@ import { CampaignWikiHomeComponent } from './campaign-profile/campaign-wiki/camp
   ],
   providers: [
     CampaignsService,
-    CampaignWikiService
+    CampaignWikiService,
+    WikiCategoriesService,
+    CampaignGuard
   ]
 })
 export class CampaignsModule { }

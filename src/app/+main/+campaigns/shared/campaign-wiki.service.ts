@@ -78,14 +78,15 @@ export class CampaignWikiService extends EntityService<CampaignWikiPage> {
    * @param  {string} text [description]
    * @return {[type]}      [description]
    */
-  compileText(text: string) {
+  compileText(text: string): string {
     return this.markdownService.compile(text);
   }
 
   /**
-   * [create description]
-   * @param  {CampaignWikiPage}               params [description]
-   * @return {Observable<CampaignWikiPage[]>}        [description]
+   * [createChild description]
+   * @param  {number}          campaign_id [description]
+   * @param  {any}             params      [description]
+   * @return {Observable<any>}             [description]
    */
   createChild(
     campaign_id: number,

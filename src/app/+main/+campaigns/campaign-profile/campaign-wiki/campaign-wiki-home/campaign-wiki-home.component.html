@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm navbar-light layout-toolbar">
+<nav class="navbar navbar-expand-sm navbar-light layout-toolbar" *ngIf="campaign">
   <ul class="navbar-nav mr-auto">
     <li class="nav-item">
       <a class="nav-link">
@@ -33,7 +33,7 @@
   </ul>
 
   <ul class="navbar-nav my-2 my-lg-0">
-    <li class="nav-item">
+    <li class="nav-item" *ngIf="isCampaignOwner()">
       <a class="nav-link text-primary" [routerLink]="['new']">
         <i class="fa fa-plus"></i>
         <span class="d-sm-none d-md-inline">Nova página</span>

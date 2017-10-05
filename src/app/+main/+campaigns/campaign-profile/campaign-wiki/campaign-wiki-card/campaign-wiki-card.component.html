@@ -1,6 +1,11 @@
-<a class="card" [routerLink]="[page.wiki_name]">
+<a class="card" *ngIf="page" [routerLink]="[page.wiki_name]"
+    [ngClass]="{'bg-secondary': page?.dm_only}">
   <img class="card-img" *ngIf="page.picture" [src]="page.picture">
   <div [ngClass]="bodyClass">
-    <h4 class="card-title">{{page.title}}</h4>
+    <small class="card-text">{{page?.wiki_category?.title}}</small>
+    <h4 class="card-title">{{page?.title}}</h4>
+    <p class="card-text" *ngIf="page?.dm_only">
+      <span class="badge badge-pill badge-dark">Restrito ao narrador</span>
+    </p>
   </div>
 </a>

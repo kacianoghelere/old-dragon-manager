@@ -8,6 +8,7 @@ import { User } from './user';
 export class Campaign {
   characters?: Character[];
   description: string;
+  dm_only?: boolean = false;
   picture?: string;
   id?: number;
   journals?: CampaignJournal[];

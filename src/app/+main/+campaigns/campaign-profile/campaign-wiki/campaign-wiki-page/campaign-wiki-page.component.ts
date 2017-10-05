@@ -5,10 +5,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { MarkdownService } from 'angular2-markdown';
 
+import { AuthenticationService } from '../../../../../authentication/authentication.service';
+import { Campaign } from '../../../../../shared/entities/campaign';
 import { CampaignWikiPage } from '../../../../../shared/entities/campaign-wiki-page';
+import { CampaignsService } from '../../../shared/campaigns.service';
 import { CampaignWikiService } from '../../../shared/campaign-wiki.service';
-import { TrailBuilder }  from "../../../../../shared/entities/trail-builder";
-import { TrailService }  from "../../../../../shared/services/trail.service";
 
 @Component({
   selector: 'campaign-wiki-page',
@@ -17,12 +18,15 @@ import { TrailService }  from "../../../../../shared/services/trail.service";
 })
 export class CampaignWikiPageComponent implements OnInit, OnDestroy {
 
+  campaign: Campaign;
   page: CampaignWikiPage;
   subscription: Subscription;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private authService: AuthenticationService,
+    private campaignsService: CampaignsService,
     private campaignWikiService: CampaignWikiService
   ) { }
 
@@ -30,8 +34,12 @@ export class CampaignWikiPageComponent implements OnInit, OnDestroy {
     return this.campaignWikiService.compileText(text);
   }
 
-  fireStarter(text: string) {
-    console.log(`Starting fire on ${text}`);
+  /**
+   * Verifica se o usuário atual é o mestre de jogo da campanha
+   * @return {boolean} Resultado da verificação
+   */
+  isCampaignOwner(): boolean {
+    return this.authService.isCurrentUser(this.campaign.dungeonMaster);
   }
 
   ngOnDestroy() {
@@ -41,17 +49,20 @@ export class CampaignWikiPageComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.route.parent.parent.params.subscribe((params) => {
       let campaign_id = params['campaign_id'];
-      this.route.params.subscribe((childParams) => {
-        let page_id = childParams['page_id'];
-        if (campaign_id && page_id) {
-          this.subscription = this.campaignWikiService
-          .findChild(campaign_id, page_id).subscribe((response) => {
-            this.page = response;
+      this.campaignsService.find(campaign_id).subscribe((campaign) => {
+        this.campaign = campaign;
+        this.route.params.subscribe((childParams) => {
+          let page_id = childParams['page_id'];
+          if (campaign_id && page_id) {
+            this.subscription = this.campaignWikiService
+            .findChild(campaign_id, page_id).subscribe((response) => {
+              this.page = response;
+            });
+          }
+          this.route.fragment.subscribe ((fragment) => {
+            const element = document.querySelector(`#${fragment}`);
+            if (element) element.scrollIntoView (element);
           });
-        }
-        this.route.fragment.subscribe ((fragment) => {
-          const element = document.querySelector(`#${fragment}`);
-          if (element) element.scrollIntoView (element);
         });
       });
     });

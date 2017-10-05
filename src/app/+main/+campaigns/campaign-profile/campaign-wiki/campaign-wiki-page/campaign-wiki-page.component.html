@@ -1,16 +1,16 @@
-<section class="wiki-page">
+<section class="wiki-page" *ngIf="campaign">
   <header>
     <div class="d-flex justify-content-between">
-      <div>
-        <a class="mr-2">
-          <i class="fa fa-home"></i> Categoria
-        </a>
-      </div>
       <div>
         <a class="mr-2" [routerLink]="['../']">
           <i class="fa fa-arrow-left"></i> Voltar
         </a>
-        <a [routerLink]="['edit']">
+        <a class="mr-2">
+          <i class="fa fa-level-up"></i> {{page?.wiki_category?.title}}
+        </a>
+      </div>
+      <div>
+        <a [routerLink]="['edit']" *ngIf="isCampaignOwner()">
           <i class="fa fa-edit"></i> Editar Página
         </a>
       </div>

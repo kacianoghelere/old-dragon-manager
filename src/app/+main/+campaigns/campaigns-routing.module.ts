@@ -14,13 +14,19 @@ import { CampaignWikiHomeComponent } from './campaign-profile/campaign-wiki/camp
 import { CampaignWikiPageComponent } from './campaign-profile/campaign-wiki/campaign-wiki-page/campaign-wiki-page.component';
 import { CampaignWikiPageEditorComponent } from './campaign-profile/campaign-wiki/campaign-wiki-page-editor/campaign-wiki-page-editor.component';
 
+import { CampaignGuard } from "./shared/campaign.guard";
+
 const routes: Routes = [
   {
     path: '',
     component: CampaignsComponent,
     children: [
       { path: 'new', component: CampaignEditorComponent },
-      { path: ':campaign_id/edit', component: CampaignEditorComponent },
+      {
+        path: ':campaign_id/edit',
+        component: CampaignEditorComponent,
+        canActivate: [CampaignGuard]
+      },
       {
         path: ':campaign_id',
         component: CampaignProfileComponent,
@@ -34,7 +40,11 @@ const routes: Routes = [
             component: CampaignWikiComponent,
             children: [
               { path: 'new', component: CampaignWikiPageEditorComponent },
-              { path: ':page_id/edit', component: CampaignWikiPageEditorComponent },
+              {
+                path: ':page_id/edit',
+                component: CampaignWikiPageEditorComponent,
+                canActivate: [CampaignGuard]
+              },
               { path: ':page_id', component: CampaignWikiPageComponent },
               { path: '', component: CampaignWikiHomeComponent }
             ]
