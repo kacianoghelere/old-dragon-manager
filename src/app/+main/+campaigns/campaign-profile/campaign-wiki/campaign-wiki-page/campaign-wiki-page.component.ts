@@ -49,6 +49,10 @@ export class CampaignWikiPageComponent implements OnInit, OnDestroy {
             this.page = response;
           });
         }
+        this.route.fragment.subscribe ((fragment) => {
+          const element = document.querySelector(`#${fragment}`);
+          if (element) element.scrollIntoView (element);
+        });
       });
     });
   }

@@ -1,9 +1,24 @@
-<section class="align-items-end">
-  <a [routerLink]="['../']"><i class="fa fa-arrow-left"></i> Voltar</a>
-  <a [routerLink]="['edit']"><i class="fa fa-edit"></i> Editar</a>
-</section>
+<section class="wiki-page">
+  <header>
+    <div class="d-flex justify-content-between">
+      <div>
+        <a class="mr-2">
+          <i class="fa fa-home"></i> Categoria
+        </a>
+      </div>
+      <div>
+        <a class="mr-2" [routerLink]="['../']">
+          <i class="fa fa-arrow-left"></i> Voltar
+        </a>
+        <a [routerLink]="['edit']">
+          <i class="fa fa-edit"></i> Editar Página
+        </a>
+      </div>
+    </div>
+    <h2 class="title page-title">{{page?.title}}</h2>
+  </header>
 
-<section *ngIf="page">
-  <h2 class="title justify-content-between">{{page.title}}</h2>
-  <htmlOutlet [html]="compileText(page.body)"></htmlOutlet>
+  <article *ngIf="page">
+    <htmlOutlet [html]="compileText(page.body)"></htmlOutlet>
+  </article>
 </section>
