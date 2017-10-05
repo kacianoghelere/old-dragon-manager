@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { CampaignCharactersComponent } from './campaign-profile/campaign-characters/campaign-characters.component';
-import { CampaignFormComponent } from './campaign-form/campaign-form.component';
+import { CampaignEditorComponent } from './campaign-editor/campaign-editor.component';
 import { CampaignJournalsComponent } from './campaign-profile/campaign-journals/campaign-journals.component';
 import { CampaignMapsComponent } from './campaign-profile/campaign-maps/campaign-maps.component';
 import { CampaignNotesComponent } from './campaign-profile/campaign-notes/campaign-notes.component';
@@ -19,8 +19,8 @@ const routes: Routes = [
     path: '',
     component: CampaignsComponent,
     children: [
-      { path: 'new', component: CampaignFormComponent },
-      { path: ':campaign_id/edit', component: CampaignFormComponent },
+      { path: 'new', component: CampaignEditorComponent },
+      { path: ':campaign_id/edit', component: CampaignEditorComponent },
       {
         path: ':campaign_id',
         component: CampaignProfileComponent,

@@ -12,6 +12,8 @@ import { ToastrModule } from 'ngx-toastr';
 
 import { MarkdownModule } from 'angular2-markdown';
 
+import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
+
 import { AppComponent } from './app.component';
 import { ValidatorsService } from './shared/services/validators.service';
 import { AuthenticationModule } from './authentication/authentication.module';
@@ -33,6 +35,9 @@ import { CampaignInvitationService } from "./shared/services/campaign-invitation
     NgbModule.forRoot(),
     ToastrModule.forRoot(),
     MarkdownModule.forRoot(),
+    ConfirmationPopoverModule.forRoot({
+      confirmButtonType: 'danger' // set defaults here
+    }),
     AuthenticationModule,
     SharedModule,
     UtilModule,

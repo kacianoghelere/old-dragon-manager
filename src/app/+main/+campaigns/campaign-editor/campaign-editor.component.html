@@ -1,4 +1,4 @@
-<layout-base *ngIf="campaign" pageTitle="Gerenciar Campanha">
+<layout-base *ngIf="campaign" pageTitle="Editor de Campanha">
   <form *ngIf="campaignForm" [formGroup]="campaignForm"
       (ngSubmit)="onSubmit(campaignForm)">
     <section>
@@ -63,6 +63,16 @@
           <campaign-form-notes *ngIf="campaignForm"
             [campaignForm]="campaignForm"
             [notes]="campaign.notes"></campaign-form-notes>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="form-group row">
+        <div class="ml-auto col-sm-10">
+          <campaign-form-maps *ngIf="campaignForm"
+            [campaignForm]="campaignForm"
+            [maps]="campaign.maps"></campaign-form-maps>
         </div>
       </div>
     </section>

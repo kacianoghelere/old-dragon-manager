@@ -4,19 +4,23 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MarkdownModule } from 'angular2-markdown';
 
+import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
+
 import { LayoutModule } from '../../layout/layout.module';
 import { SharedModule } from '../../shared/shared.module';
 import { UtilModule } from "../../util/util.module";
 import { CampaignsRoutingModule } from './campaigns-routing.module';
 
 import { CampaignCharactersComponent } from './campaign-profile/campaign-characters/campaign-characters.component';
-import { CampaignFormCharacterComponent } from './campaign-form/campaign-form-characters/campaign-form-character/campaign-form-character.component';
-import { CampaignFormCharactersComponent } from './campaign-form/campaign-form-characters/campaign-form-characters.component';
-import { CampaignFormComponent } from './campaign-form/campaign-form.component';
-import { CampaignFormJournalComponent } from './campaign-form/campaign-form-journals/campaign-form-journal/campaign-form-journal.component';
-import { CampaignFormJournalsComponent } from './campaign-form/campaign-form-journals/campaign-form-journals.component';
-import { CampaignFormNoteComponent } from './campaign-form/campaign-form-notes/campaign-form-note/campaign-form-note.component';
-import { CampaignFormNotesComponent } from './campaign-form/campaign-form-notes/campaign-form-notes.component';
+import { CampaignEditorComponent } from './campaign-editor/campaign-editor.component';
+import { CampaignFormCharacterComponent } from './campaign-editor/campaign-form-characters/campaign-form-character/campaign-form-character.component';
+import { CampaignFormCharactersComponent } from './campaign-editor/campaign-form-characters/campaign-form-characters.component';
+import { CampaignFormJournalComponent } from './campaign-editor/campaign-form-journals/campaign-form-journal/campaign-form-journal.component';
+import { CampaignFormJournalsComponent } from './campaign-editor/campaign-form-journals/campaign-form-journals.component';
+import { CampaignFormMapComponent } from './campaign-editor/campaign-form-maps/campaign-form-map/campaign-form-map.component';
+import { CampaignFormMapsComponent } from './campaign-editor/campaign-form-maps/campaign-form-maps.component';
+import { CampaignFormNoteComponent } from './campaign-editor/campaign-form-notes/campaign-form-note/campaign-form-note.component';
+import { CampaignFormNotesComponent } from './campaign-editor/campaign-form-notes/campaign-form-notes.component';
 import { CampaignInviteUsersComponent } from './campaign-invite-users/campaign-invite-users.component';
 import { CampaignJournalsComponent } from './campaign-profile/campaign-journals/campaign-journals.component';
 import { CampaignMapsComponent } from './campaign-profile/campaign-maps/campaign-maps.component';
@@ -38,6 +42,9 @@ import { CampaignWikiHomeComponent } from './campaign-profile/campaign-wiki/camp
     FormsModule,
     ReactiveFormsModule,
     MarkdownModule.forRoot(),
+    ConfirmationPopoverModule.forRoot({
+      confirmButtonType: 'danger' // set defaults here
+    }),
     LayoutModule,
     CampaignsRoutingModule,
     UtilModule,
@@ -45,13 +52,15 @@ import { CampaignWikiHomeComponent } from './campaign-profile/campaign-wiki/camp
   ],
   declarations: [
     CampaignCharactersComponent,
+    CampaignEditorComponent,
     CampaignFormCharacterComponent,
     CampaignFormCharactersComponent,
-    CampaignFormComponent,
     CampaignFormJournalComponent,
     CampaignFormJournalsComponent,
     CampaignFormNoteComponent,
     CampaignFormNotesComponent,
+    CampaignFormMapComponent,
+    CampaignFormMapsComponent,
     CampaignInviteUsersComponent,
     CampaignJournalsComponent,
     CampaignMapsComponent,

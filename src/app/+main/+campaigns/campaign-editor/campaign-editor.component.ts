@@ -10,12 +10,12 @@ import { CampaignsService } from '../shared/campaigns.service';
 import { CampaignFormService } from './shared/campaign-form.service';
 
 @Component({
-  selector: 'campaign-form',
-  templateUrl: './campaign-form.component.html',
-  styleUrls: ['./campaign-form.component.scss'],
+  selector: 'campaign-editor',
+  templateUrl: './campaign-editor.component.html',
+  styleUrls: ['./campaign-editor.component.scss'],
   providers: [CampaignFormService]
 })
-export class CampaignFormComponent implements OnInit, OnDestroy {
+export class CampaignEditorComponent implements OnInit, OnDestroy {
 
   campaign: Campaign;
   campaignForm: FormGroup;
@@ -60,6 +60,7 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
           picture: '',
           description: '',
           journals: [],
+          maps: [],
           notes: [],
           dungeonMaster: this.authService.currentUser
         };
@@ -88,6 +89,7 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
       picture: value.picture,
       description: value.description,
       journals_attributes: value.journals,
+      maps_attributes: value.maps,
       notes_attributes: value.notes,
       characters: value.characters
     };

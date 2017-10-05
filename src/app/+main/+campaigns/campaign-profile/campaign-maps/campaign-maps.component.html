@@ -1,1 +1,8 @@
-<img class="mx-auto" src="https://fakeimg.pl/1024x768/?text=Mapa" alt="map">
+<section class="card-columns" *ngIf="campaign">
+  <article class="card" *ngFor="let map of maps">
+    <img class="card-img" [src]="map?.url" [alt]="map?.description">
+  	<div class="card-img-overlay">
+  		<h5 class="card-title">{{map?.description}}</h5>
+  	</div>
+  </article>
+</section>

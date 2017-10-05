@@ -68,8 +68,17 @@
         </button>
       </div>
       <div class="ml-auto col-2 text-right">
-        <button class="btn btn-outline-danger pointer" type="button" (click)="goBack()">
-          <i class="fa fa-trash"></i> Excluir
+        <button class="btn btn-outline-danger pointer"
+            type="button"
+            *ngIf="campaignWikiPage.id"
+            mwlConfirmationPopover
+            title="Confirmação necessária"
+            message="Deseja realmente deletar a página?"
+            placement="left"
+            confirmText="Excluir"
+            cancelText="Cancelar"
+            (confirm)="destroyPage()">
+          <i class="fa fa-trash"></i> Excluir Página
         </button>
       </div>
     </div>

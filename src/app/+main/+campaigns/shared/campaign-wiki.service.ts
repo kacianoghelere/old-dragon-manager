@@ -44,45 +44,7 @@ export class CampaignWikiService extends EntityService<CampaignWikiPage> {
     // -------------------------------------------------------------------------
 
     this.markdownService.renderer.link = this.customLinkRenderer;
-
-    // -------------------------------------------------------------------------
-    this.markdownService.renderer.table = (header: string, body: string) => {
-      return '<table class="table table-sm">\n'
-        + '<thead>\n'
-        + header
-        + '</thead>\n'
-        + '<tbody>\n'
-        + body
-        + '</tbody>\n'
-        + '</table>\n';
-    };
-  }
-
-  /**
-   * Renderer customizado de markdown para links
-   * @param  {string} href  Destino do link
-   * @param  {string} title Título da tag
-   * @param  {string} text  Texto da tag
-   * @return {string}       Tag formatada
-   */
-  customLinkRenderer(href: string, title: string, text: string): string {
-    let wikiRegex = /^\s*\[\[[\sa-zA-Z0-9]+\]\]\s*/g;
-    let anchorRegex = /^\s*\[[\sa-z0-9]+\]\s*/g;
-    // console.log("Converting", {href: href, title: title, text: text});
-    if (wikiRegex.test(href)) {
-      href = href.replace(/[\[\]]/g, '');
-      let wiki: string = href.trim().toLowerCase().replace(/\s/g, '_');
-      console.log("Wiki Regex passes");
-      return `<a [routerLink]="['../${wiki}']" title="${title}">${text}</a>`;
-    } else if (anchorRegex.test(href)) {
-      href = href.replace(/[\[\]]/g, '');
-      let id: string = href.trim().toLowerCase().replace(/\s/g, '_');
-      console.log("Anchor Regex passes");
-      return `<a routerLink="./" fragment="${id}" title="${title}">${text}</a>`;
-    } else {
-      // console.log("Regex rejected");
-      return `<a href="${href}" title="${title}">${text}</a>`;
-    }
+    this.markdownService.renderer.table = this.customTableRenderer;
   }
 
   /**
@@ -134,13 +96,68 @@ export class CampaignWikiService extends EntityService<CampaignWikiPage> {
   }
 
   /**
+   * Renderer customizado de markdown para links
+   * @param  {string} href  Destino do link
+   * @param  {string} title Título da tag
+   * @param  {string} text  Texto da tag
+   * @return {string}       Tag formatada
+   */
+  customLinkRenderer(href: string, title: string, text: string): string {
+    let wikiRegex = /^\s*\[\[[\sa-zA-Z0-9]+\]\]\s*/g;
+    let anchorRegex = /^\s*\[[\sa-z0-9]+\]\s*/g;
+    // console.log("Converting", {href: href, title: title, text: text});
+    if (wikiRegex.test(href)) {
+      href = href.replace(/[\[\]]/g, '');
+      let wiki: string = href.trim().toLowerCase().replace(/\s/g, '_');
+      console.log("Wiki Regex passes");
+      return `<a [routerLink]="['../${wiki}']" title="${title}">${text}</a>`;
+    } else if (anchorRegex.test(href)) {
+      href = href.replace(/[\[\]]/g, '');
+      let id: string = href.trim().toLowerCase().replace(/\s/g, '_');
+      console.log("Anchor Regex passes");
+      return `<a routerLink="./" fragment="${id}" title="${title}">${text}</a>`;
+    } else {
+      // console.log("Regex rejected");
+      return `<a href="${href}" title="${title}">${text}</a>`;
+    }
+  }
+
+  /**
+   * Renderer customizado de markdown para tabelas
+   * @param  {string} header Cabeçalho da tabela
+   * @param  {string} body   Corpo da tabela
+   * @return {string}        Tag formatada
+   */
+  customTableRenderer(header: string, body: string): string {
+    return '<table class="table table-sm">\n'
+      + '<thead>\n'
+      + header
+      + '</thead>\n'
+      + '<tbody>\n'
+      + body
+      + '</tbody>\n'
+      + '</table>\n';
+  }
+
+  /**
+   * Entity removal function
+   * @param  {number}          id Entity identification
+   * @return {Observable<any>}    Observavel do request
+   */
+  destroyChild(campaign_id: number, page: string): Observable<any> {
+    let destroyChild = super._destroyChild(this.parentResource, this.resource);
+    return destroyChild(campaign_id, page);
+  }
+
+  /**
    * [findChild description]
    * @param  {number}                       campaign_id [description]
    * @param  {string}                       page        [description]
    * @return {Observable<CampaignWikiPage>}             [description]
    */
   findChild(campaign_id: number, page: string): Observable<CampaignWikiPage> {
-    return super._findChildren(this.parentResource, this.resource)(campaign_id, page);
+    let findChildren = super._findChildren(this.parentResource, this.resource);
+    return findChildren(campaign_id, page);
   }
 
   /**

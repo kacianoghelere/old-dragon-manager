@@ -46,7 +46,7 @@ export class CampaignWikiPageEditorComponent implements OnInit {
    * Executa rota de navegação adequada
    */
   goBack() {
-    if (this.campaignWikiPage.id) {
+    if (this.campaignWikiPage && this.campaignWikiPage.id) {
       this.router.navigate([
         '/main/campaigns', this.campaign_id, 'wiki', this.wiki_name
       ]);
@@ -96,7 +96,7 @@ export class CampaignWikiPageEditorComponent implements OnInit {
   }
 
   onSubmit({value, valid}: {value: CampaignWikiPage, valid: boolean}) {
-    console.log("Submetido!", value);
+    // console.log("Submetido!", value);
     let params: any = {
       id: value.id,
       title: value.title,
@@ -106,7 +106,7 @@ export class CampaignWikiPageEditorComponent implements OnInit {
     };
     this.campaignWikiService.handle(params).subscribe(
       (response: CampaignWikiPage) => {
-        console.log("Salvou!", response);
+        // console.log("Salvou!", response);
         if (!this.campaignWikiPage.id) {
           this.campaignWikiPage.id = response.id;
         }
@@ -115,15 +115,35 @@ export class CampaignWikiPageEditorComponent implements OnInit {
         }
         this.goBack();
       },
-      (error) => console.log("Deu PT!", error)
+      (error) => {
+        // console.log("Deu PT!", error);
+      }
     );
   }
+
+  /**
+   * Dispara destruição de página wiki
+   */
+  destroyPage(): void {
+    console.log('destroyPage', this.campaign_id, this.wiki_name);
+    this.campaignWikiService
+      .destroyChild(this.campaign_id, this.wiki_name).subscribe((response) => {
+          console.log("Deletou!", response);
+          this.campaignWikiPage = null;
+          this.goBack();
+        },
+        (error) => {
+          console.log("Deu PT!", error);
+        }
+      );
+  }
+
   /**
    * Cria novo FormGroup para a página da campanha
    * @param  {CampaignWikiPage}  campaignWikiPage Entidade de página da campanha
    * @return {FormGroup}                          The new FormGroup
    */
-  toFormGroup(campaignWikiPage: CampaignWikiPage) {
+  toFormGroup(campaignWikiPage: CampaignWikiPage): void {
     this.wikiPageForm = this.formBuilder.group({
       id : this.campaignWikiPage.id,
       title: [
