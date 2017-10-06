@@ -1,3 +1,5 @@
+<h2>Editor de páginas</h2>
+
 <form *ngIf="isFormReady()" [formGroup]="wikiPageForm"
     (ngSubmit)="onSubmit(wikiPageForm)">
   <input type="hidden" formControlName="id">

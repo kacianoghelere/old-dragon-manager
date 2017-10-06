@@ -81,6 +81,7 @@
       <div class="form-group row">
         <div class="ml-auto col-sm-10">
           <campaign-form-characters *ngIf="campaignForm"
+            [campaign]="campaign"
             [campaignForm]="campaignForm"
             [characters]="campaign.characters"></campaign-form-characters>
         </div>

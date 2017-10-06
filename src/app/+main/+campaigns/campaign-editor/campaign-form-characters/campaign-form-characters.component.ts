@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormArray, FormGroup, Validators } from '@angular/forms';
 
+import { Campaign } from '../../../../shared/entities/campaign';
 import { Character } from '../../../../shared/entities/character';
 
 @Component({
@@ -10,6 +11,7 @@ import { Character } from '../../../../shared/entities/character';
 })
 export class CampaignFormCharactersComponent implements OnInit {
 
+  @Input('campaign') campaign: Campaign;
   @Input('campaignForm') campaignForm: FormGroup;
   @Input('characters') characters: Character[];
 

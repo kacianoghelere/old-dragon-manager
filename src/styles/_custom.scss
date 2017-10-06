@@ -159,6 +159,10 @@ h6, .h6 {
   }
 }
 
+.navbar-nav {
+  .nav-link { border-radius: $border-radius; }
+}
+
 .navbar-light {
 
   .nav-item {

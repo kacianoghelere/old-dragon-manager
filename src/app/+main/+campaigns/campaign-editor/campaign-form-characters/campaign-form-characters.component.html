@@ -1,4 +1,4 @@
-<fieldset class="campaign-characters" [formGroup]="campaignForm">
+<section class="campaign-characters" [formGroup]="campaignForm">
   <h4 class="title">Personagens</h4>
 
   <div class="row" formArrayName="characters">
@@ -10,4 +10,6 @@
         ></campaign-form-character>
     </div>
   </div>
-</fieldset>
+
+  <campaign-invite-users [campaign]="campaign"></campaign-invite-users>
+</section>

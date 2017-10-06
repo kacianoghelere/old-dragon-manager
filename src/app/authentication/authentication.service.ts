@@ -4,29 +4,19 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import { Router } from '@angular/router';
 
+import { Authentication } from '../shared/entities/authentication';
 import { User } from '../shared/entities/user';
 
 @Injectable()
 export class AuthenticationService {
 
-  // Public variables
-  // ---------------------------------------------------------------------------
-  fakeAuth: boolean = true;
   authentication: EventEmitter<boolean>;
-  // currentUser: any = {
-  //   admin: true,
-  //   email: "themohawkeagle@gmail.com",
-  //   id: 1,
-  //   name: "Administrador"
-  // };
-  // token: string = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.oR-IHkxvncZCvEJ9HXZ67I5rH2-hROijD4WF73U08Nk';
   currentUser: User;
+  fakeAuth: boolean = false;
   token: string;
-
-  // Private & Protected variables
-  // ---------------------------------------------------------------------------
   private headers: Headers;
   private url: string = 'http://127.0.0.1:3000';
+  private storageKey: string = 'authentication';
 
   //
   // Functions
@@ -39,33 +29,24 @@ export class AuthenticationService {
     this.authentication = new EventEmitter();
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
-    if (this.fakeAuth) {
-      this.currentUser = {
-        role: {
-          admin: true
-        },
-        email: "themohawkeagle@gmail.com",
-        id: 1,
-        name: "Administrador"
-      };
-      this.token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.oR-IHkxvncZCvEJ9HXZ67I5rH2-hROijD4WF73U08Nk';
+    if (this.storageAuthentication) {
+      this.currentUser = this.storageAuthentication.user;
+      this.token = this.storageAuthentication.token;
     }
   }
 
-  //
-  // Getters and Setters
-  // ---------------------------------------------------------------------------
-
   /**
-   * Returns the authentication status
-   * @return {Boolean} Is authenticated?
+   * Retorna status de autenticação
+   * @return {Boolean} Está autenticado?
    */
   get authenticated(): boolean {
-    return !!(this.token);
+    let storageAuthentication = this.storageAuthentication;
+    if (!storageAuthentication) return false;
+    return !!(storageAuthentication.token);
   }
 
   /**
-   * Returns Authenticated headers for easy http requests to the API
+   * Retorna headers autenticados para utilização em HTTP requests para a API
    * @return {Headers} Http headers, includes the JWT
    */
   get authHeaders(): Headers {
@@ -82,10 +63,6 @@ export class AuthenticationService {
       token: this.token
     };
   }
-
-  //
-  // Common functions
-  // ---------------------------------------------------------------------------
 
   /**
    * Verifica se o usuário parametro tem privilégios de administração
@@ -115,8 +92,8 @@ export class AuthenticationService {
   }
 
   /**
-   * Signout method
-   * @param {boolean} redirect Redirect router to the root page
+   * Sair do sistema
+   * @param {boolean} redirect Deve redirecionar para página principal?
    */
   logout(redirect: boolean = false) {
     this.token = '';
@@ -124,6 +101,7 @@ export class AuthenticationService {
     if (redirect) {
       this.router.navigate(['/welcome']);
     }
+    this.storageAuthentication = null;
     this.authentication.emit(this.authenticated);
   }
 
@@ -139,20 +117,25 @@ export class AuthenticationService {
       let index = this.currentUser.invitations.indexOf(invitation);
       this.currentUser.invitations.splice(index, 1);
     }
+    this.updateAuthenticationUser();
   }
 
   /**
-   * API authentication method
-   * Sends the user email and password to the API in order to receive de JWT
+   * Método de autenticação na API
+   * Envia email e semja para a API, afim de que possa receber o JWT
    * @param {User} user User login data
    */
   signin(user: any) {
-    let options = { headers: this.headers };
+    let options = {headers: this.headers};
     let jsonUser = JSON.stringify(user);
     this.http.post(`${this.url}/authentication`, jsonUser, options)
       .map((res) => res.json()).subscribe((response) => {
         this.token = response.auth_token;
         this.currentUser = response.user;
+        this.storageAuthentication = {
+          user: this.currentUser,
+          token: this.token
+        };
         this.router.navigate(['/main']);
       }, (error) => {
         this.logout();
@@ -161,4 +144,30 @@ export class AuthenticationService {
       });
   }
 
+  /**
+   * Retorna autenticação do storage
+   * @param  {Authentication} authentication Dados de autenticação
+   */
+  private get storageAuthentication(): Authentication {
+    let auth = JSON.parse(localStorage.getItem(this.storageKey));
+    console.log("storageAuthentication", auth);
+    return auth;
+  }
+
+  /**
+   * Salva informações de autenticação no storage
+   * @param  {Authentication} authentication Dados de autenticação
+   */
+  private set storageAuthentication(authentication: Authentication) {
+    localStorage.setItem(this.storageKey, JSON.stringify(authentication));
+  }
+
+  /**
+   * Atualiza dados do usuário atual no storage
+   */
+  private updateAuthenticationUser(): void {
+    let auth: Authentication = this.storageAuthentication;
+    auth.user = this.currentUser;
+    this.storageAuthentication = auth;
+  }
 }

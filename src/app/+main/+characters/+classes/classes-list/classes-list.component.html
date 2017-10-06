@@ -3,13 +3,10 @@
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3"
         *ngFor="let class of classes">
       <a class="card card-blurred" [routerLink]="['details', class.id]">
-        <div class="card-picture-top small">
-          <img class="card-img-top" [src]="class.picture"
-            [alt]="class.name">
-        </div>
-        <div class="card-body">
+        <img class="card-img" [src]="class.picture"
+          [alt]="class.name">
+        <div class="card-img-overlay">
           <h4 class="card-title">{{class?.name}}</h4>
-          <p class="card-text">{{class?.short_description}}</p>
         </div>
       </a>
     </div>
