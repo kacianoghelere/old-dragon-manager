@@ -4,6 +4,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { ToastrService } from 'ngx-toastr';
+
 import { AuthenticationService } from '../../../../../authentication/authentication.service';
 import { Campaign } from '../../../../../shared/entities/campaign';
 import { CampaignWikiPage } from '../../../../../shared/entities/campaign-wiki-page';
@@ -34,6 +36,7 @@ export class CampaignWikiPageEditorComponent implements OnInit {
     private authService: AuthenticationService,
     private campaignsService: CampaignsService,
     private campaignWikiService: CampaignWikiService,
+    private toastrService: ToastrService,
     private wikiCategoriesService: WikiCategoriesService
   ) { }
 
@@ -153,10 +156,18 @@ export class CampaignWikiPageEditorComponent implements OnInit {
         if (!this.wiki_name) {
           this.wiki_name = response.wiki_name;
         }
+        this.toastrService.success(
+          'Os dados da página foram gravados com sucesso.',
+          'Operação concluída'
+        );
         this.goBack();
       },
       (error) => {
-        // console.log("Deu PT!", error);
+        console.log("Deu PT!", error);
+        this.toastrService.warning(
+          'Parace que algum kobold andou mexendo nos cabos de rede.',
+          'Ooops! Ocorreu um erro.'
+        );
       }
     );
   }
@@ -165,17 +176,23 @@ export class CampaignWikiPageEditorComponent implements OnInit {
    * Dispara destruição de página wiki
    */
   destroyPage(): void {
-    console.log('destroyPage', this.campaign_id, this.wiki_name);
-    this.campaignWikiService
-      .destroyChild(this.campaign_id, this.wiki_name).subscribe((response) => {
-          console.log("Deletou!", response);
-          this.campaignWikiPage = null;
-          this.goBack();
-        },
-        (error) => {
-          console.log("Deu PT!", error);
-        }
-      );
+    this.campaignWikiService.destroyChild(this.campaign_id, this.wiki_name)
+      .subscribe((response) => {
+        console.log("Deletou!", response);
+        this.campaignWikiPage = null;
+        this.toastrService.success(
+          'Os dados da página foram gravados com sucesso.',
+          'Operação concluída'
+        );
+        this.goBack();
+      },
+      (error) => {
+        console.log("Deu PT!", error);
+        this.toastrService.warning(
+          'Parace que algum kobold andou mexendo nos cabos de rede.',
+          'Ooops! Ocorreu um erro.'
+        );
+      });
   }
 
   /**

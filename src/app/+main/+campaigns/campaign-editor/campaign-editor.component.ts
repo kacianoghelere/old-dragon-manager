@@ -4,6 +4,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { ToastrService } from 'ngx-toastr';
+
 import { AuthenticationService } from '../../../authentication/authentication.service';
 import { Campaign } from '../../../shared/entities/campaign';
 import { CampaignsService } from '../shared/campaigns.service';
@@ -36,7 +38,8 @@ export class CampaignEditorComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private authService: AuthenticationService,
     private campaignFormService: CampaignFormService,
-    private campaignsService: CampaignsService
+    private campaignsService: CampaignsService,
+    private toastrService: ToastrService
   ) { }
 
   ngOnDestroy() {
@@ -95,13 +98,17 @@ export class CampaignEditorComponent implements OnInit, OnDestroy {
     };
     this.campaignsService.handle(params).subscribe(
       (response: Campaign) => {
-        console.log("Salvou!", response);
         if (!this.campaign.id) {
           this.campaign.id = response.id;
         }
+        this.toastrService.success('Operação concluída',
+          'Os dados da campanha foram gravados com sucesso.');
         this.goBack();
       },
-      (error) => console.log("Deu PT!", error)
+      (error) => {
+        this.toastrService.warning('Ooops! Ocorreu um erro.',
+          'Parace que algum kobold andou mexendo nos cabos de rede.');
+      }
     );
   }
 

@@ -31,7 +31,7 @@ export class CampaignWikiService extends EntityService<CampaignWikiPage> {
     let oldCode = this.markdownService.renderer.code;
     let newCode = (code: string, lang: string, escaped: boolean): string => {
       if (lang !== 'dm-content') return oldCode(code, lang, escaped);
-      return `<code><b>Nota do Narrador:</b> ${code}</code>`;
+      return `<code class="dm-content"><b>Nota do Narrador:</b> ${code}</code>`;
     };
     this.markdownService.renderer.code = newCode;
 
@@ -74,11 +74,17 @@ export class CampaignWikiService extends EntityService<CampaignWikiPage> {
   }
 
   /**
-   * [compileText description]
-   * @param  {string} text [description]
-   * @return {[type]}      [description]
+   * Compila o texto em
+   * @param  {string}  text              Texto original
+   * @param  {boolean} is_dungeon_master Flag de identificação de DM
+   *                                     Se não for, remove conteúdo exclusivo
+   * @return {string}                    String formatada
    */
-  compileText(text: string): string {
+  compileText(text: string, is_dungeon_master: boolean = true): string {
+    if (!is_dungeon_master) { /* Remove conteúdo de DM quando não tem acesso */
+      let regex = /\`\`\`dm\-content\n(.*?)\n\`\`\`/g;
+      text = text.replace(regex, '');
+    }
     return this.markdownService.compile(text);
   }
 

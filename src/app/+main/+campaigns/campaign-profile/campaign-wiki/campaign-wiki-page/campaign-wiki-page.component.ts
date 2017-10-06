@@ -31,7 +31,7 @@ export class CampaignWikiPageComponent implements OnInit, OnDestroy {
   ) { }
 
   compileText(text: string) {
-    return this.campaignWikiService.compileText(text);
+    return this.campaignWikiService.compileText(text, this.isCampaignOwner());
   }
 
   /**
