@@ -5,22 +5,31 @@ import { Injectable } from '@angular/core';
 import { CanActivate, CanLoad, Router, Route, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 import { AuthenticationService } from '../../../authentication/authentication.service';
-import { CampaignsService } from './campaigns.service';
+import { CampaignWikiService } from './campaign-wiki.service';
 
 @Injectable()
-export class CampaignWikiGuard implements CanActivate {
+export class CampaignWikiPageGuard implements CanActivate {
 
   constructor(
     private router: Router,
-    private authService: AuthenticationService,
-    private campaignsService: CampaignsService
-  ) {}
+    private campaignWikiService: CampaignWikiService
+  ) { }
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> {
+
     let campaign_id = next.parent.parent.params.campaign_id;
-    return this.campaignsService.canActivateOwner(campaign_id);
+    let page_id = next.params.page_id;
+    return this.campaignWikiService.findChild(campaign_id, page_id)
+      .map((page) =>{
+        if (page) {
+          return true;
+        }
+        console.log("Redirecionado pelo CampaignWikiPageGuard");
+        this.router.navigate(['/main/campaigns', campaign_id, 'wiki' , 'blank']);
+        return false;
+      });
   }
 }

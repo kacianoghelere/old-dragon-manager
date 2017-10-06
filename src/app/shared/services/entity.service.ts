@@ -127,9 +127,13 @@ export abstract class EntityService<T> {
    * @return {[type]}          [description]
    */
   protected _custom(resource: string, custom: string) {
-    return (id: any): Observable<any> => {
+    return (id: any, params?: URLSearchParams): Observable<any> => {
+      let options = this.options;
+      if (params) { /* Se tiver parâmetros de busca, extende objeto de opções */
+        options = Object.assign(options, {params: params});
+      }
       let customUrl = `${this.url}/${resource}/${id}/${custom}`;
-      return this.http.get(customUrl, this.options).map(this.responseToJson);
+      return this.http.get(customUrl, options).map(this.responseToJson);
     }
   }
 

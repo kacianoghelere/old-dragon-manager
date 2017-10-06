@@ -21,11 +21,6 @@ export class CampaignGuard implements CanActivate {
     state: RouterStateSnapshot
   ): Observable<boolean> {
     let campaign_id = next.params.campaign_id;
-      console.log('canActivate', campaign_id);
-      return this.campaignsService.find(campaign_id).map((campaign) => {
-        let willActivate = this.authService.isCurrentUser(campaign.dungeonMaster)
-        console.log('Status ativação', willActivate);
-        return willActivate;
-      });
+    return this.campaignsService.canActivateOwner(campaign_id);
   }
 }

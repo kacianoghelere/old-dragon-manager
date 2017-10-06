@@ -177,10 +177,15 @@ export class CampaignWikiService extends EntityService<CampaignWikiPage> {
   /**
    * [listChildren description]
    * @param  {number}                         campaign_id [description]
+   * @param  {URLSearchParams}                params      [description]
    * @return {Observable<CampaignWikiPage[]>}             [description]
    */
-  listChildren(campaign_id: number): Observable<CampaignWikiPage[]> {
-    return super._custom(this.parentResource, this.resource)(campaign_id);
+  listChildren(
+    campaign_id: number,
+    params?: URLSearchParams
+  ): Observable<CampaignWikiPage[]> {
+    let custom = super._custom(this.parentResource, this.resource);
+    return custom(campaign_id, params);
   }
 
   /**

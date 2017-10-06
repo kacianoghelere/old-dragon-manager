@@ -20,11 +20,11 @@ import { WikiCategoriesService } from '../../../shared/wiki-categories.service';
 export class CampaignWikiPageEditorComponent implements OnInit {
 
   campaign: Campaign;
+  campaign_id: number;
   campaignWikiPage: CampaignWikiPage;
   wikiCategories: WikiCategory[];
   wikiPageForm: FormGroup;
   subscription: Subscription;
-  campaign_id: number;
   wiki_name: string;
 
   constructor(

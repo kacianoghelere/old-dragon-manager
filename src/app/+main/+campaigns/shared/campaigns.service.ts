@@ -23,6 +23,17 @@ export class CampaignsService extends EntityService<Campaign> {
   }
 
   /**
+   * Verifica se o usuário atual é o dono da campanha para ativar rotas
+   * @param  {number}              id ID da campanha
+   * @return {Observable<boolean>}    Observavel de resultado
+   */
+  canActivateOwner(id: number): Observable<boolean> {
+    return this.find(id).map((campaign) => {
+      return this.authService.isCurrentUser(campaign.dungeonMaster);
+    });
+  }
+
+  /**
    * [create description]
    * @param  {Campaign}               params [description]
    * @return {Observable<Campaign[]>}        [description]

@@ -1,33 +1,15 @@
 <nav class="navbar navbar-expand-sm navbar-light layout-toolbar" *ngIf="campaign">
   <ul class="navbar-nav mr-auto">
-    <li class="nav-item">
-      <a class="nav-link">
-        <i class="fa fa-th"></i>
-        <span class="d-sm-none d-md-inline">Todas as Páginas</span>
+    <li class="nav-item"
+        [ngClass]="{active: isActiveCategory('')}">
+      <a class="nav-link pointer" (click)="changeList('')">
+        Todas
       </a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link">
-        <i class="fa fa-history"></i>
-        <span class="d-sm-none d-md-inline">Acontecimentos</span>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link">
-        <i class="fa fa-map-signs"></i>
-        <span class="d-sm-none d-md-inline">Localidades</span>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link">
-        <i class="fa fa-user-o"></i>
-        <span class="d-sm-none d-md-inline">Personagens</span>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link">
-        <i class="fa fa-group"></i>
-        <span class="d-sm-none d-md-inline">Organizações</span>
+    <li class="nav-item" *ngFor="let category of categories"
+        [ngClass]="{active: isActiveCategory(category.wiki_name)}">
+      <a class="nav-link pointer" (click)="changeList(category.wiki_name)">
+        {{category.title}}
       </a>
     </li>
   </ul>
@@ -42,7 +24,18 @@
   </ul>
 </nav>
 
-<div class="card-columns">
+<section class="card-columns" *ngIf="wikiPages">
   <campaign-wiki-card *ngFor="let page of pages"
     [page]="page"></campaign-wiki-card>
-</div>
+  <article class="card" *ngIf="!pages.length">
+    <div class="card-body text-center">
+      <p class="card-text" *ngIf="!isCampaignOwner()">
+        Nenhuma página encontrada
+      </p>
+      <a class="card-link" [routerLink]="['new']" *ngIf="isCampaignOwner()">
+        <i class="fa fa-plus"></i>
+        <span class="d-sm-none d-md-inline">Criar nova página</span>
+      </a>
+    </div>
+  </article>
+</section>

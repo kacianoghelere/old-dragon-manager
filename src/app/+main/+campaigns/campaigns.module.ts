@@ -28,6 +28,7 @@ import { CampaignNotesComponent } from './campaign-profile/campaign-notes/campai
 import { CampaignProfileComponent } from './campaign-profile/campaign-profile.component';
 import { CampaignsComponent } from './campaigns/campaigns.component';
 import { CampaignsListComponent } from './campaigns-list/campaigns-list.component';
+import { CampaignWikiBlankPageComponent } from './campaign-profile/campaign-wiki/campaign-wiki-blank-page/campaign-wiki-blank-page.component';
 import { CampaignWikiCardComponent } from './campaign-profile/campaign-wiki/campaign-wiki-card/campaign-wiki-card.component';
 import { CampaignWikiComponent } from './campaign-profile/campaign-wiki/campaign-wiki.component';
 import { CampaignWikiPageComponent } from './campaign-profile/campaign-wiki/campaign-wiki-page/campaign-wiki-page.component';
@@ -40,6 +41,7 @@ import { WikiCategoriesService } from "./shared/wiki-categories.service";
 
 import { CampaignGuard } from "./shared/campaign.guard";
 import { CampaignWikiGuard } from "./shared/campaign-wiki.guard";
+import { CampaignWikiPageGuard } from "./shared/campaign-wiki-page.guard";
 
 @NgModule({
   imports: [
@@ -75,14 +77,16 @@ import { CampaignWikiGuard } from "./shared/campaign-wiki.guard";
     CampaignWikiComponent,
     CampaignWikiPageComponent,
     CampaignWikiPageEditorComponent,
-    CampaignWikiHomeComponent
+    CampaignWikiHomeComponent,
+    CampaignWikiBlankPageComponent
   ],
   providers: [
     CampaignsService,
     CampaignWikiService,
     WikiCategoriesService,
     CampaignGuard,
-    CampaignWikiGuard
+    CampaignWikiGuard,
+    CampaignWikiPageGuard
   ]
 })
 export class CampaignsModule { }
