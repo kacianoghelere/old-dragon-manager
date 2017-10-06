@@ -1,12 +1,13 @@
 import { Subscription } from 'rxjs/Subscription';
 
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { AuthenticationService } from '../../../../authentication/authentication.service';
 import { Campaign } from '../../../../shared/entities/campaign';
 import { CampaignNote } from '../../../../shared/entities/campaign-note';
 import { CampaignsService } from '../../shared/campaigns.service';
+import { CampaignNotesService } from '../../shared/campaign-notes.service';
 
 @Component({
   selector: 'campaign-notes',
@@ -16,13 +17,14 @@ import { CampaignsService } from '../../shared/campaigns.service';
 export class CampaignNotesComponent implements OnInit {
 
   campaign: Campaign;
+  _notes: CampaignNote[];
   subscription: Subscription;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthenticationService,
-    private campaignsService: CampaignsService
+    private notesService: CampaignNotesService
   ) { }
 
   ngOnDestroy() {
@@ -34,8 +36,8 @@ export class CampaignNotesComponent implements OnInit {
       let id = params['campaign_id'];
       console.log(params);
       if (id) {
-        this.subscription = this.campaignsService.find(id)
-          .subscribe((res) => this.campaign = res);
+        this.subscription = this.notesService.listChildren(id)
+          .subscribe((notes) => this._notes = notes);
       }
     });
   }
@@ -45,8 +47,8 @@ export class CampaignNotesComponent implements OnInit {
    * @return {CampaignNote[]} Notas de Campanha
    */
   get filteredNotes(): CampaignNote[] {
-    if (this.isCampaignOwner()) return this.notes;
-    return this.notes.filter((note) => !note.dm_only);
+    if (this.isCampaignOwner()) return this._notes;
+    return this._notes.filter((note) => !note.dm_only);
   }
 
   /**
@@ -58,6 +60,6 @@ export class CampaignNotesComponent implements OnInit {
   }
 
   get notes(): CampaignNote[] {
-    return this.campaign.notes || [];
+    return this._notes || [];
   }
 }

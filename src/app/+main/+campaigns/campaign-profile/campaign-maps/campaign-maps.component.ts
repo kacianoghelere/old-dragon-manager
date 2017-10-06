@@ -7,6 +7,7 @@ import { AuthenticationService } from '../../../../authentication/authentication
 import { Campaign } from '../../../../shared/entities/campaign';
 import { CampaignMap } from '../../../../shared/entities/campaign-map';
 import { CampaignsService } from '../../shared/campaigns.service';
+import { CampaignMapsService } from '../../shared/campaign-maps.service';
 
 
 @Component({
@@ -16,18 +17,18 @@ import { CampaignsService } from '../../shared/campaigns.service';
 })
 export class CampaignMapsComponent implements OnInit {
 
-  campaign: Campaign;
+  _maps: CampaignMap[];
   subscription: Subscription;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthenticationService,
-    private campaignsService: CampaignsService
+    private mapsService: CampaignMapsService
   ) { }
 
   get maps(): CampaignMap[] {
-    return this.campaign.maps || [];
+    return this._maps || [];
   }
 
   ngOnDestroy() {
@@ -39,8 +40,8 @@ export class CampaignMapsComponent implements OnInit {
       let id = params['campaign_id'];
       console.log(params);
       if (id) {
-        this.subscription = this.campaignsService.find(id)
-          .subscribe((res) => this.campaign = res);
+        this.subscription = this.mapsService.listChildren(id)
+          .subscribe((maps) => this._maps = maps);
       }
     });
   }

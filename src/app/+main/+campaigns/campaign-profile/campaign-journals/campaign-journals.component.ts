@@ -7,6 +7,7 @@ import { AuthenticationService } from '../../../../authentication/authentication
 import { Campaign } from '../../../../shared/entities/campaign';
 import { CampaignJournal } from '../../../../shared/entities/campaign-journal';
 import { CampaignsService } from '../../shared/campaigns.service';
+import { CampaignJournalsService } from '../../shared/campaign-journals.service';
 
 @Component({
   selector: 'campaign-journals',
@@ -15,18 +16,18 @@ import { CampaignsService } from '../../shared/campaigns.service';
 })
 export class CampaignJournalsComponent implements OnInit, OnDestroy {
 
-  campaign: Campaign;
+  _journals: CampaignJournal[];
   subscription: Subscription;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthenticationService,
-    private campaignsService: CampaignsService
+    private journalsService: CampaignJournalsService
   ) { }
 
   get journals(): CampaignJournal[] {
-    return this.campaign.journals || [];
+    return this._journals || [];
   }
 
   ngOnDestroy() {
@@ -38,8 +39,8 @@ export class CampaignJournalsComponent implements OnInit, OnDestroy {
       let id = params['campaign_id'];
       console.log(params);
       if (id) {
-        this.subscription = this.campaignsService.find(id)
-          .subscribe((res) => this.campaign = res);
+        this.subscription = this.journalsService.listChildren(id)
+          .subscribe((journals) => this._journals = journals);
       }
     });
   }
