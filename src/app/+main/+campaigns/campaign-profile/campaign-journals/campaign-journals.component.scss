@@ -1,12 +1,17 @@
 $border-color: rgba(black, .3);
+
 .timeline {
-  padding: 1em;
+  // border: 1px solid $border-color;
+  // border-left: none;
+  // border-radius: 4px;
+  padding: 0 .5em;
 
   .timeline-item {
-  	padding: .5em 2em 2em 2em;
-  	position: relative;
-  	color: rgba(black, .7);
-  	border-left: 2px solid $border-color;
+    border-left: 2px solid $border-color;
+    border-bottom: 1px dotted $border-color;
+    color: rgba(black, .7);
+    padding: .5em 1em 2em 1em;
+    position: relative;
 
   	p {
   		font-size: 1rem;

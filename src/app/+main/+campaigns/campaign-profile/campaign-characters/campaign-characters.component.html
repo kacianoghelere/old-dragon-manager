@@ -1,7 +1,23 @@
-<div class="row" *ngIf="campaign">
+<nav class="navbar navbar-expand-sm navbar-light subnav" *ngIf="campaign">
+  <!-- <a class="navbar-brand">
+    <i class="fa fa-group"></i>
+    <span class="d-sm-none d-md-inline">Personagens</span>
+  </a> -->
+  <ul class="navbar-nav mr-auto"></ul>
+  <ul class="navbar-nav my-2 my-lg-0">
+    <li class="nav-item" *ngIf="isCampaignOwner()">
+      <a class="nav-link text-primary" [routerLink]="['manage']">
+        <i class="fa fa-cog"></i>
+        <span class="d-sm-none d-md-inline">Gerenciar Personagens</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<section class="row" *ngIf="campaign">
   <div class="col-sm-12 col-md-6 col-lg-6"
       *ngFor="let character of characters">
     <character-card [character]="character"
       [showPlayer]="true"></character-card>
   </div>
-</div>
+</section>

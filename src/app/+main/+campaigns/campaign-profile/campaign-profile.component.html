@@ -1,7 +1,7 @@
 <layout-base *ngIf="campaign" [pageTitle]="campaign.title"
     [cover]="campaign.picture" [description]="campaign.description">
 
-  <nav class="navbar navbar-expand-sm navbar-light bg-secondary layout-toolbar">
+  <nav class="navbar navbar-expand-sm navbar-light bg-light layout-toolbar">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" [routerLinkActive]="['active']">
         <a class="nav-link" [routerLink]="['journals']">
@@ -18,16 +18,16 @@
         </a>
       </li>
       <li class="nav-item" [routerLinkActive]="['active']">
-        <a class="nav-link" [routerLink]="['characters']">
-          <i class="fa fa-group"></i>
-          <span class="d-sm-none d-md-inline">Personagens</span>
+        <a class="nav-link" [routerLink]="['maps']">
+          <i class="fa fa-map"></i>
+          <span class="d-sm-none d-md-inline">Mapas</span>
           <span class="sr-only">(current)</span>
         </a>
       </li>
       <li class="nav-item" [routerLinkActive]="['active']">
-        <a class="nav-link" [routerLink]="['maps']">
-          <i class="fa fa-map-o"></i>
-          <span class="d-sm-none d-md-inline">Mapas</span>
+        <a class="nav-link" [routerLink]="['characters']">
+          <i class="fa fa-group"></i>
+          <span class="d-sm-none d-md-inline">Personagens</span>
           <span class="sr-only">(current)</span>
         </a>
       </li>

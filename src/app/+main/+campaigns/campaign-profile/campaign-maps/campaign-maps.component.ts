@@ -17,6 +17,7 @@ import { CampaignMapsService } from '../../shared/campaign-maps.service';
 })
 export class CampaignMapsComponent implements OnInit {
 
+  campaign: Campaign;
   _maps: CampaignMap[];
   subscription: Subscription;
 
@@ -24,8 +25,17 @@ export class CampaignMapsComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthenticationService,
+    private campaignsService: CampaignsService,
     private mapsService: CampaignMapsService
   ) { }
+
+  /**
+   * Verifica se o usuário atual é o mestre de jogo da campanha
+   * @return {boolean} Resultado da verificação
+   */
+  isCampaignOwner(): boolean {
+    return this.authService.isCurrentUser(this.campaign.dungeonMaster);
+  }
 
   get maps(): CampaignMap[] {
     return this._maps || [];
@@ -37,11 +47,14 @@ export class CampaignMapsComponent implements OnInit {
 
   ngOnInit() {
     this.route.parent.params.subscribe((params) => {
-      let id = params['campaign_id'];
+      let campaign_id = params['campaign_id'];
       console.log(params);
-      if (id) {
-        this.subscription = this.mapsService.listChildren(id)
-          .subscribe((maps) => this._maps = maps);
+      if (campaign_id) {
+        this.campaignsService.find(campaign_id).subscribe((res) => {
+          this.campaign = res;
+          this.subscription = this.mapsService.listChildren(campaign_id)
+            .subscribe((maps) => this._maps = maps);
+        });
       }
     });
   }

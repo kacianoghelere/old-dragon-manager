@@ -1,8 +1,12 @@
 .card {
+  height: 180px;
+  max-height: 180px;
+  min-height: 180px;
+
   .card-img {
-    object-fit: cover;
     height: 180px;
-    min-height: 180px;
     max-height: 180px;
+    min-height: 180px;
+    object-fit: cover;
   }
 }

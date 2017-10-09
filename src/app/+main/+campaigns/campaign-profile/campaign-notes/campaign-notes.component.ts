@@ -24,23 +24,9 @@ export class CampaignNotesComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthenticationService,
+    private campaignsService: CampaignsService,
     private notesService: CampaignNotesService
   ) { }
-
-  ngOnDestroy() {
-    if (this.subscription) this.subscription.unsubscribe();
-  }
-
-  ngOnInit() {
-    this.route.parent.params.subscribe((params) => {
-      let id = params['campaign_id'];
-      console.log(params);
-      if (id) {
-        this.subscription = this.notesService.listChildren(id)
-          .subscribe((notes) => this._notes = notes);
-      }
-    });
-  }
 
   /**
    * Retorna as notas aplicando filtro de anotações do mestre de jogo
@@ -57,6 +43,24 @@ export class CampaignNotesComponent implements OnInit {
    */
   isCampaignOwner(): boolean {
     return this.authService.isCurrentUser(this.campaign.dungeonMaster);
+  }
+
+  ngOnDestroy() {
+    if (this.subscription) this.subscription.unsubscribe();
+  }
+
+  ngOnInit() {
+    this.route.parent.params.subscribe((params) => {
+      let campaign_id = params['campaign_id'];
+      // console.log(params);
+      if (campaign_id) {
+        this.campaignsService.find(campaign_id).subscribe((res) => {
+          this.campaign = res;
+          this.subscription = this.notesService.listChildren(campaign_id)
+            .subscribe((notes) => this._notes = notes);
+        });
+      }
+    });
   }
 
   get notes(): CampaignNote[] {

@@ -1,6 +1,29 @@
-<div class="journals timeline" *ngIf="campaign">
+<nav class="navbar navbar-expand-sm navbar-light subnav" *ngIf="campaign">
+	<!-- <a class="navbar-brand">
+    <i class="fa fa-book"></i>
+    <span class="d-sm-none d-md-inline">Diários de Campanha</span>
+  </a> -->
+  <ul class="navbar-nav mr-auto"></ul>
+  <ul class="navbar-nav my-2 my-lg-0">
+    <li class="nav-item" *ngIf="isCampaignOwner()">
+      <a class="nav-link text-primary" [routerLink]="['new']">
+        <i class="fa fa-plus-circle"></i>
+        <span class="d-sm-none d-md-inline">Novo Diário</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<section class="journals timeline" *ngIf="campaign">
 	<div class="timeline-item" *ngFor="let journal of journals">
-		<h5>{{journal.title}}</h5>
+		<div class="d-flex justify-content-between">
+			<small>#{{journal.id}}</small>
+			<small>
+				<a [routerLink]="[journal.id, 'edit']">
+					<i class="fa fa-edit"></i> Editar Diário
+				</a>
+			</small>
+		</div>
 		<p><markdown>{{journal.description}}</markdown></p>
 	</div>
-</div>
+</section>

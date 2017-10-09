@@ -16,6 +16,7 @@ import { CampaignJournalsService } from '../../shared/campaign-journals.service'
 })
 export class CampaignJournalsComponent implements OnInit, OnDestroy {
 
+  campaign: Campaign;
   _journals: CampaignJournal[];
   subscription: Subscription;
 
@@ -23,11 +24,20 @@ export class CampaignJournalsComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthenticationService,
+    private campaignsService: CampaignsService,
     private journalsService: CampaignJournalsService
   ) { }
 
   get journals(): CampaignJournal[] {
-    return this._journals || [];
+    return this._journals;
+  }
+
+  /**
+   * Verifica se o usuário atual é o mestre de jogo da campanha
+   * @return {boolean} Resultado da verificação
+   */
+  isCampaignOwner(): boolean {
+    return this.authService.isCurrentUser(this.campaign.dungeonMaster);
   }
 
   ngOnDestroy() {
@@ -36,11 +46,14 @@ export class CampaignJournalsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.route.parent.params.subscribe((params) => {
-      let id = params['campaign_id'];
-      console.log(params);
-      if (id) {
-        this.subscription = this.journalsService.listChildren(id)
+      let campaign_id = params['campaign_id'];
+      // console.log(params);
+      if (campaign_id) {
+        this.campaignsService.find(campaign_id).subscribe((res) => {
+          this.campaign = res;
+          this.subscription = this.journalsService.listChildren(campaign_id)
           .subscribe((journals) => this._journals = journals);
+        });
       }
     });
   }

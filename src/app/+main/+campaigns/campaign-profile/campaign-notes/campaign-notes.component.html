@@ -1,4 +1,20 @@
-<div class="notes" *ngIf="campaign">
+<nav class="navbar navbar-expand-sm navbar-light subnav" *ngIf="campaign">
+	<!-- <a class="navbar-brand">
+    <i class="fa fa-sticky-note-o"></i>
+    <span class="d-sm-none d-md-inline">Notas</span>
+  </a> -->
+  <ul class="navbar-nav mr-auto"></ul>
+  <ul class="navbar-nav my-2 my-lg-0">
+    <li class="nav-item" *ngIf="isCampaignOwner()">
+      <a class="nav-link text-primary" [routerLink]="['new']">
+        <i class="fa fa-plus-circle"></i>
+        <span class="d-sm-none d-md-inline">Adicionar Nota</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<section class="notes" *ngIf="campaign">
   <div class="row">
     <div class="col-sm-12 col-md-6 col-lg-4"
         *ngFor="let note of filteredNotes">
@@ -8,4 +24,4 @@
       </div>
     </div>
   </div>
-</div>
+</section>

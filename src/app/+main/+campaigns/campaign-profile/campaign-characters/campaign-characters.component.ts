@@ -29,6 +29,14 @@ export class CampaignCharactersComponent implements OnInit, OnDestroy {
     return this.campaign.characters || [];
   }
 
+  /**
+   * Verifica se o usuário atual é o mestre de jogo da campanha
+   * @return {boolean} Resultado da verificação
+   */
+  isCampaignOwner(): boolean {
+    return this.authService.isCurrentUser(this.campaign.dungeonMaster);
+  }
+
   ngOnDestroy() {
     if (this.subscription) this.subscription.unsubscribe();
   }

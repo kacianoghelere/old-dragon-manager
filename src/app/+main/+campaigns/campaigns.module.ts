@@ -36,6 +36,10 @@ import { CampaignWikiPageEditorComponent } from './campaign-profile/campaign-wik
 import { CampaignWikiHomeComponent } from './campaign-profile/campaign-wiki/campaign-wiki-home/campaign-wiki-home.component';
 
 import { CampaignsService } from "./shared/campaigns.service";
+import { CampaignCharactersService } from "./shared/campaign-characters.service";
+import { CampaignJournalsService } from "./shared/campaign-journals.service";
+import { CampaignMapsService } from "./shared/campaign-maps.service";
+import { CampaignNotesService } from "./shared/campaign-notes.service";
 import { CampaignWikiService } from "./shared/campaign-wiki.service";
 import { WikiCategoriesService } from "./shared/wiki-categories.service";
 
@@ -82,6 +86,10 @@ import { CampaignWikiPageGuard } from "./shared/campaign-wiki-page.guard";
   ],
   providers: [
     CampaignsService,
+    CampaignCharactersService,
+    CampaignJournalsService,
+    CampaignMapsService,
+    CampaignNotesService,
     CampaignWikiService,
     WikiCategoriesService,
     CampaignGuard,

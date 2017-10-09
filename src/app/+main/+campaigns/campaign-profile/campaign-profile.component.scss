@@ -15,3 +15,10 @@
   top: -16px;
   z-index: 2000;
 }
+
+/deep/ .subnav {
+  border-bottom: 1px solid rgba(0, 0, 0, .1);
+  margin-bottom: 1em;
+  // margin-left: -1em;
+  // margin-right: -1em;
+}
