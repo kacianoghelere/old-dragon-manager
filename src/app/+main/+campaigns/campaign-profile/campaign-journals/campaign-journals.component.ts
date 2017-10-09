@@ -1,60 +1,15 @@
-import { Subscription } from 'rxjs/Subscription';
-
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-
-import { AuthenticationService } from '../../../../authentication/authentication.service';
-import { Campaign } from '../../../../shared/entities/campaign';
-import { CampaignJournal } from '../../../../shared/entities/campaign-journal';
-import { CampaignsService } from '../../shared/campaigns.service';
-import { CampaignJournalsService } from '../../shared/campaign-journals.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'campaign-journals',
   templateUrl: './campaign-journals.component.html',
   styleUrls: ['./campaign-journals.component.scss']
 })
-export class CampaignJournalsComponent implements OnInit, OnDestroy {
+export class CampaignJournalsComponent implements OnInit {
 
-  campaign: Campaign;
-  _journals: CampaignJournal[];
-  subscription: Subscription;
-
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private authService: AuthenticationService,
-    private campaignsService: CampaignsService,
-    private journalsService: CampaignJournalsService
-  ) { }
-
-  get journals(): CampaignJournal[] {
-    return this._journals;
-  }
-
-  /**
-   * Verifica se o usuário atual é o mestre de jogo da campanha
-   * @return {boolean} Resultado da verificação
-   */
-  isCampaignOwner(): boolean {
-    return this.authService.isCurrentUser(this.campaign.dungeonMaster);
-  }
-
-  ngOnDestroy() {
-    if (this.subscription) this.subscription.unsubscribe();
-  }
+  constructor() { }
 
   ngOnInit() {
-    this.route.parent.params.subscribe((params) => {
-      let campaign_id = params['campaign_id'];
-      // console.log(params);
-      if (campaign_id) {
-        this.campaignsService.find(campaign_id).subscribe((res) => {
-          this.campaign = res;
-          this.subscription = this.journalsService.listChildren(campaign_id)
-          .subscribe((journals) => this._journals = journals);
-        });
-      }
-    });
   }
+
 }

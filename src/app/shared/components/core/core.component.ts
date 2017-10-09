@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'core',
@@ -18,6 +19,19 @@ export class CoreComponent {
     return !(collection && collection.length);
   }
 
+  /**
+   * Retorna objeto de classe de validação de um campo de formulário
+   * @param  {AbstractControl} control Controle do formulário
+   * @param  {string}         field    Nome do controle
+   * @return {any}                     Objeto de Classes de validação
+   */
+  getErrorClass(
+    control: AbstractControl,
+    field: string
+  ): any {
+    return {'is-invalid': this.hasError(control)};
+  }
+
   protected getModifier(attribute: number): string {
     let modifier = (attribute - 10) / 2;
     let signal = modifier !== 0 ? (modifier > 0 ? '+' : '-') : '';
@@ -32,6 +46,15 @@ export class CoreComponent {
    */
   protected hasData(collection: any[]): boolean {
     return !this.emptyCollection(collection);
+  }
+
+  /**
+   * Verifica se um Control de Form foi modificado e está com erro
+   * @param  {AbstractControl} field Campo do formulário
+   * @return {boolean}               Resultado da verificação
+   */
+  hasError(field: AbstractControl): boolean {
+    return (field.touched && !field.pristine && !field.valid);
   }
 
   /**

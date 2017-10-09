@@ -4,5 +4,5 @@ export class CampaignNote {
   id?: number;
   description: string;
   dm_only: boolean;
-  _delete?: boolean = false;
+  active?: boolean = true;
 }

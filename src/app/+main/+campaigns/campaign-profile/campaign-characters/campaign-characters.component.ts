@@ -1,54 +1,15 @@
-import { Subscription } from 'rxjs/Subscription';
-
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-
-import { AuthenticationService } from '../../../../authentication/authentication.service';
-import { Campaign } from '../../../../shared/entities/campaign';
-import { CampaignsService } from '../../shared/campaigns.service';
-import { Character } from '../../../../shared/entities/character';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'campaign-characters',
   templateUrl: './campaign-characters.component.html',
   styleUrls: ['./campaign-characters.component.scss']
 })
-export class CampaignCharactersComponent implements OnInit, OnDestroy {
+export class CampaignCharactersComponent implements OnInit {
 
-  campaign: Campaign;
-  subscription: Subscription;
-
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private authService: AuthenticationService,
-    private campaignsService: CampaignsService
-  ) { }
-
-  get characters(): Character[] {
-    return this.campaign.characters || [];
-  }
-
-  /**
-   * Verifica se o usuário atual é o mestre de jogo da campanha
-   * @return {boolean} Resultado da verificação
-   */
-  isCampaignOwner(): boolean {
-    return this.authService.isCurrentUser(this.campaign.dungeonMaster);
-  }
-
-  ngOnDestroy() {
-    if (this.subscription) this.subscription.unsubscribe();
-  }
+  constructor() { }
 
   ngOnInit() {
-    this.route.parent.params.subscribe((params) => {
-      let id = params['campaign_id'];
-      console.log(params);
-      if (id) {
-        this.subscription = this.campaignsService.find(id)
-          .subscribe((res) => this.campaign = res);
-      }
-    });
   }
+
 }

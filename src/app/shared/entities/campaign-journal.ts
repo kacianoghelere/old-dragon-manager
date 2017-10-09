@@ -1,9 +1,9 @@
 import { User } from './user';
 
 export class CampaignJournal {
-  id?: number;
-  description: string;
+  active?: boolean = true;
   cover_image?: string;
-  idactive?: boolean;
-  _delete?: boolean = false;
+  created_at?: string;
+  description: string;
+  id?: number;
 }

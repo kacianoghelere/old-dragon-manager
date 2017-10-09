@@ -9,6 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from '../../../../../authentication/authentication.service';
 import { Campaign } from '../../../../../shared/entities/campaign';
 import { CampaignWikiPage } from '../../../../../shared/entities/campaign-wiki-page';
+import { CoreComponent } from '../../../../../shared/components/core/core.component';
 import { WikiCategory } from '../../../../../shared/entities/wiki-category';
 import { CampaignsService } from '../../../shared/campaigns.service';
 import { CampaignWikiService } from '../../../shared/campaign-wiki.service';
@@ -19,11 +20,12 @@ import { WikiCategoriesService } from '../../../shared/wiki-categories.service';
   templateUrl: './campaign-wiki-page-editor.component.html',
   styleUrls: ['./campaign-wiki-page-editor.component.scss']
 })
-export class CampaignWikiPageEditorComponent implements OnInit {
+export class CampaignWikiPageEditorComponent extends CoreComponent
+    implements OnInit {
 
   campaign: Campaign;
   campaign_id: number;
-  campaignWikiPage: CampaignWikiPage;
+  wikiPage: CampaignWikiPage;
   wikiCategories: WikiCategory[];
   wikiPageForm: FormGroup;
   subscription: Subscription;
@@ -38,46 +40,29 @@ export class CampaignWikiPageEditorComponent implements OnInit {
     private campaignWikiService: CampaignWikiService,
     private toastrService: ToastrService,
     private wikiCategoriesService: WikiCategoriesService
-  ) { }
+  ) {
+    super();
+  }
 
   /**
    * Verifica se a página pode ser destruída
    * @return {boolean} Resultado da verificação
    */
   canDestroy() {
-    return this.isCampaignOwner() && !!(this.campaignWikiPage.id);
-  }
-
-  /**
-   * [getErrorClass description]
-   * @param  {string} field [description]
-   * @return {any}          [description]
-   */
-  getErrorClass(field: string): any {
-    let control: AbstractControl = this.wikiPageForm.controls[field];
-    return {'is-invalid': this.hasError(control)};
+    return this.isCampaignOwner() && !!(this.wikiPage.id);
   }
 
   /**
    * Executa rota de navegação adequada
    */
   goBack() {
-    if (this.campaignWikiPage && this.campaignWikiPage.id) {
+    if (this.wikiPage && this.wikiPage.id) {
       this.router.navigate([
         '/main/campaigns', this.campaign_id, 'wiki', this.wiki_name
       ]);
     } else {
       this.router.navigate(['/main/campaigns', this.campaign_id, 'wiki']);
     }
-  }
-
-  /**
-   * [hasError description]
-   * @param  {AbstractControl} field [description]
-   * @return {boolean}               [description]
-   */
-  hasError(field: AbstractControl): boolean {
-    return (field.touched && !field.pristine && !field.valid);
   }
 
   ngOnDestroy() {
@@ -118,17 +103,17 @@ export class CampaignWikiPageEditorComponent implements OnInit {
               this.subscription = this.campaignWikiService
               .findChild(this.campaign_id, this.wiki_name)
               .subscribe((wikiPage) => {
-                this.campaignWikiPage = wikiPage;
-                this.toFormGroup(this.campaignWikiPage);
+                this.wikiPage = wikiPage;
+                this.toFormGroup(this.wikiPage);
               });
             } else {
-              this.campaignWikiPage = {
+              this.wikiPage = {
                 id: null,
                 title: '',
                 body: '',
                 picture: ''
               };
-              this.toFormGroup(this.campaignWikiPage);
+              this.toFormGroup(this.wikiPage);
             }
           });
         });
@@ -150,8 +135,8 @@ export class CampaignWikiPageEditorComponent implements OnInit {
     this.campaignWikiService.handle(params).subscribe(
       (response: CampaignWikiPage) => {
         // console.log("Salvou!", response);
-        if (!this.campaignWikiPage.id) {
-          this.campaignWikiPage.id = response.id;
+        if (!this.wikiPage.id) {
+          this.wikiPage.id = response.id;
         }
         if (!this.wiki_name) {
           this.wiki_name = response.wiki_name;
@@ -179,7 +164,7 @@ export class CampaignWikiPageEditorComponent implements OnInit {
     this.campaignWikiService.destroyChild(this.campaign_id, this.wiki_name)
       .subscribe((response) => {
         console.log("Deletou!", response);
-        this.campaignWikiPage = null;
+        this.wikiPage = null;
         this.toastrService.success(
           'Os dados da página foram gravados com sucesso.',
           'Operação concluída'
@@ -197,23 +182,25 @@ export class CampaignWikiPageEditorComponent implements OnInit {
 
   /**
    * Cria novo FormGroup para a página da campanha
-   * @param  {CampaignWikiPage}  campaignWikiPage Entidade de página da campanha
+   * @param  {CampaignWikiPage}  wikiPage Entidade de página da campanha
    * @return {FormGroup}                          The new FormGroup
    */
-  toFormGroup(campaignWikiPage: CampaignWikiPage): void {
-    let page = this.campaignWikiPage || {};
+  toFormGroup(wikiPage: CampaignWikiPage): void {
+    let page = this.wikiPage || {};
     let category = page['wiki_category'] || {};
     let wiki_category_id = category ? category['id'] : null;
     this.wikiPageForm = this.formBuilder.group({
-      id : this.campaignWikiPage.id,
+      id : this.wikiPage.id,
       title: [
-        this.campaignWikiPage.title, [
-          Validators.required, Validators.maxLength(45), Validators.minLength(6)
+        this.wikiPage.title, [
+          Validators.required,
+          Validators.maxLength(45),
+          Validators.minLength(6)
         ]
       ],
-      body: [this.campaignWikiPage.body, Validators.required],
-      picture: [this.campaignWikiPage.picture],
-      dm_only: [this.campaignWikiPage.dm_only || false],
+      body: [this.wikiPage.body, Validators.required],
+      picture: [this.wikiPage.picture],
+      dm_only: [this.wikiPage.dm_only || false],
       category: wiki_category_id || ''
     });
   }

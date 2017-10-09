@@ -1,7 +1,13 @@
 <article class="card bg-secondary">
   <div class="card-body">
-    <h4>Formatação de texto</h4>
-    <div class="row">
+    <h5>
+      Instruções de formatação de texto
+      <a class="pointer float-right" (click)="toggle()">
+        <i class="fa" [ngClass]="toggleClass"></i>
+      </a>
+    </h5>
+
+    <div class="row" *ngIf="showInstructions">
       <div class="col">
         <ul class="markdown-example">
           <li><b>Texto simples:</b></li>

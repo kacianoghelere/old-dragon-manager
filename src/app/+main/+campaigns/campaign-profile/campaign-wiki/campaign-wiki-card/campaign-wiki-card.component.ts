@@ -20,6 +20,11 @@ export class CampaignWikiCardComponent implements OnInit {
     };
   }
 
+  getCoverUrl(): string {
+    let title = this.page.title.replace(/[\s]/g, '');
+    return this.page.picture || `https://fakeimg.pl/640x480/?text=${title}`;
+  }
+
   ngOnInit() {
   }
 

@@ -150,7 +150,7 @@ export class AuthenticationService {
    */
   private get storageAuthentication(): Authentication {
     let auth = JSON.parse(localStorage.getItem(this.storageKey));
-    console.log("storageAuthentication", auth);
+    // console.log("storageAuthentication", auth);
     return auth;
   }
 

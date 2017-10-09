@@ -1,0 +1,29 @@
+<form *ngIf="charactersForm" [formGroup]="charactersForm"
+    (ngSubmit)="charactersForm">
+  <h5 class="form-title">Gerenciar Personagens</h5>
+
+  <section>
+    <campaign-invite-users [campaign]="campaign"></campaign-invite-users>
+  </section>
+
+  <section class="card-columns">
+    <campaign-character *ngFor="let character of characters; let index = $index"
+      [character]="character"
+      [characters]="charactersForm.controls.characters"
+      (removeCharacter)="removeCharacter($event)"
+      ></campaign-character>
+  </section>
+
+  <section>
+    <div class="form-group">
+      <button class="btn btn-primary" type="submit"
+          [disabled]="charactersForm.invalid">
+        <i class="fa fa-edit"></i> Salvar
+      </button>
+      <button class="btn btn-link pointer" type="button" (click)="goBack()">
+        <i class="fa fa-remove"></i> Cancelar
+      </button>
+    </div>
+  </section>
+
+</form>

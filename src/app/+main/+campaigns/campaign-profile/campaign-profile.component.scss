@@ -22,3 +22,9 @@
   // margin-left: -1em;
   // margin-right: -1em;
 }
+
+/deep/ form .form-title {
+  border-bottom: 1px solid rgba(0, 0, 0, .1);
+  margin: .5em 0 1em 0;
+  padding: .5em 0;
+}

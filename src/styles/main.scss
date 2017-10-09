@@ -85,12 +85,11 @@ fieldset[disabled] .form-control.ninja-input,
   }
 }
 
-.note small {
+.note .dm-content {
   border-top: 1px solid #333;
   display: block;
   margin-top: 5px;
   padding: 3px;
-  text-align: right;
 }
 
 .note textarea {

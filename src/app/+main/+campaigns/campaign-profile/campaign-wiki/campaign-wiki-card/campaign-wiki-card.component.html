@@ -1,7 +1,7 @@
 <a class="card" *ngIf="page" [routerLink]="[page.wiki_name]"
     [ngClass]="{'bg-secondary': page?.dm_only}">
-  <img class="card-img" *ngIf="page.picture" [src]="page.picture">
-  <div [ngClass]="bodyClass">
+  <img class="card-img" *ngIf="page.picture" [src]="getCoverUrl()">
+  <div class="card-img-overlay">
     <small class="card-text">{{page?.wiki_category?.title}}</small>
     <h4 class="card-title">{{page?.title}}</h4>
     <p class="card-text" *ngIf="page?.dm_only">

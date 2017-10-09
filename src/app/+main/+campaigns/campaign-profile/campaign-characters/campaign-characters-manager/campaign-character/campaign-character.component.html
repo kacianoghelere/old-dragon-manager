@@ -1,0 +1,15 @@
+<div class="card" [formGroup]="characterForm">
+  <input type="hidden" formControlName="id">
+  <img class="card-img" [src]="character.picture"
+    [alt]="character.name" />
+  <div class="card-img-overlay">
+    <h6 class="card-title text-light">{{character.name}}</h6>
+    <p class="card-text text-light">
+      <small>{{character.title}}</small>
+    </p>
+    <button class="btn btn-danger btn-sm" type="button"
+        (click)="remove()">
+      <i class="fa fa-remove"></i> Remover
+    </button>
+  </div>
+</div>
