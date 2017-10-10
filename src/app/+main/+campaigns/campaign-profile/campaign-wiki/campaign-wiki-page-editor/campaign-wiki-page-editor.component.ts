@@ -12,8 +12,8 @@ import { CampaignWikiPage } from '../../../../../shared/entities/campaign-wiki-p
 import { CoreComponent } from '../../../../../shared/components/core/core.component';
 import { WikiCategory } from '../../../../../shared/entities/wiki-category';
 import { CampaignsService } from '../../../shared/campaigns.service';
-import { CampaignWikiService } from '../../../shared/campaign-wiki.service';
-import { WikiCategoriesService } from '../../../shared/wiki-categories.service';
+import { CampaignWikiService } from '../shared/campaign-wiki.service';
+import { WikiCategoriesService } from '../shared/wiki-categories.service';
 
 @Component({
   selector: 'campaign-wiki-page-editor',
@@ -90,7 +90,7 @@ export class CampaignWikiPageEditorComponent extends CoreComponent
     this.wikiCategoriesService.list().subscribe((wikiCategories) => {
       this.wikiCategories = wikiCategories;
       // Observa parametros da rota principal
-      this.route.parent.parent.params.subscribe((params) => {
+      this.route.parent.parent.parent.params.subscribe((params) => {
         this.campaign_id = params['campaign_id'];
 
         this.campaignsService.find(this.campaign_id).subscribe((campaign) => {
@@ -138,7 +138,7 @@ export class CampaignWikiPageEditorComponent extends CoreComponent
         if (!this.wikiPage.id) {
           this.wikiPage.id = response.id;
         }
-        if (!this.wiki_name) {
+        if (!this.wiki_name || (this.wiki_name !== response.wiki_name)) {
           this.wiki_name = response.wiki_name;
         }
         this.toastrService.success(

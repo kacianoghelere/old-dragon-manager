@@ -7,7 +7,7 @@ import { AuthenticationService } from '../../../../../authentication/authenticat
 import { Campaign } from '../../../../../shared/entities/campaign';
 import { CampaignMap } from '../../../../../shared/entities/campaign-map';
 import { CampaignsService } from '../../../shared/campaigns.service';
-import { CampaignMapsService } from '../../../shared/campaign-maps.service';
+import { CampaignMapsService } from '../shared/campaign-maps.service';
 
 @Component({
   selector: 'campaign-maps-list',
@@ -45,7 +45,7 @@ export class CampaignMapsListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.parent.parent.params.subscribe((params) => {
+    this.route.parent.parent.parent.params.subscribe((params) => {
       let campaign_id = params['campaign_id'];
       console.log(params);
       if (campaign_id) {

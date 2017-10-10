@@ -9,7 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from '../../../../../authentication/authentication.service';
 import { Campaign } from '../../../../../shared/entities/campaign';
 import { CampaignsService } from '../../../shared/campaigns.service';
-import { CampaignCharactersService } from '../../../shared/campaign-characters.service';
+import { CampaignCharactersService } from '../shared/campaign-characters.service';
 import { Character } from '../../../../../shared/entities/character';
 
 @Component({
@@ -45,7 +45,7 @@ export class CampaignCharactersManagerComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.parent.parent.params.subscribe((params) => {
+    this.route.parent.parent.parent.params.subscribe((params) => {
       this.campaign_id = params['campaign_id'];
       if (this.campaign_id) {
         this.subscription = this.campaignsService.find(this.campaign_id)

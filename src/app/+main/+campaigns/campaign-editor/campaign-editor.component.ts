@@ -62,9 +62,6 @@ export class CampaignEditorComponent implements OnInit, OnDestroy {
           title: '',
           picture: '',
           description: '',
-          journals: [],
-          maps: [],
-          notes: [],
           dungeonMaster: this.authService.currentUser
         };
         this.campaignFormService.campaign = this.campaign;
@@ -90,11 +87,7 @@ export class CampaignEditorComponent implements OnInit, OnDestroy {
       id: value.id,
       title: value.title,
       picture: value.picture,
-      description: value.description,
-      journals_attributes: value.journals,
-      maps_attributes: value.maps,
-      notes_attributes: value.notes,
-      characters: value.characters
+      description: value.description
     };
     this.campaignsService.handle(params).subscribe(
       (response: Campaign) => {

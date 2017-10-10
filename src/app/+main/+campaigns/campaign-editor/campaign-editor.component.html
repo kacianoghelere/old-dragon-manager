@@ -50,47 +50,6 @@
     <section>
       <div class="form-group row">
         <div class="ml-auto col-sm-10">
-          <campaign-form-journals *ngIf="campaignForm"
-            [campaignForm]="campaignForm"
-            [journals]="campaign.journals"></campaign-form-journals>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="form-group row">
-        <div class="ml-auto col-sm-10">
-          <campaign-form-notes *ngIf="campaignForm"
-            [campaignForm]="campaignForm"
-            [notes]="campaign.notes"></campaign-form-notes>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="form-group row">
-        <div class="ml-auto col-sm-10">
-          <campaign-form-maps *ngIf="campaignForm"
-            [campaignForm]="campaignForm"
-            [maps]="campaign.maps"></campaign-form-maps>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="form-group row">
-        <div class="ml-auto col-sm-10">
-          <campaign-form-characters *ngIf="campaignForm"
-            [campaign]="campaign"
-            [campaignForm]="campaignForm"
-            [characters]="campaign.characters"></campaign-form-characters>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="form-group row">
-        <div class="ml-auto col-sm-10">
           <button class="btn btn-primary" type="submit"
               [disabled]="campaignForm.invalid">
             <i class="fa fa-edit"></i> Salvar

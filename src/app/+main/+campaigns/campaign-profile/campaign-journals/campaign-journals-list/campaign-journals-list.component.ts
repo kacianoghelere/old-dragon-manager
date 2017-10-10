@@ -7,7 +7,7 @@ import { AuthenticationService } from '../../../../../authentication/authenticat
 import { Campaign } from '../../../../../shared/entities/campaign';
 import { CampaignJournal } from '../../../../../shared/entities/campaign-journal';
 import { CampaignsService } from '../../../shared/campaigns.service';
-import { CampaignJournalsService } from '../../../shared/campaign-journals.service';
+import { CampaignJournalsService } from '../shared/campaign-journals.service';
 
 @Component({
   selector: 'campaign-journals-list',
@@ -45,7 +45,7 @@ export class CampaignJournalsListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.route.parent.parent.params.subscribe((params) => {
+    this.route.parent.parent.parent.params.subscribe((params) => {
       let campaign_id = params['campaign_id'];
       // console.log(params);
       if (campaign_id) {

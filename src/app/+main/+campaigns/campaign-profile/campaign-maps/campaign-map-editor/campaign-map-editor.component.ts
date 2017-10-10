@@ -9,7 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from '../../../../../authentication/authentication.service';
 import { Campaign } from '../../../../../shared/entities/campaign';
 import { CampaignMap } from '../../../../../shared/entities/campaign-map';
-import { CampaignMapsService } from '../../../shared/campaign-maps.service';
+import { CampaignMapsService } from '../shared/campaign-maps.service';
 import { CampaignsService } from '../../../shared/campaigns.service';
 import { CoreComponent } from '../../../../../shared/components/core/core.component';
 
@@ -86,7 +86,7 @@ export class CampaignMapEditorComponent extends CoreComponent
   }
 
   ngOnInit() {
-    this.route.parent.parent.params.subscribe((campaignParams) => {
+    this.route.parent.parent.parent.params.subscribe((campaignParams) => {
       this.campaign_id = campaignParams['campaign_id'];
       // console.log(params);
       if (this.campaign_id) {

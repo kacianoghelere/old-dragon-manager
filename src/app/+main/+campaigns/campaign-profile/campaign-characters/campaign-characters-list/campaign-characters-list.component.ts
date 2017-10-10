@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../../../../../authentication/authentication.service';
 import { Campaign } from '../../../../../shared/entities/campaign';
 import { CampaignsService } from '../../../shared/campaigns.service';
-import { CampaignCharactersService } from '../../../shared/campaign-characters.service';
+import { CampaignCharactersService } from '../shared/campaign-characters.service';
 import { Character } from '../../../../../shared/entities/character';
 
 @Component({
@@ -42,7 +42,7 @@ export class CampaignCharactersListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.route.parent.parent.params.subscribe((params) => {
+    this.route.parent.parent.parent.params.subscribe((params) => {
       this.campaign_id = params['campaign_id'];
       console.log(params);
       if (this.campaign_id) {

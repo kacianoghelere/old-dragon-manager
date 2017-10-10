@@ -7,9 +7,9 @@ import { AuthenticationService } from '../../../../../authentication/authenticat
 import { Campaign } from '../../../../../shared/entities/campaign';
 import { CampaignWikiPage } from '../../../../../shared/entities/campaign-wiki-page';
 import { CampaignsService } from '../../../shared/campaigns.service';
-import { CampaignWikiService } from '../../../shared/campaign-wiki.service';
+import { CampaignWikiService } from '../shared/campaign-wiki.service';
 import { CoreComponent } from '../../../../../shared/components/core/core.component';
-import { WikiCategoriesService } from '../../../shared/wiki-categories.service';
+import { WikiCategoriesService } from '../shared/wiki-categories.service';
 import { WikiCategory } from '../../../../../shared/entities/wiki-category';
 
 @Component({
@@ -77,7 +77,7 @@ export class CampaignWikiHomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.route.parent.parent.params.subscribe((params) => {
+    this.route.parent.parent.parent.params.subscribe((params) => {
       this.campaign_id = params['campaign_id'];
 
       this.campaignsService.find(this.campaign_id).subscribe((campaign) => {

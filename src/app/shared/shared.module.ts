@@ -4,6 +4,8 @@ import { RouterModule } from '@angular/router';
 
 import { MarkdownModule } from 'angular2-markdown';
 
+import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
+
 import { ApiService } from './api.service';
 import { ToasterService } from './toaster.service';
 import { CoreComponent } from './components/core/core.component';
@@ -19,7 +21,8 @@ import { HtmlOutletDirective } from './directives/html-outlet.directive';
   imports: [
     CommonModule,
     RouterModule,
-    MarkdownModule.forRoot()
+    MarkdownModule.forRoot(),
+    ConfirmationPopoverModule.forRoot({confirmButtonType: 'danger'})
   ],
   providers: [
     ApiService
@@ -35,6 +38,8 @@ import { HtmlOutletDirective } from './directives/html-outlet.directive';
     HtmlOutletDirective
   ],
   exports: [
+    MarkdownModule,
+    ConfirmationPopoverModule,
     CampaignCardComponent,
     CharacterCardComponent,
     MarkdownRendererComponent,

@@ -9,7 +9,7 @@ import { AuthenticationService } from '../../../../../authentication/authenticat
 import { Campaign } from '../../../../../shared/entities/campaign';
 import { CampaignWikiPage } from '../../../../../shared/entities/campaign-wiki-page';
 import { CampaignsService } from '../../../shared/campaigns.service';
-import { CampaignWikiService } from '../../../shared/campaign-wiki.service';
+import { CampaignWikiService } from '../shared/campaign-wiki.service';
 
 @Component({
   selector: 'campaign-wiki-page',
@@ -47,7 +47,7 @@ export class CampaignWikiPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.route.parent.parent.params.subscribe((params) => {
+    this.route.parent.parent.parent.params.subscribe((params) => {
       let campaign_id = params['campaign_id'];
       this.campaignsService.find(campaign_id).subscribe((campaign) => {
         this.campaign = campaign;
