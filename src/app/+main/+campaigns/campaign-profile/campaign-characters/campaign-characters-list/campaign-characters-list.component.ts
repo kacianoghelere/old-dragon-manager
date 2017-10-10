@@ -16,9 +16,10 @@ import { Character } from '../../../../../shared/entities/character';
 })
 export class CampaignCharactersListComponent implements OnInit, OnDestroy {
 
-  campaign: Campaign;
-  _characters: Character[];
-  subscription: Subscription;
+  private campaign: Campaign;
+  private campaign_id: number;
+  private characters: Character[];
+  private subscription: Subscription;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,10 +28,6 @@ export class CampaignCharactersListComponent implements OnInit, OnDestroy {
     private campaignsService: CampaignsService,
     private charactersService: CampaignCharactersService
   ) { }
-
-  get characters(): Character[] {
-    return this.characters || [];
-  }
 
   /**
    * Verifica se o usuário atual é o mestre de jogo da campanha
@@ -46,14 +43,14 @@ export class CampaignCharactersListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.route.parent.parent.params.subscribe((params) => {
-      let campaign_id = params['campaign_id'];
+      this.campaign_id = params['campaign_id'];
       console.log(params);
-      if (campaign_id) {
-        this.subscription = this.campaignsService.find(campaign_id)
+      if (this.campaign_id) {
+        this.subscription = this.campaignsService.find(this.campaign_id)
           .subscribe((campaign) => {
             this.campaign = campaign;
-            this.charactersService.listChildren(campaign_id)
-              .subscribe((characters) => this._characters = characters);
+            this.charactersService.listChildren(this.campaign_id)
+              .subscribe((characters) => this.characters = characters);
           });
       }
     });

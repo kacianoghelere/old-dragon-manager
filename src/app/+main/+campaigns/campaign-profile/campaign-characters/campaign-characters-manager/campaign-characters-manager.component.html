@@ -1,5 +1,5 @@
 <form *ngIf="charactersForm" [formGroup]="charactersForm"
-    (ngSubmit)="charactersForm">
+    (ngSubmit)="onSubmit(charactersForm)">
   <h5 class="form-title">Gerenciar Personagens</h5>
 
   <section>

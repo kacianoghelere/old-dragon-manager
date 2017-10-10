@@ -37,8 +37,6 @@ export class CampaignCharacterComponent implements OnInit {
    * @return {FormGroup}           Novo FormGroup
    */
   toFormGroup(character: Character): FormGroup {
-    return this.formBuilder.group({
-      id: [ character.id ]
-    });
+    return this.formBuilder.group({character_id: character.id});
   }
 }

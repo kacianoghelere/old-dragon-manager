@@ -4,6 +4,8 @@ import { ChangeDetectorRef, Component, Input, OnInit, Output } from '@angular/co
 import { FormBuilder, FormControl, FormArray, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
+import { ToastrService } from 'ngx-toastr';
+
 import { AuthenticationService } from '../../../../../authentication/authentication.service';
 import { Campaign } from '../../../../../shared/entities/campaign';
 import { CampaignsService } from '../../../shared/campaigns.service';
@@ -30,7 +32,8 @@ export class CampaignCharactersManagerComponent implements OnInit {
     private campaignsService: CampaignsService,
     private charactersService: CampaignCharactersService,
     private formBuilder: FormBuilder,
-    private changeDetectorRef: ChangeDetectorRef
+    private changeDetectorRef: ChangeDetectorRef,
+    private toastrService: ToastrService
   ) {
   }
 
@@ -38,7 +41,7 @@ export class CampaignCharactersManagerComponent implements OnInit {
    * Executa rota de navegação de retorno
    */
   goBack() {
-    this.router.navigate(['/main/campaigns', this.campaign_id, 'journals']);
+    this.router.navigate(['/main/campaigns', this.campaign_id, 'characters']);
   }
 
   ngOnInit() {
@@ -58,13 +61,25 @@ export class CampaignCharactersManagerComponent implements OnInit {
     });
   }
 
-  /**
-   * Adiciona personagem no FormArray
-   * @param {Character} character Objeto do personagem
-   */
-  appendCharacter(character: Character) {
-    let control: FormControl = new FormControl(character.id);
-    (<FormArray>this.charactersForm.get('characters')).push(control);
+  onSubmit({value, valid}: {value: any, valid: boolean}) {
+    console.log("Submetido!", value);
+    let params = value.characters;
+    this.charactersService.createChild(this.campaign_id, params).subscribe(
+      (response: any) => {
+        this.toastrService.success(
+          'Os dados da página foram gravados com sucesso.',
+          'Operação concluída'
+        );
+        this.goBack();
+      },
+      (error) => {
+        console.log("Deu PT!", error);
+        this.toastrService.warning(
+          'Parace que algum kobold andou mexendo nos cabos de rede.',
+          'Ooops! Ocorreu um erro.'
+        );
+      }
+    );
   }
 
   /**
@@ -89,6 +104,7 @@ export class CampaignCharactersManagerComponent implements OnInit {
    */
   toFormGroup(campaign: Campaign): FormGroup {
     return this.formBuilder.group({
+      id: this.campaign_id,
       characters: new FormArray([])
     });
   }

@@ -1,9 +1,9 @@
 <div class="card" [formGroup]="characterForm">
-  <input type="hidden" formControlName="id">
+  <input type="hidden" formControlName="character_id">
   <img class="card-img" [src]="character.picture"
     [alt]="character.name" />
   <div class="card-img-overlay">
-    <h6 class="card-title text-light">{{character.name}}</h6>
+    <h5 class="card-title text-light">{{character.name}}</h5>
     <p class="card-text text-light">
       <small>{{character.title}}</small>
     </p>
