@@ -1,6 +1,6 @@
 import { Subscription } from 'rxjs/Subscription';
 
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component, HostBinding, Input, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { AuthenticationService } from '../../../../../authentication/authentication.service';

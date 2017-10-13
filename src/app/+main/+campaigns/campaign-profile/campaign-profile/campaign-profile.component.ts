@@ -10,10 +10,12 @@ import { CoreComponent } from '../../../../shared/components/core/core.component
 import { CampaignsService } from '../../shared/campaigns.service';
 import { TrailItem } from '../../../../shared/entities/trail-item';
 import { TrailService } from '../../../../shared/services/trail.service';
+import { routerTransition } from '../../../../shared/constants/router-transition';
 
 @Component({
   selector: 'campaign-profile',
   templateUrl: './campaign-profile.component.html',
+  animations: [ routerTransition ],
   styleUrls: ['./campaign-profile.component.scss']
 })
 export class CampaignProfileComponent extends CoreComponent
@@ -58,6 +60,10 @@ export class CampaignProfileComponent extends CoreComponent
       route: `/main/campaigns/${this.campaign.id}`
     };
     this.trailService.add(this.trailItem);
+  }
+
+  getState(outlet) {
+    return outlet.isActivated ? outlet.activatedRoute : '';
   }
 
   /**

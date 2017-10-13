@@ -17,9 +17,8 @@
   background-size: 100% auto;
   background-repeat: no-repeat;
   float: left;
-  height: 100%;
-  width: 100%;
   padding: 100px 0 15px 0;
+  width: 100%;
 
   .content {
     background-color: $white;
@@ -147,7 +146,14 @@
     main {
       float: left;
       height: auto;
-      padding: 0 1em 1em 1em;
+      padding: 1em;
+      position: relative;
+      // /*Animation*/
+      // -webkit-transition: all 100ms linear;
+      // -moz-transition: all 100ms linear;
+      // -ms-transition: all 100ms linear;
+      // -o-transition: all 100ms linear;
+      // transition: all 100ms linear;
       width: 100%;
     }
   }

@@ -20,30 +20,31 @@ const routes: Routes = [
     children: [
       {
         path: 'characters',
-        loadChildren: 'app/+main/+campaigns/campaign-profile/campaign-characters/campaign-characters.module#CampaignCharactersModule'//,
-        // data: { preload: true }
+        loadChildren: 'app/+main/+campaigns/campaign-profile/campaign-characters/campaign-characters.module#CampaignCharactersModule',
+        data: {state: 'characters'}
       },
       {
         path: 'journals',
-        loadChildren: 'app/+main/+campaigns/campaign-profile/campaign-journals/campaign-journals.module#CampaignJournalsModule'//,
-        // data: { preload: true }
+        loadChildren: 'app/+main/+campaigns/campaign-profile/campaign-journals/campaign-journals.module#CampaignJournalsModule',
+        data: {state: 'journals'}
       },
       {
         path: 'maps',
-        loadChildren: 'app/+main/+campaigns/campaign-profile/campaign-maps/campaign-maps.module#CampaignMapsModule'//,
-        // data: { preload: true }
+        loadChildren: 'app/+main/+campaigns/campaign-profile/campaign-maps/campaign-maps.module#CampaignMapsModule',
+        data: {state: 'maps'}
       },
       {
         path: 'notes',
-        loadChildren: 'app/+main/+campaigns/campaign-profile/campaign-notes/campaign-notes.module#CampaignNotesModule'//,
-        // data: { preload: true }
+        loadChildren: 'app/+main/+campaigns/campaign-profile/campaign-notes/campaign-notes.module#CampaignNotesModule',
+        data: {state: 'notes'}
       },
       {
         path: 'wiki',
-        loadChildren: 'app/+main/+campaigns/campaign-profile/campaign-wiki/campaign-wiki.module#CampaignWikiModule'//,
-        // data: { preload: true }
+        loadChildren: 'app/+main/+campaigns/campaign-profile/campaign-wiki/campaign-wiki.module#CampaignWikiModule',
+        data: {state: 'wiki'}
       },
-      { path: '', redirectTo: 'journals', pathMatch: 'full' }
+      { path: '', redirectTo: 'journals', pathMatch: 'full' },
+      { path: '**', redirectTo: 'journals', pathMatch: 'full' }
     ]
   }
 ];
