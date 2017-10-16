@@ -1,8 +1,4 @@
-<nav class="navbar navbar-expand-sm navbar-light subnav" *ngIf="campaign">
-	<!-- <a class="navbar-brand">
-    <i class="fa fa-book"></i>
-    <span class="d-sm-none d-md-inline">Diários de Campanha</span>
-  </a> -->
+<nav class="navbar navbar-expand-sm navbar-light subnav" *ngIf="showToolbar()">
   <ul class="navbar-nav mr-auto"></ul>
   <ul class="navbar-nav my-2 my-lg-0">
     <li class="nav-item" *ngIf="isCampaignOwner()">

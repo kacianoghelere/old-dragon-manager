@@ -53,7 +53,6 @@ export class CampaignNotesListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.route.parent.parent.parent.params.subscribe((params) => {
       let campaign_id = params['campaign_id'];
-      // console.log(params);
       if (campaign_id) {
         this.campaignsService.find(campaign_id).subscribe((res) => {
           this.campaign = res;
@@ -66,5 +65,13 @@ export class CampaignNotesListComponent implements OnInit, OnDestroy {
 
   get notes(): CampaignNote[] {
     return this._notes || [];
+  }
+
+  /**
+   * Verifica se deve exibir o toolbar
+   * @return {boolean} Resultado da verificação
+   */
+  showToolbar(): boolean {
+    return !!(this.campaign) && this.isCampaignOwner();
   }
 }

@@ -22,7 +22,7 @@ const routes: Routes = [
         component: CampaignJournalEditorComponent,
         canActivate: [CampaignOwnerGuard]
       },
-      { path: '', component: CampaignJournalsListComponent }
+      { path: '', component: CampaignJournalsListComponent, pathMatch: 'full' }
     ]
   }
 ];

@@ -1,11 +1,7 @@
-<nav class="navbar navbar-expand-sm navbar-light subnav" *ngIf="campaign">
-  <!-- <a class="navbar-brand">
-    <i class="fa fa-group"></i>
-    <span class="d-sm-none d-md-inline">Personagens</span>
-  </a> -->
+<nav class="navbar navbar-expand-sm navbar-light subnav" *ngIf="showToolbar()">
   <ul class="navbar-nav mr-auto"></ul>
   <ul class="navbar-nav my-2 my-lg-0">
-    <li class="nav-item" *ngIf="isCampaignOwner()">
+    <li class="nav-item">
       <a class="nav-link text-primary" [routerLink]="['manage']">
         <i class="fa fa-cog"></i>
         <span class="d-sm-none d-md-inline">Gerenciar Personagens</span>

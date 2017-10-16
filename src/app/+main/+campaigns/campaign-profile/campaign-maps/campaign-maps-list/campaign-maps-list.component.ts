@@ -56,4 +56,12 @@ export class CampaignMapsListComponent implements OnInit {
       }
     });
   }
+
+  /**
+   * Verifica se deve exibir o toolbar
+   * @return {boolean} Resultado da verificação
+   */
+  showToolbar(): boolean {
+    return !!(this.campaign) && this.isCampaignOwner();
+  }
 }

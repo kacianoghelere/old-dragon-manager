@@ -85,7 +85,7 @@ export class CampaignJournalsService extends EntityService<CampaignJournal> {
       href = href.replace(/[\[\]]/g, '');
       let wiki: string = href.trim().toLowerCase().replace(/\s/g, '_');
       console.log("Jounal -> Wiki Regex => passes");
-      return `<a routerLink="../wiki/${wiki}" title="${title}">${text}</a>`;
+      return `<a [routerLink]="['..', '..', 'wiki', '${wiki}']">${text}</a>`;
     } else {
       console.log("Jounal -> Wiki Regex => rejected");
       return `<a href="${href}" title="${title}">${text}</a>`;
