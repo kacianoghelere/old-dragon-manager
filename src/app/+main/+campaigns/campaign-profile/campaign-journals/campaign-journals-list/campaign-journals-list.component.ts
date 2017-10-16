@@ -28,6 +28,10 @@ export class CampaignJournalsListComponent implements OnInit, OnDestroy {
     private journalsService: CampaignJournalsService
   ) { }
 
+  compileText(text: string) {
+    return this.journalsService.compileText(text, this.isCampaignOwner());
+  }
+
   get journals(): CampaignJournal[] {
     return this._journals;
   }

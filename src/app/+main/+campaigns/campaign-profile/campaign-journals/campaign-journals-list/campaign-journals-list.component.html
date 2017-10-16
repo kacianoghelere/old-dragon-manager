@@ -16,7 +16,7 @@
 
 <section class="journals timeline" *ngIf="campaign">
 	<div class="timeline-item" *ngFor="let journal of journals">
-    <div class="journal">
+    <article class="journal" *ngIf="journal">
   		<div class="d-flex justify-content-between">
   			<small>{{journal.created_at | date}}</small>
   			<small>
@@ -25,7 +25,7 @@
   				</a>
   			</small>
   		</div>
-  		<p><markdown>{{journal.description}}</markdown></p>
-    </div>
+      <p><htmlOutlet [html]="compileText(journal.description)"></htmlOutlet></p>
+    </article>
 	</div>
 </section>

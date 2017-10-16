@@ -14,17 +14,17 @@ import { MarkdownModule } from 'angular2-markdown';
 
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 
-import { AppComponent } from './app.component';
-import { ValidatorsService } from './shared/services/validators.service';
+import { AppRoutingModule } from './app-routing.module';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { LayoutModule } from './layout/layout.module';
-import { UtilModule } from './util/util.module';
-import { SharedModule } from './shared/shared.module';
 import { RolesModule } from './roles/roles.module';
+import { SharedModule } from './shared/shared.module';
 import { UsersModule } from './users/users.module';
-import { AppRoutingModule } from './app-routing.module';
-import { TrailService }  from "./shared/services/trail.service";
+import { UtilModule } from './util/util.module';
 import { CampaignInvitationService } from "./shared/services/campaign-invitation.service";
+import { TrailService }  from "./shared/services/trail.service";
+import { ValidatorsService } from './shared/services/validators.service';
+import { AppComponent } from './app.component';
 
 @NgModule({
   imports: [

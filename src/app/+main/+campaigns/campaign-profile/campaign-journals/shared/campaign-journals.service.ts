@@ -3,10 +3,13 @@ import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 
+import { MarkdownService } from 'angular2-markdown';
+
 import { AuthenticationService } from '../../../../../authentication/authentication.service';
 import { EntityService } from '../../../../../shared/services/entity.service';
 import { Campaign } from '../../../../../shared/entities/campaign';
 import { CampaignJournal } from '../../../../../shared/entities/campaign-journal';
+import { CustomMarkdownService } from '../../../../../shared/services/custom-markdown.service';
 
 @Injectable()
 export class CampaignJournalsService extends EntityService<CampaignJournal> {
@@ -16,9 +19,41 @@ export class CampaignJournalsService extends EntityService<CampaignJournal> {
 
   constructor(
     authService: AuthenticationService,
-    http: Http
+    http: Http,
+    private markdown: MarkdownService,
+    private customMarkdown: CustomMarkdownService
   ) {
     super(authService, http);
+
+    // -------------------------------------------------------------------------
+    let oldCode = this.markdown.renderer.code;
+    let newCode = (code: string, lang: string, escaped: boolean): string => {
+      if (lang !== 'dm-content') return oldCode(code, lang, escaped);
+      return `<code class="dm-content"><b>Nota do Narrador:</b> ${code}</code>`;
+    };
+    this.markdown.renderer.code = newCode;
+
+    // -------------------------------------------------------------------------
+
+    this.markdown.renderer.blockquote = this.customMarkdown.customBlockquoteRenderer;
+    this.markdown.renderer.heading= this.customMarkdown.customHeadingRenderer;
+    this.markdown.renderer.link = this.customLinkRenderer;
+    this.markdown.renderer.table = this.customMarkdown.customTableRenderer;
+  }
+
+  /**
+   * Compila o texto em formato markdown
+   * @param  {string}  text              Texto original
+   * @param  {boolean} is_dungeon_master Flag de identificação de DM
+   *                                     Se não for, remove conteúdo exclusivo
+   * @return {string}                    String formatada
+   */
+  compileText(text: string, is_dungeon_master: boolean = true): string {
+    if (!is_dungeon_master) { /* Remove conteúdo de DM quando não tem acesso */
+      let regex = /\`\`\`dm\-content\n(.*?)\n\`\`\`/g;
+      text = text.replace(regex, '');
+    }
+    return this.markdown.compile(text);
   }
 
   /**
@@ -33,6 +68,28 @@ export class CampaignJournalsService extends EntityService<CampaignJournal> {
   ): Observable<any> {
     let _createChild = super._createChild(this.parentResource, this.resource);
     return _createChild(campaign_id, {campaign_journal: params});
+  }
+
+  /**
+   * Renderer customizado de markdown para links
+   * @param  {string} href  Destino do link
+   * @param  {string} title Título da tag
+   * @param  {string} text  Texto da tag
+   * @return {string}       Tag formatada
+   */
+  customLinkRenderer(href: string, title: string, text: string): string {
+    let wikiRegex = /^\s*\[\[[\sa-zA-Z0-9]+\]\]\s*/g;
+    let anchorRegex = /^\s*\[[\sa-z0-9]+\]\s*/g;
+    // console.log("Converting", {href: href, title: title, text: text});
+    if (wikiRegex.test(href)) {
+      href = href.replace(/[\[\]]/g, '');
+      let wiki: string = href.trim().toLowerCase().replace(/\s/g, '_');
+      console.log("Jounal -> Wiki Regex => passes");
+      return `<a routerLink="../wiki/${wiki}" title="${title}">${text}</a>`;
+    } else {
+      console.log("Jounal -> Wiki Regex => rejected");
+      return `<a href="${href}" title="${title}">${text}</a>`;
+    }
   }
 
   /**

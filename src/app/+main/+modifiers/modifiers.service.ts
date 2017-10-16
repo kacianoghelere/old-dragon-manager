@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 
 import { AuthenticationService } from '../../authentication/authentication.service';
-import { ApiService } from '../../shared/api.service';
+import { ApiService } from '../../shared/services/api.service';
 
 @Injectable()
 export class ModifiersService {

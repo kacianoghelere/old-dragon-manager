@@ -6,7 +6,6 @@ import { MarkdownModule } from 'angular2-markdown';
 
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 
-import { ApiService } from './api.service';
 import { ToasterService } from './toaster.service';
 import { CoreComponent } from './components/core/core.component';
 import { CampaignCardComponent } from './components/campaign-card/campaign-card.component';
@@ -17,6 +16,9 @@ import { WikiLinkDirective } from './directives/wiki-link.directive';
 import { MarkdownInstructionsComponent } from './components/markdown-instructions/markdown-instructions.component';
 import { HtmlOutletDirective } from './directives/html-outlet.directive';
 
+import { ApiService } from './services/api.service';
+import { CustomMarkdownService } from './services/custom-markdown.service';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -25,7 +27,8 @@ import { HtmlOutletDirective } from './directives/html-outlet.directive';
     ConfirmationPopoverModule.forRoot({confirmButtonType: 'danger'})
   ],
   providers: [
-    ApiService
+    ApiService,
+    CustomMarkdownService
   ],
   declarations: [
     CampaignCardComponent,
