@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LayoutModule } from '../../layout/layout.module';
 import { SharedModule } from '../../shared/shared.module';
 import { UtilModule } from "../../util/util.module";
-import { CampaignProfileModule } from './campaign-profile/campaign-profile.module';
+// import { CampaignProfileModule } from './campaign-profile/campaign-profile.module';
 import { CampaignsRoutingModule } from './campaigns-routing.module';
 
 import { CampaignEditorComponent } from './campaign-editor/campaign-editor.component';
@@ -25,7 +25,7 @@ import { CampaignOwnerGuard } from "./shared/campaign-owner.guard";
     LayoutModule,
     UtilModule,
     SharedModule,
-    CampaignProfileModule,
+    // CampaignProfileModule,
     CampaignsRoutingModule
   ],
   declarations: [

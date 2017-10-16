@@ -44,7 +44,6 @@ export class CampaignCharactersListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.route.parent.parent.parent.params.subscribe((params) => {
       this.campaign_id = params['campaign_id'];
-      console.log(params);
       if (this.campaign_id) {
         this.subscription = this.campaignsService.find(this.campaign_id)
           .subscribe((campaign) => {

@@ -19,6 +19,10 @@ const routes: Routes = [
         component: CampaignEditorComponent,
         canActivate: [CampaignGuard]
       },
+      {
+        path: ':campaign_id',
+        loadChildren: 'app/+main/+campaigns/campaign-profile/campaign-profile.module#CampaignProfileModule',
+      },
       { path: '', component: CampaignsListComponent }
     ]
   }

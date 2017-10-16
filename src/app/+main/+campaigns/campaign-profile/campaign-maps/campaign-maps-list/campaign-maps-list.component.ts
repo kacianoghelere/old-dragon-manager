@@ -47,7 +47,6 @@ export class CampaignMapsListComponent implements OnInit {
   ngOnInit() {
     this.route.parent.parent.parent.params.subscribe((params) => {
       let campaign_id = params['campaign_id'];
-      console.log(params);
       if (campaign_id) {
         this.campaignsService.find(campaign_id).subscribe((res) => {
           this.campaign = res;

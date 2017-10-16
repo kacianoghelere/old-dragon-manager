@@ -15,7 +15,7 @@ import { CampaignGuard } from "../shared/campaign.guard";
 
 const routes: Routes = [
   {
-    path: ':campaign_id',
+    path: '',
     component: CampaignProfileComponent,
     children: [
       {

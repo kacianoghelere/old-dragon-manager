@@ -90,7 +90,7 @@ export class CampaignProfileComponent extends CoreComponent
   }
 
   ngOnInit() {
-    this.route.params.subscribe((params) => {
+    this.route.parent.params.subscribe((params) => {
       let id = params['campaign_id'];
 
       if (id) {
