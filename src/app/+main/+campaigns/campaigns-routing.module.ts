@@ -5,8 +5,8 @@ import { CampaignEditorComponent } from './campaign-editor/campaign-editor.compo
 import { CampaignsComponent } from './campaigns/campaigns.component';
 import { CampaignsListComponent } from './campaigns-list/campaigns-list.component';
 
-import { CampaignOwnerGuard } from "./shared/campaign-owner.guard";
-import { CampaignGuard } from "./shared/campaign.guard";
+import { CampaignOwnerGuard } from './shared/campaign-owner.guard';
+import { CampaignGuard } from './shared/campaign.guard';
 
 const routes: Routes = [
   {

@@ -57,7 +57,7 @@ export class CampaignProfileComponent extends CoreComponent
   fireTrailChange() {
     this.trailItem = {
       title: this.campaign.title,
-      route: `/main/campaigns/${this.campaign.id}`
+      route: `/main/campaigns/${this.campaign.uuid}`
     };
     this.trailService.add(this.trailItem);
   }

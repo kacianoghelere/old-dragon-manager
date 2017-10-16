@@ -12,7 +12,6 @@ import { CampaignProfileComponent } from './campaign-profile/campaign-profile.co
 import { CampaignOwnerGuard } from "../shared/campaign-owner.guard";
 import { CampaignGuard } from "../shared/campaign.guard";
 
-
 const routes: Routes = [
   {
     path: '',

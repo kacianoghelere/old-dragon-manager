@@ -9,13 +9,14 @@ export class Campaign {
   characters?: Character[];
   description: string;
   dm_only?: boolean = false;
-  picture?: string;
+  dungeonMaster?: User
   id?: number;
   journals?: CampaignJournal[];
   maps?: CampaignMap[];
   members?: User[];
   notes?: CampaignNote[];
   pages?: CampaignWikiPage[];
+  picture?: string;
   title: string;
-  dungeonMaster?: User
+  uuid?: string;
 }

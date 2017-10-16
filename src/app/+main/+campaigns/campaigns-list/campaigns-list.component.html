@@ -17,20 +17,20 @@
         <div class="card-body">
           <div class="row align-items-center">
             <div class="col-lg-3 col-4 mx-auto text-nowrap text-center px-2">
-              <a [routerLink]="[campaign.id]">
+              <a [routerLink]="[campaign.uuid]">
                 <img class="d-block mx-auto rounded img-thumbnail img-fluid"
                   [src]="campaign.picture">
               </a>
             </div>
             <div class="col-lg-6 text-center text-lg-left">
-              <a [routerLink]="[campaign.id]">
+              <a [routerLink]="[campaign.uuid]">
                 <h3 class="d-inline">{{campaign.title}}</h3>
               </a>
               <h6>{{campaign?.description}}</h6>
               <ul class="list-inline mt-3">
                 <li class="list-inline-item" *ngIf="isCampaignOwner(campaign)">
                   <a class="btn btn-secondary rounded"
-                      [routerLink]="[campaign.id, 'edit']">
+                      [routerLink]="[campaign.uuid, 'edit']">
                     <i class="fa fa-edit align-middle"></i> Editar
                   </a>
                 </li>
@@ -42,22 +42,7 @@
                 </li>
               </ul>
             </div>
-            <div class="col-lg-3 col-6 mx-auto">
-              <div class="row no-gutters text-center justify-content-end align-items-end">
-                <div class="col">
-                  <h4>{{campaign.journals.length}}</h4>
-                  <span class="badge badge-pill badge-dark font-weight-normal">
-                    Sessões
-                  </span>
-                </div>
-                <div class="col">
-                  <h4>{{campaign.characters.length}}</h4>
-                  <span class="badge badge-pill badge-dark font-weight-normal">
-                    Personagens
-                  </span>
-                </div>
-              </div>
-            </div>
+            <div class="col-lg-3 col-6 mx-auto"></div>
           </div>
         </div>
       </div>

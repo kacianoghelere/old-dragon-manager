@@ -75,7 +75,7 @@ export class CampaignEditorComponent implements OnInit, OnDestroy {
    */
   goBack() {
     if (this.campaign.id) {
-      this.router.navigate(['/main/campaigns', this.campaign.id]);
+      this.router.navigate(['/main/campaigns', this.campaign.uuid]);
     } else {
       this.router.navigate(['/main/campaigns/']);
     }
@@ -93,6 +93,9 @@ export class CampaignEditorComponent implements OnInit, OnDestroy {
       (response: Campaign) => {
         if (!this.campaign.id) {
           this.campaign.id = response.id;
+        }
+        if (!this.campaign.uuid) {
+          this.campaign.uuid = response.uuid;
         }
         this.toastrService.success('Operação concluída',
           'Os dados da campanha foram gravados com sucesso.');
