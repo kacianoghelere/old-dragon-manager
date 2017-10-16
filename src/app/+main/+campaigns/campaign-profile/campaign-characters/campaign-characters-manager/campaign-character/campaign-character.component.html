@@ -7,9 +7,16 @@
     <p class="card-text text-light">
       <small>{{character.title}}</small>
     </p>
-    <button class="btn btn-danger btn-sm" type="button"
-        (click)="remove()">
-      <i class="fa fa-remove"></i> Remover
+    <button class="btn btn-danger pointer"
+        type="button"
+        mwlConfirmationPopover
+        title="Confirmação necessária"
+        message="Deseja realmente remover o personagem?"
+        placement="top"
+        confirmText="Remover"
+        cancelText="Cancelar"
+        (confirm)="remove()">
+      <i class="fa fa-remove"></i> Remover Personagem
     </button>
   </div>
 </div>

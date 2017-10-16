@@ -5,6 +5,7 @@ import { TrailItem } from '../entities/trail-item';
 @Injectable()
 export class TrailService {
 
+  log: boolean = false;
   trail: TrailItem[];
   trailUpdate: EventEmitter<TrailItem[]>;
 
@@ -12,15 +13,17 @@ export class TrailService {
     this.trail = [];
     this.trailUpdate = new EventEmitter();
     let date = new Date();
-    console.log("Inicializou em:", date.toString(), date.getMilliseconds());
+    if (this.log) {
+      console.log("Trail initialized", date.toString(), date.getMilliseconds());
+    }
   }
 
   /**
    * Adiciona novo elemento na trila
    * @param  {TrailItem} item Novo elemento da trilha
    */
-  add(item: TrailItem) {
-    // console.log("ADD ", item, " TO THE TRAIL");
+  add(item: TrailItem) {;
+    if (this.log) console.log("ADD ", item, " TO THE TRAIL");
     this.trail.push(item);
     this.emitUpdate();
   }
@@ -33,7 +36,7 @@ export class TrailService {
   remove(item: TrailItem): boolean {
     let index = this.trail.indexOf(item);
     if (index >= 0) {
-      // console.log("REMOVED ", item, " FROM THE TRAIL");
+      if (this.log) console.log("REMOVED ", item, " FROM THE TRAIL");
       this.trail.splice(index, 1);
       this.emitUpdate();
       return true;
@@ -43,6 +46,6 @@ export class TrailService {
 
   private emitUpdate() {
     this.trailUpdate.emit(this.trail);
-    // console.log("TRAIL", JSON.stringify(this.trail));
+    if (this.log) console.log("TRAIL UPDATED", JSON.stringify(this.trail));
   }
 }
