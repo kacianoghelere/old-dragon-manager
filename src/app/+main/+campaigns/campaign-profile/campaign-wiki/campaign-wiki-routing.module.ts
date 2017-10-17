@@ -38,9 +38,7 @@ const routes: Routes = [
       {
         path: ':page_id',
         component: CampaignWikiPageComponent,
-        canActivate: [
-          CampaignWikiPageGuard
-        ]
+        canActivate: [CampaignWikiPageGuard]
       },
       { path: '', component: CampaignWikiHomeComponent }
     ]

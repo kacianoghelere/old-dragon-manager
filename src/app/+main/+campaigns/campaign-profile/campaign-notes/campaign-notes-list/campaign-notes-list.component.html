@@ -12,7 +12,7 @@
 </nav>
 
 <section class="notes" *ngIf="campaign">
-  <div class="row" *ngIf="!filteredNotes.length">
+  <div class="row" *ngIf="notes.length">
     <div class="col-sm-12 col-md-6 col-lg-4"
         *ngFor="let note of filteredNotes">
       <article class="note">
@@ -28,7 +28,7 @@
       </article>
     </div>
   </div>
-  <div *ngIf="!filteredNotes.length">
+  <div *ngIf="!notes.length">
     <p>Nenhuma nota encontrada</p>
   </div>
 </section>
