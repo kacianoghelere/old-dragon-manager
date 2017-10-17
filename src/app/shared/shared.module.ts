@@ -12,7 +12,6 @@ import { CampaignCardComponent } from './components/campaign-card/campaign-card.
 import { CharacterCardComponent } from './components/character-card/character-card.component';
 import { UserCardComponent } from './components/user-card/user-card.component';
 import { MarkdownRendererComponent } from './components/markdown-renderer/markdown-renderer.component';
-import { WikiLinkDirective } from './directives/wiki-link.directive';
 import { MarkdownInstructionsComponent } from './components/markdown-instructions/markdown-instructions.component';
 import { HtmlOutletDirective } from './directives/html-outlet.directive';
 
@@ -37,7 +36,6 @@ import { CustomMarkdownService } from './services/custom-markdown.service';
     MarkdownInstructionsComponent,
     MarkdownRendererComponent,
     UserCardComponent,
-    WikiLinkDirective,
     HtmlOutletDirective
   ],
   exports: [

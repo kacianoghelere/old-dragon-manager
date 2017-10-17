@@ -1,0 +1,24 @@
+<section class="page" *ngIf="campaign">
+  <header>
+    <div class="d-flex justify-content-between">
+      <div>
+        <a class="mr-2" [routerLink]="['../']">
+          <i class="fa fa-arrow-left"></i> Voltar
+        </a>
+        <a class="mr-2">
+          <i class="fa fa-folder-open"></i> {{page?.page_category?.title}}
+        </a>
+      </div>
+      <div>
+        <a [routerLink]="['edit']" *ngIf="isCampaignOwner()">
+          <i class="fa fa-edit"></i> Editar Página
+        </a>
+      </div>
+    </div>
+    <h2 class="title page-title">{{page?.title}}</h2>
+  </header>
+
+  <article *ngIf="page">
+    <htmlOutlet [html]="compileText(page.body)"></htmlOutlet>
+  </article>
+</section>

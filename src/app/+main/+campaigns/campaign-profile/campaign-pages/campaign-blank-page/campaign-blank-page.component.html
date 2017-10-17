@@ -1,0 +1,26 @@
+<section class="blank-page" *ngIf="campaign">
+  <header>
+    <div class="d-flex justify-content-between">
+      <div>
+        <a class="mr-2" [routerLink]="['../']">
+          <i class="fa fa-arrow-left"></i> Voltar
+        </a>
+      </div>
+      <div>
+        <a [routerLink]="['../new']" *ngIf="isCampaignOwner()">
+          <i class="fa fa-plus"></i> Criar Página
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <article class="alert alert-light text-center">
+    <h2>Ooops! Parece que a página que você procura não existe!</h2>
+    <div *ngIf="isCampaignOwner()">
+      <h6>Talvez seja uma boa hora para cria-la.</h6>
+      <a class="btn btn-light text-dark" [routerLink]="['../new']">
+        <i class="fa fa-plus"></i> Criar Página
+      </a>
+    </div>
+  </article>
+</section>

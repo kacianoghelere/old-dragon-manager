@@ -1,0 +1,55 @@
+<nav class="nav nav-pills" *ngIf="campaign">
+  <li class="nav-item">
+    <a class="nav-link pointer" (click)="changeList('')"
+        [ngClass]="{active: isActiveCategory('')}">
+      Todas
+    </a>
+  </li>
+  <li class="nav-item" *ngFor="let category of categories">
+    <a class="nav-link pointer" (click)="changeList(category.flat_name)"
+        [ngClass]="{active: isActiveCategory(category.flat_name)}">
+      {{category.title}}
+    </a>
+  </li>
+
+  <li class="nav-item" *ngIf="isCampaignOwner()">
+    <a class="nav-link text-primary" [routerLink]="['new']">
+      <i class="fa fa-plus"></i>
+      <span class="d-sm-none d-md-inline">Nova página</span>
+    </a>
+  </li>
+</nav>
+
+<section class="card-columns" *ngIf="isActiveCategory('')">
+  <article class="card" *ngFor="let category of categories">
+    <div class="card-header"><b>{{category.title}}</b></div>
+    <ul class="list-group list-group-flush">
+      <a class="list-group-item" *ngFor="let page of category.pages"
+          [routerLink]="[page.flat_name]">
+        {{page.title}}
+      </a>
+      <a class="list-group-item text-primary"
+          *ngIf="isCampaignOwner()"
+          [routerLink]="['new']"
+          [queryParams]="{category: category.flat_name}">
+        <i class="fa fa-plus"></i> Criar nova página
+      </a>
+    </ul>
+  </article>
+</section>
+
+<section class="card-columns" *ngIf="!isActiveCategory('')">
+  <campaign-page-card *ngFor="let page of filteredPages"
+    [page]="page"></campaign-page-card>
+  <article class="card" *ngIf="!filteredPages.length">
+    <div class="card-body text-center">
+      <p class="card-text" *ngIf="!isCampaignOwner()">
+        Nenhuma página encontrada
+      </p>
+      <a class="card-link" [routerLink]="['new']" *ngIf="isCampaignOwner()">
+        <i class="fa fa-plus"></i>
+        <span class="d-sm-none d-md-inline">Criar nova página</span>
+      </a>
+    </div>
+  </article>
+</section>
