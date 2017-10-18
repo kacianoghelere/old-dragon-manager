@@ -1,16 +1,13 @@
-<a class="card" [routerLink]="['/main/campaigns', campaign.id]">
-  <img [ngClass]="getCoverClass()" [src]="campaign.picture"
-    [alt]="campaign.title">
-  <div [ngClass]="getBodyClass()">
+<a class="card" [routerLink]="['/main/campaigns', campaign.uuid]">
+  <img class="card-img-top" [src]="campaign.picture" [alt]="campaign.title">
+  <div class="card-body">
+    <span class="dungeon-master" *ngIf="showDetails">
+      <img class="avatar rounded-circle"
+        [src]="campaign.dungeonMaster.avatar"
+        [alt]="campaign.dungeonMaster.name" />
+        <small class="name text-muted">{{campaign.dungeonMaster.name}}</small>
+    </span>
     <h4 class="card-title">{{campaign.title}}</h4>
-    <p class="card-text" *ngIf="showDetails">
-      <span class="badge badge-primary">
-        {{campaign.characters.length}} personagens
-      </span>
-      <span class="badge badge-primary">
-        {{campaign.journals.length}} sessões jogadas
-      </span>
-    </p>
-    <p class="card-text">{{campaign.description}}</p>
+    <small class="card-text">{{campaign.description}}</small>
   </div>
 </a>

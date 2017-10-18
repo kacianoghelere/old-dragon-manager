@@ -192,7 +192,7 @@ export class CampaignPageEditorComponent extends CoreComponent
   toFormGroup(page: CampaignPage): void {
     this.page = this.page || {title: '', body: ''};
     let category = page['page_category'] || {};
-    let page_category_id = category ? category['id'] : null;
+    let page_category_id = category ? category['flat_name'] : null;
     this.pageForm = this.formBuilder.group({
       id : this.page.id,
       title: [

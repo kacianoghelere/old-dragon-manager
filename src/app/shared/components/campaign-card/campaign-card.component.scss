@@ -1,0 +1,46 @@
+$dungeon-master-size: 3em !default;
+
+.card {
+  .card-img-top {
+    max-height: 100px;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+
+  .card-body {
+    position: relative;
+
+    .dungeon-master {
+      align-items: center;
+      background-color: #fff;
+      border-radius: 2em;
+      box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      left: .25em;
+      max-height: $dungeon-master-size;
+      min-height: $dungeon-master-size;
+      padding: .25em;
+      position: absolute;
+      top: -($dungeon-master-size / 2);
+      width: auto;
+
+      .avatar {
+        max-height: $dungeon-master-size - .25em;
+        max-width: $dungeon-master-size - .25em;
+        min-height: $dungeon-master-size - .25em;
+        min-width: $dungeon-master-size - .25em;
+      }
+
+      .name {
+        margin: 0;
+        padding: 4px;
+      }
+    }
+
+    .card-title {
+      margin-top: .5em;
+    }
+  }
+}

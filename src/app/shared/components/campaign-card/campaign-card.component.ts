@@ -14,20 +14,6 @@ export class CampaignCardComponent implements OnInit {
 
   constructor() { }
 
-  getBodyClass(): any {
-    return {
-      'card-body': this.showDetails,
-      'card-img-overlay': !this.showDetails
-    };
-  }
-
-  getCoverClass(): any {
-    return {
-      'card-img-top': this.showDetails,
-      'card-img': !this.showDetails
-    };
-  }
-
   ngOnInit() {
   }
 }

@@ -42,7 +42,7 @@ export class CampaignCharactersService extends EntityService<Character> {
      */
     listChildren(
       campaign_id: number,
-      params?: URLSearchParams
+      params?: any
     ): Observable<Character[]> {
       let custom = super._custom(this.parentResource, this.resource);
       return custom(campaign_id, params);

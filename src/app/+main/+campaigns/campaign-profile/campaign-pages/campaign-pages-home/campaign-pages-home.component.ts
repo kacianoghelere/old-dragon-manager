@@ -23,6 +23,7 @@ export class CampaignPagesHomeComponent implements OnInit, OnDestroy {
   campaign_id: number;
   categories: PageCategory[];
   currentCategory: string = '';
+  groups: PageCategory[] = [];
   subscription: Subscription;
   pages: CampaignPage[];
 
@@ -53,6 +54,43 @@ export class CampaignPagesHomeComponent implements OnInit, OnDestroy {
   changeList(category: string) {
     // console.log('changeList', category);
     this.currentCategory = category;
+  }
+
+  /**
+   * Agrupa elementos a partir de nome de propriedade
+   * @param  {any[]}  array Coleção de elementos
+   * @param  {string} group Nome da propriedade agregadora
+   * @return {any}          Objeto de itens catalogados
+   */
+  groupPages(pages: CampaignPage[]): PageCategory[] {
+    let categories: PageCategory[] = [
+      {id: null, title: 'Outros', flat_name: null, pages: []}
+    ];
+    pages.forEach((page) => {
+      if (!page.page_category) {
+        categories[0].pages.push(page);
+      } else {        
+        if (!categories.find((val) => val.id === page.page_category.id)) {
+          categories.push(page.page_category);
+        }
+
+        let category: PageCategory = categories.find((category) => {
+          return category.id === page.page_category.id;
+        });
+
+        category.pages = category.pages || [];
+        category.pages.push(page);
+      }
+    });
+    return categories;
+  }
+
+  objectToArray(value: any): any[] {
+    let collection = [];
+    for (let key in value) {
+      collection.push
+    }
+    return collection;
   }
 
   /**
@@ -110,10 +148,14 @@ export class CampaignPagesHomeComponent implements OnInit, OnDestroy {
    */
   refresh() {
     if (this.campaign) {
-      let params: URLSearchParams = new URLSearchParams();
+      let params: URLSearchParams = new URLSearchParams('');
       params.set('page_category', this.currentCategory);
       this.campaignPagesService.listChildren(this.campaign_id, params)
-        .subscribe((pages) => this.pages = pages);
+        .subscribe((pages) => {
+          this.pages = pages;
+          this.groups = this.groupPages(this.pages);
+          console.log('Grupos gerados', this.groups);
+        });
     }
   }
 }

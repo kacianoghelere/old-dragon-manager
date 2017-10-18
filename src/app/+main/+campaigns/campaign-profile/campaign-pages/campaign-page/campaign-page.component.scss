@@ -3,3 +3,9 @@
 .hide-dm-content {
   /deep/ .dm-content { display: none; }
 }
+
+.page-title {
+  margin: 0;
+  margin-bottom: .5em;
+  padding: .25em 0;
+}

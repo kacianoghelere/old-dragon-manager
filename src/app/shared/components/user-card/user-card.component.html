@@ -1,11 +1,11 @@
 <article class="user-card">
   <a class="user-header" [routerLink]="['/users/profile', user.id]">
     <div class="user-avatar">
-        <img [src]="avatar(user.email)" [alt]="user.name" />
+      <img [src]="user.avatar" [alt]="user.name" />
     </div>
     <div class="user-body">
       <div class="user-name">
-          <span>{{user?.name}}</span>
+        <span>{{user?.name}}</span>
       </div>
       <small class="user-title">{{user.title}}</small>
       <small class="user-text">{{user.email}}</small>

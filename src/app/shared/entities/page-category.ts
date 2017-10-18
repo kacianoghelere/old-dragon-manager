@@ -4,5 +4,5 @@ export class PageCategory {
   id?: number;
   title: string;
   flat_name?: string;
-  pages?: CampaignPage;
+  pages?: CampaignPage[];
 }

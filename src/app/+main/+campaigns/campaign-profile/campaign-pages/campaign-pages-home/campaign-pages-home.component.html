@@ -21,17 +21,20 @@
 </nav>
 
 <section class="card-columns" *ngIf="isActiveCategory('')">
-  <article class="card" *ngFor="let category of categories">
-    <div class="card-header"><b>{{category.title}}</b></div>
+  <article class="card" *ngFor="let group of groups"
+      [hidden]="!group.pages.length">
+    <div class="card-header"><b>{{group.title}}</b></div>
     <ul class="list-group list-group-flush">
-      <a class="list-group-item" *ngFor="let page of category.pages"
+      <a class="list-group-item" *ngFor="let page of group.pages"
           [routerLink]="[page.flat_name]">
-        {{page.title}}
+        <i class="fa fa-key" *ngIf="page.dm_only"></i> {{page.title}}
       </a>
+    </ul>
+    <ul class="list-group list-group-flush" *ngIf="group.flat_name">
       <a class="list-group-item text-primary"
           *ngIf="isCampaignOwner()"
           [routerLink]="['new']"
-          [queryParams]="{category: category.flat_name}">
+          [queryParams]="{category: group.flat_name}">
         <i class="fa fa-plus"></i> Criar nova página
       </a>
     </ul>

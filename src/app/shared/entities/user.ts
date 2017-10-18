@@ -3,14 +3,15 @@ import { Character } from './character';
 import { Role } from './role';
 
 export class User {
-  id: number = null;
-  name: string = '';
-  email?: string = '';
-  user_code?: string = '';
-  role?: Role = {id: null, name: '', admin: false};
-  role_id?: number;
-  password?: string = '';
-  confirm?: string = '';
-  invitations?: CampaignInvitation[];
+  avatar?: string = '';
   characters?: Character[];
+  confirm?: string = '';
+  email?: string = '';
+  id: number = null;
+  invitations?: CampaignInvitation[];
+  name: string = '';
+  password?: string = '';
+  role_id?: number;
+  role?: Role = {id: null, name: '', admin: false};
+  user_code?: string = '';
 }

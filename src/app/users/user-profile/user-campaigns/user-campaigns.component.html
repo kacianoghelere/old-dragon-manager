@@ -1,10 +1,8 @@
 <section *ngIf="hasData(campaigns)">
   <h3>Campanhas</h3>
-  <div class="list-group">
-    <a class="list-group-item" *ngFor="let campaign of campaigns"
-        [routerLink]="['/main/campaigns', campaign.id]">
-      <h5 class="card-title">{{campaign.title}}</h5>
-      <p class="card-text row col">{{campaign?.description}}</p>
-    </a>
+
+  <div class="card-columns">
+    <campaign-card *ngFor="let campaign of campaigns"
+      [campaign]="campaign"></campaign-card>
   </div>
 </section>

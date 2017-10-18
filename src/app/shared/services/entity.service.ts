@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs/Observable';
 
-import { Http, Headers } from '@angular/http';
+import { Http, Headers, RequestOptions, URLSearchParams, QueryEncoder } from '@angular/http';
 
 import { AuthenticationService } from '../../authentication/authentication.service';
 
@@ -198,8 +198,18 @@ export abstract class EntityService<T> {
    * @return {[type]}          [description]
    */
   protected _list(resource: string) {
-    return (): Observable<any> => {
-      return this.http.get(`${this.url}/${resource}`, this.options)
+    return (search?: any): Observable<any> => {
+      let params = new URLSearchParams('');
+      for (let key in search) {
+        params.set(key, search[key]);
+      }
+
+      let options = new RequestOptions();
+      options.headers = this.options.headers;
+      options.params = params;
+
+      console.log('sending with', options);
+      return this.http.get(`${this.url}/${resource}`, options)
         .map(this.responseToJson);
     }
   }

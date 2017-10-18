@@ -139,7 +139,7 @@ export class CampaignPagesService extends EntityService<CampaignPage> {
    */
   listChildren(
     campaign_id: number,
-    params?: URLSearchParams
+    params?: any
   ): Observable<CampaignPage[]> {
     let custom = super._custom(this.parentResource, this.resource);
     return custom(campaign_id, params);
