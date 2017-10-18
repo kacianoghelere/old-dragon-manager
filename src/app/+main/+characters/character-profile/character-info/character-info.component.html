@@ -1,4 +1,11 @@
 <div class="card">
+  <div class="card-body">
+    <h5 class="card-title"><i>{{character?.quote}}</i></h5>
+    <p class="card-text">{{character?.description}}</p>
+  </div>
+</div>
+
+<div class="card">
   <div class="card-body row">
     <div class="col-sm-12 col-md-6 col-lg-3">
       <b>Idade</b><br>{{character?.age}} anos
@@ -10,7 +17,7 @@
       <b>Peso</b><br>{{character?.weight}}kg
     </div>
     <div class="col-sm-12 col-md-6 col-lg-3">
-      <b>Alinhamento</b><br>{{character?.status?.alignment?.name}}
+      <b>Nível</b><br>{{character?.status?.current_level}}
     </div>
   </div>
 </div>
@@ -29,12 +36,5 @@
     <div class="col-sm-12 col-md-6 col-lg-3">
       <b>Especialização</b><br>{{character?.specialization?.name}}
     </div>
-  </div>
-</div>
-
-<div class="card">
-  <div class="card-body">
-    <h5 class="card-title"><i>{{character?.quote}}</i></h5>
-    <p class="card-text">{{character?.description}}</p>
   </div>
 </div>

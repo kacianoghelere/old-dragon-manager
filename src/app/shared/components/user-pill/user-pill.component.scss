@@ -1,0 +1,28 @@
+$pill-size: 3em !default;
+
+.user-pill {
+  align-items: center;
+  background-color: #fff;
+  border-radius: 2em;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  left: .25em;
+  max-height: $pill-size;
+  min-height: $pill-size;
+  padding: .25em;
+  width: auto;
+
+  .avatar {
+    max-height: $pill-size - .25em;
+    max-width: $pill-size - .25em;
+    min-height: $pill-size - .25em;
+    min-width: $pill-size - .25em;
+  }
+
+  .name {
+    margin: 0;
+    padding: 4px;
+  }
+}

@@ -1,0 +1,6 @@
+<a class="user-pill" [routerLink]="['/users/profile', user.id]">
+  <img class="avatar rounded-circle"
+    [src]="user.avatar"
+    [alt]="user.name" />
+    <small class="name text-muted">{{user.name}}</small>
+</a>
