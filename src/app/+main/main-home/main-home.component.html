@@ -3,9 +3,9 @@
     <a class="card card-blurred" [routerLink]="[link.route]"
         *ngFor="let link of links">
       <img class="card-img" [src]="link.picture" alt="link.title">
-      <div class="card-img-overlay">
-        <h4 class="card-title"><b>{{link.title}}</b></h4>
-        <p class="card-text">{{link.description}}</p>
+      <div class="card-img-overlay d-flex flex-column justify-content-between">
+        <h5 class="card-title"><b>{{link.title}}</b></h5>
+        <small class="card-text">{{link.description}}</small>
       </div>
     </a>
   </section>

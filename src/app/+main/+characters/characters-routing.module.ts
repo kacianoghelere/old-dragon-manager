@@ -22,8 +22,12 @@ const charactersRoutes: Routes = [
         path: 'sheet',
         loadChildren: 'app/+main/+characters/+sheet/sheet.module#SheetModule'
       },
+      {
+        path: 'specializations',
+        loadChildren: 'app/+main/+characters/+specializations/specializations.module#SpecializationsModule'
+      },
       { path: ':id', component: CharacterProfileComponent },
-      { path: '', component: CharactersHomeComponent }
+      { path: '', component: CharactersHomeComponent, pathMatch: 'full' }
     ]
   }
 ];

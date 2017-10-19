@@ -10,12 +10,8 @@ const classesRoutes: Routes = [
     path: '',
     component: ClassesComponent,
     children: [
-      {path: '', component: ClassesListComponent},
-      {path: 'details/:id', component: ClassDetailsComponent},
-      {
-        path: 'specializations',
-        loadChildren: `app/+main/+characters/+classes/+specializations/specializations.module#SpecializationsModule`
-      }
+      {path: '', component: ClassesListComponent, pathMatch: 'full'},
+      {path: ':id', component: ClassDetailsComponent}
     ]
   }
 ];

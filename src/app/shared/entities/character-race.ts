@@ -14,6 +14,7 @@ export class CharacterRace {
   dex_mod?: number = 0;
   dice?: Dice = null;
   example_picture?: string;
+  flat_name?: string;
   id: number;
   int_mod?: number = 0;
   maturity?: number = 0;

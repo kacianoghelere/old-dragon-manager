@@ -12,6 +12,7 @@ import { ClassesListComponent } from './classes-list/classes-list.component';
 import { ClassesService } from './shared/classes.service';
 import { ClassUndeadBanesComponent } from './class-details/class-undead-banes/class-undead-banes.component';
 import { LayoutModule } from '../../../layout/layout.module';
+import { ClassSpecializationsComponent } from './class-details/class-specializations/class-specializations.component';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { LayoutModule } from '../../../layout/layout.module';
     ClassThiefTalentsComponent,
     ClassMagicCirclesComponent,
     ClassesListComponent,
-    ClassUndeadBanesComponent
+    ClassUndeadBanesComponent,
+    ClassSpecializationsComponent
   ],
   providers: [ClassesService]
 })

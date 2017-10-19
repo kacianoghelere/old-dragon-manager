@@ -3,11 +3,11 @@ import { Component, OnInit, Input } from '@angular/core';
 import { CharacterClass } from '../../../../../shared/entities/character-class';
 
 @Component({
-  selector: 'class-undead-banes',
-  templateUrl: './class-undead-banes.component.html',
-  styleUrls: ['./class-undead-banes.component.scss']
+  selector: 'class-specializations',
+  templateUrl: './class-specializations.component.html',
+  styleUrls: ['./class-specializations.component.scss']
 })
-export class ClassUndeadBanesComponent implements OnInit {
+export class ClassSpecializationsComponent implements OnInit {
 
   @Input() characterClass: CharacterClass;
 
@@ -20,5 +20,4 @@ export class ClassUndeadBanesComponent implements OnInit {
     if (collection && collection.length) return false;
     return true;
   }
-
 }

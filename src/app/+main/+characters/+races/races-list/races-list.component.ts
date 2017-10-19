@@ -14,30 +14,21 @@ import { RacesService } from '../shared/races.service';
 })
 export class RacesListComponent implements OnInit, OnDestroy {
 
-  // Public variables
-  // ---------------------------------------------------------------------------
-  subscription: Subscription;
   races: CharacterRace[];
+  subscription: Subscription;
 
-  //
-  // Functions
-  // ===========================================================================
   constructor(
     private authService: AuthenticationService,
     private racesService: RacesService
   ) { }
 
-  //
-  // Lifecycle hooks functions
-  // ---------------------------------------------------------------------------
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 
   ngOnInit() {
     this.subscription = this.racesService.list()
       .subscribe((response) => this.races = response);
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
   }
 
 }

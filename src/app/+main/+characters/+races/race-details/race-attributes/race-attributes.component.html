@@ -1,7 +1,9 @@
 <section>
   <article class="card">
-    <div class="card-body">
+    <div class="card-header">
       <h5 class="card-title">Características</h5>
+    </div>
+    <div class="card-body">
       <p class="card-text">Atingem a maturidade aos {{characterRace.maturity}}
         anos.</p>
       <p class="card-text">Tendem a viver até {{characterRace.max_age}} anos</p>
@@ -15,29 +17,31 @@
   </article>
 
   <article class="card">
-    <div class="card-body">
+    <div class="card-header">
       <h5 class="card-title">Modificadores</h5>
-      <p *ngIf="characterRace.str_mod != 0">
-        <b>Força:</b> {{characterRace.str_mod}}
-      </p>
-      <p *ngIf="characterRace.dex_mod != 0">
-        <b>Destreza:</b> {{characterRace.dex_mod}}
-      </p>
-      <p *ngIf="characterRace.cons_mod != 0">
-        <b>Constituição:</b> {{characterRace.cons_mod}}
-      </p>
-      <p *ngIf="characterRace.int_mod != 0">
-        <b>Inteligência:</b> {{characterRace.int_mod}}
-      </p>
-      <p *ngIf="characterRace.wis_mod != 0">
-        <b>Sabedoria:</b> {{characterRace.wis_mod}}
-      </p>
-      <p *ngIf="characterRace.char_mod != 0">
-        <b>Carisma:</b> {{characterRace.char_mod}}
-      </p>
-      <p *ngIf="characterRace.versatile_mod">
-        O jogador pode escolher os atributos. +2 em um atributo e -2 em outro.
-      </p>
     </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" *ngIf="characterRace.str_mod != 0">
+        <b>Força:</b> {{characterRace.str_mod}}
+      </li>
+      <li class="list-group-item" *ngIf="characterRace.dex_mod != 0">
+        <b>Destreza:</b> {{characterRace.dex_mod}}
+      </li>
+      <li class="list-group-item" *ngIf="characterRace.cons_mod != 0">
+        <b>Constituição:</b> {{characterRace.cons_mod}}
+      </li>
+      <li class="list-group-item" *ngIf="characterRace.int_mod != 0">
+        <b>Inteligência:</b> {{characterRace.int_mod}}
+      </li>
+      <li class="list-group-item" *ngIf="characterRace.wis_mod != 0">
+        <b>Sabedoria:</b> {{characterRace.wis_mod}}
+      </li>
+      <li class="list-group-item" *ngIf="characterRace.char_mod != 0">
+        <b>Carisma:</b> {{characterRace.char_mod}}
+      </li>
+      <li class="list-group-item" *ngIf="characterRace.versatile_mod">
+        O jogador pode escolher os atributos. +2 em um atributo e -2 em outro.
+      </li>
+    </ul>
   </article>
 </section>

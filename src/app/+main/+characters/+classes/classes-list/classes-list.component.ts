@@ -14,35 +14,24 @@ import { ClassesService } from '../shared/classes.service';
 })
 export class ClassesListComponent implements OnInit {
 
-  // Public variables
-  // ---------------------------------------------------------------------------
   subscription: Subscription;
   classes: CharacterClass[];
   trail: Link[];
 
-  //
-  // Functions
-  // ===========================================================================
   constructor(
     private authService: AuthenticationService,
     private classesService: ClassesService
   ) {
-    this.trail = [
-      {title: 'Personagens', route: '/main/characters'}
-    ]
-  }
-
-  //
-  // Lifecycle hooks functions
-  // ---------------------------------------------------------------------------
-
-  ngOnInit() {
-    this.subscription = this.classesService.list()
-      .subscribe((response) => this.classes = response);
+    this.trail = [{title: 'Personagens', route: '/main/characters'}]
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  ngOnInit() {
+    this.subscription = this.classesService.list()
+      .subscribe((response) => this.classes = response);
   }
 
 }

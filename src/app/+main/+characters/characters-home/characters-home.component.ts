@@ -26,10 +26,11 @@ export class CharactersHomeComponent implements OnInit {
         route: 'classes'
       },
       {
-        title: 'Ficha',
-        picture: '/assets/sheet_card.jpg',
-        description: 'Monte aqui seu personagem.',
-        route: 'sheet'
+        title: 'Especializações',
+        picture: '/assets/specializations_card.jpg',
+        description: 'Criação e consulta de variações de construção de '
+          + ' personagens.',
+        route: 'specializations'
       }
     ]
   }

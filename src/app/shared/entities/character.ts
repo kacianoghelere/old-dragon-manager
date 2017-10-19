@@ -1,7 +1,7 @@
 import { Attributes } from "./attributes";
 import { Campaign } from "./campaign";
 import { CharacterClass } from "./character-class";
-import { CharacterClassSpecialization } from "./character-class-specialization";
+import { CharacterSpecialization } from "./character-specialization";
 import { CharacterJournal } from "./character-journal";
 import { CharacterRace } from "./character-race";
 import { User } from "./user";
@@ -17,7 +17,7 @@ export class Character {
   player?: User;
   quote?: string;
   race?: CharacterRace;
-  specialization?: CharacterClassSpecialization;
+  specialization?: CharacterSpecialization;
   status?: CharacterJournal;
   title?: string;
 }

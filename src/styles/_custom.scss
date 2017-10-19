@@ -176,3 +176,36 @@ h6, .h6 {
     }
   }
 }
+
+
+.bg-chaotic { @extend .bg-danger; }
+
+.bg-lawfull { @extend .bg-info; }
+
+.bg-neutral { @extend .bg-success; }
+
+.text-chaotic { @extend .text-danger; }
+
+.text-lawfull { @extend .text-info; }
+
+.text-neutral { @extend .text-success; }
+
+.card {
+  &.bg-chaotic,
+  &.bg-lawfull,
+  &.bg-neutral {
+
+    .card-title {
+      @extend .text-light;
+      text-shadow: 0 1px 1px rgba(0, 0, 0, .5);
+    }
+
+    .card-body {
+      @extend .bg-light;
+
+      .card-text{
+        @extend .text-dark;
+      }
+    }
+  }
+}

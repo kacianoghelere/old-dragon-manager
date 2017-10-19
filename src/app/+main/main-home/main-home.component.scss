@@ -2,3 +2,19 @@
   height: 150px;
   max-height: 150px;
 }
+
+.card-img-overlay {
+
+  .card-text {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s linear;
+  }
+
+  &:hover {
+    .card-text {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
