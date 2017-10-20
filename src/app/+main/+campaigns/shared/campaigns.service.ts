@@ -72,6 +72,12 @@ export class CampaignsService extends EntityService<Campaign> {
     return super._list(this.resource)();
   }
 
+  /**
+   * [update description]
+   * @param  {number}          id     [description]
+   * @param  {Campaign}        params [description]
+   * @return {Observable<any>}        [description]
+   */
   update(id: number, params: Campaign): Observable<any> {
     return super._update(this.resource)(id, {campaign: params});
   }

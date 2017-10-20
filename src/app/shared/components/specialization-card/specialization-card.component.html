@@ -1,0 +1,16 @@
+<a class="card card-blurred"
+    [routerLink]="['/main/characters/specializations', specialization.flat_name]">
+  <div class="card-picture small">
+    <img class="card-img" [src]="specialization.picture"
+      [alt]="specialization.name">
+  </div>
+  <div class="card-img-overlay d-flex flex-column justify-content-between">
+    <div>
+      <h4 class="card-title">{{specialization?.name}}</h4>
+      <small class="card-text">{{specialization?.character_class?.name}}</small>
+    </div>
+    <small class="card-text description">
+      {{specialization?.short_description}}
+    </small>
+  </div>
+</a>

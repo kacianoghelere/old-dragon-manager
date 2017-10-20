@@ -1,0 +1,53 @@
+<layout-base *ngIf="specialization" [pageTitle]="specialization.name"
+    [cover]="specialization.picture">
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark text-light layout-toolbar">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item ml-1">
+        <a class="nav-link text-light" [routerLink]="['../']">
+          <i class="fa fa-arrow-left"></i>
+          <span class="d-sm-none d-md-inline">Especializações</span>
+        </a>
+      </li>
+    </ul>
+    <ul class="navbar-nav my-2 my-lg-0">
+      <li class="nav-item">
+        <a class="nav-link text-light" [routerLink]="['edit']">
+          <i class="fa fa-edit"></i>
+          <span class="d-sm-none d-md-inline">Editar Especialização</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <section class="row">
+    <article class="col-sm-12 col-md-5 col-lg-4">
+      <div class="card">
+        <img class="card-img-top" [src]="specialization.picture"
+          [alt]="specialization.name">
+        <div class="card-header">
+          <h6 class="card-title">
+            Sub-classe para <b>{{specialization?.character_class?.name}}</b>
+          </h6>
+        </div>
+        <div class="card-header">
+          <h6 class="card-title">
+            Alinhamento {{specialization?.alignment?.name}}
+          </h6>
+        </div>
+        <div class="card-body">
+          <p class="card-text">{{specialization.description}}</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="col-sm-12 col-md-7 col-lg-8">
+      <h4>Estágios</h4>
+      <specialization-stages [specialization]="specialization"
+        ></specialization-stages>
+    </article>
+  </section>
+
+  <div class="layout-controls layout-end">
+    <!-- <user-pill [user]="specialization?.player"></user-pill> -->
+  </div>
+</layout-base>

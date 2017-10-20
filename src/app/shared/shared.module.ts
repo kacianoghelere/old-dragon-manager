@@ -10,10 +10,11 @@ import { ToasterService } from './toaster.service';
 import { CoreComponent } from './components/core/core.component';
 import { CampaignCardComponent } from './components/campaign-card/campaign-card.component';
 import { CharacterCardComponent } from './components/character-card/character-card.component';
-import { UserPillComponent } from './components/user-pill/user-pill.component';
 import { MarkdownRendererComponent } from './components/markdown-renderer/markdown-renderer.component';
 import { MarkdownInstructionsComponent } from './components/markdown-instructions/markdown-instructions.component';
+import { SpecializationCardComponent } from './components/specialization-card/specialization-card.component';
 import { UserCardComponent } from './components/user-card/user-card.component';
+import { UserPillComponent } from './components/user-pill/user-pill.component';
 
 import { HtmlOutletDirective } from './directives/html-outlet.directive';
 
@@ -39,7 +40,8 @@ import { CustomMarkdownService } from './services/custom-markdown.service';
     MarkdownInstructionsComponent,
     MarkdownRendererComponent,
     UserCardComponent,
-    HtmlOutletDirective
+    HtmlOutletDirective,
+    SpecializationCardComponent
   ],
   exports: [
     MarkdownModule,
@@ -50,7 +52,8 @@ import { CustomMarkdownService } from './services/custom-markdown.service';
     MarkdownRendererComponent,
     MarkdownInstructionsComponent,
     UserCardComponent,
-    HtmlOutletDirective
+    HtmlOutletDirective,
+    SpecializationCardComponent
   ]
 })
 export class SharedModule { }

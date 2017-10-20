@@ -57,6 +57,18 @@ export class CampaignPagesHomeComponent implements OnInit, OnDestroy {
   }
 
   /**
+   * Filtro de páginas selecionadas
+   * @return {CampaignPage[]} Lista filtrada de páginas
+   */
+  get filteredPages(): CampaignPage[] {
+    return this.pages.filter((page) => {
+      let category = page.page_category;
+      return (!this.currentCategory)
+        || (category && category.flat_name === this.currentCategory);
+    });
+  }
+
+  /**
    * Agrupa elementos a partir de nome de propriedade
    * @param  {any[]}  array Coleção de elementos
    * @param  {string} group Nome da propriedade agregadora
@@ -69,7 +81,7 @@ export class CampaignPagesHomeComponent implements OnInit, OnDestroy {
     pages.forEach((page) => {
       if (!page.page_category) {
         categories[0].pages.push(page);
-      } else {        
+      } else {
         if (!categories.find((val) => val.id === page.page_category.id)) {
           categories.push(page.page_category);
         }
@@ -83,14 +95,6 @@ export class CampaignPagesHomeComponent implements OnInit, OnDestroy {
       }
     });
     return categories;
-  }
-
-  objectToArray(value: any): any[] {
-    let collection = [];
-    for (let key in value) {
-      collection.push
-    }
-    return collection;
   }
 
   /**
@@ -129,17 +133,12 @@ export class CampaignPagesHomeComponent implements OnInit, OnDestroy {
     });
   }
 
-  /**
-   * Filtro de páginas selecionadas
-   * @return {CampaignPage[]} Lista filtrada de páginas
-   */
-  get filteredPages(): CampaignPage[] {
-
-    return this.pages.filter((page) => {
-      let category = page.page_category;
-      return (!this.currentCategory)
-        || (category && category.flat_name === this.currentCategory);
-    });
+  objectToArray(value: any): any[] {
+    let collection = [];
+    for (let key in value) {
+      collection.push
+    }
+    return collection;
   }
 
   /**

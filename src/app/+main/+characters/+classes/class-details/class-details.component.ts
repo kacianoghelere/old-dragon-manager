@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { ClassesService } from '../shared/classes.service';
+import { ClassesService } from '../../shared/classes.service';
 import { AuthenticationService } from '../../../../authentication/authentication.service';
 import { CoreComponent } from '../../../../shared/components/core/core.component';
 import { CharacterClass } from '../../../../shared/entities/character-class';

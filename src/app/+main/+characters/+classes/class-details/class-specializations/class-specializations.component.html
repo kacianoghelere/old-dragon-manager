@@ -1,17 +1,9 @@
 <section>
   <h4>Especializações</h4>
-  <article *ngFor="let spec of characterClass.specializations">
-    <a class="card">
-      <div class="card-header">
-        <h5 class="card-title">
-          <b>{{spec?.name}}</b>
-          <small>(Nível mínimo: {{spec?.min_level}})</small>
-          <small>({{spec?.alignment?.name}})</small>
-        </h5>
-      </div>
-      <div class="card-body">
-        <p class="card-text">{{spec?.description}}</p>
-      </div>
-    </a>
-  </article>
+  <div class="row">
+    <article class="col-sm-12 col-md-6 col-lg-4"
+      *ngFor="let spec of characterClass.specializations">
+      <specialization-card [specialization]="spec"></specialization-card>
+    </article>
+  </div>
 </section>

@@ -59,28 +59,28 @@ export class CoreComponent {
 
   /**
    * [isActiveClass description]
-   * @param  {number} index [description]
+   * @param  {any} index [description]
    * @return {[type]}       [description]
    */
-  protected isActiveClass(index: number): {active: boolean} {
+  protected isActiveClass(index: any): {active: boolean} {
     return {active: this.isActiveTab(index)};
   }
 
   /**
    * [isActiveTab description]
-   * @param  {number}  index [description]
+   * @param  {any}  index [description]
    * @return {boolean}       [description]
    */
-  protected isActiveTab(index: number): boolean {
+  protected isActiveTab(index: any): boolean {
     return index === this.activeTab;
   }
 
   /**
    * [setActiveTab description]
-   * @param  {number} index [description]
+   * @param  {any} index [description]
    * @return {[type]}       [description]
    */
-  protected setActiveTab(index: number) {
+  protected setActiveTab(index: any) {
     this.activeTab = index;
   }
 }

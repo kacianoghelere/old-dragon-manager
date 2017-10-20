@@ -24,7 +24,7 @@
     "@ng-bootstrap/ng-bootstrap": "^1.0.0-beta.5",
     "angular-confirmation-popover": "^3.2.0",
     "angular2-markdown": "^1.6.0",
-    "bootstrap": "^4.0.0-beta",
+    "bootstrap": "^4.0.0-beta.2",
     "core-js": "^2.4.1",
     "font-awesome": "^4.7.0",
     "ngx-toastr": "^6.2.0",

@@ -110,8 +110,7 @@ export class CampaignEditorComponent implements OnInit, OnDestroy {
 
   /**
    * Cria novo FormGroup para a campanha
-   * @param  {Campaign}  campaign Campaign entity
-   * @return {FormGroup}          The new FormGroup
+   * @param {Campaign} campaign Entidade da campanha
    */
   toFormGroup(campaign: Campaign) {
     this.campaignForm = this.formBuilder.group({

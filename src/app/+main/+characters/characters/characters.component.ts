@@ -17,7 +17,7 @@ export class CharactersComponent extends TrailBuilder {
       // children: [
       //   {title: 'Raças', route: '/main/characters/races'},
       //   {title: 'Classes', route: '/main/characters/classes'},
-      //   {title: 'Ficha', route: '/main/characters/sheet'}
+      //   {title: 'Especializações', route: '/main/characters/specializations'}
       // ]
     });
   }

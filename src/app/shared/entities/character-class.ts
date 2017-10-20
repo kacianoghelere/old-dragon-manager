@@ -23,6 +23,7 @@ export class CharacterClass {
   requirement?: AttributeRequirement;
   short_description?: string;
   specializations?: CharacterSpecialization[] = [];
+  style?: string;
   thief_talents?: CharacterClassThiefTalent[] = [];
   type?: CharacterClassType;
   user: User;

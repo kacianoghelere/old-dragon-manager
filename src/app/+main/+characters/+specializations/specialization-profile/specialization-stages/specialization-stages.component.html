@@ -1,0 +1,14 @@
+<section>
+  <article class="card" *ngFor="let stage of specialization.stages">
+    <div class="card-body">
+      <h6 class="card-title">Nível {{stage.unlock_level}}</h6>
+      <p class="card-title">{{stage.description}}</p>
+    </div>
+  </article>
+</section>
+<!-- <ul class="list-group list-group-flush">
+  <li class="card" *ngFor="let stage of specialization.stages">
+    <h6 class="card-title">Nível mínimo: {{stage.unlock_level}}</h6>
+    <p class="card-title">{{stage.description}}</p>
+  </li>
+</ul> -->

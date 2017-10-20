@@ -4,12 +4,13 @@ import { CharacterSpecializationStage } from './character-specialization-stage';
 
 export class CharacterSpecialization {
   alignment?: Alignment;
-  class?: CharacterClass;
+  character_class?: CharacterClass;
   description?: string;
   flat_name?: string;
   id?: number;
   min_level: number;
   name: string;
   picture?: string;
+  short_description?: string;
   stages?: CharacterSpecializationStage[] = [];
 }

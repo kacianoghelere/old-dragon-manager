@@ -1,0 +1,96 @@
+<layout-base *ngIf="specialization" pageTitle="Editor de Especialização">
+  <form *ngIf="specializationForm" [formGroup]="specializationForm"
+      (ngSubmit)="onSubmit(specializationForm)">
+    <section>
+      <div class="form-group row" *ngIf="!specialization.id">
+        <label class="col-sm-12 col-md-2 col-form-label">
+          Classe base
+        </label>
+        <div class="col-sm-12 col-md-10">
+          <span *ngFor="let charClass of characterClasses">
+            <label class="btn btn-light"
+                [ngClass]="getActive(charClass.flat_name, 'characterClass')">
+              <input type="radio" formControlName="characterClass"
+                [value]="charClass.flat_name">
+              <i class="ra {{charClass?.style}}"></i> {{charClass.name}}
+            </label>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-12 col-md-2 col-form-label">
+          Alinhamento
+        </label>
+        <div class="col-sm-12 col-md-10">
+          <span *ngFor="let alignment of alignments">
+            <label class="btn btn-light"
+                [ngClass]="getActive(alignment.id, 'alignment')">
+              <input type="radio" formControlName="alignment"
+                [value]="alignment.id">
+              <i class="ra ra-{{alignment?.style}}"></i> {{alignment.name}}
+            </label>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-md-2 col-form-label" for="specializationName">
+          Nome da Especialização
+        </label>
+        <div class="col-sm-12 col-md-6">
+          <input class="form-control form-control-lg"
+            type="text"
+            id="specializationName"
+            formControlName="name">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="specializationPicture">
+          Imagem de Capa
+        </label>
+        <div class="col-sm-10 col-md-6">
+          <input class="form-control"
+            type="url"
+            id="specializationPicture"
+            formControlName="picture">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="specializationDescription">
+          Descrição da Especialização
+        </label>
+        <div class="col-sm-10">
+          <textarea class="form-control"
+            id="specializationDescription"
+            rows="5"
+            formControlName="description"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="form-group row">
+        <div class="ml-auto col-sm-10">
+          <markdown-instructions></markdown-instructions>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="form-group row">
+        <div class="ml-auto col-sm-10">
+          <button class="btn btn-primary" type="submit"
+              [disabled]="specializationForm.invalid">
+            <i class="fa fa-edit"></i> Salvar
+          </button>
+          <button class="btn btn-link" type="button" (click)="goBack()">
+            <i class="fa fa-remove"></i> Cancelar
+          </button>
+        </div>
+      </div>
+    </section>
+  </form>
+</layout-base>

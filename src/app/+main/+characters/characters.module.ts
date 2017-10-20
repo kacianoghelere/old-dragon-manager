@@ -12,6 +12,9 @@ import { CharacterInfoComponent } from './character-profile/character-info/chara
 import { CharacterCampaignsComponent } from './character-profile/character-campaigns/character-campaigns.component';
 import { CharactersListComponent } from './characters-list/characters-list.component';
 
+import { AlignmentsService } from './shared/alignments.service';
+import { ClassesService } from './shared/classes.service';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -27,6 +30,10 @@ import { CharactersListComponent } from './characters-list/characters-list.compo
     CharacterInfoComponent,
     CharacterCampaignsComponent,
     CharactersListComponent
+  ],
+  providers: [
+    AlignmentsService,
+    ClassesService
   ]
 })
 export class CharactersModule { }

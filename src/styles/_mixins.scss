@@ -7,14 +7,14 @@
 }
 
 @mixin button-variant($background, $border, $active-background: darken($background, 7.5%), $active-border: darken($border, 10%)) {
-  @include color-yiq($background);
   @include button-background($background);
-  box-shadow: $btn-box-shadow;
+  color: color-yiq($background);
+  // box-shadow: $btn-box-shadow;
   // text-transform: uppercase;
   // text-shadow: $btn-focus-text-shadow;
 
   &:hover {
-    @include color-yiq($background);
+    color: color-yiq($background);
     @include button-background($active-background);
   }
 
@@ -23,9 +23,10 @@
     // Avoid using mixin so we can pass custom focus shadow properly
     @if $enable-shadows {
       box-shadow: $btn-box-shadow, 0 0 0 3px rgba($border, .5);
-    } @else {
-      box-shadow: 0 0 0 3px rgba($border, .5);
     }
+    // @else {
+    //   box-shadow: 0 0 0 3px rgba($border, .5);
+    // }
   }
 
   // Disabled comes first so active can properly restyle
@@ -39,7 +40,7 @@
   &.active,
   .show > &.dropdown-toggle {
     @include button-background($active-background);
-    @include box-shadow($btn-active-box-shadow);
+    // @include box-shadow($btn-active-box-shadow);
   }
 }
 
@@ -48,7 +49,7 @@
   background-color: $white;
   background-image: none;
   border-color: $color;
-  box-shadow: $btn-box-shadow;
+  // box-shadow: $btn-box-shadow;
 
   @include hover {
     color: $color-hover;
@@ -59,7 +60,7 @@
 
   &:focus,
   &.focus {
-    box-shadow: 0 0 0 3px rgba($color, .5);
+    // box-shadow: 0 0 0 3px rgba($color, .5);
   }
 
   &.disabled,

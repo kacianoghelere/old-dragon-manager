@@ -17,16 +17,10 @@ import { TrailService }  from "../../../../shared/services/trail.service";
 })
 export class RaceDetailsComponent implements OnInit, OnDestroy {
 
-  // Public variables
-  // ---------------------------------------------------------------------------
   subscription: Subscription;
   characterRace: CharacterRace;
   currentTab: number = 0;
   trailItem: TrailItem;
-
-  //
-  // Functions
-  // ===========================================================================
 
   constructor(
     private route: ActivatedRoute,
@@ -35,10 +29,6 @@ export class RaceDetailsComponent implements OnInit, OnDestroy {
     private racesService: RacesService,
     private trailService: TrailService
   ) { }
-
-  //
-  // Lifecycle hooks functions
-  // ---------------------------------------------------------------------------
 
   ngOnDestroy() {
     this.subscription.unsubscribe();

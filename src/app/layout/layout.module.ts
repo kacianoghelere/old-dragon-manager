@@ -33,7 +33,8 @@ import { LayoutBaseComponent } from './layout-base/layout-base.component';
   exports: [
     WelcomeComponent,
     LayoutHeaderComponent,
-    LayoutBaseComponent
+    LayoutBaseComponent,
+    SharedModule
   ]
 })
 export class LayoutModule { }

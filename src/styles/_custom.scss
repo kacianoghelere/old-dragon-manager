@@ -209,3 +209,49 @@ h6, .h6 {
     }
   }
 }
+
+
+.navbar-dark .navbar-nav .show > .nav-link,
+.navbar-dark .navbar-nav .active > .nav-link,
+.navbar-dark .navbar-nav .nav-link.show,
+.navbar-dark .navbar-nav .nav-link.active {
+  text-shadow: 0 1px 10px rgba(255, 255, 255,.5);
+  // animation: blinker 2s linear infinite;
+}
+
+@keyframes blinker {
+  0% { text-shadow: 0 0 -10px rgba(255,255,255,.7); }
+  40% { text-shadow: 0 0 20px rgba(255,255,255,.5); }
+  60% { text-shadow: 0 0 20px rgba(255,255,255,.5); }
+  100% { text-shadow: 0 0 -10px rgba(255,255,255,.7); }
+}
+
+.card-img-overlay {
+
+  .card-text.description {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s linear;
+  }
+
+  &:hover {
+    .card-text.description {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+
+section { margin: .5em 0; }
+
+.ra-lawfull {
+  @extend .ra-angel-wings;
+}
+
+.ra-neutral {
+  @extend .ra-interdiction;
+}
+
+.ra-chaotic {
+  @extend .ra-batwings;
+}

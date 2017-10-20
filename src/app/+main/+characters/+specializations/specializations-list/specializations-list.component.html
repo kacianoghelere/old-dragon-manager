@@ -1,34 +1,16 @@
 <layout-base pageTitle="Especializações">
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark text-light layout-toolbar">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link pointer" (click)="changeList('')"
-            [ngClass]="{active: true}">
-          Todas
+      <li class="nav-item" [ngClass]="{active: isActiveTab('')}">
+        <a class="nav-link pointer" (click)="setActiveTab('')">
+          <i class="fa fa-th"></i> Todas
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link pointer" (click)="changeList('')"
-            [ngClass]="{active: false}">
-          Clérigo
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link pointer" (click)="changeList('')"
-            [ngClass]="{active: false}">
-          Homem de Armas
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link pointer" (click)="changeList('')"
-            [ngClass]="{active: false}">
-          Ladrão
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link pointer" (click)="changeList('')"
-            [ngClass]="{active: false}">
-          Mago
+      <li class="nav-item"
+          *ngFor="let charClass of characterClasses"
+          [ngClass]="{active: isActiveTab(charClass.flat_name)}">
+        <a class="nav-link pointer" (click)="setActiveTab(charClass.flat_name)">
+          <i class="ra {{charClass.style}}"></i> {{charClass.name}}
         </a>
       </li>
     </ul>
@@ -43,17 +25,9 @@
   </nav>
 
   <section class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4"
-        *ngFor="let spec of specializations">
-      <a class="card card-blurred" [routerLink]="[spec.flat_name]">
-        <div class="card-picture small">
-          <img class="card-img" [src]="spec.picture" [alt]="spec.name">
-        </div>
-        <div class="card-img-overlay">
-          <h4 class="card-title">{{spec?.name}}</h4>
-          <small class="card-text">{{spec?.class?.name}}</small>
-        </div>
-      </a>
-    </div>
+    <article class="col-sm-12 col-md-6 col-lg-4"
+        *ngFor="let spec of filteredSpecializations">
+      <specialization-card [specialization]="spec"></specialization-card>
+    </article>
   </section>
 </layout-base>

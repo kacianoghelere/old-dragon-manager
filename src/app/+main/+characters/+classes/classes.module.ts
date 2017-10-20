@@ -9,7 +9,6 @@ import { ClassModsComponent } from './class-details/class-mods/class-mods.compon
 import { ClassThiefTalentsComponent } from './class-details/class-thief-talents/class-thief-talents.component';
 import { ClassMagicCirclesComponent } from './class-details/class-magic-circles/class-magic-circles.component';
 import { ClassesListComponent } from './classes-list/classes-list.component';
-import { ClassesService } from './shared/classes.service';
 import { ClassUndeadBanesComponent } from './class-details/class-undead-banes/class-undead-banes.component';
 import { LayoutModule } from '../../../layout/layout.module';
 import { ClassSpecializationsComponent } from './class-details/class-specializations/class-specializations.component';
@@ -30,7 +29,6 @@ import { ClassSpecializationsComponent } from './class-details/class-specializat
     ClassesListComponent,
     ClassUndeadBanesComponent,
     ClassSpecializationsComponent
-  ],
-  providers: [ClassesService]
+  ]
 })
 export class ClassesModule { }
