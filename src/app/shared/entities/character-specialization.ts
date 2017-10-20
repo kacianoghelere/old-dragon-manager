@@ -4,7 +4,7 @@ import { CharacterSpecializationStage } from './character-specialization-stage';
 
 export class CharacterSpecialization {
   alignment?: Alignment;
-  character_class?: CharacterClass;
+  class?: CharacterClass;
   description?: string;
   flat_name?: string;
   id?: number;

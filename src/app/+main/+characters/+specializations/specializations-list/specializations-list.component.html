@@ -1,6 +1,37 @@
 <layout-base pageTitle="Especializações">
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark text-light layout-toolbar">
-    <ul class="navbar-nav mr-auto"></ul>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link pointer" (click)="changeList('')"
+            [ngClass]="{active: true}">
+          Todas
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link pointer" (click)="changeList('')"
+            [ngClass]="{active: false}">
+          Clérigo
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link pointer" (click)="changeList('')"
+            [ngClass]="{active: false}">
+          Homem de Armas
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link pointer" (click)="changeList('')"
+            [ngClass]="{active: false}">
+          Ladrão
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link pointer" (click)="changeList('')"
+            [ngClass]="{active: false}">
+          Mago
+        </a>
+      </li>
+    </ul>
     <ul class="navbar-nav my-2 my-lg-0">
       <li class="nav-item ml-1">
         <a class="nav-link text-light" [routerLink]="['new']">
@@ -12,7 +43,7 @@
   </nav>
 
   <section class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3"
+    <div class="col-xs-12 col-sm-6 col-md-4"
         *ngFor="let spec of specializations">
       <a class="card card-blurred" [routerLink]="[spec.flat_name]">
         <div class="card-picture small">
@@ -20,6 +51,7 @@
         </div>
         <div class="card-img-overlay">
           <h4 class="card-title">{{spec?.name}}</h4>
+          <small class="card-text">{{spec?.class?.name}}</small>
         </div>
       </a>
     </div>
