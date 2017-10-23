@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+
+import { ChangeDetectorRef, Component, OnInit, Input } from '@angular/core';
+import { FormBuilder, FormArray, FormGroup, Validators } from '@angular/forms';
+
+import { CharacterSpecialization } from '../../../../../shared/entities/character-specialization';
+import { CharacterSpecializationStage } from '../../../../../shared/entities/character-specialization-stage';
 
 @Component({
   selector: 'specialization-form-stages',
@@ -7,9 +12,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SpecializationFormStagesComponent implements OnInit {
 
-  constructor() { }
+  @Input('specializationForm') specializationForm: FormGroup;
+  @Input('stages') stages: CharacterSpecializationStage[];
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private changeDetectorRef: ChangeDetectorRef
+  ) { }
 
   ngOnInit() {
+    this.specializationForm.addControl('stages', new FormArray([], Validators.minLength(1)));
   }
 
+  /**
+   * Adds a new stage in the campaign
+   */
+  addStage() {
+    const stage: CharacterSpecializationStage = {
+      _destroy: false,
+      description: '',
+      unlock_level: 1
+    };
+    this.stages.push(stage);
+    this.changeDetectorRef.detectChanges();
+  }
 }

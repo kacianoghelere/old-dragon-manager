@@ -208,7 +208,7 @@ export abstract class EntityService<T> {
       options.headers = this.options.headers;
       options.params = params;
 
-      console.log('sending with', options);
+      // console.log('sending with', options);
       return this.http.get(`${this.url}/${resource}`, options)
         .map(this.responseToJson);
     }

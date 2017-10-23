@@ -1,6 +1,7 @@
 import { Alignment } from './alignment';
 import { CharacterClass } from './character-class';
 import { CharacterSpecializationStage } from './character-specialization-stage';
+import { User } from './user';
 
 export class CharacterSpecialization {
   alignment?: Alignment;
@@ -13,4 +14,5 @@ export class CharacterSpecialization {
   picture?: string;
   short_description?: string;
   stages?: CharacterSpecializationStage[] = [];
+  user?: User;
 }

@@ -1,3 +1,37 @@
-<p>
-  specialization-form-stage works!
-</p>
+<article [formGroup]="stageForm" [hidden]="stage._destroy">
+  <input type="hidden" formControlName="id">
+  <input type="hidden" formControlName="_destroy">
+  <div class="form-group row">
+    <div class="col-sm-12 col-md-2">
+      <label class="col-form-label col-form-label-sm"
+          for="unlockLevel{{stageIndex}}">
+        <b>A partir do Nível</b>
+      </label>
+    </div>
+    <div class="col-sm-12 col-md-3 col-lg-2">
+      <input class="form-control form-control-sm" type="number"
+        id="unlockLevel{{stageIndex}}"
+        formControlName="unlock_level">
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-12 col-md-2">
+      <label class="col-form-label col-form-label-sm"
+          for="stageDescription{{stageIndex}}">
+        <b>Descrição</b>
+      </label>
+    </div>
+    <div class="col-sm-12 col-md-10">
+      <textarea class="form-control form-control-sm"
+        id="stageDescription{{stageIndex}}"
+        rows="3"
+        formControlName="description"></textarea>
+    </div>
+  </div>
+  <div class="form-group">
+    <button class="float-right btn btn-outline-danger btn-sm"
+        type="button" (click)="remove()">
+      <i class="fa fa-trash-o"></i> Remover
+    </button>
+  </div>
+</article>

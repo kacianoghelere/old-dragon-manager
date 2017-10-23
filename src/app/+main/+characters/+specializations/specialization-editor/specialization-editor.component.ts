@@ -66,7 +66,8 @@ export class SpecializationEditorComponent extends CoreComponent
               name: '',
               description: '',
               picture: '',
-              min_level: 1
+              min_level: 1,
+              stages: []
             };
             this.toFormGroup(this.specialization);
           }
@@ -97,7 +98,13 @@ export class SpecializationEditorComponent extends CoreComponent
       description: value.description,
       min_level: value.min_level,
       alignment_id: value.alignment,
-      character_class_id: value.characterClass
+      character_class_id: value.characterClass,
+      stages_attributes: value.stages.map((stage) => ({
+        id: stage.id,
+        description: stage.description,
+        unlock_level: +stage.unlock_level,
+        _destroy: stage._destroy
+      }))
     };
     console.log("Gravando!", params);
 
