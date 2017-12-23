@@ -3,7 +3,7 @@ import { CharacterClass } from './character-class';
 import { CharacterSpecializationStage } from './character-specialization-stage';
 import { User } from './user';
 
-export class CharacterSpecialization {
+export interface CharacterSpecialization {
   alignment?: Alignment;
   character_class?: CharacterClass;
   description?: string;
@@ -13,6 +13,6 @@ export class CharacterSpecialization {
   name: string;
   picture?: string;
   short_description?: string;
-  stages?: CharacterSpecializationStage[] = [];
+  stages?: CharacterSpecializationStage[];
   user?: User;
 }

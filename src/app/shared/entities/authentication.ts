@@ -1,6 +1,6 @@
 import { User } from './user';
 
-export class Authentication {
+export interface Authentication {
   token: string;
   user?: User;
 }

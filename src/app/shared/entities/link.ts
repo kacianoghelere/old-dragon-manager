@@ -1,4 +1,4 @@
-export class Link {
+export interface Link {
   title: string;
   description?: string;
   picture?: string;

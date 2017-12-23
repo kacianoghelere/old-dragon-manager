@@ -1,6 +1,4 @@
-export class PerkType {
-
+export interface PerkType {
     id: number;
     name: string;
-
 }

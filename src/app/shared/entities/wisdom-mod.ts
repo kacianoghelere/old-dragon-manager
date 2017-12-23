@@ -1,5 +1,4 @@
-export class WisdomMod {
-
+export interface WisdomMod {
   id: number;
   value: number;
   protection_mod: number;
@@ -10,5 +9,4 @@ export class WisdomMod {
   magic_circle_5_mod: number;
   magic_circle_6_mod: number;
   magic_circle_7_mod: number;
-
 }

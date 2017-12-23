@@ -8,23 +8,23 @@ import { CharacterClassMagicCircle } from './character-class-magic-circle';
 import { CharacterSpecialization } from './character-specialization';
 import { CharacterClassThiefTalent } from './character-class-thief-talent';
 
-export class CharacterClass {
+export interface CharacterClass {
 
   description?: string;
   dice?: Dice;
-  evolutions?: CharacterClassEvolution[] = [];
+  evolutions?: CharacterClassEvolution[];
   example_picture?: string;
   flat_name?: string;
   id: number;
-  magic_circles?: CharacterClassMagicCircle[] = [];
+  magic_circles?: CharacterClassMagicCircle[];
   name: string;
   perk?: Perk;
   picture?: string;
   requirement?: AttributeRequirement;
   short_description?: string;
-  specializations?: CharacterSpecialization[] = [];
+  specializations?: CharacterSpecialization[];
   style?: string;
-  thief_talents?: CharacterClassThiefTalent[] = [];
+  thief_talents?: CharacterClassThiefTalent[];
   type?: CharacterClassType;
   user: User;
 }

@@ -1,7 +1,7 @@
 import { User } from './user';
 
-export class CampaignJournal {
-  active?: boolean = true;
+export interface CampaignJournal {
+  active?: boolean;
   cover_image?: string;
   created_at?: string;
   description: string;

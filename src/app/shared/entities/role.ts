@@ -1,5 +1,5 @@
-export class Role {
-  id?: number = null;
-  name?: string = '';
-  admin: boolean = false;
+export interface Role {
+  id?: number;
+  name?: string;
+  admin: boolean;
 }

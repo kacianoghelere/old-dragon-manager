@@ -1,5 +1,4 @@
-export class IntelligenceMod {
-
+export interface IntelligenceMod {
   id: number;
   value: number;
   languages_mod: number;
@@ -13,5 +12,4 @@ export class IntelligenceMod {
   magic_circle_7_mod: number;
   magic_circle_8_mod: number;
   magic_circle_9_mod: number;
-
 }

@@ -1,6 +1,6 @@
 import { Alignment } from "./alignment";
 
-export class CharacterJournal {
+export interface CharacterJournal {
   id?: number;
   current_level: number;
   current_exp?: number;

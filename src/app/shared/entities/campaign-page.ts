@@ -1,9 +1,9 @@
 import { PageCategory } from './page-category';
 
-export class CampaignPage {
+export interface CampaignPage {
   body: string;
   campaign_id?: number;
-  dm_only?: boolean = false;
+  dm_only?: boolean;
   id?: number;
   title: string;
   picture?: string;

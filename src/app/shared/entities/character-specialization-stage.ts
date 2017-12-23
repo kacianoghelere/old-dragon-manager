@@ -1,5 +1,5 @@
-export class CharacterSpecializationStage {
-  _destroy?: boolean = false;
+export interface CharacterSpecializationStage {
+  _destroy?: boolean;
   id?: number;
   description?: string;
   unlock_level: number;
