@@ -1,4 +1,4 @@
-export class Weapon {
+export interface Weapon {
   id: number;
   name: string;
   description: string;

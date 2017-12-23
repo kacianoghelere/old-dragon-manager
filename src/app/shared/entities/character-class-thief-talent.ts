@@ -1,4 +1,4 @@
-export class CharacterClassThiefTalent {
+export interface CharacterClassThiefTalent {
 
   id: number;
   level: number;

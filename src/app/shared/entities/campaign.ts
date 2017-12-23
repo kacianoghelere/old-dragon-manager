@@ -5,10 +5,10 @@ import { CampaignNote } from './campaign-note';
 import { CampaignPage } from './campaign-page';
 import { User } from './user';
 
-export class Campaign {
+export interface Campaign {
   characters?: Character[];
   description: string;
-  dm_only?: boolean = false;
+  dm_only?: boolean;
   dungeonMaster?: User
   id?: number;
   journals?: CampaignJournal[];

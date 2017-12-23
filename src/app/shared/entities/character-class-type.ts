@@ -1,11 +1,11 @@
-export class CharacterClassType {
+export interface CharacterClassType {
 
   id: number;
   name: string;
-  magic: boolean = false;
+  magic: boolean;
   protection: number;
   key_attr: string;
-  can_bane_undead: boolean = false;
-  has_thief_talents: boolean = false;
+  can_bane_undead: boolean;
+  has_thief_talents: boolean;
 
 }

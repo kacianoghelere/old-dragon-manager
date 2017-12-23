@@ -1,7 +1,7 @@
 import { Campaign } from './campaign';
 import { Character } from './character';
 
-export class CampaignInvitation {
+export interface CampaignInvitation {
   id?: number;
   message: string;
   campaign: Campaign;

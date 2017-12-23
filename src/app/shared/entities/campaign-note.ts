@@ -1,8 +1,8 @@
 import { User } from './user';
 
-export class CampaignNote {
+export interface CampaignNote {
   id?: number;
   description: string;
   dm_only: boolean;
-  active?: boolean = true;
+  active?: boolean;
 }

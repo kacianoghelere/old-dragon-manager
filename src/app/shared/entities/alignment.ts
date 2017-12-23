@@ -1,4 +1,4 @@
-export class Alignment {
+export interface Alignment {
   id: number;
   name: string;
   style?: string;

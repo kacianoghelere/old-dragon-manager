@@ -1,4 +1,4 @@
-export class WisdomMod {
+export interface WisdomMod {
 
   id: number;
   value: number;

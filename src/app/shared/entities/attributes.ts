@@ -1,4 +1,4 @@
-export class Attributes {
+export interface Attributes {
   strength: number;
   dexterity: number;
   constitution: number;
