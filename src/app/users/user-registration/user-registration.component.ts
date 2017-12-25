@@ -44,7 +44,7 @@ export class UserRegistrationComponent implements OnInit, OnDestroy {
   // ---------------------------------------------------------------------------
 
   ngOnInit() {
-    this.user = new User;
+    this.user = {id: null, name: ''};
     this.authSubscription = this.authService.authentication.subscribe(
       (authenticated) => {
         if (!authenticated) {

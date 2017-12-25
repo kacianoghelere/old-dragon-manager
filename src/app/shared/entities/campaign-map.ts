@@ -1,4 +1,4 @@
-export interface CampaignMap {
+export class CampaignMap {
   id?: number;
   description?: string;
   url: string;

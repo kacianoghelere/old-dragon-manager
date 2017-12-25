@@ -15,11 +15,11 @@ export class CampaignsService extends EntityService<Campaign> {
   resource: string = 'campaigns';
 
   constructor(
-    authService: AuthenticationService,
+    authenticationService: AuthenticationService,
     http: Http,
     private charactersService: CharactersService
   ) {
-    super(authService, http);
+    super(authenticationService, http);
   }
 
   /**
@@ -29,7 +29,7 @@ export class CampaignsService extends EntityService<Campaign> {
    */
   canActivateOwner(id: number): Observable<boolean> {
     return this.find(id).map((campaign) => {
-      return this.authService.isCurrentUser(campaign.dungeonMaster);
+      return this.authenticationService.isCurrentUser(campaign.dungeonMaster);
     });
   }
 

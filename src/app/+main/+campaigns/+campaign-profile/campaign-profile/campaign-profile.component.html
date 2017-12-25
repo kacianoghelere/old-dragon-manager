@@ -1,6 +1,5 @@
 <layout-base *ngIf="campaign" [pageTitle]="campaign.title"
     [cover]="campaign.picture" [description]="campaign.description">
-
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark text-light layout-toolbar">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" [routerLinkActive]="['active']">
@@ -38,7 +37,4 @@
   </nav>
 
   <router-outlet></router-outlet>
-  <!-- <section [@routerTransition]="page.activatedRouteData.state">
-    <router-outlet #page="outlet"></router-outlet>
-  </section> -->
 </layout-base>

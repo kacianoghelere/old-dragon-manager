@@ -1,4 +1,4 @@
-export interface AttributeRequirement {
+export class AttributeRequirement {
     id: number;
     str_mod: number;
     dex_mod: number;

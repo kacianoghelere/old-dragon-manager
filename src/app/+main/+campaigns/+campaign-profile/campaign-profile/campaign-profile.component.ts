@@ -25,18 +25,10 @@ export class CampaignProfileComponent extends CoreComponent
   subscription: Subscription;
   trailItem: TrailItem;
 
-  /**
-   * [constructor description]
-   * @param  {ActivatedRoute}        route            [description]
-   * @param  {Router}                router           [description]
-   * @param  {FormBuilder}           formBuilder      [description]
-   * @param  {AuthenticationService} authService      [description]
-   * @param  {CampaignsService}      campaignsService [description]
-   */
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private authService: AuthenticationService,
+    private authenticationService: AuthenticationService,
     private campaignsService: CampaignsService,
     private trailService: TrailService
   ) {
@@ -73,7 +65,7 @@ export class CampaignProfileComponent extends CoreComponent
   isCampaignMember(): boolean {
     return this.campaign.characters.map((character: Character) => {
       return character.player.id;
-    }).indexOf(this.authService.currentUser.id) >= 0;
+    }).indexOf(this.authenticationService.currentUser.id) >= 0;
   }
 
   /**
@@ -81,7 +73,7 @@ export class CampaignProfileComponent extends CoreComponent
    * @return {boolean} Resultado da verificação
    */
   isCampaignOwner(): boolean {
-    return this.authService.isCurrentUser(this.campaign.dungeonMaster);
+    return this.authenticationService.isCurrentUser(this.campaign.dungeonMaster);
   }
 
   ngOnDestroy() {

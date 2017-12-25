@@ -2,7 +2,7 @@ import { CampaignInvitation } from './campaign-invitation';
 import { Character } from './character';
 import { Role } from './role';
 
-export interface User {
+export class User {
   avatar?: string;
   characters?: Character[];
   confirm?: string;

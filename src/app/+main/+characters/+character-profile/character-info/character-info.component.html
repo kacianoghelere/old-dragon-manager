@@ -1,0 +1,48 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title"><i>{{character?.quote}}</i></h5>
+    <p class="card-text">{{character?.description}}</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body row">
+    <div class="col-sm-12 col-md-6 col-lg-3 block">
+      <b>Idade</b>
+      <span>{{character?.age}} anos</span>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-3 block">
+      <b>Altura</b>
+      <span>{{character?.height}} cm</span>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-3 block">
+      <b>Peso</b>
+      <span>{{character?.weight}} kg</span>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-3 block">
+      <b>Nível</b>
+      <span>{{character?.status?.current_level}}</span>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body row">
+    <div class="col-sm-12 col-md-6 col-lg-3 block">
+      <b>Alinhamento</b>
+      <span>{{character?.status?.alignment?.name}}</span>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-3 block">
+      <b>Raça</b>
+      <span>{{character?.race?.name}}</span>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-3 block">
+      <b>Classe</b>
+      <span>{{character?.class?.name}}</span>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-3 block">
+      <b>Especialização</b>
+      <span>{{character?.specialization?.name}}</span>
+    </div>
+  </div>
+</div>

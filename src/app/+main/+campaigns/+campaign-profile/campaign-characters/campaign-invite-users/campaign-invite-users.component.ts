@@ -32,17 +32,10 @@ export class CampaignInviteUsersComponent implements OnInit, OnDestroy {
     private toastrService: ToastrService
   ) { }
 
-  /**
-   * Verifica se ainda existem usuário disponíveis para convidar
-   * @return {boolean} Resultado da verificação
-   */
-  hasUsers(): boolean {
+  hasUsersAvailable(): boolean {
     return !!(this.users && this.users.length);
   }
 
-  /**
-   * Carrega dados de usuários que ainda podem ser adicionados à campanha
-   */
   loadUsers() {
     this.users = [];
     let request = this.usersService.listInvitable(this.campaign.id);
@@ -67,9 +60,9 @@ export class CampaignInviteUsersComponent implements OnInit, OnDestroy {
   onSubmit({value, valid}: {value: {user: number}, valid: boolean}) {
     let params = {
       user_id: value.user,
-      campaign_id: this.campaign.id
+      campaign_id: this.campaign.uuid
     };
-    console.log("Submetido!", params);
+
     this.campaignInvitationService.create(params).subscribe(
       (response: any) => {
         this.toastrService.success(

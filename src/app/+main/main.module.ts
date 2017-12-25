@@ -23,7 +23,11 @@ import { MainFeedComponent } from './main-feed/main-feed.component';
     MainHomeComponent,
     MainFeedComponent
   ],
-  exports: [MainBaseComponent],
-  providers: [CharactersService]
+  exports: [
+    MainBaseComponent
+  ],
+  providers: [
+    CharactersService
+  ]
 })
 export class MainModule { }

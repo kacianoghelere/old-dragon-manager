@@ -1,4 +1,4 @@
-export interface Dice  {
+export class Dice  {
 
   id: number;
   name: string;

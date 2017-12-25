@@ -1,4 +1,4 @@
-export interface IntelligenceMod {
+export class IntelligenceMod {
 
   id: number;
   value: number;

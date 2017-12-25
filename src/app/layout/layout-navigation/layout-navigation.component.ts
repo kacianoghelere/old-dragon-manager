@@ -58,7 +58,7 @@ export class LayoutNavigationComponent extends CoreComponent implements OnInit {
    */
   get currentUser(): User {
     let currentUser = this.authService.currentUser;
-    return currentUser || new User;
+    return currentUser || {id: null, name: ''};
   }
 
   //

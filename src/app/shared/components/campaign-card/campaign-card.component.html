@@ -1,8 +1,11 @@
 <a class="card" [routerLink]="['/main/campaigns', campaign.uuid]">
   <img class="card-img-top" [src]="campaign.picture" [alt]="campaign.title">
   <div class="card-body">
-    <user-pill *ngIf="showDetails" [user]="campaign.dungeonMaster"></user-pill>
+    <!-- <user-pill *ngIf="showDetails" [user]="campaign.dungeonMaster"></user-pill> -->
     <h4 class="card-title">{{campaign.title}}</h4>
+    <p class="text-muted" *ngIf="showDetails">
+      {{ campaign.dungeonMaster?.name }}
+    </p>
     <small class="card-text">{{campaign.description}}</small>
   </div>
 </a>

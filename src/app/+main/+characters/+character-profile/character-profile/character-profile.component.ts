@@ -3,9 +3,9 @@ import { Subscription } from 'rxjs/Subscription';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { CoreComponent } from '../../../shared/components/core/core.component';
-import { Character } from '../../../shared/entities/character';
-import { CharactersService } from '../../shared/characters.service';
+import { CoreComponent } from '../../../../shared/components/core/core.component';
+import { CharactersService } from '../../../shared/characters.service';
+import { Character } from '../../../../shared/entities/character';
 
 @Component({
   selector: 'character-profile',
@@ -15,8 +15,8 @@ import { CharactersService } from '../../shared/characters.service';
 export class CharacterProfileComponent extends CoreComponent
     implements OnInit, OnDestroy {
 
-  subscription: Subscription;
   character: Character;
+  subscription: Subscription;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,12 +26,18 @@ export class CharacterProfileComponent extends CoreComponent
     super();
   }
 
+  isCharacterOwner(): boolean {
+    return this.charactersService.belongToCurrentUser(this.character);
+  }
+
   ngOnDestroy() {
-    if (this.subscription) this.subscription.unsubscribe();
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
   ngOnInit() {
-    this.route.params.subscribe((params) => {
+    this.route.parent.params.subscribe((params: Character) => {
       let id = params['id'];
 
       if (id) {

@@ -28,7 +28,7 @@ export class UserSettingsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.user = new User;
+    this.user = {id: null, name: ''};
     this.route.params.subscribe((params) => {
       this.user_id = params['id'];
       if (this.user_id) {

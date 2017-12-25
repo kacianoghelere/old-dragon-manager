@@ -14,12 +14,12 @@ export abstract class EntityService<T> {
   protected url: string = 'http://127.0.0.1:3000/api/v1';
 
   constructor(
-    protected authService: AuthenticationService,
-    protected http: Http
+    public authenticationService: AuthenticationService,
+    public http: Http
   ) { }
 
   private get options(): any {
-    this.headers = this.authService.authHeaders;
+    this.headers = this.authenticationService.authHeaders;
     return { headers: this.headers };
   }
 

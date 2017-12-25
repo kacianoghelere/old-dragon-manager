@@ -1,6 +1,6 @@
 import { SkillType } from './skill-type';
 
-export interface Skill {
+export class Skill {
   id: number;
   name: string;
   description: string;

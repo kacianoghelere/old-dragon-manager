@@ -1,0 +1,37 @@
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title">Atributos</h4>
+  </div>
+  <div class="list-group list-group-flush">
+    <p class="list-group-item d-flex justify-content-between"
+        title="Força">
+      <span><b>FOR</b> {{character?.status?.strength}}</span>
+      <span>{{ getModifier(character?.status?.strength) }}</span>
+    </p>
+    <p class="list-group-item d-flex justify-content-between"
+        title="Destreza">
+      <span><b>DES</b> {{character?.status?.dexterity}}</span>
+      <span>{{ getModifier(character?.status?.dexterity) }}</span>
+    </p>
+    <p class="list-group-item d-flex justify-content-between"
+        title="Constituição">
+      <span><b>CON</b> {{character?.status?.constitution}}</span>
+      <span>{{ getModifier(character?.status?.constitution) }}</span>
+    </p>
+    <p class="list-group-item d-flex justify-content-between"
+        title="Inteligência">
+      <span><b>INT</b> {{character?.status?.intelligence}}</span>
+      <span>{{ getModifier(character?.status?.intelligence) }}</span>
+    </p>
+    <p class="list-group-item d-flex justify-content-between"
+        title="Sabedoria">
+      <span><b>SAB</b> {{character?.status?.wisdom}}</span>
+      <span>{{ getModifier(character?.status?.wisdom) }}</span>
+    </p>
+    <p class="list-group-item d-flex justify-content-between"
+        title="Carisma">
+      <span><b>CAR</b> {{character?.status?.charisma}}</span>
+      <span>{{ getModifier(character?.status?.charisma) }}</span>
+    </p>
+  </div>
+</div>

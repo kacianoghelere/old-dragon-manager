@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { CharactersComponent } from './characters/characters.component';
-import { CharacterProfileComponent } from './character-profile/character-profile.component';
 import { CharactersHomeComponent } from './characters-home/characters-home.component';
 
 const charactersRoutes: Routes = [
@@ -26,7 +25,10 @@ const charactersRoutes: Routes = [
         path: 'specializations',
         loadChildren: 'app/+main/+characters/+specializations/specializations.module#SpecializationsModule'
       },
-      { path: ':id', component: CharacterProfileComponent },
+      {
+        path: ':id',
+        loadChildren: 'app/+main/+characters/+character-profile/character-profile.module#CharacterProfileModule'
+      },
       { path: '', component: CharactersHomeComponent, pathMatch: 'full' }
     ]
   }

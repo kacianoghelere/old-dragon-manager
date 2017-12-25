@@ -50,7 +50,10 @@ export class ClassDetailsComponent extends CoreComponent
   }
 
   ngOnInit() {
-    this.characterClass = new CharacterClass;
+    this.characterClass = {
+      id: null,
+      name: ''
+    };
     this.route.params.subscribe((params) => {
       let id = params['id'];
       if (id) {

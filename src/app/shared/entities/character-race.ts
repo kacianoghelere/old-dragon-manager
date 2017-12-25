@@ -4,7 +4,7 @@ import { Trait } from './trait';
 import { Skill } from './skill';
 import { User } from './user';
 
-export interface CharacterRace {
+export class CharacterRace {
 
   alignment?: Alignment;
   armor_class_mod?: number;
@@ -26,10 +26,10 @@ export interface CharacterRace {
   movement_base?: number;
   name: string;
   picture?: string;
-  singular_name: string;
+  singular_name?: string;
   skills?: Skill[];
   str_mod?: number;
   traits?: Trait[];
-  user: User;
+  user?: User;
   wis_mod?: number;
 }

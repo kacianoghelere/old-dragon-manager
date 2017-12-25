@@ -1,6 +1,6 @@
 import { PerkType } from './perk-type';
 
-export interface Perk {
+export class Perk {
 
     id: number;
     name: string;

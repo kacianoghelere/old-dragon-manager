@@ -1,4 +1,4 @@
-export interface Role {
+export class Role {
   id?: number;
   name?: string;
   admin: boolean;

@@ -1,4 +1,4 @@
-export interface CharacterClassEvolution {
+export class CharacterClassEvolution {
 
   id: number;
   level: number;

@@ -61,7 +61,9 @@ export class CampaignPageComponent implements OnInit, OnDestroy {
           }
           this.route.fragment.subscribe ((fragment) => {
             const element = document.querySelector(`#${fragment}`);
-            if (element) element.scrollIntoView (element);
+            if (element) {
+              element.scrollIntoView();
+            }
           });
         });
       });

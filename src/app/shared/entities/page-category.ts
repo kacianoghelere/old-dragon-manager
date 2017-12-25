@@ -1,6 +1,6 @@
 import { CampaignPage } from './campaign-page';
 
-export interface PageCategory {
+export class PageCategory {
   id?: number;
   title: string;
   flat_name?: string;

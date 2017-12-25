@@ -5,7 +5,7 @@ import { CampaignNote } from './campaign-note';
 import { CampaignPage } from './campaign-page';
 import { User } from './user';
 
-export interface Campaign {
+export class Campaign {
   characters?: Character[];
   description: string;
   dm_only?: boolean;

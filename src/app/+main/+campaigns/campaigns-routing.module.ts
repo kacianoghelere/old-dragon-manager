@@ -21,7 +21,7 @@ const routes: Routes = [
       },
       {
         path: ':campaign_id',
-        loadChildren: 'app/+main/+campaigns/campaign-profile/campaign-profile.module#CampaignProfileModule',
+        loadChildren: 'app/+main/+campaigns/+campaign-profile/campaign-profile.module#CampaignProfileModule',
       },
       { path: '', component: CampaignsListComponent }
     ]

@@ -1,4 +1,4 @@
-export interface DexterityMod {
+export class DexterityMod {
 
   id: number;
   value: number;

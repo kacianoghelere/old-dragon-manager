@@ -1,4 +1,4 @@
-export interface TrailItem {
+export class TrailItem {
   children?: TrailItem[];
   description?: string;
   route?: string;

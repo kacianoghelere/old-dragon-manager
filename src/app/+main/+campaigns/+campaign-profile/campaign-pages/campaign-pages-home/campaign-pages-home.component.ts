@@ -153,7 +153,6 @@ export class CampaignPagesHomeComponent implements OnInit, OnDestroy {
         .subscribe((pages) => {
           this.pages = pages;
           this.groups = this.groupPages(this.pages);
-          console.log('Grupos gerados', this.groups);
         });
     }
   }

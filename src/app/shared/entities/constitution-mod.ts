@@ -1,4 +1,4 @@
-export interface ConstitutionMod {
+export class ConstitutionMod {
 
   id: number;
   value: number;

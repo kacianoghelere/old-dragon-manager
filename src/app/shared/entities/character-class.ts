@@ -8,7 +8,7 @@ import { CharacterClassMagicCircle } from './character-class-magic-circle';
 import { CharacterSpecialization } from './character-specialization';
 import { CharacterClassThiefTalent } from './character-class-thief-talent';
 
-export interface CharacterClass {
+export class CharacterClass {
 
   description?: string;
   dice?: Dice;
@@ -26,5 +26,5 @@ export interface CharacterClass {
   style?: string;
   thief_talents?: CharacterClassThiefTalent[];
   type?: CharacterClassType;
-  user: User;
+  user?: User;
 }

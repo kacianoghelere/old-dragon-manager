@@ -1,4 +1,4 @@
-export interface CharismaMod {
+export class CharismaMod {
 
   id: number;
   value: number;

@@ -1,4 +1,4 @@
-export interface StrengthMod {
+export class StrengthMod {
 
   id: number;
   value: number;

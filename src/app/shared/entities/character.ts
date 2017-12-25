@@ -6,7 +6,7 @@ import { CharacterJournal } from "./character-journal";
 import { CharacterRace } from "./character-race";
 import { User } from "./user";
 
-export interface Character {
+export class Character {
   campaigns?: Campaign[];
   class?: CharacterClass;
   description: string;

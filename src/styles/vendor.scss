@@ -44,5 +44,8 @@
 @import "~bootstrap/scss/utilities";
 @import "custom";
 
-$fa-font-path: "~font-awesome/fonts"; @import "~font-awesome/scss/font-awesome";
-$ra-font-path: "~rpg-awesome/fonts"; @import '~rpg-awesome/scss/rpg-awesome';
+$fa-font-path: "../../node_modules/font-awesome/fonts";
+@import "~font-awesome/scss/font-awesome";
+
+$ra-font-path: "../../node_modules/rpg-awesome/fonts";
+@import '~rpg-awesome/scss/rpg-awesome';

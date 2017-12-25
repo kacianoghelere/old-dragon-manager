@@ -1,0 +1,51 @@
+<layout-base *ngIf="character" [pageTitle]="character.name"
+    [cover]="character.picture">
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark text-light layout-toolbar">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a class="nav-link" routerLink="statistics">
+          <i class="fa fa-bar-chart-o"></i>
+          <span class="d-sm-none d-md-inline">Estatísticas</span>
+        </a>
+      </li>
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a class="nav-link" routerLink="equipments">
+          <i class="ra ra-crossed-axes"></i>
+          <span class="d-sm-none d-md-inline">Equipamentos</span>
+        </a>
+      </li>
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a class="nav-link" routerLink="items">
+          <i class="ra ra-potion"></i>
+          <span class="d-sm-none d-md-inline">Itens</span>
+        </a>
+      </li>
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a class="nav-link" routerLink="spells">
+          <i class="ra ra-fire"></i>
+          <span class="d-sm-none d-md-inline">Magias</span>
+        </a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav my-2 my-lg-0" *ngIf="!isCharacterOwner()">
+      <li class="nav-item">
+        <a class="nav-link"
+            [routerLink]="['/users/profile', character?.player?.id]">
+          <b>Jogador:</b> {{character?.player?.name}}
+        </a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav my-2 my-lg-0" *ngIf="isCharacterOwner()">
+      <li class="nav-item ml-1">
+        <a class="nav-link text-light">
+          <i class="fa fa-edit"></i>
+          <span class="d-sm-none d-md-inline">Editar Personagem</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <router-outlet></router-outlet>
+</layout-base>

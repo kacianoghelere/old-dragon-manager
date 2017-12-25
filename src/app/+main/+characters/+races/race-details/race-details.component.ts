@@ -36,7 +36,7 @@ export class RaceDetailsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.characterRace = new CharacterRace;
+    this.characterRace = {id: null, name: ''};
     this.route.params.subscribe((params) => {
       let id = params['id'];
       if (id) {

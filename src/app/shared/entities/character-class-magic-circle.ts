@@ -1,4 +1,4 @@
-export interface CharacterClassMagicCircle {
+export class CharacterClassMagicCircle {
 
   id: number;
   level: 1;
