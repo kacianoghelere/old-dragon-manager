@@ -10,6 +10,7 @@ export class Character {
   campaigns?: Campaign[];
   class?: CharacterClass;
   description: string;
+  flat_name: string;
   id: number;
   level?: number;
   name: string;

@@ -11,7 +11,8 @@
   <section>
     <h3>Campanhas</h3>
     <article>
-      <character-campaigns [character]="character"></character-campaigns>
+      <character-campaigns *ngIf="character" [character]="character"
+        ></character-campaigns>
     </article>
   </section>
 </div>

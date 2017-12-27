@@ -7,8 +7,12 @@
   text-shadow: 0 0px 30px rgba(0, 0, 0, 1), 0 1px 3px rgba(0, 0, 0, .8);
 }
 
+@-webkit-keyframes slide {
+  from { background-position: 0 0; }
+  to { background-position: 0 -400px; }
+}
+
 .layout-base {
-  // background-color: #c43030;
   background: linear-gradient(transparent, #c43030 300px),
               url('/assets/cover-cropped.jpg');
   background-attachment: fixed;
@@ -27,7 +31,6 @@
     border-radius: 4px;
     float: left;
     height: auto;
-    // margin-top: 105px;
     width: 100%;
 
     header {
@@ -36,16 +39,19 @@
       background-position: center center;
       background-repeat: no-repeat;
       background-size: cover;
-      // border-bottom: 3px solid #ccc;
       border-top-left-radius: 4px;
       border-top-right-radius: 4px;
       float: left;
-      height: 150px;
-      max-height: 150px;
-      min-height: 150px;
+      height: 200px;
+      max-height: 200px;
+      min-height: 200px;
       padding: 15px;
       position: relative;
       width: 100%;
+
+      &.animated {
+        -webkit-animation: slide 25s linear infinite;
+      }
 
       h1, p {
         color: $white;
@@ -65,8 +71,6 @@
         -webkit-box-pack: justify;
             -ms-flex-pack: justify;
                 justify-content: space-between;
-        // bottom: -16px;
-        // position: absolute;
         width: 100%;
 
         .title {
@@ -148,12 +152,6 @@
       height: auto;
       padding: 1em;
       position: relative;
-      // /*Animation*/
-      // -webkit-transition: all 100ms linear;
-      // -moz-transition: all 100ms linear;
-      // -ms-transition: all 100ms linear;
-      // -o-transition: all 100ms linear;
-      // transition: all 100ms linear;
       width: 100%;
     }
   }

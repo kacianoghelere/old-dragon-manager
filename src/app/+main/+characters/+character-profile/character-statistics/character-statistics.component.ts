@@ -37,8 +37,9 @@ export class CharacterStatisticsComponent extends CoreComponent
       let id = params['id'];
 
       if (id) {
-        this.subscription = this.charactersService.find(id)
-          .subscribe((response) => this.character = response);
+        this.subscription = this.charactersService.find(id).subscribe(
+            (character: Character) => this.character = character
+        );
       }
     });
   }

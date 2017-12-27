@@ -1,5 +1,6 @@
 <article class="character-card {{character?.status?.alignment?.style}}">
-  <a class="character-header" [routerLink]="['/main/characters', character.id]">
+  <a class="character-header"
+      [routerLink]="['/main/characters', character.flat_name]">
     <div class="character-avatar">
         <img [src]="character.picture" [alt]="character.name" />
     </div>

@@ -1,5 +1,6 @@
 <layout-base *ngIf="campaign" [pageTitle]="campaign.title"
-    [cover]="campaign.picture" [description]="campaign.description">
+    [cover]="campaign.picture" [description]="campaign.description"
+    [animatedHeader]="true">
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark text-light layout-toolbar">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" [routerLinkActive]="['active']">

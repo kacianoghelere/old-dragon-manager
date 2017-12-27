@@ -7,9 +7,10 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class LayoutBaseComponent implements OnInit {
 
+  @Input('cover') cover: String = '';
+  @Input('description') description: String = '';
   @Input('pageTitle') title: String = '';
-  @Input() description: String = '';
-  @Input() cover: String = '';
+  @Input('animatedHeader') animatedHeader: Boolean = false;
 
   constructor() { }
 
