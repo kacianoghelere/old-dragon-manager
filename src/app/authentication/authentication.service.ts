@@ -49,7 +49,7 @@ export class AuthenticationService {
    * Retorna headers autenticados para utilização em HTTP requests para a API
    * @return {Headers} Http headers, includes the JWT
    */
-  get authHeaders(): Headers {
+  get authenticationHeaders(): Headers {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', `Bearer ${this.token}`);

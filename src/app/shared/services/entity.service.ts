@@ -11,7 +11,7 @@ import { AuthenticationService } from '../../authentication/authentication.servi
 export abstract class EntityService<T> {
 
   protected headers: Headers;
-  protected url: string = 'http://127.0.0.1:3000/api/v1';
+  protected url: string = 'http://api.od-manager.com:3000/';
 
   constructor(
     public authenticationService: AuthenticationService,
@@ -19,8 +19,7 @@ export abstract class EntityService<T> {
   ) { }
 
   private get options(): any {
-    this.headers = this.authenticationService.authHeaders;
-    return { headers: this.headers };
+    return { headers: this.authenticationService.authenticationHeaders };
   }
 
   protected responseToJson(response: any): any {

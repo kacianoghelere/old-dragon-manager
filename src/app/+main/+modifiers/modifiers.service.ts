@@ -18,8 +18,7 @@ export class ModifiersService {
   ) { }
 
   private get options(): any {
-    this.headers = this.authService.authHeaders;
-    return { headers: this.headers };
+    return { headers: this.authService.authenticationHeaders };
   }
 
   private responseToJson(response: any): any {
