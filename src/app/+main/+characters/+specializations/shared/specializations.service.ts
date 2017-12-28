@@ -16,6 +16,10 @@ export class SpecializationsService extends EntityService<CharacterSpecializatio
     super(auth, http);
   }
 
+  belongToCurrentUser(specialization: CharacterSpecialization): boolean {
+    return this.authenticationService.isCurrentUser(specialization.user);
+  }
+
   /**
    * Verifica se o usuário atual é o criador da especialização para ativar rotas
    * @param  {number}              id ID da especialização

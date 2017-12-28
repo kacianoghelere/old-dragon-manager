@@ -1,6 +1,21 @@
 .card-blurred{
   .card-img {
-    height: 150px;
-    max-height: 150px;
+    height: 200px;
+    max-height: 200px;
+  }
+}
+
+.card-img-overlay {
+  .row,
+  .image,
+  .img-thumbnail {
+    max-height: 100%;
+  }
+
+  .img-thumbnail {
+    border: none;
+    box-shadow: 0px 5px 9px 1px rgba(0,0,0,.5);
+    min-width: 100%;
+    padding: 0;
   }
 }

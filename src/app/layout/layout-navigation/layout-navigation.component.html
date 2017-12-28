@@ -9,21 +9,7 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarTogglableContent">
-      <ul class="navbar-nav mr-auto" *ngIf="!authenticated"></ul>
-      <ul class="navbar-nav mr-auto" *ngIf="authenticated">
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/main/campaigns']">
-            Campanhas
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/main/characters']">
-            Personagens
-          </a>
-        </li>
-      </ul>
-
-      <ul class="navbar-nav my-2 my-lg-0">
+      <ul class="navbar-nav ml-auto my-2 my-lg-0">
         <li class="nav-item" [routerLinkActive]="['active']">
           <a class="nav-link" [routerLink]="['/example']">
             <i class="fa fa-list-alt fa-lg"></i> Templates
@@ -75,6 +61,34 @@
               <i class="fa fa-sign-out fa-lg"></i> Sair
             </a>
           </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark transparent">
+  <div class="container">
+    <div class="collapse navbar-collapse" id="navbarTogglableContent">
+      <ul class="navbar-nav mr-auto" *ngIf="!authenticated"></ul>
+      <ul class="navbar-nav mr-auto" *ngIf="authenticated">
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/main/campaigns">
+            <layout-navigation-item icon="ra-gear-hammer"
+              text="Meu Conteúdo"></layout-navigation-item>
+          </a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/main/modifiers">
+            <layout-navigation-item icon="ra-book"
+              text="Compendio"></layout-navigation-item>
+          </a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/main/characters">
+            <layout-navigation-item icon="ra-knight-helmet"
+              text="Personagens"></layout-navigation-item>
+          </a>
         </li>
       </ul>
     </div>

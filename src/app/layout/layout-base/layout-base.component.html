@@ -4,8 +4,11 @@
       <header class="d-flex align-items-middle justify-content-center flex-column"
           [ngClass]="{'animated': animatedHeader}"
           [ngStyle]="coverImage">
-        <h1>{{title}}</h1>
-        <p>{{description}}</p>
+        <layout-breadcrumb class="align-self-start"></layout-breadcrumb>
+        <span class="information">
+          <h1>{{title}}</h1>
+          <p>{{description}}</p>
+        </span>
         <ng-content select=".layout-controls"></ng-content>
       </header>
       <ng-content select=".layout-toolbar"></ng-content>

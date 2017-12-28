@@ -1,22 +1,17 @@
 <nav class="breadcrumb">
-  <div class="container">
-    <!-- <span class="breadcrumb-item active">
-      <i class="fa fa-th-list"></i> <b>Menu</b>
-    </span> -->
-    <span class="breadcrumb-item" *ngFor="let item of trail"
-        routerLinkActive="active"
-        [ngClass]="{brand: hasChildren(item)}">
-      <a [routerLink]="[item.route]" *ngIf="item.route">{{item.title}}</a>
-      <span *ngIf="!item.route">{{item.title}}</span>
-			<div class="mega-menu" *ngIf="hasChildren(item)">
-				<div class="container">
-          <ul>
-            <li routerLinkActive="active" *ngFor="let child of item.children">
-              <a [routerLink]="[child.route]">{{child.title}}</a>
-            </li>
-          </ul>
-				</div>
+  <span class="breadcrumb-item" *ngFor="let item of trail"
+      routerLinkActive="active"
+      [ngClass]="{brand: hasChildren(item)}">
+    <a [routerLink]="[item.route]" *ngIf="item.route">{{item.title}}</a>
+    <span *ngIf="!item.route">{{item.title}}</span>
+		<div class="mega-menu" *ngIf="hasChildren(item)">
+			<div class="container">
+        <ul>
+          <li routerLinkActive="active" *ngFor="let child of item.children">
+            <a [routerLink]="[child.route]">{{child.title}}</a>
+          </li>
+        </ul>
 			</div>
-    </span>
-  </div>
+		</div>
+  </span>
 </nav>

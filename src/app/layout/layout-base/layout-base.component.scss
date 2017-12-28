@@ -2,14 +2,25 @@
 @import "~styles/variables";
 
 @mixin text-shadow {
-  -webkit-text-shadow: 0 0px 30px rgba(0, 0, 0, 1), 0 1px 3px rgba(0, 0, 0, .8);
-  -moz-text-shadow: 0 0px 30px rgba(0, 0, 0, 1), 0 1px 3px rgba(0, 0, 0, .8);
-  text-shadow: 0 0px 30px rgba(0, 0, 0, 1), 0 1px 3px rgba(0, 0, 0, .8);
+  -webkit-text-shadow: 0 0px 20px rgba(0, 0, 0, 1), 0 1px 3px rgba(0, 0, 0, .8);
+  -moz-text-shadow: 0 0px 20px rgba(0, 0, 0, 1), 0 1px 3px rgba(0, 0, 0, .8);
+  text-shadow: 0 0px 20px rgba(0, 0, 0, 1), 0 1px 3px rgba(0, 0, 0, .8);
 }
 
 @-webkit-keyframes slide {
-  from { background-position: 0 0; }
-  to { background-position: 0 -400px; }
+  0%   { background-position: center center; }
+  25%  { background-position: 0 0; }
+  50%  { background-position: 0 -400px; }
+  75%  { background-position: 0 0; }
+  100% { background-position: center center; }
+}
+
+@keyframes slide {
+  0%   { background-position: center center; }
+  25%  { background-position: 0 0; }
+  50%  { background-position: 0 -400px; }
+  75%  { background-position: 0 0; }
+  100% { background-position: center center; }
 }
 
 .layout-base {
@@ -17,11 +28,11 @@
               url('/assets/cover-cropped.jpg');
   background-attachment: fixed;
   background-color: #c43030;
-  background-position: center 60px;
+  background-position: center 50px;
   background-size: 100% auto;
   background-repeat: no-repeat;
   float: left;
-  padding: 100px 0 15px 0;
+  padding: 11em 0 1em 0;
   width: 100%;
 
   .content {
@@ -49,13 +60,25 @@
       position: relative;
       width: 100%;
 
-      &.animated {
-        -webkit-animation: slide 25s linear infinite;
+      &.animated:hover {
+        -webkit-animation: slide 30s linear infinite;
+        animation: slide 30s linear infinite;
       }
 
       h1, p {
         color: $white;
         @include text-shadow;
+      }
+
+      /deep/ .breadcrumb {
+        align-self: flex-start;
+        color: $white;
+        padding: 5px 0;
+        @include text-shadow;
+
+        .breadcrumb-item:not(:first-child)::before {
+          content: '//';
+        }
       }
 
       /deep/ .layout-controls {

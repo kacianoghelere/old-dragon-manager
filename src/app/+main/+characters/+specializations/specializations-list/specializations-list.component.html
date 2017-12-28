@@ -1,6 +1,11 @@
 <layout-base pageTitle="Especializações">
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark text-light layout-toolbar">
     <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <span class="nav-link text-light">
+          <b>Categorias:</b>
+        </span>
+      </li>
       <li class="nav-item" [ngClass]="{active: isActiveTab('')}">
         <a class="nav-link pointer" (click)="setActiveTab('')">
           <i class="fa fa-th"></i> Todas

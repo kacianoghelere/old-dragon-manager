@@ -5,7 +5,7 @@ import { TrailItem } from '../entities/trail-item';
 @Injectable()
 export class TrailService {
 
-  log: boolean = false;
+  log: boolean = true;
   trail: TrailItem[];
   trailUpdate: EventEmitter<TrailItem[]>;
 
@@ -46,6 +46,9 @@ export class TrailService {
 
   private emitUpdate() {
     this.trailUpdate.emit(this.trail);
-    if (this.log) console.log("TRAIL UPDATED", JSON.stringify(this.trail));
+
+    if (this.log) {
+      console.log("TRAIL UPDATED", JSON.stringify(this.trail));
+    };
   }
 }

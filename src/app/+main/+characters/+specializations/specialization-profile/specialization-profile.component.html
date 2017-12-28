@@ -1,5 +1,7 @@
-<layout-base *ngIf="specialization" [pageTitle]="specialization.name"
-    [cover]="specialization.picture">
+<layout-base *ngIf="specialization"
+    [pageTitle]="specialization.name"
+    [cover]="specialization.picture"
+    [animatedHeader]="true">
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark text-light layout-toolbar">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item ml-1">
@@ -9,7 +11,17 @@
         </a>
       </li>
     </ul>
-    <ul class="navbar-nav my-2 my-lg-0">
+
+    <ul class="navbar-nav my-2 my-lg-0" *ngIf="!isSpecializationOwner()">
+      <li class="nav-item">
+        <a class="nav-link"
+            [routerLink]="['/users/profile', specialization?.user?.id]">
+          <b>Criado por:</b> {{specialization?.user?.name}}
+        </a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav my-2 my-lg-0" *ngIf="isSpecializationOwner()">
       <li class="nav-item">
         <a class="nav-link text-light" [routerLink]="['edit']">
           <i class="fa fa-edit"></i>
@@ -20,48 +32,29 @@
   </nav>
 
   <section class="row">
-    <div class="col-sm-12 col-md-5 col-lg-4">
-      <article class="card">
-        <img class="card-img-top" [src]="specialization.picture"
-          [alt]="specialization.name">
-        <div class="card-header">
-          <h6 class="card-title">
-            <a [routerLink]="['/users/profile', specialization?.user?.id]">
-              Criado por <b>{{specialization?.user?.name}}</b>
-            </a>
-          </h6>
+    <article class="col-sm-12 col-md-5 col-lg-4">
+      <h4>Sobre o {{specialization.name}}...</h4>
+      <div class="card">
+        <div class="card-body">
+          <p class="card-text">{{specialization.description}}</p>
         </div>
-        <div class="card-header">
+        <div class="card-body">
           <h6 class="card-title">
             <a [routerLink]="['/main/characters/classes', specialization?.character_class?.id]">
-              Sub-classe para <b>{{specialization?.character_class?.name}}</b>
+              Especialização para <b>{{specialization?.character_class?.name}}</b>
             </a>
           </h6>
-        </div>
-        <div class="card-header">
           <h6 class="card-title">
             Alinhamento {{specialization?.alignment?.name}}
           </h6>
         </div>
-      </article>
-    </div>
+      </div>
+    </article>
 
-    <div class="col-sm-12 col-md-7 col-lg-8">
-      <article class="card">
-        <div class="card-body">
-          <h5 class="card-title">Sobre o {{specialization.name}}...</h5>
-          <p class="card-text">{{specialization.description}}</p>
-        </div>
-      </article>
-      <article>
-        <h4>Estágios</h4>
-        <specialization-stages [specialization]="specialization"
-          ></specialization-stages>
-      </article>
-    </div>
+    <article class="col-sm-12 col-md-7 col-lg-8">
+      <h4>Estágios</h4>
+      <specialization-stages [specialization]="specialization"
+        ></specialization-stages>
+    </article>
   </section>
-
-  <div class="layout-controls layout-end">
-    <user-pill [user]="specialization?.user"></user-pill>
-  </div>
 </layout-base>

@@ -1,7 +1,3 @@
-// .navbar {
-//   padding: 0;
-// }
-
 .navbar-brand {
   font-family: "PT Serif";
   padding: 0;
@@ -15,11 +11,11 @@
 .navbar-nav {
   a {
     &.user {
-      padding: 9px;
+      padding: .5em;
 
       img {
-        width: 32px;
-        height: 32px;
+        width: 2em;
+        height: 2em;
       }
     }
   }
@@ -28,4 +24,10 @@
 .avatar {
   height: 20px;
   width: 20px;
+}
+
+.navbar {
+  font-family: 'Source Sans Pro', sans-serif !important;
+
+  &.transparent { background-color: rgba(0, 0, 0, .75) !important; }
 }

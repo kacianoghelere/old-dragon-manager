@@ -10,15 +10,16 @@ import { TrailService } from '../../shared/services/trail.service';
 })
 export class LayoutBreadcrumbComponent implements OnInit {
 
-  trail: TrailItem[];
-
   constructor(private trailService: TrailService) { }
-
-  ngOnInit() {
-    this.trailService.trailUpdate.subscribe((trail) => this.trail = trail);
-  }
 
   hasChildren(item: TrailItem): boolean {
     return !!(item.children && item.children.length);
+  }
+
+  get trail(): TrailItem[] {
+    return this.trailService.trail;
+  }
+
+  ngOnInit() {
   }
 }

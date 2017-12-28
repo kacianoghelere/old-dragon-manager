@@ -1,6 +1,8 @@
-<layout-base *ngIf="characterClass" [pageTitle]="characterClass.name"
+<layout-base *ngIf="characterClass"
+    [pageTitle]="characterClass.name"
     [cover]="characterClass.picture"
-    [description]="characterClass.short_description">
+    [description]="characterClass.short_description"
+    [animatedHeader]="true">
 
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark layout-toolbar">
     <ul class="navbar-nav mx-auto">

@@ -41,7 +41,7 @@ import { AppComponent } from './app.component';
     }),
     MarkdownModule.forRoot(),
     ConfirmationPopoverModule.forRoot({
-      confirmButtonType: 'danger' // set defaults here
+      confirmButtonType: 'danger'
     }),
     AuthenticationModule,
     SharedModule,
@@ -59,6 +59,8 @@ import { AppComponent } from './app.component';
     ValidatorsService,
     TrailService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }

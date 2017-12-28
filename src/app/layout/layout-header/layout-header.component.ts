@@ -5,7 +5,6 @@ import { Component, OnInit, Input } from '@angular/core';
   template: `
     <div class="fixed-top">
       <layout-navigation [title]="title"></layout-navigation>
-      <layout-breadcrumb></layout-breadcrumb>
     </div>
   `,
   styleUrls: ['./layout-header.component.scss']
@@ -18,5 +17,4 @@ export class LayoutHeaderComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

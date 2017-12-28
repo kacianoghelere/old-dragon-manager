@@ -32,6 +32,15 @@ export class SpecializationProfileComponent extends CoreComponent
     super();
   }
 
+  fireTrailChange() {
+    this.trailItem = {title: this.specialization.name};
+    this.trailService.add(this.trailItem);
+  }
+
+  isSpecializationOwner() : boolean {
+    return this.specializationsService.belongToCurrentUser(this.specialization);
+  }
+
   ngOnDestroy() {
     this.subscription.unsubscribe();
     this.trailService.remove(this.trailItem);
@@ -48,11 +57,6 @@ export class SpecializationProfileComponent extends CoreComponent
             });
         }
       });
-  }
-
-  fireTrailChange() {
-    this.trailItem = {title: this.specialization.name};
-    this.trailService.add(this.trailItem);
   }
 
 }

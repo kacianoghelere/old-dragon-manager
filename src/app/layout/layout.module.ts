@@ -8,11 +8,12 @@ import { MarkdownModule } from 'angular2-markdown';
 
 import { UtilModule } from '../util/util.module';
 import { SharedModule } from '../shared/shared.module';
-import { WelcomeComponent } from './welcome/welcome.component';
-import { LayoutNavigationComponent } from './layout-navigation/layout-navigation.component';
-import { LayoutHeaderComponent } from './layout-header/layout-header.component';
-import { LayoutBreadcrumbComponent } from './layout-breadcrumb/layout-breadcrumb.component';
 import { LayoutBaseComponent } from './layout-base/layout-base.component';
+import { LayoutBreadcrumbComponent } from './layout-breadcrumb/layout-breadcrumb.component';
+import { LayoutHeaderComponent } from './layout-header/layout-header.component';
+import { LayoutNavigationComponent } from './layout-navigation/layout-navigation.component';
+import { LayoutNavigationItemComponent } from './layout-navigation-item/layout-navigation-item.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
   imports: [
@@ -24,17 +25,18 @@ import { LayoutBaseComponent } from './layout-base/layout-base.component';
     SharedModule
   ],
   declarations: [
-    WelcomeComponent,
-    LayoutNavigationComponent,
-    LayoutHeaderComponent,
+    LayoutBaseComponent,
     LayoutBreadcrumbComponent,
-    LayoutBaseComponent
+    LayoutHeaderComponent,
+    LayoutNavigationComponent,
+    LayoutNavigationItemComponent,
+    WelcomeComponent,
   ],
   exports: [
-    WelcomeComponent,
-    LayoutHeaderComponent,
     LayoutBaseComponent,
-    SharedModule
+    LayoutHeaderComponent,
+    SharedModule,
+    WelcomeComponent
   ]
 })
 export class LayoutModule { }
