@@ -1,32 +1,34 @@
 <h5 class="title">Talentos Ladinos</h5>
 
-<table class="table table-striped table-hover table-sm table-responsive"
-    *ngIf="!emptyCollection(characterClass.thief_talents)">
-  <thead>
-    <tr>
-      <th class="text-center">Nível</th>
-      <th class="text-center">Arrombar</th>
-      <th class="text-center">Armadilhas</th>
-      <th class="text-center">Escalar</th>
-      <th class="text-center">Furtividade</th>
-      <th class="text-center">Pickpocket</th>
-      <th class="text-center">Percepção *</th>
-      <th class="text-center">Ataque<br>furtivo</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let talents of characterClass.thief_talents">
-      <td class="text-center">{{talents.level}}</td>
-      <td class="text-center">{{talents.lockpick}}</td>
-      <td class="text-center">{{talents.traps}}</td>
-      <td class="text-center">{{talents.climb}}</td>
-      <td class="text-center">{{talents.stealth}}</td>
-      <td class="text-center">{{talents.pickpocket}}</td>
-      <td class="text-center">1-{{talents.perception}}</td>
-      <td class="text-center">x{{talents.sneak_attack}}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="table-responsive">
+  <table class="table table-striped table-hover table-sm"
+      *ngIf="!emptyCollection(characterClass.thief_talents)">
+    <thead>
+      <tr>
+        <th class="text-center">Nível</th>
+        <th class="text-center">Arrombar</th>
+        <th class="text-center">Armadilhas</th>
+        <th class="text-center">Escalar</th>
+        <th class="text-center">Furtividade</th>
+        <th class="text-center">Pickpocket</th>
+        <th class="text-center">Percepção *</th>
+        <th class="text-center">Ataque<br>furtivo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let talents of characterClass.thief_talents">
+        <td class="text-center">{{talents.level}}</td>
+        <td class="text-center">{{talents.lockpick}}</td>
+        <td class="text-center">{{talents.traps}}</td>
+        <td class="text-center">{{talents.climb}}</td>
+        <td class="text-center">{{talents.stealth}}</td>
+        <td class="text-center">{{talents.pickpocket}}</td>
+        <td class="text-center">1-{{talents.perception}}</td>
+        <td class="text-center">x{{talents.sneak_attack}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 <div class="list-group"
     *ngIf="emptyCollection(characterClass.thief_talents)">

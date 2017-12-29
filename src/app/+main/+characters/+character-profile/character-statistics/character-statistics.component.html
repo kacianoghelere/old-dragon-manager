@@ -1,10 +1,194 @@
 <div>
+  <section>
+    <character-info [character]="character"></character-info>
+  </section>
+
   <section class="row">
     <article class="col-sm-12 col-md-4 col-lg-3">
       <character-attributes [character]="character"></character-attributes>
     </article>
     <article class="col-sm-12 col-md-8 col-lg-9">
-      <character-info [character]="character"></character-info>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Classe de Armadura</h5>
+          <div class="row">
+            <div class="col">
+              <p>
+                <b>Base</b>
+              </p>
+            </div>
+            <div class="col">
+              <p title="Destreza">
+                <b>DES</b>
+              </p>
+            </div>
+            <div class="col">
+              <p>
+                <b>Armadura</b>
+              </p>
+            </div>
+            <div class="col">
+              <p>
+                <b>Raça</b>
+              </p>
+            </div>
+            <div class="col">
+              <p>
+                <b>Outros</b>
+              </p>
+            </div>
+            <div class="col">
+              <p>
+                <b>Total</b>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Movimento</h5>
+              <div class="row">
+                <div class="col">
+                  <p>
+                    <b>Raça</b>
+                  </p>
+                </div>
+                <div class="col">
+                  <p>
+                    <b>Armadura</b>
+                  </p>
+                </div>
+                <div class="col">
+                  <p>
+                    <b>Carga</b>
+                  </p>
+                </div>
+                <div class="col">
+                  <p>
+                    <b>Total</b>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Jogada de Proteção</h5>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p>
+                    <b>Base</b>
+                  </p>
+                </div>
+                <div class="col-sm-3">
+                  <p title="Destreza">
+                    <b>DES</b>
+                  </p>
+                </div>
+                <div class="col-sm-3">
+                  <p title="Constituição">
+                    <b>CON</b>
+                  </p>
+                </div>
+                <div class="col-sm-3">
+                  <p title="Sabedoria">
+                    <b>SAB</b>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Bônus de ataque Corpo-a-Corpo</h5>
+              <div class="row">
+                <div class="col-sm">
+                  <p title="Força">
+                    <b>FOR</b>
+                  </p>
+                </div>
+                <div class="col-sm">
+                  <p>
+                    <b>Raça</b>
+                  </p>
+                </div>
+                <div class="col-sm">
+                  <p>
+                    <b>Classe</b>
+                  </p>
+                </div>
+                <div class="col-sm">
+                  <p>
+                    <b>Total</b>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Bônus de ataque a Distância</h5>
+              <div class="row">
+                <div class="col-sm">
+                  <p title="Destreza">
+                    <b>DES</b>
+                  </p>
+                </div>
+                <div class="col-sm">
+                  <p>
+                    <b>Raça</b>
+                  </p>
+                </div>
+                <div class="col-sm">
+                  <p>
+                    <b>Classe</b>
+                  </p>
+                </div>
+                <div class="col-sm">
+                  <p>
+                    <b>Total</b>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Pontuações</h5>
+          <div class="row">
+            <div class="col-sm">
+              <p>
+                <b>Vida</b>
+              </p>
+            </div>
+            <div class="col-sm">
+              <p>
+                <b>Magia</b>
+              </p>
+            </div>
+            <div class="col-sm">
+              <p>
+                <b>Sanidade</b>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </article>
   </section>
 

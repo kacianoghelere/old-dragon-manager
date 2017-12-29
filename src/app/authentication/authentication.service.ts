@@ -4,6 +4,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import { Router } from '@angular/router';
 
+import { ApiService } from '../shared/services/api.service';
 import { Authentication } from '../shared/entities/authentication';
 import { User } from '../shared/entities/user';
 
@@ -24,7 +25,8 @@ export class AuthenticationService {
 
   constructor(
     private http: Http,
-    private router: Router
+    private router: Router,
+    private apiService: ApiService
   ) {
     this.authentication = new EventEmitter();
     this.headers = new Headers();
@@ -98,9 +100,11 @@ export class AuthenticationService {
   logout(redirect: boolean = false) {
     this.token = '';
     this.currentUser = null;
+
     if (redirect) {
       this.router.navigate(['/welcome']);
     }
+
     this.storageAuthentication = null;
     this.authentication.emit(this.authenticated);
   }
@@ -113,10 +117,12 @@ export class AuthenticationService {
     let invitation = this.currentUser.invitations.find((invitation) => {
       return invitation.id == id;
     });
+
     if (invitation) {
       let index = this.currentUser.invitations.indexOf(invitation);
       this.currentUser.invitations.splice(index, 1);
     }
+
     this.updateAuthenticationUser();
   }
 
@@ -128,7 +134,8 @@ export class AuthenticationService {
   signin(user: any) {
     let options = {headers: this.headers};
     let jsonUser = JSON.stringify(user);
-    this.http.post(`${this.url}/authentication`, jsonUser, options)
+
+    this.http.post(`${this.apiService.url}/authentication`, jsonUser, options)
       .map((res) => res.json()).subscribe((response) => {
         this.token = response.auth_token;
         this.currentUser = response.user;

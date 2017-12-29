@@ -1,74 +1,76 @@
 <h5 class="title">Afastar Mortos-Vivos</h5>
 
-<table class="table table-striped table-hover table-sm table-responsive"
-    *ngIf="!emptyCollection(characterClass.undead_banes)">
-  <thead>
-    <tr>
-      <th class="text-center" rowspan="2">Nível</th>
-      <th class="text-center" colspan="18">Dados de Vida do inimigo</th>
-    </tr>
-    <tr>
-      <th class="text-center">1</th>
-      <th class="text-center">2</th>
-      <th class="text-center">3</th>
-      <th class="text-center">4</th>
-      <th class="text-center">5</th>
-      <th class="text-center">6</th>
-      <th class="text-center">7</th>
-      <th class="text-center">8</th>
-      <th class="text-center">9</th>
-      <th class="text-center">10</th>
-      <th class="text-center">11</th>
-      <th class="text-center">12</th>
-      <th class="text-center">13</th>
-      <th class="text-center">14</th>
-      <th class="text-center">15</th>
-      <th class="text-center">16</th>
-      <th class="text-center">17</th>
-      <th class="text-center">18</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let undeadBane of characterClass.undead_banes">
-      <td class="text-center">{{undeadBane.level}}</td>
-      <td class="text-center">{{undeadBane.dv1}}</td>
-      <td class="text-center">{{undeadBane.dv2}}</td>
-      <td class="text-center">{{undeadBane.dv3}}</td>
-      <td class="text-center">{{undeadBane.dv4}}</td>
-      <td class="text-center">{{undeadBane.dv5}}</td>
-      <td class="text-center">{{undeadBane.dv6}}</td>
-      <td class="text-center">{{undeadBane.dv7}}</td>
-      <td class="text-center">{{undeadBane.dv8}}</td>
-      <td class="text-center">{{undeadBane.dv9}}</td>
-      <td class="text-center">{{undeadBane.dv10}}</td>
-      <td class="text-center">{{undeadBane.dv11}}</td>
-      <td class="text-center">{{undeadBane.dv12}}</td>
-      <td class="text-center">{{undeadBane.dv13}}</td>
-      <td class="text-center">{{undeadBane.dv14}}</td>
-      <td class="text-center">{{undeadBane.dv15}}</td>
-      <td class="text-center">{{undeadBane.dv16}}</td>
-      <td class="text-center">{{undeadBane.dv17}}</td>
-      <td class="text-center">{{undeadBane.dv18}}</td>
-    </tr>
-  </tbody>
-  <tfoot>
-    <tr>
-      <td colspan="19">
-        <b>N:</b> sem efeito, o poder do personagem não é suficiente para afastá-los.
-      </td>
-    </tr>
-    <tr>
-      <td colspan="19">
-        <b>A:</b> automaticamente afasta os mortos-vivos.
-      </td>
-    </tr>
-    <tr>
-      <td colspan="19">
-        <b>D:</b> destrói os mortos-vivos.
-      </td>
-    </tr>
-  </tfoot>
-</table>
+<div class="table-responsive">
+  <table class="table table-striped table-hover table-sm"
+      *ngIf="!emptyCollection(characterClass.undead_banes)">
+    <thead>
+      <tr>
+        <th class="text-center" rowspan="2">Nível</th>
+        <th class="text-center" colspan="18">Dados de Vida do inimigo</th>
+      </tr>
+      <tr>
+        <th class="text-center">1</th>
+        <th class="text-center">2</th>
+        <th class="text-center">3</th>
+        <th class="text-center">4</th>
+        <th class="text-center">5</th>
+        <th class="text-center">6</th>
+        <th class="text-center">7</th>
+        <th class="text-center">8</th>
+        <th class="text-center">9</th>
+        <th class="text-center">10</th>
+        <th class="text-center">11</th>
+        <th class="text-center">12</th>
+        <th class="text-center">13</th>
+        <th class="text-center">14</th>
+        <th class="text-center">15</th>
+        <th class="text-center">16</th>
+        <th class="text-center">17</th>
+        <th class="text-center">18</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let undeadBane of characterClass.undead_banes">
+        <td class="text-center">{{undeadBane.level}}</td>
+        <td class="text-center">{{undeadBane.dv1}}</td>
+        <td class="text-center">{{undeadBane.dv2}}</td>
+        <td class="text-center">{{undeadBane.dv3}}</td>
+        <td class="text-center">{{undeadBane.dv4}}</td>
+        <td class="text-center">{{undeadBane.dv5}}</td>
+        <td class="text-center">{{undeadBane.dv6}}</td>
+        <td class="text-center">{{undeadBane.dv7}}</td>
+        <td class="text-center">{{undeadBane.dv8}}</td>
+        <td class="text-center">{{undeadBane.dv9}}</td>
+        <td class="text-center">{{undeadBane.dv10}}</td>
+        <td class="text-center">{{undeadBane.dv11}}</td>
+        <td class="text-center">{{undeadBane.dv12}}</td>
+        <td class="text-center">{{undeadBane.dv13}}</td>
+        <td class="text-center">{{undeadBane.dv14}}</td>
+        <td class="text-center">{{undeadBane.dv15}}</td>
+        <td class="text-center">{{undeadBane.dv16}}</td>
+        <td class="text-center">{{undeadBane.dv17}}</td>
+        <td class="text-center">{{undeadBane.dv18}}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="19">
+          <b>N:</b> sem efeito, o poder do personagem não é suficiente para afastá-los.
+        </td>
+      </tr>
+      <tr>
+        <td colspan="19">
+          <b>A:</b> automaticamente afasta os mortos-vivos.
+        </td>
+      </tr>
+      <tr>
+        <td colspan="19">
+          <b>D:</b> destrói os mortos-vivos.
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
 
 <div *ngIf="emptyCollection(characterClass.undead_banes)">
   <p>Esta classe não pode afastar mortos vivos.</p>

@@ -11,9 +11,8 @@
       {{category.title}}
     </a>
   </li>
-
   <li class="nav-item" *ngIf="isCampaignOwner()">
-    <a class="nav-link text-primary" [routerLink]="['new']">
+    <a class="nav-link btn btn-secondary" [routerLink]="['new']">
       <i class="fa fa-plus"></i>
       <span class="d-sm-none d-md-inline">Nova página</span>
     </a>
@@ -21,17 +20,21 @@
 </nav>
 
 <section class="card-columns" *ngIf="isActiveCategory('')">
-  <article class="card" *ngFor="let group of groups"
+  <article class="card bg-light" *ngFor="let group of groups"
       [hidden]="!group.pages.length">
     <div class="card-header"><b>{{group.title}}</b></div>
     <ul class="list-group list-group-flush">
-      <a class="list-group-item" *ngFor="let page of group.pages"
+      <a class="list-group-item d-flex justify-content-between"
+          *ngFor="let page of group.pages"
           [routerLink]="[page.flat_name]">
-        <i class="fa fa-key" *ngIf="page.dm_only"></i> {{page.title}}
+        <span>{{page.title}}</span>
+        <span *ngIf="page.dm_only" title="Material do Mestre">
+          <i class="ra ra-castle-flag"></i>
+        </span>
       </a>
     </ul>
     <ul class="list-group list-group-flush" *ngIf="group.flat_name">
-      <a class="list-group-item text-primary"
+      <a class="list-group-item text-primary text-center"
           *ngIf="isCampaignOwner()"
           [routerLink]="['new']"
           [queryParams]="{category: group.flat_name}">

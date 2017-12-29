@@ -1,72 +1,83 @@
-<article class="character-card {{character?.status?.alignment?.style}}">
-  <a class="character-header"
-      [routerLink]="['/main/characters', character.flat_name]">
-    <div class="character-avatar">
-        <img [src]="character.picture" [alt]="character.name" />
-    </div>
-    <div class="character-body">
-      <div class="character-name d-flex justify-content-between">
-          <span>{{character.name}}</span>
-          <span>{{character?.status?.current_level}}</span>
+<article class="card card-secondary">
+  <a class="card-body" [routerLink]="['/main/characters', character.flat_name]">
+    <div class="row">
+      <div class="col-4">
+        <div class="card-avatar">
+          <img class="rounded border border-secondary"
+            [src]="character.picture"
+            [alt]="character.name">
+        </div>
       </div>
-      <small class="character-title">{{character.title}}</small>
-      <small class="character-text">
-        {{character?.race?.singular_name}} /
-        {{character?.class?.name}} /
-        {{character?.specialization?.name}}
-      </small>
+      <div class="col-8">
+        <div class="d-flex justify-content-between">
+          <h5 class="card-title">{{character.name}}</h5>
+          <span>
+            {{character?.status?.current_level}}
+          </span>
+        </div>
+        <div>
+          <small class="card-text text-muted">
+            <i>{{character.title}}</i>
+          </small>
+        </div>
+        <div>
+          <small class="card-text">
+            {{character?.race?.singular_name}} /
+            {{character?.class?.name}} /
+            {{character?.specialization?.name}}
+          </small>
+        </div>
+      </div>
     </div>
   </a>
-  <div class="character-info">
-    <div class="character-info-item">
-      <div class="row no-gutters text-center justify-content-end align-items-end">
-        <div class="col attribute">
-          <p><b>FOR</b></p>
-          <p>
-            {{character?.status?.strength}}
-            <span>({{getModifier(character?.status?.strength)}})</span>
-          </p>
-        </div>
-        <div class="col attribute">
-          <p><b>DES</b></p>
-          <p>
-            {{character?.status?.dexterity}}
-            <span>({{getModifier(character?.status?.dexterity)}})</span>
-          </p>
-        </div>
-        <div class="col attribute">
-          <p><b>CON</b></p>
-          <p>
-            {{character?.status?.constitution}}
-            <span>({{getModifier(character?.status?.constitution)}})</span>
-          </p>
-        </div>
-        <div class="col attribute">
-          <p><b>INT</b></p>
-          <p>
-            {{character?.status?.intelligence}}
-            <span>({{getModifier(character?.status?.intelligence)}})</span>
-          </p>
-        </div>
-        <div class="col attribute">
-          <p><b>SAB</b></p>
-          <p>
-            {{character?.status?.wisdom}}
-            <span>({{getModifier(character?.status?.wisdom)}})</span>
-          </p>
-        </div>
-        <div class="col attribute">
-          <p><b>CAR</b></p>
-          <p>
-            {{character?.status?.charisma}}
-            <span>({{getModifier(character?.status?.charisma)}})</span>
-          </p>
-        </div>
+  <div class="card-footer">
+    <div class="row no-gutters text-center justify-content-end align-items-end">
+      <div class="col attribute">
+        <small><b>FOR</b></small>
+        <small>
+          {{character?.status?.strength}}
+          <span>({{getModifier(character?.status?.strength)}})</span>
+        </small>
+      </div>
+      <div class="col attribute">
+        <small><b>DES</b></small>
+        <small>
+          {{character?.status?.dexterity}}
+          <span>({{getModifier(character?.status?.dexterity)}})</span>
+        </small>
+      </div>
+      <div class="col attribute">
+        <small><b>CON</b></small>
+        <small>
+          {{character?.status?.constitution}}
+          <span>({{getModifier(character?.status?.constitution)}})</span>
+        </small>
+      </div>
+      <div class="col attribute">
+        <small><b>INT</b></small>
+        <small>
+          {{character?.status?.intelligence}}
+          <span>({{getModifier(character?.status?.intelligence)}})</span>
+        </small>
+      </div>
+      <div class="col attribute">
+        <small><b>SAB</b></small>
+        <small>
+          {{character?.status?.wisdom}}
+          <span>({{getModifier(character?.status?.wisdom)}})</span>
+        </small>
+      </div>
+      <div class="col attribute">
+        <small><b>CAR</b></small>
+        <small>
+          {{character?.status?.charisma}}
+          <span>({{getModifier(character?.status?.charisma)}})</span>
+        </small>
       </div>
     </div>
-    <a class="character-info-item" *ngIf="showPlayer"
-        [routerLink]="['/users/profile', character.player.id]">
-      <b>Jogador:</b> {{character?.player?.name}}
-    </a>
   </div>
+  <a class="card-footer" *ngIf="showPlayer"
+      [routerLink]="['/users/profile', character.player.id]">
+    <b>Jogador:</b> {{character?.player?.name}}
+  </a>
 </article>

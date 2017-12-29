@@ -13,22 +13,15 @@ import { UsersService } from '../../users/users.service';
 export class LayoutNavigationComponent extends CoreComponent implements OnInit {
 
   @Input('title') title: string = '';
-
-  // Public variables
-  // ---------------------------------------------------------------------------
-  authenticated: boolean = false;
-
-  //
-  // Functions
-  // ===========================================================================
+  isAuthenticated: boolean = false;
 
   constructor(
-    private authService: AuthenticationService,
+    private authenticationService: AuthenticationService,
     private usersService: UsersService
   ) {
     super();
-    this.authService.authentication.subscribe((authenticated: boolean) => {
-      this.authenticated = authenticated;
+    this.authenticationService.authentication.subscribe((status: boolean) => {
+      this.isAuthenticated = status;
     });
   }
 
@@ -37,7 +30,7 @@ export class LayoutNavigationComponent extends CoreComponent implements OnInit {
   // ---------------------------------------------------------------------------
 
   ngOnInit() {
-    this.authenticated = this.authService.authenticated;
+    this.isAuthenticated = this.authenticationService.authenticated;
   }
 
   //
@@ -57,7 +50,7 @@ export class LayoutNavigationComponent extends CoreComponent implements OnInit {
    * @return {User} Authenticated user information
    */
   get currentUser(): User {
-    let currentUser = this.authService.currentUser;
+    let currentUser = this.authenticationService.currentUser;
     return currentUser || {id: null, name: ''};
   }
 
@@ -70,6 +63,6 @@ export class LayoutNavigationComponent extends CoreComponent implements OnInit {
    * @return {[type]} [description]
    */
   logout() {
-    this.authService.logout(true);
+    this.authenticationService.logout(true);
   }
 }

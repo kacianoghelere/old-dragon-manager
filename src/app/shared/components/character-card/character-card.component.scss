@@ -116,3 +116,10 @@
     }
   }
 }
+
+.card-avatar {
+  img {
+    max-width: 100%;
+    object-fit: cover;
+  }
+}
