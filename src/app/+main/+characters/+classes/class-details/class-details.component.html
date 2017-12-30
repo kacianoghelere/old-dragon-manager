@@ -4,7 +4,7 @@
     [animatedHeader]="true">
 
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark layout-toolbar">
-    <ul class="navbar-nav mx-auto">
+    <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link pointer"
             [ngClass]="isActiveClass(0)" (click)="setActiveTab(0)">
@@ -29,7 +29,7 @@
           <span class="sr-only">(current)</span>
         </a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="characterClass.undead_banes">
         <a class="nav-link pointer"
             [ngClass]="isActiveClass(3)" (click)="setActiveTab(3)">
           <i class="ra ra-broken-skull"></i>
@@ -37,7 +37,7 @@
           <span class="sr-only">(current)</span>
         </a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="characterClass.magic_circles">
         <a class="nav-link pointer"
             [ngClass]="isActiveClass(4)" (click)="setActiveTab(4)">
           <i class="ra ra-burning-embers"></i>

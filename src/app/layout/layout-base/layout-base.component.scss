@@ -32,13 +32,50 @@
   background-size: 100% auto;
   background-repeat: no-repeat;
   float: left;
-  padding: 3.2em 0 1em 0;
+  padding: 3.5em 0 1em 0;
   width: 100%;
 
   .navbar {
     font-family: 'Source Sans Pro', sans-serif !important;
 
     &.transparent { background-color: rgba(0, 0, 0, .75) !important; }
+
+    $menu-colors: [
+      #d73939,
+      #ac29da,
+      #dd00ac,
+      #2e98d4,
+      #00ddcf,
+      #00dd52,
+      #da9b31,
+      #c7c7c7
+    ];
+
+    .menu-navigation {
+      flex-grow: 1;
+
+      .nav-item {
+        flex-grow: 1;
+        flex-basis: 0;
+      }
+
+      $i: 1;
+      @each $color, $value in $menu-colors {
+        .nav-item:nth-child(#{$i}) .nav-link {
+          &:active, &.active {
+            text-shadow: 0 1px 10px rgba(255, 255, 255, 0.5),
+               0 0 15px opacify($color, .5) !important;
+          }
+
+          &:hover {
+            background: linear-gradient($color, darken($color, 10%));
+            box-shadow: 0 0 15px 1px opacify($color, .5);
+          }
+        }
+
+        $i: $i + 1;
+      }
+    }
   }
 
   .content {

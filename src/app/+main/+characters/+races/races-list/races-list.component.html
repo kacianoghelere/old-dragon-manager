@@ -13,7 +13,7 @@
 
   <div class="row">
     <div class="col-12" *ngFor="let race of races">
-      <a class="card card-blurred" [routerLink]="[race.id]">
+      <a class="card card-blurred" [routerLink]="[race.flat_name]">
         <div class="card-picture small">
           <img class="card-img" [src]="race.picture"
             [alt]="race.name">

@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-12"
         *ngFor="let class of classes">
-      <a class="card card-blurred" [routerLink]="[class.id]">
+      <a class="card card-blurred" [routerLink]="[class.flat_name]">
         <img class="card-img" [src]="class.picture" [alt]="class.name">
         <div class="card-img-overlay">
           <div class="row">
