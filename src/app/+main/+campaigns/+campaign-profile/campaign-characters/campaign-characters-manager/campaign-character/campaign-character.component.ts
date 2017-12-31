@@ -1,7 +1,7 @@
 import { EventEmitter, Component, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormArray, FormGroup, Validators } from '@angular/forms';
 
-import { Character } from '../../../../../../shared/entities/character';
+import { Character } from '../../../../../../shared/models';
 
 @Component({
   selector: 'campaign-character',

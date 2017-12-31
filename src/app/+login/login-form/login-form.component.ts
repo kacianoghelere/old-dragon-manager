@@ -5,9 +5,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { Message } from '../../shared/message';
-import {
-  AuthenticationService
-} from '../../authentication/authentication.service';
+import { AuthenticationService } from '../../authentication/authentication.service';
 
 @Component({
   selector: 'app-login',

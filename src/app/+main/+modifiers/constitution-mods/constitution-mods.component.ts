@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { ModifiersService } from '../modifiers.service';
-import { ConstitutionMod } from '../../../shared/entities/constitution-mod';
+import { ConstitutionMod } from '../../../shared/models';
 
 @Component({
   selector: 'app-constitution-mods',

@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 
 import { AuthenticationService } from '../../authentication/authentication.service';
 import { CoreComponent } from '../../shared/components/core/core.component';
-import { User } from '../../shared/entities/user';
+import { User } from '../../shared/models';
 import { UsersService } from '../../users/users.service';
 
 @Component({

@@ -2,8 +2,7 @@
 import { ChangeDetectorRef, Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormArray, FormGroup, Validators } from '@angular/forms';
 
-import { CharacterSpecialization } from '../../../../../shared/entities/character-specialization';
-import { CharacterSpecializationStage } from '../../../../../shared/entities/character-specialization-stage';
+import { CharacterSpecialization, CharacterSpecializationStage } from '../../../../../shared/models';
 
 @Component({
   selector: 'specialization-form-stages',

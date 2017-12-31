@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { CampaignPage } from '../../../../../shared/entities/campaign-page';
+import { CampaignPage } from '../../../../../shared/models';
 
 @Component({
   selector: 'campaign-page-card',

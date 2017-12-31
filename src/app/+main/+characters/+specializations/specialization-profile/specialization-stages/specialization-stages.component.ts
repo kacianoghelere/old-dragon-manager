@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { CharacterSpecialization } from '../../../../../shared/entities/character-specialization';
+import { CharacterSpecialization } from '../../../../../shared/models';
 
 @Component({
   selector: 'specialization-stages',

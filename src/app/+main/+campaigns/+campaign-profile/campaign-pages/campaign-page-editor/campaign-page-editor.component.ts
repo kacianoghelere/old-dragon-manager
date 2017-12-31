@@ -7,10 +7,8 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { ToastrService } from 'ngx-toastr';
 
 import { AuthenticationService } from '../../../../../authentication/authentication.service';
-import { Campaign } from '../../../../../shared/entities/campaign';
-import { CampaignPage } from '../../../../../shared/entities/campaign-page';
+import { Campaign, CampaignPage, PageCategory } from '../../../../../shared/models';
 import { CoreComponent } from '../../../../../shared/components/core/core.component';
-import { PageCategory } from '../../../../../shared/entities/page-category';
 import { CampaignsService } from '../../../shared/campaigns.service';
 import { CampaignPagesService } from '../shared/campaign-pages.service';
 import { PageCategoriesService } from '../shared/page-categories.service';

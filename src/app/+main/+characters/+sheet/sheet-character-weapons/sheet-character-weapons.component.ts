@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Weapon } from '../../../../shared/entities/weapon';
+import { Weapon } from '../../../../shared/models';
 
 @Component({
   selector: 'sheet-character-weapons',

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AuthenticationService } from '../../../authentication/authentication.service';
-import { Campaign } from '../../../shared/entities/campaign';
+import { Campaign } from '../../../shared/models';
 import { CampaignsService } from "../shared/campaigns.service";
 
 @Component({

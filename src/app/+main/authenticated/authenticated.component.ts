@@ -4,7 +4,7 @@ import { Headers } from '@angular/http';
 import {
   AuthenticationService
 } from '../../authentication/authentication.service';
-import { User } from '../../shared/entities/user';
+import { User } from '../../shared/models';
 import { UsersService } from '../../users/users.service';
 
 @Component({

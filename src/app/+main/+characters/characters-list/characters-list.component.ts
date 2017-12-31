@@ -2,7 +2,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { CoreComponent } from '../../../shared/components/core/core.component';
-import { Character } from '../../../shared/entities/character';
+import { Character } from '../../../shared/models';
 import { CharactersService } from '../../shared/characters.service';
 
 @Component({

@@ -5,7 +5,7 @@ import { Http } from '@angular/http';
 
 import { AuthenticationService } from '../../authentication/authentication.service';
 import { EntityService } from '../../shared/services/entity.service';
-import { Character } from '../../shared/entities/character';
+import { Character } from '../../shared/models';
 
 @Injectable()
 export class CharactersService extends EntityService<Character> {

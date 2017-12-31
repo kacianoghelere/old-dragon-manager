@@ -5,8 +5,7 @@ import { Http } from '@angular/http';
 
 import { AuthenticationService } from '../../../authentication/authentication.service';
 import { EntityService } from '../../../shared/services/entity.service';
-import { Campaign } from '../../../shared/entities/campaign';
-import { CampaignPage } from '../../../shared/entities/campaign-page';
+import { Campaign, CampaignPage } from '../../../shared/models';
 import { CharactersService } from '../../shared/characters.service';
 
 @Injectable()

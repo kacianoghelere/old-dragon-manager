@@ -4,13 +4,11 @@ import { Component, HostBinding, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { AuthenticationService } from '../../../../../authentication/authentication.service';
-import { Campaign } from '../../../../../shared/entities/campaign';
-import { CampaignPage } from '../../../../../shared/entities/campaign-page';
+import { Campaign, CampaignPage, PageCategory } from '../../../../../shared/models';
 import { CampaignsService } from '../../../shared/campaigns.service';
 import { CampaignPagesService } from '../shared/campaign-pages.service';
 import { CoreComponent } from '../../../../../shared/components/core/core.component';
 import { PageCategoriesService } from '../shared/page-categories.service';
-import { PageCategory } from '../../../../../shared/entities/page-category';
 
 @Component({
   selector: 'campaign-pages-home',

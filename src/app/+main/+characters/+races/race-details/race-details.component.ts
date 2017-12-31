@@ -4,10 +4,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { AuthenticationService } from '../../../../authentication/authentication.service';
-import { CharacterRace } from '../../../../shared/entities/character-race';
-import { Link } from '../../../../shared/entities/link';
+import { CharacterRace, Link, TrailItem }  from "../../../../shared/models";
 import { RacesService } from '../shared/races.service';
-import { TrailItem }  from "../../../../shared/entities/trail-item";
 import { TrailService }  from "../../../../shared/services/trail.service";
 
 @Component({

@@ -4,10 +4,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { AuthenticationService } from '../../../../authentication/authentication.service';
-import { CharacterSpecialization } from '../../../../shared/entities/character-specialization';
+import { CharacterSpecialization, TrailItem }  from "../../../../shared/models";
 import { CoreComponent } from '../../../../shared/components/core/core.component';
 import { SpecializationsService } from '../shared/specializations.service';
-import { TrailItem }  from "../../../../shared/entities/trail-item";
 import { TrailService }  from "../../../../shared/services/trail.service";
 
 @Component({

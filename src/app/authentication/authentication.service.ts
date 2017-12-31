@@ -5,8 +5,7 @@ import { Http, Headers, Response } from '@angular/http';
 import { Router } from '@angular/router';
 
 import { ApiService } from '../shared/services/api.service';
-import { Authentication } from '../shared/entities/authentication';
-import { User } from '../shared/entities/user';
+import { Authentication, User } from '../shared/models';
 
 @Injectable()
 export class AuthenticationService {

@@ -1,6 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
 
-import { Campaign } from '../../../../shared/entities/campaign';
+import { Campaign } from '../../../../shared/models';
 import { AuthenticationService } from '../../../../authentication/authentication.service';
 
 @Injectable()

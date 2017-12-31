@@ -6,8 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MarkdownService } from 'angular2-markdown';
 
 import { AuthenticationService } from '../../../../../authentication/authentication.service';
-import { Campaign } from '../../../../../shared/entities/campaign';
-import { CampaignPage } from '../../../../../shared/entities/campaign-page';
+import { Campaign, CampaignPage } from '../../../../../shared/models';
 import { CampaignsService } from '../../../shared/campaigns.service';
 import { CampaignPagesService } from '../shared/campaign-pages.service';
 

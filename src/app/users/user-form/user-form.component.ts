@@ -4,9 +4,8 @@ import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angu
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Role } from '../../shared/entities/role';
+import { Role, User } from '../../shared/models';
 import { RolesService } from '../../roles/roles.service';
-import { User } from '../../shared/entities/user';
 import { UsersService } from '../users.service';
 import { AuthenticationService } from '../../authentication/authentication.service';
 import { ValidatorsService } from '../../shared/services/validators.service';

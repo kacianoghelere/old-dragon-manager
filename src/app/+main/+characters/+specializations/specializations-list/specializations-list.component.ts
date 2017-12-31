@@ -3,8 +3,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { AuthenticationService } from '../../../../authentication/authentication.service';
-import { CharacterClass } from '../../../../shared/entities/character-class';
-import { CharacterSpecialization } from '../../../../shared/entities/character-specialization';
+import { CharacterClass, CharacterSpecialization } from '../../../../shared/models';
 import { ClassesService } from '../../shared/classes.service';
 import { CoreComponent } from '../../../../shared/components/core/core.component';
 import { SpecializationsService } from '../shared/specializations.service';

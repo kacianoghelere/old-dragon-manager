@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { ModifiersService } from '../modifiers.service';
-import { WisdomMod } from '../../../shared/entities/wisdom-mod';
+import { WisdomMod } from '../../../shared/models';
 
 @Component({
   selector: 'app-wisdom-mods',

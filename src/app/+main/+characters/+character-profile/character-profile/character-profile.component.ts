@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { CoreComponent } from '../../../../shared/components/core/core.component';
 import { CharactersService } from '../../../shared/characters.service';
-import { Character } from '../../../../shared/entities/character';
+import { Character } from '../../../../shared/models';
 
 @Component({
   selector: 'character-profile',

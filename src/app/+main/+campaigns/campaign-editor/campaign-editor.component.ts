@@ -7,7 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 
 import { AuthenticationService } from '../../../authentication/authentication.service';
-import { Campaign } from '../../../shared/entities/campaign';
+import { Campaign } from '../../../shared/models';
 import { CampaignsService } from '../shared/campaigns.service';
 import { CampaignFormService } from './shared/campaign-form.service';
 

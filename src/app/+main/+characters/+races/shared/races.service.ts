@@ -5,7 +5,7 @@ import { Http } from '@angular/http';
 
 import { AuthenticationService } from '../../../../authentication/authentication.service';
 import { EntityService } from '../../../../shared/services/entity.service';
-import { CharacterRace } from '../../../../shared/entities/character-race';
+import { CharacterRace } from '../../../../shared/models';
 
 @Injectable()
 export class RacesService extends EntityService<CharacterRace> {

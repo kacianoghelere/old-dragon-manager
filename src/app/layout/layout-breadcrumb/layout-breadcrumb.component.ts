@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { TrailItem } from '../../shared/entities/trail-item';
+import { TrailItem } from '../../shared/models';
 import { TrailService } from '../../shared/services/trail.service';
 
 @Component({

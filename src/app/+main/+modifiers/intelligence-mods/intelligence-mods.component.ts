@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { ModifiersService } from '../modifiers.service';
-import { IntelligenceMod } from '../../../shared/entities/intelligence-mod';
+import { IntelligenceMod } from '../../../shared/models';
 
 @Component({
   selector: 'app-intelligence-mods',

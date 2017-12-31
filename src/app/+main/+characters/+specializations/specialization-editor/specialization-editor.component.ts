@@ -7,11 +7,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { ToastrService } from 'ngx-toastr';
 
-import { Alignment } from '../../../../shared/entities/alignment';
+import { Alignment, CharacterClass, CharacterSpecialization } from '../../../../shared/models';
 import { AlignmentsService } from '../../shared/alignments.service';
 import { AuthenticationService } from '../../../../authentication/authentication.service';
-import { CharacterClass } from '../../../../shared/entities/character-class';
-import { CharacterSpecialization } from '../../../../shared/entities/character-specialization';
 import { ClassesService } from '../../shared/classes.service';
 import { CoreComponent } from '../../../../shared/components/core/core.component';
 import { SpecializationsService } from '../shared/specializations.service';

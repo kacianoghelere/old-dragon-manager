@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { ModifiersService } from '../modifiers.service';
-import { CharismaMod } from '../../../shared/entities/charisma-mod';
+import { CharismaMod } from '../../../shared/models';
 
 @Component({
   selector: 'app-charisma-mods',

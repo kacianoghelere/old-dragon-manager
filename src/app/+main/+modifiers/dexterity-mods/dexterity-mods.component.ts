@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { ModifiersService } from '../modifiers.service';
-import { DexterityMod } from '../../../shared/entities/dexterity-mod';
+import { DexterityMod } from '../../../shared/models';
 
 @Component({
   selector: 'app-dexterity-mods',

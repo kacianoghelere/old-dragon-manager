@@ -4,11 +4,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { AuthenticationService } from '../../../../authentication/authentication.service';
-import { Campaign } from '../../../../shared/entities/campaign';
-import { Character } from '../../../../shared/entities/character';
+import { Campaign, Character, TrailItem } from '../../../../shared/models';
 import { CoreComponent } from '../../../../shared/components/core/core.component';
 import { CampaignsService } from '../../shared/campaigns.service';
-import { TrailItem } from '../../../../shared/entities/trail-item';
 import { TrailService } from '../../../../shared/services/trail.service';
 import { routerTransition } from '../../../../shared/constants/router-transition';
 

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { CharacterClass } from '../../../../../shared/entities/character-class';
+import { CharacterClass } from '../../../../../shared/models';
 
 @Component({
   selector: 'class-thief-talents',

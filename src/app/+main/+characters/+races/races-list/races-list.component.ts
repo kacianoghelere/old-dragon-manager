@@ -3,8 +3,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { AuthenticationService } from '../../../../authentication/authentication.service';
-import { CharacterRace } from '../../../../shared/entities/character-race';
-import { Link } from '../../../../shared/entities/link';
+import { CharacterRace, Link } from '../../../../shared/models';
 import { RacesService } from '../shared/races.service';
 
 @Component({

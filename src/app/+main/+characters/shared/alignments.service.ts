@@ -5,7 +5,7 @@ import { Http } from '@angular/http';
 
 import { AuthenticationService } from '../../../authentication/authentication.service';
 import { EntityService } from '../../../shared/services/entity.service';
-import { Alignment } from '../../../shared/entities/alignment';
+import { Alignment } from '../../../shared/models';
 
 @Injectable()
 export class AlignmentsService extends EntityService<Alignment> {

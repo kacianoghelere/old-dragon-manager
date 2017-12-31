@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { ModifiersService } from '../modifiers.service';
-import { StrengthMod } from '../../../shared/entities/strength-mod';
+import { StrengthMod } from '../../../shared/models';
 
 @Component({
   selector: 'app-strength-mods',

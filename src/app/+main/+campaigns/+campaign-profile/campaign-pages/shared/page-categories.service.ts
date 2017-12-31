@@ -5,7 +5,7 @@ import { Http } from '@angular/http';
 
 import { AuthenticationService } from '../../../../../authentication/authentication.service';
 import { EntityService } from '../../../../../shared/services/entity.service';
-import { PageCategory } from '../../../../../shared/entities/page-category';
+import { PageCategory } from '../../../../../shared/models';
 
 @Injectable()
 export class PageCategoriesService extends EntityService<PageCategory> {

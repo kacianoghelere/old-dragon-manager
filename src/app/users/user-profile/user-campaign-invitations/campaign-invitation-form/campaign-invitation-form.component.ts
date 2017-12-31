@@ -6,9 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 
 import { AuthenticationService } from '../../../../authentication/authentication.service';
 import { CampaignInvitationService } from '../../../../shared/services/campaign-invitation.service';
-import { CampaignInvitation } from '../../../../shared/entities/campaign-invitation';
-import { Character } from '../../../../shared/entities/character';
-import { User } from '../../../../shared/entities/user';
+import { CampaignInvitation, Character, User } from '../../../../shared/models';
 import { UsersService } from '../../../users.service';
 
 @Component({

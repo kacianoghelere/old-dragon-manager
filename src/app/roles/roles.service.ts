@@ -5,7 +5,7 @@ import { Http } from '@angular/http';
 
 import { AuthenticationService } from '../authentication/authentication.service';
 import { EntityService } from '../shared/services/entity.service';
-import { Role } from '../shared/entities/role';
+import { Role } from '../shared/models';
 
 @Injectable()
 export class RolesService extends EntityService<Role> {

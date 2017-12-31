@@ -7,10 +7,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 import { AuthenticationService } from '../../../../../authentication/authentication.service';
-import { Campaign } from '../../../../../shared/entities/campaign';
+import { Campaign, Character } from '../../../../../shared/models';
 import { CampaignsService } from '../../../shared/campaigns.service';
 import { CampaignCharactersService } from '../shared/campaign-characters.service';
-import { Character } from '../../../../../shared/entities/character';
 
 @Component({
   selector: 'campaign-characters-manager',

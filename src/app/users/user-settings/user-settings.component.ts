@@ -4,7 +4,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Message } from '../../shared/message';
-import { User } from '../../shared/entities/user';
+import { User } from '../../shared/models';
 import { UsersService } from '../users.service';
 
 @Component({

@@ -7,7 +7,7 @@ import { Md5 } from 'ts-md5/dist/md5';
 
 import { AuthenticationService } from '../authentication/authentication.service';
 import { EntityService } from '../shared/services/entity.service';
-import { User } from '../shared/entities/user';
+import { User } from '../shared/models';
 
 @Injectable()
 export class UsersService extends EntityService<User> {

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { CharacterRace } from '../../../../../shared/entities/character-race';
+import { CharacterRace } from '../../../../../shared/models';
 
 @Component({
   selector: 'race-skills',

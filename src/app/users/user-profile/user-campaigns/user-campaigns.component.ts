@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { CoreComponent } from '../../../shared/components/core/core.component';
-import { Campaign } from '../../../shared/entities/campaign';
+import { Campaign } from '../../../shared/models';
 import { UsersService } from '../../users.service';
 
 @Component({

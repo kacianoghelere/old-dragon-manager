@@ -8,8 +8,7 @@ import { MarkdownService } from 'angular2-markdown';
 import { AuthenticationService } from '../../../../../authentication/authentication.service';
 import { EntityService } from '../../../../../shared/services/entity.service';
 import { CustomMarkdownService } from '../../../../../shared/services/custom-markdown.service';
-import { Campaign } from '../../../../../shared/entities/campaign';
-import { CampaignPage } from '../../../../../shared/entities/campaign-page';
+import { Campaign, CampaignPage } from '../../../../../shared/models';
 
 @Injectable()
 export class CampaignPagesService extends EntityService<CampaignPage> {
