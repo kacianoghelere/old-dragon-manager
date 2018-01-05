@@ -1,0 +1,29 @@
+Etapa 1: Opções de criação
+- Tipo de personagem padrão, criação rápida ou automática.
+Etapa 2: Raça
+- Carroussel com raças disponíveis
+- Detalhes de cada uma serão exibidos a direita
+Etapa 3: Classe
+- Carroussel com classes disponíveis
+- Detalhes de cada uma serão exibidos a direita
+Etapa 4: Especialização
+- Carroussel com especializações disponíveis
+- Detalhes de cada uma serão exibidos a direita
+Etapa 5: Atributos
+- Opção de informar ou gerar aleatóriamente valores
+- Opção de distribuição dos valores gerados
+- Opção de organização de valores obtidos
+Etapa 6: Equipamentos e Itens
+- Seleção de armas
+- Seleção de armaduras
+- Seleção de outros itens 
+Etapa 7: Magias
+- Seleção das magias, caso a classe tenha magias disponíveis
+Etapa 8: Informações
+- Nome
+- Alinhamento
+- Background
+Etapa 9: Finalização
+- Exibir resumo dos dados do personagem
+- Opção de ir para página de personagem
+- Opção de imprimir ficha
