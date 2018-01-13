@@ -1,0 +1,138 @@
+$menu-colors: [
+  #d73939,
+  #ac29da,
+  #dd00ac,
+  #2e98d4,
+  #00ddcf,
+  #00dd52,
+  #da9b31,
+  #f4d400
+];
+
+@mixin blink-animation($i, $color) {
+  @-webkit-keyframes blink-#{$i} {
+    0%   {
+      border-color: $color;
+      text-shadow: 0 0 0 opacify($color, 0);
+    }
+    50%  {
+      border-color: lighten($color, 10%);
+      text-shadow: 0 0 50px opacify($color, 1);
+    }
+    100% {
+      border-color: $color;
+      text-shadow: 0 0 0 opacify($color, 0);
+    }
+  }
+
+  @keyframes blink-#{$i} {
+    0%   {
+      border-color: $color;
+      text-shadow: 0 0 0 opacify($color, 0);
+    }
+    50%  {
+      border-color: lighten($color, 10%);
+      text-shadow: 0 0 50px opacify($color, 1);
+    }
+    100% {
+      border-color: $color;
+      text-shadow: 0 0 0 opacify($color, 0);
+    }
+  }
+}
+
+.navbar {
+  font-family: 'Source Sans Pro', sans-serif !important;
+  padding: 0 1rem !important;
+
+  &.transparent { background-color: rgba(0, 0, 0, .75) !important; }
+
+  .menu-navigation {
+    flex-grow: 1;
+
+    .nav-item {
+      flex-grow: 1;
+      flex-basis: 0;
+
+      .nav-link {
+        border-bottom: 2px solid transparent;
+        border-radius: 0;
+      }
+
+      $i: 1;
+      @each $color, $value in $menu-colors {
+        @include blink-animation($i, $color);
+
+        &:nth-child(#{$i}) {
+          &.active {
+            .nav-link {
+              -webkit-animation: blink-#{$i} 3s linear infinite;
+              animation: blink-#{$i} 3s linear infinite;
+              border-bottom: 2px solid darken($color, 5%) !important;
+            }
+          }
+
+          &:hover {
+            .nav-link {
+              border-bottom: 2px solid darken($color, 5%);
+
+              /deep/ .ra,
+              /deep/ .fa {
+                color: $color;
+              }
+            }
+          }
+        }
+
+        $i: $i + 1;
+      }
+
+      &:hover {
+        .nav-children {
+          display: flex;
+        }
+      }
+
+      .nav-children {
+        display: none;
+        flex-direction: column;
+        float: left;
+        list-style: none;
+        margin: 0;
+        max-width: 200px;
+        min-width: 150px;
+        padding: 0;
+        position: absolute;
+        z-index: 1001;
+
+        .nav-child {
+          background-color: #333;
+          display: block;
+          float: left;
+          margin: 0;
+          padding: 0;
+          width: auto;
+
+          a {
+            color: #eee;
+            display: block;
+            margin: .5rem 1rem;
+            text-decoration: none;
+          }
+
+          &:hover {
+            background-color: #444;
+
+            a {
+              color: #f5f5f5;
+            }
+          }
+        }
+
+        .nav-child + .nav-child {
+          border-top: 1px solid #555;
+        }
+      }
+    }
+  }
+}

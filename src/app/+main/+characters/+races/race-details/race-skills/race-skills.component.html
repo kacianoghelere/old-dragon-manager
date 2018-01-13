@@ -1,10 +1,11 @@
-<section [hidden]="!hasSkills()">
-  <h5 class="title">Habilidades</h5>
-
-  <div class="card" *ngFor="let skill of characterRace.skills">
-    <div class="card-body">
+<div class="card" [hidden]="!hasSkills()">
+  <div class="card-header">
+    <h4 class="card-title">Habilidades</h4>
+  </div>
+  <div class="list-group list-group-flush">
+    <div class="list-group-item" *ngFor="let skill of characterRace.skills">
       <h5 class="card-title">{{skill.name}}</h5>
       <p class="card-text">{{skill.description}}</p>
     </div>
   </div>
-</section>
+</div>

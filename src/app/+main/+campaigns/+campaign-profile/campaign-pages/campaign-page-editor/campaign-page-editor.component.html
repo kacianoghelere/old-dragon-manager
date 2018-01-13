@@ -1,12 +1,17 @@
 
 <form *ngIf="isFormReady()" [formGroup]="pageForm"
     (ngSubmit)="onSubmit(pageForm)">
-  <h2 class="form-title">Editor de páginas</h2>
+
+  <div class="form-group row">
+    <div class="col-sm-12 col-md-10 ml-auto">
+      <h2>Editor de páginas</h2>
+    </div>
+  </div>
 
   <input type="hidden" formControlName="id">
   <section>
     <div class="form-group row">
-      <label class="col-sm-2 col-form-label" for="pageTitle">
+      <label class="col-sm-2 col-form-label text-right" for="pageTitle">
         Título da Página
       </label>
       <div class="col-sm-10 col-md-6">
@@ -22,7 +27,7 @@
     </div>
 
     <div class="form-group row">
-      <label class="col-sm-2 col-form-label" for="pagePicture">
+      <label class="col-sm-2 col-form-label text-right" for="pagePicture">
         Imagem de Capa
       </label>
       <div class="col-sm-10 col-md-6">
@@ -35,7 +40,7 @@
     </div>
 
     <div class="form-group row">
-      <label class="col-sm-2 col-form-label" for="pageCategory">
+      <label class="col-sm-2 col-form-label text-right" for="pageCategory">
         Categoria
       </label>
       <div class="col-sm-10 col-md-6">
@@ -56,7 +61,7 @@
     </div>
 
     <div class="form-group row">
-      <label class="col-sm-2 col-form-label">
+      <label class="col-sm-2 col-form-label text-right">
         Opções
       </label>
       <div class="col-sm-10 col-md-6">
@@ -70,7 +75,7 @@
     </div>
 
     <div class="form-group row">
-      <label class="col-sm-2 col-form-label" for="pageBody">
+      <label class="col-sm-2 col-form-label text-right" for="pageBody">
         Texto
       </label>
       <div class="col-sm-10">
@@ -101,7 +106,8 @@
             [disabled]="pageForm.invalid">
           <i class="fa fa-edit"></i> Salvar
         </button>
-        <button class="btn btn-link pointer" type="button" (click)="goBack()">
+        <button class="btn btn-outline-secondary pointer" type="button"
+            (click)="goBack()">
           <i class="fa fa-remove"></i> Cancelar
         </button>
       </div>

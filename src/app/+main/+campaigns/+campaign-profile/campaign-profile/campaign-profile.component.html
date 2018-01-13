@@ -2,7 +2,16 @@
     [cover]="campaign.picture" [description]="campaign.description"
     [animatedHeader]="true">
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark text-light layout-toolbar">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/main/campaigns']">
+          <i class="fa fa-arrow-left"></i>
+          <span class="d-sm-none d-md-inline">Campanhas</span>
+        </a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav mx-auto">
       <li class="nav-item" [routerLinkActive]="['active']">
         <a class="nav-link" [routerLink]="['pages']">
           <i class="ra ra-scroll-unfurled"></i>
@@ -29,7 +38,7 @@
 
     <ul class="navbar-nav my-2 my-lg-0" *ngIf="isCampaignOwner()">
       <li class="nav-item ml-1">
-        <a class="nav-link text-light" [routerLink]="['edit']">
+        <a class="nav-link" [routerLink]="['edit']">
           <i class="fa fa-edit"></i>
           <span class="d-sm-none d-md-inline">Editar Campanha</span>
         </a>

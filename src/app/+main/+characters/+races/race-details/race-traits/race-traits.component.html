@@ -1,10 +1,13 @@
 <section [hidden]="!hasTraits()">
-  <h5 class="title">Traços</h5>
-
-  <div class="card" *ngFor="let trait of characterRace.traits">
-    <div class="card-body">
-      <h5 class="card-title">{{trait.name}}</h5>
-      <p class="card-text">{{trait.description}}</p>
+  <div class="card">
+    <div class="card-header">
+      <h4 class="card-title">Traços</h4>
+    </div>
+    <div class="list-group list-group-flush">
+      <div class="list-group-item" *ngFor="let trait of characterRace.traits">
+        <h5 class="card-title">{{trait.name}}</h5>
+        <p class="card-text">{{trait.description}}</p>
+      </div>
     </div>
   </div>
 </section>

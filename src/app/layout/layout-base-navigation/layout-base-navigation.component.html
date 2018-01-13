@@ -1,0 +1,92 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark transparent"
+    *ngIf="isAuthenticated">
+  <div class="container">
+    <div class="collapse navbar-collapse" id="navbarTogglableContent">
+      <ul class="navbar-nav menu-navigation d-flex flex-row">
+        <li class="nav-item" routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }">
+          <a class="nav-link" routerLink="/main/campaigns">
+            <layout-navigation-item icon="ra ra-gear-hammer"
+              text="Campanhas"></layout-navigation-item>
+          </a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/main/modifiers">
+            <layout-navigation-item icon="ra ra-book"
+              text="Modificadores"></layout-navigation-item>
+          </a>
+        </li>
+        <li class="nav-item" routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }">
+          <a class="nav-link" routerLink="/main/characters">
+            <layout-navigation-item icon="ra ra-knight-helmet"
+              text="Personagens"></layout-navigation-item>
+          </a>
+        </li>
+        <li class="nav-item" routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }">
+          <a class="nav-link" routerLink="/main/characters/classes">
+            <layout-navigation-item icon="ra ra-crossed-swords"
+              text="Classes"></layout-navigation-item>
+          </a>
+          <ul class="nav-children">
+            <li class="nav-child">
+              <a routerLink="/main/characters/classes/clerigo">Clérigo</a>
+            </li>
+            <li class="nav-child">
+              <a routerLink="/main/characters/classes/homem_de_armas">Homem de Armas</a>
+            </li>
+            <li class="nav-child">
+              <a routerLink="/main/characters/classes/ladrao">Ladrão</a>
+            </li>
+            <li class="nav-child">
+              <a routerLink="/main/characters/classes/mago">Mago</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item" routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }">
+          <a class="nav-link" routerLink="/main/characters/races">
+            <layout-navigation-item icon="ra ra-skull"
+              text="Raças"></layout-navigation-item>
+          </a>
+          <ul class="nav-children">
+            <li class="nav-child">
+              <a routerLink="/main/characters/races/anoes">Anões</a>
+            </li>
+            <li class="nav-child">
+              <a routerLink="/main/characters/races/elfos">Elfos</a>
+            </li>
+            <li class="nav-child">
+              <a routerLink="/main/characters/races/halflings">Halflings</a>
+            </li>
+            <li class="nav-child">
+              <a routerLink="/main/characters/races/humanos">Humanos</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item" routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }">
+          <a class="nav-link" routerLink="/main/characters/specializations">
+            <layout-navigation-item icon="ra ra-archer"
+              text="Especializações"></layout-navigation-item>
+          </a>
+        </li>
+        <li class="nav-item" routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }">
+          <a class="nav-link" routerLink="/users">
+            <layout-navigation-item icon="fa fa-group"
+            text="Usuários"></layout-navigation-item>
+          </a>
+        </li>
+        <li class="nav-item" routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }">
+          <a class="nav-link" routerLink="/example">
+            <layout-navigation-item icon="fa fa-object-group"
+            text="Templates"></layout-navigation-item>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

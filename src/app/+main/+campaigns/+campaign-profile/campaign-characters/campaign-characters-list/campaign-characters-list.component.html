@@ -1,14 +1,11 @@
-<nav class="navbar navbar-expand-sm navbar-light subnav" *ngIf="showToolbar()">
-  <ul class="navbar-nav mr-auto"></ul>
-  <ul class="navbar-nav my-2 my-lg-0">
-    <li class="nav-item">
-      <a class="nav-link text-primary" [routerLink]="['manage']">
-        <i class="fa fa-cog"></i>
-        <span class="d-sm-none d-md-inline">Gerenciar Personagens</span>
-      </a>
-    </li>
-  </ul>
-</nav>
+<div class="row" *ngIf="showToolbar()">
+  <div class="col ml-auto">
+    <a class="btn btn-outline-primary float-right" [routerLink]="['manage']">
+      <i class="fa fa-cog"></i>
+      <span class="d-sm-none d-md-inline">Gerenciar Personagens</span>
+    </a>
+  </div>
+</div>
 
 <section class="row" *ngIf="campaign">
   <div class="col-sm-12 col-md-6 col-lg-6"

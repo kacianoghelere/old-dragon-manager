@@ -14,6 +14,7 @@ import { LayoutHeaderComponent } from './layout-header/layout-header.component';
 import { LayoutNavigationComponent } from './layout-navigation/layout-navigation.component';
 import { LayoutNavigationItemComponent } from './layout-navigation-item/layout-navigation-item.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { LayoutBaseNavigationComponent } from './layout-base-navigation/layout-base-navigation.component';
 
 @NgModule({
   imports: [
@@ -31,6 +32,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
     LayoutNavigationComponent,
     LayoutNavigationItemComponent,
     WelcomeComponent,
+    LayoutBaseNavigationComponent,
   ],
   exports: [
     LayoutBaseComponent,

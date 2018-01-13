@@ -1,17 +1,19 @@
 <section class="page" *ngIf="campaign">
   <header>
-    <div class="d-flex justify-content-between">
-      <a class="mr-2" [routerLink]="['../']">
-        <i class="fa fa-arrow-left"></i> Voltar
-      </a>
-
-      <a [routerLink]="['edit']" *ngIf="isCampaignOwner()">
-        <i class="fa fa-edit"></i> Editar Página
-      </a>
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">{{page?.page_category?.title}}</a>
+      </li>
+      <li class="nav-item ml-auto">
+        <a class="nav-link" [routerLink]="['edit']"
+          *ngIf="isCampaignOwner()">
+          <i class="fa fa-edit"></i> Editar
+        </a>
+      </li>
+    </ul>
+    <div class="mt-2">
+      <h2 class="page-title">{{page?.title}}</h2>
     </div>
-
-    <small class="mr-2">{{page?.page_category?.title}}/</small>
-    <h2 class="title page-title">{{page?.title}}</h2>
   </header>
 
   <article *ngIf="page">

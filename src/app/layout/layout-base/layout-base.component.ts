@@ -16,10 +16,9 @@ export class LayoutBaseComponent implements OnInit {
   isAuthenticated: boolean = false;
 
   constructor(private authenticationService: AuthenticationService) {
-    this.authenticationService.authentication.subscribe((status: boolean) => {
-      this.isAuthenticated = status;
-      console.log('Authentication update', status);
-    });
+    this.authenticationService.authentication.subscribe(
+      (status: boolean) => this.isAuthenticated = status
+    );
   }
 
   get coverImage(): any {
