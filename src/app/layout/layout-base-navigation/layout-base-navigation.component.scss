@@ -53,6 +53,8 @@ $menu-colors: [
     .nav-item {
       flex-grow: 1;
       flex-basis: 0;
+      outline: 0;
+      position: relative;
 
       .nav-link {
         border-bottom: 2px solid transparent;
@@ -99,8 +101,8 @@ $menu-colors: [
         float: left;
         list-style: none;
         margin: 0;
-        max-width: 200px;
-        min-width: 150px;
+        max-width: 100%;
+        min-width: 100%;
         padding: 0;
         position: absolute;
         z-index: 1001;

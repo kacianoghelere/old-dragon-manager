@@ -22,6 +22,7 @@ export class ClassDetailsComponent extends CoreComponent
   subscription: Subscription;
   characterClass: CharacterClass;
   currentTab: number = 1;
+  activePicture: number = 1;
   trailItem: TrailItem;
 
   //
@@ -36,6 +37,26 @@ export class ClassDetailsComponent extends CoreComponent
     private trailService: TrailService
   ) {
     super();
+  }
+
+  isActivePicture(index: number): boolean {
+    return index === this.activePicture;
+  }
+
+  nextPicture() {
+    if (this.activePicture === 2) {
+      this.activePicture = 0;
+    } else {
+      this.activePicture++;
+    }
+  }
+
+  previousPicture() {
+    if (this.activePicture === 0) {
+      this.activePicture = 2;
+    } else {
+      this.activePicture--;
+    }
   }
 
   //
