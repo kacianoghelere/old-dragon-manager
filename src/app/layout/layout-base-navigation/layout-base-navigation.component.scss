@@ -96,23 +96,25 @@ $menu-colors: [
       }
 
       .nav-children {
-        display: none;
         flex-direction: column;
         float: left;
         list-style: none;
         margin: 0;
+        max-height: 0;
         max-width: 100%;
         min-width: 100%;
         padding: 0;
         position: absolute;
+        transition: max-height 0.15s ease-out;
         z-index: 1001;
 
         .nav-child {
           background-color: #333;
-          display: block;
           float: left;
           margin: 0;
+          max-height: auto;
           padding: 0;
+          transition: max-height 0.25s ease-in;
           width: auto;
 
           a {
