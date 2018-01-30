@@ -1,10 +1,52 @@
 .jumbotron { box-shadow: $jumbotron-box-shadow; }
 
+.list-group.scroll .list-group-item {
+  background: none;
+  background-image: url("/assets/paper-horizontal.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;;
+  background-position: center;
+  border: none;
+  margin-bottom: 1em;
+  padding: 1em 3em;
+}
+
 .card {
-  // -webkit-box-shadow: $card-box-shadow;
-  // -moz-box-shadow: $card-box-shadow;
-  // box-shadow: $card-box-shadow;
-  // border: none;
+  &.scroll {
+      /* The image used */
+      background: none;
+      background-image: url("/assets/paper-bottomless.png");
+      background-repeat: no-repeat;
+      background-size: 100% 100%;;
+      background-position: center;
+      border: none;
+      padding: 2.5em 2em .5em 2em;
+
+      &.horizontal {
+        background-image: url("/assets/paper-horizontal.png");
+      }
+
+      &.vertical {
+        background-image: url("/assets/paper-full.png");
+        padding: 2.5em;
+      }
+
+      .card-body {
+        background: none;
+        border: none;
+      }
+
+      .card-header {
+        background: none;
+        border: none;
+      }
+
+      .list-group-flush .list-group-item {
+        background: none;
+        border: none;
+      }
+  }
+
   margin: 10px 0;
 
   &.feature-link,
