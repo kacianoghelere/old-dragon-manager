@@ -11,6 +11,7 @@ import { CharactersListComponent } from './characters-list/characters-list.compo
 
 import { AlignmentsService } from './shared/alignments.service';
 import { ClassesService } from './shared/classes.service';
+import { CharacterEditorComponent } from './character-editor/character-editor.component';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { ClassesService } from './shared/classes.service';
   declarations: [
     CharactersComponent,
     CharactersHomeComponent,
-    CharactersListComponent
+    CharactersListComponent,
+    CharacterEditorComponent
   ],
   providers: [
     AlignmentsService,

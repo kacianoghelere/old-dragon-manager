@@ -23,15 +23,6 @@ export class CampaignEditorComponent implements OnInit, OnDestroy {
   campaignForm: FormGroup;
   subscription: Subscription;
 
-  /**
-   * [constructor description]
-   * @param  {ActivatedRoute}        route               [description]
-   * @param  {Router}                router              [description]
-   * @param  {FormBuilder}           formBuilder         [description]
-   * @param  {AuthenticationService} authService         [description]
-   * @param  {CampaignsService}      campaignsService    [description]
-   * @param  {CampaignFormService}   campaignFormService [description]
-   */
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -41,6 +32,17 @@ export class CampaignEditorComponent implements OnInit, OnDestroy {
     private campaignsService: CampaignsService,
     private toastrService: ToastrService
   ) { }
+
+  /**
+   * Executa rota de navegação adequada
+   */
+  goBack() {
+    if (this.campaign.id) {
+      this.router.navigate(['/main/campaigns', this.campaign.uuid]);
+    } else {
+      this.router.navigate(['/main/campaigns/']);
+    }
+  }
 
   ngOnDestroy() {
     if (this.subscription) this.subscription.unsubscribe();
@@ -68,17 +70,6 @@ export class CampaignEditorComponent implements OnInit, OnDestroy {
         this.toFormGroup(this.campaign);
       }
     });
-  }
-
-  /**
-   * Executa rota de navegação adequada
-   */
-  goBack() {
-    if (this.campaign.id) {
-      this.router.navigate(['/main/campaigns', this.campaign.uuid]);
-    } else {
-      this.router.navigate(['/main/campaigns/']);
-    }
   }
 
   onSubmit({value, valid}: {value: Campaign, valid: boolean}) {

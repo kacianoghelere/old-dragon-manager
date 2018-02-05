@@ -5,33 +5,31 @@ import { Http } from '@angular/http';
 
 import { AuthenticationService } from '../../../authentication/authentication.service';
 import { EntityService } from '../../../shared/services/entity.service';
-import { Campaign, CampaignPage } from '../../../shared/models';
-import { CharactersService } from '../../shared/characters.service';
+import { Character } from '../../../shared/models';
 
 @Injectable()
-export class CampaignsService extends EntityService<Campaign> {
+export class CharactersService extends EntityService<Character> {
 
-  resource: string = 'campaigns';
+  resource: string = 'characters';
 
   constructor(
     authenticationService: AuthenticationService,
-    http: Http,
-    private charactersService: CharactersService
+    http: Http
   ) {
     super(authenticationService, http);
   }
 
   canActivateOwner(id: number): Observable<boolean> {
-    return this.find(id).map((campaign) => {
-      return this.authenticationService.isCurrentUser(campaign.dungeonMaster);
+    return this.find(id).map((character) => {
+      return this.authenticationService.isCurrentUser(character.player);
     });
   }
 
-  create(params: Campaign): Observable<any> {
-    return super._create(this.resource)({campaign: params});
+  create(params: Character): Observable<any> {
+    return super._create(this.resource)({character: params});
   }
 
-  find(id: number): Observable<Campaign> {
+  find(id: number): Observable<Character> {
     return super._find(this.resource)(id);
   }
 
@@ -48,11 +46,11 @@ export class CampaignsService extends EntityService<Campaign> {
     return this.create(params);
   }
 
-  list(): Observable<Campaign[]> {
+  list(): Observable<Character[]> {
     return super._list(this.resource)();
   }
 
-  update(id: number, params: Campaign): Observable<any> {
-    return super._update(this.resource)(id, {campaign: params});
+  update(id: number, params: Character): Observable<any> {
+    return super._update(this.resource)(id, {character: params});
   }
 }

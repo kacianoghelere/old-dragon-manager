@@ -38,7 +38,7 @@ export class CharacterProfileComponent extends CoreComponent
 
   ngOnInit() {
     this.route.parent.params.subscribe((params: Character) => {
-      let id = params['id'];
+      let id = params['character_id'];
 
       if (id) {
         this.subscription = this.charactersService.find(id)

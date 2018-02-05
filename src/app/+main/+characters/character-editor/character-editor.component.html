@@ -1,0 +1,56 @@
+<layout-base *ngIf="character" pageTitle="Editor de Personagem">
+  <form *ngIf="characterForm" [formGroup]="characterForm"
+      (ngSubmit)="onSubmit(characterForm)">
+    <section>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="characterName">
+          Nome
+        </label>
+        <div class="col-sm-10 col-md-6">
+          <input class="form-control form-control-lg"
+            type="text"
+            id="characterName"
+            formControlName="name">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="characterRace">
+          Raça
+        </label>
+        <div class="col-sm-10 col-md-6">
+          <input class="form-control"
+            type="url"
+            id="characterRace"
+            formControlName="race">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="characterClass">
+          Class
+        </label>
+        <div class="col-sm-10">
+          <textarea class="form-control"
+            id="characterClass"
+            rows="5"
+            formControlName="class"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="form-group row">
+        <div class="ml-auto col-sm-10">
+          <button class="btn btn-primary" type="submit"
+              [disabled]="campaignForm.invalid">
+            <i class="fa fa-edit"></i> Salvar
+          </button>
+          <button class="btn btn-link" type="button" (click)="goBack()">
+            <i class="fa fa-remove"></i> Cancelar
+          </button>
+        </div>
+      </div>
+    </section>
+  </form>
+</layout-base>

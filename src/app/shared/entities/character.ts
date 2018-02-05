@@ -9,8 +9,8 @@ import { User } from "./user";
 export class Character {
   campaigns?: Campaign[];
   class?: CharacterClass;
-  description: string;
-  flat_name: string;
+  description?: string;
+  flat_name?: string;
   id: number;
   level?: number;
   name: string;
@@ -21,4 +21,5 @@ export class Character {
   specialization?: CharacterSpecialization;
   status?: CharacterJournal;
   title?: string;
+  uuid?: string;
 }
