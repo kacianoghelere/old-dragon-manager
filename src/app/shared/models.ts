@@ -1,13 +1,14 @@
 export { Alignment } from "./entities/alignment";
-export { AttributeRequirement } from "./entities/attribute-requirement";
-export { Attributes } from "./entities/attributes";
+export { AttributeModifier } from "./entities/attribute-modifier";
 export { Authentication } from "./entities/authentication";
+export { BaseAttribute } from "./entities/base-attribute";
 export { CampaignInvitation } from "./entities/campaign-invitation";
 export { CampaignJournal } from "./entities/campaign-journal";
 export { CampaignMap } from "./entities/campaign-map";
 export { CampaignNote } from "./entities/campaign-note";
 export { CampaignPage } from "./entities/campaign-page";
 export { Campaign } from "./entities/campaign";
+export { CharacterAttribute } from "./entities/character-attribute";
 export { CharacterClassEvolution } from "./entities/character-class-evolution";
 export { CharacterClassMagicCircle } from "./entities/character-class-magic-circle";
 export { CharacterClassThiefTalent } from "./entities/character-class-thief-talent";

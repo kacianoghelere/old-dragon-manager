@@ -1,5 +1,5 @@
-import { Attributes } from "./attributes";
 import { Campaign } from "./campaign";
+import { CharacterAttribute } from "./character-attribute";
 import { CharacterClass } from "./character-class";
 import { CharacterSpecialization } from "./character-specialization";
 import { CharacterJournal } from "./character-journal";
@@ -20,6 +20,7 @@ export class Character {
   race?: CharacterRace;
   specialization?: CharacterSpecialization;
   status?: CharacterJournal;
+  attributes?: CharacterAttribute;
   title?: string;
   uuid?: string;
 }

@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 
 import { CoreComponent } from '../../../../shared/components/core/core.component';
-import { Character } from '../../../../shared/models';
+import { AttributeModifier, Character, CharacterAttribute } from '../../../../shared/models';
 
 @Component({
   selector: 'character-attributes',
@@ -15,6 +15,34 @@ export class CharacterAttributesComponent extends CoreComponent
 
   constructor() {
     super();
+  }
+
+  get characterAttributes(): CharacterAttribute {
+    return this.character.attributes;
+  }
+
+  get characterStrength(): AttributeModifier {
+    return this.characterAttributes.strength;
+  }
+
+  get characterDexterity(): AttributeModifier {
+    return this.characterAttributes.dexterity;
+  }
+
+  get characterConstitution(): AttributeModifier {
+    return this.characterAttributes.constitution;
+  }
+
+  get characterIntelligence(): AttributeModifier {
+    return this.characterAttributes.intelligence;
+  }
+
+  get characterWisdom(): AttributeModifier {
+    return this.characterAttributes.wisdom;
+  }
+
+  get characterCharisma(): AttributeModifier {
+    return this.characterAttributes.charisma;
   }
 
   ngOnDestroy() {
