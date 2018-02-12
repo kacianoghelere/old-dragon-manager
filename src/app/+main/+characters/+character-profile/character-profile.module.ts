@@ -12,6 +12,7 @@ import { CharacterEquipmentsComponent } from './character-equipments/character-e
 import { CharacterSpellsComponent } from './character-spells/character-spells.component';
 import { CharacterItemsComponent } from './character-items/character-items.component';
 import { CharacterStatisticsComponent } from './character-statistics/character-statistics.component';
+import { CharacterAttributeComponent } from './character-attribute/character-attribute.component';
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import { CharacterStatisticsComponent } from './character-statistics/character-s
     CharacterEquipmentsComponent,
     CharacterSpellsComponent,
     CharacterItemsComponent,
-    CharacterStatisticsComponent
+    CharacterStatisticsComponent,
+    CharacterAttributeComponent
   ]
 })
 export class CharacterProfileModule { }
