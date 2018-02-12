@@ -21,27 +21,27 @@ export class CharacterAttributesComponent extends CoreComponent
     return this.character.attributes;
   }
 
-  get characterStrength(): AttributeModifier {
+  get characterStrength(): number {
     return this.characterAttributes.strength;
   }
 
-  get characterDexterity(): AttributeModifier {
+  get characterDexterity(): number {
     return this.characterAttributes.dexterity;
   }
 
-  get characterConstitution(): AttributeModifier {
+  get characterConstitution(): number {
     return this.characterAttributes.constitution;
   }
 
-  get characterIntelligence(): AttributeModifier {
+  get characterIntelligence(): number {
     return this.characterAttributes.intelligence;
   }
 
-  get characterWisdom(): AttributeModifier {
+  get characterWisdom(): number {
     return this.characterAttributes.wisdom;
   }
 
-  get characterCharisma(): AttributeModifier {
+  get characterCharisma(): number {
     return this.characterAttributes.charisma;
   }
 

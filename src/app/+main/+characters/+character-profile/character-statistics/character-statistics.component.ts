@@ -33,8 +33,8 @@ export class CharacterStatisticsComponent extends CoreComponent
   }
 
   ngOnInit() {
-    this.route.parent.parent.params.subscribe((params: Character) => {
-      let id = params['id'];
+    this.route.parent.params.subscribe((params: Character) => {
+      let id = params['character_id'];
 
       if (id) {
         this.subscription = this.charactersService.find(id).subscribe(
