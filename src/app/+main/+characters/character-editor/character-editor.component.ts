@@ -9,13 +9,15 @@ import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from '../../../authentication/authentication.service';
 import { Character } from '../../../shared/models';
 import { CharactersService } from '../shared/characters.service';
+import { CoreComponent } from '../../../shared/components/core/core.component';
 
 @Component({
   selector: 'character-editor',
   templateUrl: './character-editor.component.html',
   styleUrls: ['./character-editor.component.scss']
 })
-export class CharacterEditorComponent implements OnInit, OnDestroy {
+export class CharacterEditorComponent extends CoreComponent
+    implements OnInit, OnDestroy {
 
   character: Character;
   characterForm: FormGroup;
@@ -28,7 +30,9 @@ export class CharacterEditorComponent implements OnInit, OnDestroy {
     private authService: AuthenticationService,
     private charactersService: CharactersService,
     private toastrService: ToastrService
-  ) { }
+  ) {
+    super();
+  }
 
   goBack() {
     if (this.character.id) {
@@ -47,8 +51,12 @@ export class CharacterEditorComponent implements OnInit, OnDestroy {
       let id = params['character_id'];
 
       if (id) {
-        this.subscription = this.charactersService.find(id)
-          .subscribe((response) => this.toFormGroup(this.character));
+        this.subscription = this.charactersService.find(id).subscribe(
+          (response: Character) => {
+            this.character = response;
+            this.toFormGroup(this.character);
+          }
+        );
       } else {
         this.character = {
           id: null,
@@ -61,17 +69,44 @@ export class CharacterEditorComponent implements OnInit, OnDestroy {
     });
   }
 
+  onSubmit({value, valid}: {value: Character, valid: boolean}) {
+    console.log("Submetido!", value);
+    let params = {
+      id: value.id,
+      title: value.title,
+      picture: value.picture,
+      description: value.description
+    };
+    this.charactersService.handle(params).subscribe(
+      (response: Character) => {
+        if (!this.character.id) {
+          this.character.id = response.id;
+        }
+
+        this.toastrService.success('Operação concluída',
+          'Os dados da campanha foram gravados com sucesso.');
+
+        this.goBack();
+      },
+      (error) => {
+        this.toastrService.warning('Ooops! Ocorreu um erro.',
+          'Parace que algum kobold andou mexendo nos cabos de rede.');
+      }
+    );
+  }
+
   toFormGroup(character: Character) {
     this.characterForm = this.formBuilder.group({
       id : this.character.id,
       name: [
         this.character.name, [
-          Validators.required, Validators.maxLength(45), Validators.minLength(6)
+          Validators.required, Validators.maxLength(45), Validators.minLength(3)
         ]
       ],
       picture: [this.character.picture, Validators.maxLength(300)],
-      description: [this.character.description, Validators.required]
+      description: [this.character.description, Validators.required],
+      characterClass: ['', Validators.required],
+      characterRace: ['', Validators.required]
     });
   }
-
 }

@@ -4,14 +4,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { LayoutModule } from '../../layout/layout.module';
 import { SharedModule } from '../../shared/shared.module';
+import { CharacterEditorComponent } from './character-editor/character-editor.component';
 import { CharactersRoutingModule } from './characters-routing.module';
 import { CharactersComponent } from './characters/characters.component';
 import { CharactersHomeComponent } from './characters-home/characters-home.component';
 import { CharactersListComponent } from './characters-list/characters-list.component';
 
 import { AlignmentsService } from './shared/alignments.service';
+import { CharactersService } from './shared/characters.service';
 import { ClassesService } from './shared/classes.service';
-import { CharacterEditorComponent } from './character-editor/character-editor.component';
 
 @NgModule({
   imports: [
@@ -30,6 +31,7 @@ import { CharacterEditorComponent } from './character-editor/character-editor.co
   ],
   providers: [
     AlignmentsService,
+    CharactersService,
     ClassesService
   ]
 })
