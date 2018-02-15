@@ -7,8 +7,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 
 import { AuthenticationService } from '../../../authentication/authentication.service';
-import { Character } from '../../../shared/models';
+import { Character, CharacterClass, CharacterRace } from '../../../shared/models';
 import { CharactersService } from '../shared/characters.service';
+import { RacesService } from '../shared/races.service';
+import { ClassesService } from '../shared/classes.service';
 import { CoreComponent } from '../../../shared/components/core/core.component';
 
 @Component({
@@ -21,6 +23,8 @@ export class CharacterEditorComponent extends CoreComponent
 
   character: Character;
   characterForm: FormGroup;
+  characterClasses: CharacterClass[];
+  characterRaces: CharacterRace[];
   subscription: Subscription;
 
   constructor(
@@ -29,6 +33,8 @@ export class CharacterEditorComponent extends CoreComponent
     private formBuilder: FormBuilder,
     private authService: AuthenticationService,
     private charactersService: CharactersService,
+    private classesService: ClassesService,
+    private racesService: RacesService,
     private toastrService: ToastrService
   ) {
     super();
@@ -49,6 +55,14 @@ export class CharacterEditorComponent extends CoreComponent
   ngOnInit() {
     this.route.params.subscribe((params) => {
       let id = params['character_id'];
+
+      this.racesService.list().subscribe((response) => {
+        this.characterRaces = response;
+      });
+
+      this.classesService.list().subscribe((response) => {
+        this.characterClasses = response;
+      });
 
       if (id) {
         this.subscription = this.charactersService.find(id).subscribe(

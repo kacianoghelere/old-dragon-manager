@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { AuthenticationService } from '../../../../authentication/authentication.service';
 import { CharacterRace, Link, TrailItem }  from "../../../../shared/models";
-import { RacesService } from '../shared/races.service';
+import { RacesService } from '../../shared/races.service';
 import { TrailService }  from "../../../../shared/services/trail.service";
 
 @Component({

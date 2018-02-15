@@ -13,6 +13,7 @@ import { CharactersListComponent } from './characters-list/characters-list.compo
 import { AlignmentsService } from './shared/alignments.service';
 import { CharactersService } from './shared/characters.service';
 import { ClassesService } from './shared/classes.service';
+import { RacesService } from './shared/races.service';
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import { ClassesService } from './shared/classes.service';
   providers: [
     AlignmentsService,
     CharactersService,
-    ClassesService
+    ClassesService,
+    RacesService
   ]
 })
 export class CharactersModule { }

@@ -4,7 +4,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { AuthenticationService } from '../../../../authentication/authentication.service';
 import { CharacterRace, Link } from '../../../../shared/models';
-import { RacesService } from '../shared/races.service';
+import { RacesService } from '../../shared/races.service';
 
 @Component({
   selector: 'races-list',

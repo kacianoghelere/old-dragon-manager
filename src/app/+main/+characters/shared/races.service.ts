@@ -3,9 +3,9 @@ import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 
-import { AuthenticationService } from '../../../../authentication/authentication.service';
-import { EntityService } from '../../../../shared/services/entity.service';
-import { CharacterRace } from '../../../../shared/models';
+import { AuthenticationService } from '../../../authentication/authentication.service';
+import { EntityService } from '../../../shared/services/entity.service';
+import { CharacterRace } from '../../../shared/models';
 
 @Injectable()
 export class RacesService extends EntityService<CharacterRace> {
