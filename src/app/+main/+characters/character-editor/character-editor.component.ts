@@ -1,4 +1,5 @@
 import { Subscription } from 'rxjs/Subscription';
+import { Observable } from 'rxjs/Observable';
 
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -23,8 +24,8 @@ export class CharacterEditorComponent extends CoreComponent
 
   character: Character;
   characterForm: FormGroup;
-  characterClasses: CharacterClass[];
-  characterRaces: CharacterRace[];
+  characterClasses: Observable<CharacterClass[]>;
+  characterRaces: Observable<CharacterRace[]>;
   subscription: Subscription;
 
   constructor(
@@ -56,13 +57,9 @@ export class CharacterEditorComponent extends CoreComponent
     this.route.params.subscribe((params) => {
       let id = params['character_id'];
 
-      this.racesService.list().subscribe((response) => {
-        this.characterRaces = response;
-      });
+      this.characterRaces = this.racesService.list();
 
-      this.classesService.list().subscribe((response) => {
-        this.characterClasses = response;
-      });
+      this.characterClasses = this.classesService.list();
 
       if (id) {
         this.subscription = this.charactersService.find(id).subscribe(
@@ -120,7 +117,15 @@ export class CharacterEditorComponent extends CoreComponent
       picture: [this.character.picture, Validators.maxLength(300)],
       description: [this.character.description, Validators.required],
       characterClass: ['', Validators.required],
-      characterRace: ['', Validators.required]
+      characterRace: ['', Validators.required],
+      attributes: this.formBuilder.group({
+        strength: [0, Validators.required],
+        dexterity: [0, Validators.required],
+        constitution: [0, Validators.required],
+        intelligence: [0, Validators.required],
+        wisdom: [0, Validators.required],
+        charisma: [0, Validators.required]
+      })
     });
   }
 }

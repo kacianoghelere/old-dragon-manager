@@ -26,7 +26,7 @@
               [ngClass]="getErrorClass(characterForm.controls.characterRace)"
               id="characterRace">
             <option value="" selected>Escolha uma raça</option>
-            <option *ngFor="let characterRace of characterRaces"
+            <option *ngFor="let characterRace of characterRaces | async"
                 [value]="characterRace.id">
               {{ characterRace.name }}
             </option>
@@ -45,7 +45,7 @@
               [ngClass]="getErrorClass(characterForm.controls.characterClass)"
               id="characterClass">
             <option value="" selected>Escolha uma classe</option>
-            <option *ngFor="let characterClass of characterClasses"
+            <option *ngFor="let characterClass of characterClasses | async"
                 [value]="characterClass.id">
               {{ characterClass.name }}
             </option>
@@ -53,7 +53,7 @@
         </div>
       </div>
 
-      <div class="form-group row">
+      <div class="form-group row" [formGroup]="characterForm.attributes">
         <label class="col-sm-12 col-md-2 col-lg-3 col-form-label text-right">
           <b>Atributos</b>
         </label>
