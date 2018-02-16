@@ -2,7 +2,7 @@
   <form *ngIf="characterForm" [formGroup]="characterForm"
       (ngSubmit)="onSubmit(characterForm)">
     <section>
-      <div class="form-group row">
+      <div class="form-group row align-items-center">
         <label class="col-sm-12 col-md-2 col-lg-3 col-form-label text-right"
             for="characterName">
           <b>Nome</b>
@@ -15,7 +15,7 @@
         </div>
       </div>
 
-      <div class="form-group row">
+      <div class="form-group row align-items-center">
         <label class="col-sm-12 col-md-2 col-lg-3 col-form-label text-right"
             for="characterRace">
           <b>Raça</b>
@@ -34,7 +34,7 @@
         </div>
       </div>
 
-      <div class="form-group row">
+      <div class="form-group row align-items-center">
         <label class="col-sm-12 col-md-2 col-lg-3 col-form-label text-right"
             for="characterClass">
           <b>Classe</b>
@@ -53,28 +53,28 @@
         </div>
       </div>
 
-      <div class="form-group row" [formGroup]="characterForm.attributes">
+      <div class="form-group row align-items-center" formGroupName="attributes">
         <label class="col-sm-12 col-md-2 col-lg-3 col-form-label text-right">
           <b>Atributos</b>
         </label>
         <div class="col-sm-12 col-md-8 col-lg-6">
           <div class="row">
             <div class="col-sm-6 col-md-4 col-lg-4">
-              <label for="attributeStrength">FOR</label>
+              <label for="attributeStrength">Força</label>
               <input class="form-control"
                 type="number"
                 id="attributeStrength"
                 formControlName="strength">
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4">
-              <label for="attributeDexterity">DES</label>
+              <label for="attributeDexterity">Destreza</label>
               <input class="form-control"
                 type="number"
                 id="attributeDexterity"
                 formControlName="dexterity">
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4">
-              <label for="attributeConstitution">CON</label>
+              <label for="attributeConstitution">Constituição</label>
               <input class="form-control"
                 type="number"
                 id="attributeConstitution"
@@ -83,21 +83,21 @@
           </div>
           <div class="row">
             <div class="col-sm-6 col-md-4 col-lg-4">
-              <label for="attributeIntelligence">INT</label>
+              <label for="attributeIntelligence">Inteligência</label>
               <input class="form-control"
                 type="number"
                 id="attributeIntelligence"
                 formControlName="intelligence">
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4">
-              <label for="attributeWisdom">SAB</label>
+              <label for="attributeWisdom">Sabedoria</label>
               <input class="form-control"
                 type="number"
                 id="attributeWisdom"
                 formControlName="wisdom">
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4">
-              <label for="attributeCharisma">CAR</label>
+              <label for="attributeCharisma">Carisma</label>
               <input class="form-control"
                 type="number"
                 id="attributeCharisma"
