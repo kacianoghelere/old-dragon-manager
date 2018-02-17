@@ -8,10 +8,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 
 import { AuthenticationService } from '../../../authentication/authentication.service';
-import { Character, CharacterClass, CharacterRace } from '../../../shared/models';
+import { Character, CharacterClass, CharacterRace, CharacterSpecialization } from '../../../shared/models';
 import { CharactersService } from '../shared/characters.service';
 import { RacesService } from '../shared/races.service';
 import { ClassesService } from '../shared/classes.service';
+import { SpecializationsService } from '../shared/specializations.service';
 import { CoreComponent } from '../../../shared/components/core/core.component';
 
 @Component({
@@ -26,6 +27,7 @@ export class CharacterEditorComponent extends CoreComponent
   characterForm: FormGroup;
   characterClasses: Observable<CharacterClass[]>;
   characterRaces: Observable<CharacterRace[]>;
+  characterSpecializations: Observable<CharacterSpecialization[]>;
   subscription: Subscription;
 
   constructor(
@@ -36,6 +38,7 @@ export class CharacterEditorComponent extends CoreComponent
     private charactersService: CharactersService,
     private classesService: ClassesService,
     private racesService: RacesService,
+    private specializationsService: SpecializationsService,
     private toastrService: ToastrService
   ) {
     super();
@@ -61,6 +64,8 @@ export class CharacterEditorComponent extends CoreComponent
 
       this.characterClasses = this.classesService.list();
 
+      this.characterSpecializations = this.specializationsService.list();
+
       if (id) {
         this.subscription = this.charactersService.find(id).subscribe(
           (response: Character) => {
@@ -81,32 +86,51 @@ export class CharacterEditorComponent extends CoreComponent
   }
 
   onSubmit({value, valid}: {value: Character, valid: boolean}) {
-    console.log("Submetido!", value);
+    console.log("Submetido!", {value});
+
     let params = {
       id: value.id,
       title: value.title,
       picture: value.picture,
-      description: value.description
+      description: value.description,
+      attributes: value.attributes
     };
-    this.charactersService.handle(params).subscribe(
-      (response: Character) => {
-        if (!this.character.id) {
-          this.character.id = response.id;
-        }
 
-        this.toastrService.success('Operação concluída',
-          'Os dados da campanha foram gravados com sucesso.');
-
-        this.goBack();
-      },
-      (error) => {
-        this.toastrService.warning('Ooops! Ocorreu um erro.',
-          'Parace que algum kobold andou mexendo nos cabos de rede.');
-      }
-    );
+    // this.charactersService.handle(params).subscribe(
+    //   (response: Character) => {
+    //     if (!this.character.id) {
+    //       this.character.id = response.id;
+    //     }
+    //
+    //     this.toastrService.success('Operação concluída',
+    //       'Os dados da campanha foram gravados com sucesso.');
+    //
+    //     this.goBack();
+    //   },
+    //   (error) => {
+    //     this.toastrService.warning('Ooops! Ocorreu um erro.',
+    //       'Parace que algum kobold andou mexendo nos cabos de rede.');
+    //   }
+    // );
   }
 
   toFormGroup(character: Character) {
+    let attributeValidators = [
+      Validators.required, Validators.max(20), Validators.min(6)
+    ];
+
+    let characterClass = this.character.class;
+
+    let characterClassId = characterClass ? characterClass.id : '';
+
+    let characterRace = this.character.race;
+
+    let characterRaceId = characterRace ? characterRace.id : '';
+
+    let characterSpecialization = this.character.specialization;
+
+    let characterSpecializationId = characterSpecialization ? characterSpecialization.id : '';
+
     this.characterForm = this.formBuilder.group({
       id : this.character.id,
       name: [
@@ -114,17 +138,64 @@ export class CharacterEditorComponent extends CoreComponent
           Validators.required, Validators.maxLength(45), Validators.minLength(3)
         ]
       ],
+      quote: [this.character.quote, Validators.maxLength(300)],
+      weight: [
+        this.character.weight, [
+          Validators.required, Validators.max(200), Validators.min(20)
+        ]
+      ],
+      height: [
+        this.character.height, [
+          Validators.required, Validators.max(120), Validators.min(30)
+        ]
+      ],
+      age: [
+        this.character.age, [
+          Validators.required, Validators.max(10), Validators.min(700)
+        ]
+      ],
       picture: [this.character.picture, Validators.maxLength(300)],
-      description: [this.character.description, Validators.required],
-      characterClass: ['', Validators.required],
-      characterRace: ['', Validators.required],
+      description: [this.character.
+        description,
+        Validators.required
+      ],
+      characterClass: [
+        characterClassId,
+        Validators.required
+      ],
+      characterRace: [
+        characterRaceId,
+        Validators.required
+      ],
+      characterSpecialization: [
+        characterSpecializationId,
+        Validators.required
+      ],
       attributes: this.formBuilder.group({
-        strength: [0, Validators.required],
-        dexterity: [0, Validators.required],
-        constitution: [0, Validators.required],
-        intelligence: [0, Validators.required],
-        wisdom: [0, Validators.required],
-        charisma: [0, Validators.required]
+        strength: [
+          this.character.attributes.strength,
+          attributeValidators
+        ],
+        dexterity: [
+          this.character.attributes.dexterity,
+          attributeValidators
+        ],
+        constitution: [
+          this.character.attributes.constitution,
+          attributeValidators
+        ],
+        intelligence: [
+          this.character.attributes.intelligence,
+          attributeValidators
+        ],
+        wisdom: [
+          this.character.attributes.wisdom,
+          attributeValidators
+        ],
+        charisma: [
+          this.character.attributes.charisma,
+          attributeValidators
+        ]
       })
     });
   }

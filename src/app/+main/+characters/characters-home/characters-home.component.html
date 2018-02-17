@@ -1,4 +1,16 @@
 <layout-base pageTitle="Personagens">
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark text-light layout-toolbar">
+    <ul class="navbar-nav mr-auto"></ul>
+    <ul class="navbar-nav my-2 my-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['new']">
+          <i class="fa fa-plus"></i>
+          <span class="d-sm-none d-md-inline">Novo personagem</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
   <section class="card-deck">
     <a class="card feature-link" [routerLink]="[link.route]"
         *ngFor="let link of links">
@@ -9,6 +21,8 @@
       </div>
     </a>
   </section>
+
+  <hr class="fading-separator">
 
   <section>
     <article>

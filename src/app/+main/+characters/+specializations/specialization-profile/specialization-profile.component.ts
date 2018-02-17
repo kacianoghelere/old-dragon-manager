@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../../../../authentication/authentication.service';
 import { CharacterSpecialization, TrailItem }  from "../../../../shared/models";
 import { CoreComponent } from '../../../../shared/components/core/core.component';
-import { SpecializationsService } from '../shared/specializations.service';
+import { SpecializationsService } from '../../shared/specializations.service';
 import { TrailService }  from "../../../../shared/services/trail.service";
 
 @Component({

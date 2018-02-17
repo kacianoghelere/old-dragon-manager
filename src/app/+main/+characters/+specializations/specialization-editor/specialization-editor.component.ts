@@ -12,7 +12,7 @@ import { AlignmentsService } from '../../shared/alignments.service';
 import { AuthenticationService } from '../../../../authentication/authentication.service';
 import { ClassesService } from '../../shared/classes.service';
 import { CoreComponent } from '../../../../shared/components/core/core.component';
-import { SpecializationsService } from '../shared/specializations.service';
+import { SpecializationsService } from '../../shared/specializations.service';
 
 @Component({
   selector: 'specialization-editor',

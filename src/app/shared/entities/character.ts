@@ -7,10 +7,12 @@ import { CharacterRace } from "./character-race";
 import { User } from "./user";
 
 export class Character {
+  age?: number;
   campaigns?: Campaign[];
   class?: CharacterClass;
   description?: string;
   flat_name?: string;
+  height?: number;
   id: number;
   level?: number;
   name: string;
@@ -23,4 +25,5 @@ export class Character {
   attributes?: CharacterAttribute;
   title?: string;
   uuid?: string;
+  weight?: number;
 }

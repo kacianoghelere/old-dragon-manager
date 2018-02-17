@@ -3,11 +3,11 @@
       (ngSubmit)="onSubmit(characterForm)">
     <section>
       <div class="form-group row align-items-center">
-        <label class="col-sm-12 col-md-2 col-lg-3 col-form-label text-right"
+        <label class="col-sm-12 col-md-3 col-lg-2 col-form-label text-sm-left text-md-right"
             for="characterName">
           <b>Nome</b>
         </label>
-        <div class="col-sm-12 col-md-8 col-lg-6">
+        <div class="col-sm-12 col-md-9 col-lg-6">
           <input class="form-control form-control-lg"
             type="text"
             id="characterName"
@@ -16,11 +16,24 @@
       </div>
 
       <div class="form-group row align-items-center">
-        <label class="col-sm-12 col-md-2 col-lg-3 col-form-label text-right"
+        <label class="col-sm-12 col-md-3 col-lg-2 col-form-label text-sm-left text-md-right"
+            for="characterPicture">
+          <b>Imagem</b>
+        </label>
+        <div class="col-sm-12 col-md-9 col-lg-8">
+          <input class="form-control"
+            type="url"
+            id="characterPicture"
+            formControlName="picture">
+        </div>
+      </div>
+
+      <div class="form-group row align-items-center">
+        <label class="col-sm-12 col-md-3 col-lg-2 col-form-label text-sm-left text-md-right"
             for="characterRace">
           <b>Raça</b>
         </label>
-        <div class="col-sm-12 col-md-8 col-lg-6">
+        <div class="col-sm-12 col-md-9 col-lg-6">
           <select class="form-control"
               formControlName="characterRace"
               [ngClass]="getErrorClass(characterForm.controls.characterRace)"
@@ -35,11 +48,11 @@
       </div>
 
       <div class="form-group row align-items-center">
-        <label class="col-sm-12 col-md-2 col-lg-3 col-form-label text-right"
+        <label class="col-sm-12 col-md-3 col-lg-2 col-form-label text-sm-left text-md-right"
             for="characterClass">
           <b>Classe</b>
         </label>
-        <div class="col-sm-12 col-md-8 col-lg-6">
+        <div class="col-sm-12 col-md-9 col-lg-6">
           <select class="form-control"
               formControlName="characterClass"
               [ngClass]="getErrorClass(characterForm.controls.characterClass)"
@@ -53,55 +66,121 @@
         </div>
       </div>
 
-      <div class="form-group row align-items-center" formGroupName="attributes">
-        <label class="col-sm-12 col-md-2 col-lg-3 col-form-label text-right">
+      <div class="form-group row align-items-center">
+        <label class="col-sm-12 col-md-3 col-lg-2 col-form-label text-sm-left text-md-right"
+            for="characterClass">
+          <b>Especialização</b>
+        </label>
+        <div class="col-sm-12 col-md-9 col-lg-6">
+          <select class="form-control"
+              formControlName="characterClass"
+              [ngClass]="getErrorClass(characterForm.controls.characterClass)"
+              id="characterClass">
+            <option value="" selected>Escolha uma especialização</option>
+            <option *ngFor="let characterSpecialization of characterSpecializations | async"
+                [value]="characterSpecialization.id">
+              {{ characterSpecialization.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-12 col-md-3 col-lg-2 col-form-label text-sm-left text-md-right"
+            for="characterDescription">
+          <b>Descrição</b>
+        </label>
+        <div class="col-sm-12 col-md-9 col-lg-8">
+          <textarea class="form-control"
+            id="characterDescription"
+            rows="5"
+            formControlName="description"></textarea>
+        </div>
+      </div>
+
+      <div class="form-group row align-items-end" formGroupName="attributes">
+        <label class="col-sm-12 col-md-3 col-lg-2 col-form-label text-sm-left text-md-right">
           <b>Atributos</b>
         </label>
-        <div class="col-sm-12 col-md-8 col-lg-6">
+        <div class="col-sm-12 col-md-9 col-lg-6">
           <div class="row">
-            <div class="col-sm-6 col-md-4 col-lg-4">
-              <label for="attributeStrength">Força</label>
+            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2" title="Força">
+              <label for="attributeStrength">FOR</label>
               <input class="form-control"
-                type="number"
-                id="attributeStrength"
-                formControlName="strength">
+              type="number"
+              id="attributeStrength"
+              formControlName="strength">
             </div>
-            <div class="col-sm-6 col-md-4 col-lg-4">
-              <label for="attributeDexterity">Destreza</label>
+            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2" title="Destreza">
+              <label for="attributeDexterity">DES</label>
               <input class="form-control"
-                type="number"
-                id="attributeDexterity"
-                formControlName="dexterity">
+              type="number"
+              id="attributeDexterity"
+              formControlName="dexterity">
             </div>
-            <div class="col-sm-6 col-md-4 col-lg-4">
-              <label for="attributeConstitution">Constituição</label>
+            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2" title="Constituição">
+              <label for="attributeConstitution">CON</label>
               <input class="form-control"
-                type="number"
-                id="attributeConstitution"
-                formControlName="constitution">
+              type="number"
+              id="attributeConstitution"
+              formControlName="constitution">
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2" title="Inteligência">
+              <label for="attributeIntelligence">INT</label>
+              <input class="form-control"
+              type="number"
+              id="attributeIntelligence"
+              formControlName="intelligence">
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2" title="Sabedoria">
+              <label for="attributeWisdom">SAB</label>
+              <input class="form-control"
+              type="number"
+              id="attributeWisdom"
+              formControlName="wisdom">
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2" title="Carisma">
+              <label for="attributeCharisma">CAR</label>
+              <input class="form-control"
+              type="number"
+              id="attributeCharisma"
+              formControlName="charisma">
             </div>
           </div>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-2">
+          <button class="btn btn-secondary" type="button">
+            <i class="fa fa-cog"></i> Gerar
+          </button>
+        </div>
+      </div>
+
+      <div class="form-group row align-items-end">
+        <label class="col-sm-12 col-md-3 col-lg-2 col-form-label text-sm-left text-md-right">
+          <b>Aparência</b>
+        </label>
+        <div class="col-sm-12 col-md-9 col-lg-6">
           <div class="row">
             <div class="col-sm-6 col-md-4 col-lg-4">
-              <label for="attributeIntelligence">Inteligência</label>
+              <label for="characterAge">Idade</label>
               <input class="form-control"
-                type="number"
-                id="attributeIntelligence"
-                formControlName="intelligence">
+              type="number"
+              id="characterAge"
+              formControlName="age">
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4">
-              <label for="attributeWisdom">Sabedoria</label>
+              <label for="characterWeight">Peso</label>
               <input class="form-control"
-                type="number"
-                id="attributeWisdom"
-                formControlName="wisdom">
+              type="number"
+              id="characterWeight"
+              formControlName="weight">
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4">
-              <label for="attributeCharisma">Carisma</label>
+              <label for="characterHeight">Altura</label>
               <input class="form-control"
-                type="number"
-                id="attributeCharisma"
-                formControlName="charisma">
+              type="number"
+              id="characterHeight"
+              formControlName="height">
             </div>
           </div>
         </div>
@@ -110,12 +189,12 @@
 
     <section>
       <div class="form-group row">
-        <div class="ml-auto col-sm-12 col-md-10 col-lg-9">
-          <button class="btn btn-primary" type="submit"
+        <div class="ml-auto col-sm-12 col-md-9 col-lg-10">
+          <button class="btn btn-danger" type="submit"
               [disabled]="characterForm.invalid">
-            <i class="fa fa-edit"></i> Salvar
+            <i class="fa fa-save"></i> Salvar Personagem
           </button>
-          <button class="btn btn-link" type="button" (click)="goBack()">
+          <button class="btn btn-outline-danger" type="button" (click)="goBack()">
             <i class="fa fa-remove"></i> Cancelar
           </button>
         </div>

@@ -14,6 +14,7 @@ import { AlignmentsService } from './shared/alignments.service';
 import { CharactersService } from './shared/characters.service';
 import { ClassesService } from './shared/classes.service';
 import { RacesService } from './shared/races.service';
+import { SpecializationsService } from './shared/specializations.service';
 
 @NgModule({
   imports: [
@@ -34,7 +35,8 @@ import { RacesService } from './shared/races.service';
     AlignmentsService,
     CharactersService,
     ClassesService,
-    RacesService
+    RacesService,
+    SpecializationsService
   ]
 })
 export class CharactersModule { }

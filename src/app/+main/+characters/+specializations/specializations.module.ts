@@ -13,8 +13,6 @@ import { SpecializationsListComponent } from './specializations-list/specializat
 import { SpecializationProfileComponent } from './specialization-profile/specialization-profile.component';
 import { SpecializationStagesComponent } from './specialization-profile/specialization-stages/specialization-stages.component';
 
-import { SpecializationsService } from './shared/specializations.service';
-
 @NgModule({
   imports: [
     CommonModule,
@@ -32,6 +30,6 @@ import { SpecializationsService } from './shared/specializations.service';
     SpecializationFormStagesComponent,
     SpecializationFormStageComponent
   ],
-  providers: [ SpecializationsService ]
+  providers: [ ]
 })
 export class SpecializationsModule { }

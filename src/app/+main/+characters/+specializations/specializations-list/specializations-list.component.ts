@@ -6,7 +6,7 @@ import { AuthenticationService } from '../../../../authentication/authentication
 import { CharacterClass, CharacterSpecialization } from '../../../../shared/models';
 import { ClassesService } from '../../shared/classes.service';
 import { CoreComponent } from '../../../../shared/components/core/core.component';
-import { SpecializationsService } from '../shared/specializations.service';
+import { SpecializationsService } from '../../shared/specializations.service';
 
 @Component({
   selector: 'specializations-list',
