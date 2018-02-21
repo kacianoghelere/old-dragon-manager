@@ -54,15 +54,15 @@
   }
 
   .card-img-overlay {
-    background-color: $card-img-overlay-bg;
     border-radius: $card-border-radius;
 
-    &:hover { background-color: $card-img-overlay-bg; }
+    $card-title-text-shadow: 0 0px 30px rgba(0, 0, 0, 1),
+                              0 1px 3px rgba(0, 0, 0, .8) !default;
 
     .card-text, .card-title {
-      -webkit-text-shadow: 0 0px 30px rgba(0, 0, 0, 1), 0 1px 3px rgba(0, 0, 0, .8);
-      -moz-text-shadow: 0 0px 30px rgba(0, 0, 0, 1), 0 1px 3px rgba(0, 0, 0, .8);
-      text-shadow: 0 0px 30px rgba(0, 0, 0, 1), 0 1px 3px rgba(0, 0, 0, .8);
+      -webkit-text-shadow: $card-title-text-shadow;
+      -moz-text-shadow: $card-title-text-shadow;
+      text-shadow: $card-title-text-shadow;
     }
   }
 
@@ -108,8 +108,6 @@
 
 // Card image
 .card-img-overlay {
-  background-color: rgba($black, .3);
-
   .card-title, .card-text {
     color: $white;
     text-shadow: 0 1px 1px rgba($black, .5);
@@ -300,4 +298,12 @@ hr.fading-separator:after {
   position: relative;
   top: -0.6em;
   width: 28px;
+}
+
+.text-sm {
+  font-size: 80% !important;
+}
+
+.text-lg {
+  font-size: 120% !important;
 }

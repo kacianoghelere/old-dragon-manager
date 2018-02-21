@@ -1,3 +1,10 @@
+.card {
+  .card-img-top {
+    max-height: 125px;
+    object-fit: cover;
+  }
+}
+
 // -----------------------------------------------------------------------------
 // character-card
 .character-card {
@@ -10,28 +17,26 @@
   position: relative;
   text-decoration: none;
 
+
+
   .character-header {
     background: #f5f5f5;
     display: flex;
-    // padding: 0.5em;
     width: 100%;
 
     &:hover { text-decoration: none; }
 
     .character-avatar {
       background-color: #ddd;
-      // border: 1px solid #aaa;
       border-top-left-radius: 4px;
       flex-grow: 0;
       object-fit: scale-down;
-      // padding: 0.1em;
       vertical-align: middle;
 
       > img {
         background: #f0f0f0;
         border-top-left-radius: 4px;
         height: 70px;
-        // padding: 0.1em;
         max-width: 120px;
       }
     }

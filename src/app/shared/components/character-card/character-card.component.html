@@ -1,73 +1,60 @@
 <article class="card card-secondary">
-  <a class="card-body" [routerLink]="['/main/characters', character.flat_name]">
-    <div class="row">
-      <div class="col-4">
-        <div class="card-avatar">
-          <img class="rounded border border-secondary"
-            [src]="character.picture"
-            [alt]="character.name">
-        </div>
-      </div>
-      <div class="col-8">
-        <h5 class="card-title d-flex justify-content-between">
-          <span>{{character.name}}</span>
-          <span class="badge badge-pill badge-dark">
-            {{character?.status?.current_level}}
-          </span>
-        </h5>
-        <div>
-          <p class="card-text text-muted">
-            <i>{{character.title}}</i>
-          </p>
-        </div>
-        <div>
-          <p class="card-text">
-            {{character?.race?.singular_name}} /
-            {{character?.class?.name}} /
-            {{character?.specialization?.name}}
-          </p>
-        </div>
-      </div>
-    </div>
+  <img class="card-img-top" [src]="character.picture" [alt]="character.name">
+  <a class="card-img-overlay"
+      [routerLink]="['/main/characters', character.flat_name]">
+    <h5 class="card-title d-flex justify-content-between">
+      <span>{{character.name}}</span>
+      <span class="badge badge-pill badge-dark">
+        {{character?.status?.current_level}}
+      </span>
+    </h5>
+    <p class="card-text mb-0 text-sm">
+      <i>{{character.title}}</i>
+    </p>
+    <p class="card-text mb-0 text-sm">
+      {{character?.race?.singular_name}} /
+      {{character?.class?.name}} /
+      {{character?.specialization?.name}}
+    </p>
   </a>
   <div class="card-body">
     <div class="row no-gutters text-center justify-content-end align-items-end">
-      <div class="col attribute">
+      <div class="col attribute text-sm">
         <p class="m-0"><b>FOR</b></p>
         <span>
           {{character?.status?.strength}}
           <span>({{getModifier(character?.attributes?.strength)}})</span>
         </span>
       </div>
-      <div class="col attribute">
+      <div class="col attribute text-sm">
         <p class="m-0"><b>DES</b></p>
         <span>
           {{character?.attributes?.dexterity}}
           <span>({{getModifier(character?.attributes?.dexterity)}})</span>
         </span>
       </div>
-      <div class="col attribute">
+      <div class="col attribute text-sm">
         <p class="m-0"><b>CON</b></p>
         <span>
           {{character?.attributes?.constitution}}
           <span>({{getModifier(character?.attributes?.constitution)}})</span>
         </span>
       </div>
-      <div class="col attribute">
+      <div class="col attribute text-sm">
         <p class="m-0"><b>INT</b></p>
         <span>
           {{character?.attributes?.intelligence}}
           <span>({{getModifier(character?.attributes?.intelligence)}})</span>
         </span>
       </div>
-      <div class="col attribute">
+      <div class="col attribute text-sm">
         <p class="m-0"><b>SAB</b></p>
         <span>
           {{character?.attributes?.wisdom}}
           <span>({{getModifier(character?.attributes?.wisdom)}})</span>
         </span>
       </div>
-      <div class="col attribute">
+      <div class="col attribute text-sm">
         <p class="m-0"><b>CAR</b></p>
         <span>
           {{character?.attributes?.charisma}}
