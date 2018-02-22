@@ -64,6 +64,13 @@
       -moz-text-shadow: $card-title-text-shadow;
       text-shadow: $card-title-text-shadow;
     }
+
+    &.card-dark-overlay {
+      background-color: $card-img-overlay-bg;
+      border-radius: $card-border-radius;
+
+      &:hover { background-color: $card-img-overlay-bg; }
+    }
   }
 
   .card-body {

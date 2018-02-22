@@ -4,7 +4,7 @@
         *ngFor="let class of classes">
       <a class="card card-blurred" [routerLink]="[class.flat_name]">
         <img class="card-img" [src]="class.picture" [alt]="class.name">
-        <div class="card-img-overlay">
+        <div class="card-img-overlay card-dark-overlay">
           <div class="row">
             <div class="col-sm-12 col-md-4 col-lg-3 image">
               <img class="img-thumbnail" [src]="class.picture"
