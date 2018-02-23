@@ -1,15 +1,17 @@
 <layout-base pageTitle="Bem vindo ao Old Dragon Manager!">
-  <p>
-    Este sistema permite que mestres e jogadores consultem e criem novos
-    mateirais de maneira fácil, rápida e intuitiva.
-  </p>
+  <div>
+    <p>
+      Este sistema permite que mestres e jogadores consultem e criem novos
+      mateirais de maneira fácil, rápida e intuitiva.
+    </p>
+  </div>
   <small>Criado por Kaciano R. Ghelere</small>
-  <p class="text-center">
-    <a class="btn btn-light btn-lg" [routerLink]="['/users/registration']">
+  <div class="text-center">
+    <a class="btn btn-light btn-custom btn-lg" [routerLink]="['/users/registration']">
       <i class="fa fa-user-plus"></i> Registrar
     </a>
-    <a class="btn btn-primary btn-lg" [routerLink]="['/login']">
+    <a class="btn btn-primary btn-custom btn-lg" [routerLink]="['/login']">
       <i class="fa fa-sign-in"></i> Entrar
     </a>
-  </p>
+  </div>
 </layout-base>

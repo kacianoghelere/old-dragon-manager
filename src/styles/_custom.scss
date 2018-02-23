@@ -56,7 +56,7 @@
   .card-img-overlay {
     border-radius: $card-border-radius;
 
-    $card-title-text-shadow: 0 0px 30px rgba(0, 0, 0, 1),
+    $card-title-text-shadow: 0 0 30px rgba(0, 0, 0, 1),
                               0 1px 3px rgba(0, 0, 0, .8) !default;
 
     .card-text, .card-title {
@@ -313,4 +313,95 @@ hr.fading-separator:after {
 
 .text-lg {
   font-size: 120% !important;
+}
+
+$wrapper-bg-img: "https://orig00.deviantart.net/a263/f/2011/346/4/f/seamless_rock_texture_a_by_lauris71-d4ix03h.png" !default;
+$btn-bg-img: 'https://vignette.wikia.nocookie.net/dont-starve-game/images/9/94/Rock_Turf_Texture.png/revision/latest?cb=20160720210913' !default;
+
+@mixin border-radius {
+  border-bottom-left-radius: .25em .3em;
+  border-bottom-right-radius: .25em .3em;
+  border-top-left-radius: .25em .3em;
+  border-top-right-radius: .25em .3em;
+}
+
+@mixin btn-gem($background-color, $color: $really-white) {
+  background-color: $background-color;
+  background: radial-gradient(
+      ellipse at center,
+      rgba(lighten($background-color, 10%), .85) 10%,
+      rgba(darken($background-color, 20%), .85) 100%
+    ),
+    url($btn-bg-img) no-repeat;
+  background-size: cover;
+  border-width: .15em .125em .15em .125em;
+  border-color: rgba($background-color,.5);
+  border-style: outset;
+  color: $color;
+  // box-shadow: 0 1px 3px 3px rgba(#000, .3),
+  //              inset 0 0 20px 3px rgba(#000, .3);
+  text-shadow: 0 1px 1px rgba($black,.95);
+
+  &:not(.disabled):hover,
+  &:not([disabled]):hover {
+    background: radial-gradient(
+        ellipse at center,
+        rgba(lighten($background-color, 15%), .85) 10%,
+        rgba(darken($background-color, 15%), .85) 100%
+      ),
+      url($btn-bg-img) no-repeat;
+    background-size: cover;
+    box-shadow: 0 .08em .25em .25em rgba($background-color, .3),
+                inset 0 0 1em .25em rgba(#000, .2);
+    text-shadow: 0 1px 1px rgba($black,.95),
+                 0 0 15px rgba($background-color, 1);
+  }
+}
+
+.btn-custom {
+  @include btn-gem($white, $really-white);
+  @include border-radius;
+  box-sizing: border-box;
+  color: $really-white;
+  display: inline-block;
+  font-family: 'Bellefair', serif;
+  font-weight: bold;
+  padding: .5em 1em;
+  text-transform: uppercase;
+
+  &.btn-primary {
+    @include btn-gem($primary);
+  }
+
+  &.btn-info {
+    @include btn-gem($info);
+  }
+
+  &.btn-success {
+    @include btn-gem($success);
+  }
+
+  &.btn-warning {
+    @include btn-gem($warning);
+  }
+
+  &.btn-danger {
+    @include btn-gem($danger);
+  }
+
+  &.btn-light {
+    @include btn-gem($white);
+  }
+
+  &.btn-secondary {
+    @include btn-gem($gray-400);
+  }
+
+  &.btn-dark {
+    @include btn-gem($gray-700);
+  }
+
+  &.btn-block {
+    display: block;
+  }
 }

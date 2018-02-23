@@ -136,8 +136,9 @@ export class SpecializationEditorComponent extends CoreComponent
    * @param {CharacterSpecialization} specialization Entidade da especialização
    */
   toFormGroup(specialization: CharacterSpecialization) {
-    let characterClass = specialization['character_class'] || {};
-    let class_id = characterClass ? characterClass['flat_name'] : null;
+    let characterClass: CharacterClass = specialization.character_class
+      || this.characterClasses[0];
+    let class_id = characterClass ? characterClass.flat_name : null;
 
     let alignment = specialization['alignment'] || {};
     let alignment_id = alignment ? alignment['id'] : null;

@@ -15,7 +15,7 @@ export class CharacterClass {
   evolutions?: CharacterClassEvolution[];
   example_picture?: string;
   flat_name?: string;
-  id: number;
+  id?: number;
   magic_circles?: CharacterClassMagicCircle[];
   name: string;
   perk?: Perk;
