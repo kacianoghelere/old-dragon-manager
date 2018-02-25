@@ -13,7 +13,9 @@ export class CharacterClass {
   description?: string;
   dice?: Dice;
   evolutions?: CharacterClassEvolution[];
-  example_picture?: string;
+  example_picture_1?: string;
+  example_picture_2?: string;
+  example_picture_3?: string;
   flat_name?: string;
   id?: number;
   magic_circles?: CharacterClassMagicCircle[];

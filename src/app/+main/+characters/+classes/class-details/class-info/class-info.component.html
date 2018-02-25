@@ -1,43 +1,60 @@
-<div class="row">
-  <div class="col-sm-12 col-md-4">
-    <div class="card card-blurred">
-      <img class="card-img" [src]="characterClass.example_picture"
-        [alt]="characterClass.name">
+<div>
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">
+        O que você deveria saber sobre o {{characterClass.name}}...
+      </h4>
+      <p class="card-text">{{characterClass.description}}</p>
     </div>
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Requerimentos mínimos</h4>
+    <div class="card-body">
+      <h4 class="card-title">Requerimentos mínimos</h4>
 
-        <p class="card-text" *ngIf="characterClass?.requirement?.str_mod">
-          {{characterClass?.requirement?.str_mod}} pontos em Força
-        </p>
-        <p class="card-text" *ngIf="characterClass?.requirement?.dex_mod">
-          {{characterClass?.requirement?.dex_mod}} pontos em Destreza
-        </p>
-        <p class="card-text" *ngIf="characterClass?.requirement?.cons_mod">
-          {{characterClass?.requirement?.cons_mod}} pontos em Constituição
-        </p>
-        <p class="card-text" *ngIf="characterClass?.requirement?.int_mod">
-          {{characterClass?.requirement?.int_mod}} pontos em Inteligência
-        </p>
-        <p class="card-text" *ngIf="characterClass?.requirement?.wis_mod">
-          {{characterClass?.requirement?.wis_mod}} pontos em Sabedoria
-        </p>
-        <p class="card-text" *ngIf="characterClass?.requirement?.char_mod">
-          {{characterClass?.requirement?.char_mod}} pontos em Carisma
-        </p>
-      </div>
+      <p class="card-text" *ngIf="characterClass?.requirement?.str_mod">
+        {{characterClass?.requirement?.str_mod}} pontos em <b>Força</b>
+      </p>
+      <p class="card-text" *ngIf="characterClass?.requirement?.dex_mod">
+        {{characterClass?.requirement?.dex_mod}} pontos em <b>Destreza</b>
+      </p>
+      <p class="card-text" *ngIf="characterClass?.requirement?.cons_mod">
+        {{characterClass?.requirement?.cons_mod}} pontos em <b>Constituição</b>
+      </p>
+      <p class="card-text" *ngIf="characterClass?.requirement?.int_mod">
+        {{characterClass?.requirement?.int_mod}} pontos em <b>Inteligência</b>
+      </p>
+      <p class="card-text" *ngIf="characterClass?.requirement?.wis_mod">
+        {{characterClass?.requirement?.wis_mod}} pontos em <b>Sabedoria</b>
+      </p>
+      <p class="card-text" *ngIf="characterClass?.requirement?.char_mod">
+        {{characterClass?.requirement?.char_mod}} pontos em <b>Carisma</b>
+      </p>
     </div>
   </div>
 
-  <div class="col-sm-12 col-md-8">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">
-          O que você deveria saber sobre o {{characterClass.name}}...
-        </h4>
-        <p class="card-text">{{characterClass.description}}</p>
+  <h2>Exemplos de {{ characterClass.name }}</h2>
+
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li *ngFor="let examplePicture of examplePictures; let i = index"
+        [ngClass]="{'active': isActivePicture(i)}"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item"
+          *ngFor="let picture of examplePictures; let i = index"
+          [ngClass]="{'active': isActivePicture(i)}">
+        <img class="d-block w-100" [src]="picture" alt="First slide">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Vermelho</h5>
+          <p>A cor da paixão</p>
+        </div>
       </div>
     </div>
+    <a class="carousel-control-prev" role="button" (click)="previousPicture()">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" role="button" (click)="nextPicture()">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
   </div>
 </div>

@@ -17,17 +17,10 @@ import { TrailService }  from "../../../../shared/services/trail.service";
 export class ClassDetailsComponent extends CoreComponent
     implements OnInit, OnDestroy {
 
-  // Public variables
-  // ---------------------------------------------------------------------------
   subscription: Subscription;
   characterClass: CharacterClass;
   currentTab: number = 1;
-  activePicture: number = 1;
   trailItem: TrailItem;
-
-  //
-  // Functions
-  // ===========================================================================
 
   constructor(
     private route: ActivatedRoute,
@@ -39,29 +32,13 @@ export class ClassDetailsComponent extends CoreComponent
     super();
   }
 
-  isActivePicture(index: number): boolean {
-    return index === this.activePicture;
+  isSelectedTab(index: number): boolean {
+    return index === this.currentTab;
   }
 
-  nextPicture() {
-    if (this.activePicture === 2) {
-      this.activePicture = 0;
-    } else {
-      this.activePicture++;
-    }
+  selectTab(index: number) {
+    this.currentTab = index;
   }
-
-  previousPicture() {
-    if (this.activePicture === 0) {
-      this.activePicture = 2;
-    } else {
-      this.activePicture--;
-    }
-  }
-
-  //
-  // Lifecycle hooks functions
-  // ---------------------------------------------------------------------------
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
@@ -73,6 +50,7 @@ export class ClassDetailsComponent extends CoreComponent
       id: null,
       name: ''
     };
+
     this.route.params.subscribe((params) => {
       let id = params['id'];
       if (id) {
@@ -89,13 +67,4 @@ export class ClassDetailsComponent extends CoreComponent
     this.trailItem = {title: this.characterClass.name};
     this.trailService.add(this.trailItem);
   }
-
-  isSelectedTab(index: number): boolean {
-    return index === this.currentTab;
-  }
-
-  selectTab(index: number) {
-    this.currentTab = index;
-  }
-
 }

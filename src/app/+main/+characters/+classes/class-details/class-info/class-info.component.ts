@@ -9,38 +9,52 @@ import { CharacterClass } from '../../../../../shared/models';
 })
 export class ClassInfoComponent implements OnInit {
 
-  // Public variables
-  // ---------------------------------------------------------------------------
   @Input() characterClass: CharacterClass;
-
-  //
-  // Functions
-  // ===========================================================================
+  activePicture: number = 0;
 
   constructor() { }
 
-  //
-  // Lifecycle hooks functions
-  // ---------------------------------------------------------------------------
+  get examplePictures(): string[] {
+    return [
+      this.characterClass.example_picture_1,
+      this.characterClass.example_picture_2,
+      this.characterClass.example_picture_3
+    ];
+  }
+
+  isActivePicture(index: number): boolean {
+    return index === this.activePicture;
+  }
+
+  nextPicture() {
+    if (this.activePicture < (this.examplePictures.length - 1)) {
+      this.activePicture++;
+    } else {
+      this.activePicture = 0;
+    }
+  }
+
+  previousPicture() {
+    if (this.activePicture === 0) {
+      this.activePicture = this.examplePictures.length;
+    } else {
+      this.activePicture--;
+    }
+  }
 
   ngOnInit() {
   }
 
-  /**
-   * Transforma valor booleano em valores literais
-   * @param  {any}    source     Objeto fonte de dados
-   * @param  {string} property   Propriedade a ser verificada
-   * @param  {string} trueParam  Texto caso seja verdadeiro
-   * @param  {string} falseParam Texto caso seja falso
-   * @return {string}            Texto resultante da verificação
-   */
   boolFormat(
     source: any,
     property: string,
     trueParam: string = 'Sim',
     falseParam: string = 'Não'
   ): string {
-    if (!source || !property || !source[property]) return falseParam;
+    if (!source || !property || !source[property]) {
+      return falseParam;
+    }
+
     return source[property] ? trueParam : falseParam;
   }
 }

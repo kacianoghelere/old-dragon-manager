@@ -318,6 +318,8 @@ hr.fading-separator:after {
 $wrapper-bg-img: "https://orig00.deviantart.net/a263/f/2011/346/4/f/seamless_rock_texture_a_by_lauris71-d4ix03h.png" !default;
 $btn-bg-img: 'https://vignette.wikia.nocookie.net/dont-starve-game/images/9/94/Rock_Turf_Texture.png/revision/latest?cb=20160720210913' !default;
 
+
+
 @mixin border-radius {
   border-bottom-left-radius: .25em .3em;
   border-bottom-right-radius: .25em .3em;
@@ -371,6 +373,10 @@ $btn-bg-img: 'https://vignette.wikia.nocookie.net/dont-starve-game/images/9/94/R
 
   &.btn-primary {
     @include btn-gem($primary);
+  }
+
+  &.btn-outline-primary {
+    @include btn-gem(rgba($primary, .1));
   }
 
   &.btn-info {
