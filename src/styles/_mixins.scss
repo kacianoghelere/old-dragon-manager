@@ -15,18 +15,19 @@
 }
 
 @mixin button-border($background) {
-  border-width: 1px;
+  border-width: 2px;
   border-color: $background;
   border-radius: .25em .25em .25em .25em / .3em .3em .3em .3em;
-  border-style: solid;
+  border-style: outset;
 }
 
 @mixin button-variant($background, $border, $active-background: darken($background, 13%), $active-border: darken($border, 10%)) {
   @include button-background($background);
-  @include button-border($background);
+  @include button-border(#FDD835);
   color: $really-white;
   font-family: $btn-font-family !important;
-  font-weight: bold;
+  font-weight: $font-weight-bold;
+  margin: .25em .75em;
   position: relative;
   text-shadow: 0 1px 1px rgba($black,.95);
   text-transform: uppercase;
@@ -47,6 +48,11 @@
   &:disabled {
     @include button-background($background);
     border: 1px solid $background;
+
+    &::before,
+    &::after {
+      border-color: #ddd;
+    }
   }
 
   &:active,
@@ -55,17 +61,27 @@
     @include button-background($active-background);
   }
 
-  &:after {
-    border: 1px dotted $background;
-    border-radius: .25em .25em .25em .25em / .3em .3em .3em .3em;
-    color: transparent;
+  &::before,
+  &::after {
+    background: linear-gradient(120deg, darken($background, 5%), darken($background, 15%));
+    border: 2px outset #FDD835;
+    border-radius: .25rem;
     content: '';
-    height: calc(100% - 6px);
-    left: 0;
-    margin: 3px;
+    height: 1em;
+    margin: 0;
     position: absolute;
-    top: 0;
-    width: calc(100% - 6px);
+    transform: rotate(45deg);
+    top: .75em;
+    vertical-align: middle;
+    width: 1em;
+  }
+
+  &::before {
+    left: -.55em;
+  }
+
+  &::after {
+    right: -.55em;
   }
 }
 

@@ -75,7 +75,9 @@ fieldset[disabled] a.btn {
   color: $link-color;
   border-radius: 0;
   font-family: $btn-font-family !important;
-  font-weight: $font-weight-normal;
+  font-weight: $font-weight-bold;
+  font-weight: bold;
+  text-transform: uppercase;
 
   &,
   &:active,
