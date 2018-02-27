@@ -138,7 +138,9 @@ export class CharacterEditorComponent extends CoreComponent
           Validators.required, Validators.maxLength(45), Validators.minLength(3)
         ]
       ],
-      quote: [this.character.quote, Validators.maxLength(300)],
+      quote: [
+        this.character.quote, Validators.maxLength(300)
+      ],
       weight: [
         this.character.weight, [
           Validators.required, Validators.max(200), Validators.min(20)
@@ -146,18 +148,25 @@ export class CharacterEditorComponent extends CoreComponent
       ],
       height: [
         this.character.height, [
-          Validators.required, Validators.max(120), Validators.min(30)
+          Validators.required, Validators.max(280), Validators.min(30)
         ]
       ],
       age: [
         this.character.age, [
-          Validators.required, Validators.max(10), Validators.min(700)
+          Validators.required, Validators.max(700), Validators.min(10)
         ]
       ],
-      picture: [this.character.picture, Validators.maxLength(300)],
+      picture: [
+        this.character.picture, Validators.maxLength(300)
+      ],
       description: [this.character.
         description,
         Validators.required
+      ],
+      level: [
+        character.level, [
+          Validators.required, Validators.max(20), Validators.min(1)
+        ]
       ],
       characterClass: [
         characterClassId,

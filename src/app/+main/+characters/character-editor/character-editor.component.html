@@ -11,7 +11,142 @@
           <input class="form-control form-control-lg"
             type="text"
             id="characterName"
-            formControlName="name">
+            formControlName="name"
+            required>
+        </div>
+      </div>
+
+      <div class="form-group row align-items-center" formGroupName="attributes">
+        <label class="col-sm-12 col-md-3 col-lg-2 col-form-label text-sm-left text-md-right">
+          <b>Atributos</b>
+        </label>
+        <div class="col-sm-12 col-md-9 col-lg-9">
+          <div class="card">
+            <div class="card-body row">
+              <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2" title="Força">
+                <label for="attributeStrength">FOR</label>
+                <input class="form-control"
+                  type="number"
+                  id="attributeStrength"
+                  formControlName="strength"
+                  required>
+              </div>
+              <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2" title="Destreza">
+                <label for="attributeDexterity">DES</label>
+                <input class="form-control"
+                  type="number"
+                  id="attributeDexterity"
+                  formControlName="dexterity"
+                  required>
+              </div>
+              <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2" title="Constituição">
+                <label for="attributeConstitution">CON</label>
+                <input class="form-control"
+                  type="number"
+                  id="attributeConstitution"
+                  formControlName="constitution"
+                  required>
+              </div>
+              <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2" title="Inteligência">
+                <label for="attributeIntelligence">INT</label>
+                <input class="form-control"
+                  type="number"
+                  id="attributeIntelligence"
+                  formControlName="intelligence"
+                  required>
+              </div>
+              <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2" title="Sabedoria">
+                <label for="attributeWisdom">SAB</label>
+                <input class="form-control"
+                  type="number"
+                  id="attributeWisdom"
+                  formControlName="wisdom"
+                  required>
+              </div>
+              <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2" title="Carisma">
+                <label for="attributeCharisma">CAR</label>
+                <input class="form-control"
+                  type="number"
+                  id="attributeCharisma"
+                  formControlName="charisma"
+                  required>
+              </div>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-secondary" type="button">
+                <i class="fa fa-cog"></i> Gerar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row align-items-end">
+        <label class="col-sm-12 col-md-3 col-lg-2 col-form-label text-sm-left text-md-right"
+            for="characterRace">
+          <b>Opções</b>
+        </label>
+        <div class="col-sm-12 col-md-9 col-lg-10">
+          <div class="row">
+            <div class="col-sm-12 col-md-auto">
+              <label class="col-form-label" for="characterLevel">Nível</label>
+              <input class="form-control"
+                type="number"
+                id="characterLevel"
+                formControlName="level"
+                required>
+            </div>
+            <div class="col-sm-12 col-md-auto">
+              <label class="col-form-label" for="characterRace">Raça</label>
+              <select class="form-control"
+                  formControlName="characterRace"
+                  [ngClass]="getErrorClass(characterForm.controls.characterRace)"
+                  id="characterRace"
+                  required>
+                  <option value="" selected>Escolha uma raça</option>
+                  <option *ngFor="let characterRace of characterRaces | async"
+                  [value]="characterRace.id">
+                  {{ characterRace.name }}
+                </option>
+              </select>
+            </div>
+            <div class="col-sm-12 col-md-auto">
+              <label class="col-form-label" for="characterClass">Classe</label>
+              <select class="form-control"
+                  formControlName="characterClass"
+                  [ngClass]="getErrorClass(characterForm.controls.characterClass)"
+                  id="characterClass"
+                  required>
+                <option value="" selected>Escolha uma classe</option>
+                <option *ngFor="let characterClass of characterClasses | async"
+                    [value]="characterClass.id">
+                  {{ characterClass.name }}
+                </option>
+              </select>
+            </div>
+            <div class="col-sm-12 col-md-auto">
+              <label class="col-form-label" for="characterSpecialization">Especialização</label>
+              <select class="form-control"
+                  formControlName="characterSpecialization"
+                  [ngClass]="getErrorClass(characterForm.controls.characterSpecialization)"
+                  id="characterSpecialization"
+                  required="false">
+                <option value="" selected>Escolha uma especialização</option>
+                <option *ngFor="let characterSpecialization of characterSpecializations | async"
+                    [value]="characterSpecialization.id">
+                  {{ characterSpecialization.name }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="fading-separator">
+
+      <div class="row mb-3">
+        <div class="ml-auto col-md-9 col-lg-10">
+          <h4>Outras informações</h4>
         </div>
       </div>
 
@@ -28,63 +163,6 @@
         </div>
       </div>
 
-      <div class="form-group row align-items-center">
-        <label class="col-sm-12 col-md-3 col-lg-2 col-form-label text-sm-left text-md-right"
-            for="characterRace">
-          <b>Raça</b>
-        </label>
-        <div class="col-sm-12 col-md-9 col-lg-6">
-          <select class="form-control"
-              formControlName="characterRace"
-              [ngClass]="getErrorClass(characterForm.controls.characterRace)"
-              id="characterRace">
-            <option value="" selected>Escolha uma raça</option>
-            <option *ngFor="let characterRace of characterRaces | async"
-                [value]="characterRace.id">
-              {{ characterRace.name }}
-            </option>
-          </select>
-        </div>
-      </div>
-
-      <div class="form-group row align-items-center">
-        <label class="col-sm-12 col-md-3 col-lg-2 col-form-label text-sm-left text-md-right"
-            for="characterClass">
-          <b>Classe</b>
-        </label>
-        <div class="col-sm-12 col-md-9 col-lg-6">
-          <select class="form-control"
-              formControlName="characterClass"
-              [ngClass]="getErrorClass(characterForm.controls.characterClass)"
-              id="characterClass">
-            <option value="" selected>Escolha uma classe</option>
-            <option *ngFor="let characterClass of characterClasses | async"
-                [value]="characterClass.id">
-              {{ characterClass.name }}
-            </option>
-          </select>
-        </div>
-      </div>
-
-      <div class="form-group row align-items-center">
-        <label class="col-sm-12 col-md-3 col-lg-2 col-form-label text-sm-left text-md-right"
-            for="characterClass">
-          <b>Especialização</b>
-        </label>
-        <div class="col-sm-12 col-md-9 col-lg-6">
-          <select class="form-control"
-              formControlName="characterClass"
-              [ngClass]="getErrorClass(characterForm.controls.characterClass)"
-              id="characterClass">
-            <option value="" selected>Escolha uma especialização</option>
-            <option *ngFor="let characterSpecialization of characterSpecializations | async"
-                [value]="characterSpecialization.id">
-              {{ characterSpecialization.name }}
-            </option>
-          </select>
-        </div>
-      </div>
-
       <div class="form-group row">
         <label class="col-sm-12 col-md-3 col-lg-2 col-form-label text-sm-left text-md-right"
             for="characterDescription">
@@ -98,68 +176,11 @@
         </div>
       </div>
 
-      <div class="form-group row align-items-end" formGroupName="attributes">
-        <label class="col-sm-12 col-md-3 col-lg-2 col-form-label text-sm-left text-md-right">
-          <b>Atributos</b>
-        </label>
-        <div class="col-sm-12 col-md-9 col-lg-6">
-          <div class="row">
-            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2" title="Força">
-              <label for="attributeStrength">FOR</label>
-              <input class="form-control"
-              type="number"
-              id="attributeStrength"
-              formControlName="strength">
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2" title="Destreza">
-              <label for="attributeDexterity">DES</label>
-              <input class="form-control"
-              type="number"
-              id="attributeDexterity"
-              formControlName="dexterity">
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2" title="Constituição">
-              <label for="attributeConstitution">CON</label>
-              <input class="form-control"
-              type="number"
-              id="attributeConstitution"
-              formControlName="constitution">
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2" title="Inteligência">
-              <label for="attributeIntelligence">INT</label>
-              <input class="form-control"
-              type="number"
-              id="attributeIntelligence"
-              formControlName="intelligence">
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2" title="Sabedoria">
-              <label for="attributeWisdom">SAB</label>
-              <input class="form-control"
-              type="number"
-              id="attributeWisdom"
-              formControlName="wisdom">
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2" title="Carisma">
-              <label for="attributeCharisma">CAR</label>
-              <input class="form-control"
-              type="number"
-              id="attributeCharisma"
-              formControlName="charisma">
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-12 col-md-12 col-lg-2">
-          <button class="btn btn-secondary" type="button">
-            <i class="fa fa-cog"></i> Gerar
-          </button>
-        </div>
-      </div>
-
       <div class="form-group row align-items-end">
         <label class="col-sm-12 col-md-3 col-lg-2 col-form-label text-sm-left text-md-right">
-          <b>Aparência</b>
+          <b>Características Físicas</b>
         </label>
-        <div class="col-sm-12 col-md-9 col-lg-6">
+        <div class="col-sm-12 col-md-9 col-lg-4">
           <div class="row">
             <div class="col-sm-6 col-md-4 col-lg-4">
               <label for="characterAge">Idade</label>
