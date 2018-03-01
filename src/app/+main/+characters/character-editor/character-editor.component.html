@@ -1,7 +1,7 @@
 <layout-base *ngIf="character" pageTitle="Editor de Personagem">
   <form *ngIf="characterForm" [formGroup]="characterForm"
       (ngSubmit)="onSubmit(characterForm)">
-    <section>
+    <section class="mb-4">
       <div class="form-group row align-items-center">
         <label class="col-sm-12 col-md-3 col-lg-2 col-form-label text-sm-left text-md-right"
             for="characterName">
@@ -73,8 +73,8 @@
               </div>
             </div>
             <div class="card-footer">
-              <button class="btn btn-secondary" type="button">
-                <i class="fa fa-cog"></i> Gerar
+              <button class="btn btn-outline-light" type="button">
+                <i class="fa fa-cog"></i> Gerar aleatóriamente
               </button>
             </div>
           </div>
@@ -111,20 +111,6 @@
               </select>
             </div>
             <div class="col-sm-12 col-md-auto">
-              <label class="col-form-label" for="characterClass">Classe</label>
-              <select class="form-control"
-                  formControlName="characterClass"
-                  [ngClass]="getErrorClass(characterForm.controls.characterClass)"
-                  id="characterClass"
-                  required>
-                <option value="" selected>Escolha uma classe</option>
-                <option *ngFor="let characterClass of characterClasses | async"
-                    [value]="characterClass.id">
-                  {{ characterClass.name }}
-                </option>
-              </select>
-            </div>
-            <div class="col-sm-12 col-md-auto">
               <label class="col-form-label" for="characterSpecialization">Especialização</label>
               <select class="form-control"
                   formControlName="characterSpecialization"
@@ -139,6 +125,24 @@
               </select>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-12 col-md-2 col-form-label text-sm-left text-md-right">
+          <b>Classe</b>
+        </label>
+        <div class="col-sm-12 col-md-10">
+          <span class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-outline-secondary"
+                *ngFor="let characterClass of characterClasses | async; let i = index;"
+                [ngClass]="getActive(characterClass.id, 'characterClass')">
+              <input type="radio"
+                formControlName="characterClass"
+                [value]="characterClass.id">
+              <i class="ra {{characterClass?.style}}"></i> {{characterClass.name}}
+            </label>
+          </span>
         </div>
       </div>
 
@@ -168,11 +172,14 @@
             for="characterDescription">
           <b>Descrição</b>
         </label>
-        <div class="col-sm-12 col-md-9 col-lg-8">
-          <textarea class="form-control"
-            id="characterDescription"
-            rows="5"
-            formControlName="description"></textarea>
+        <div class="col-sm-12 col-md-9 col-lg-10">
+          <markdown-editor [markdownControl]="characterForm.controls.description">
+            <textarea class="form-control"
+              id="characterDescription"
+              rows="5"
+              formControlName="description"
+              placeholder="Descrição do personagem"></textarea>
+          </markdown-editor>
         </div>
       </div>
 
@@ -208,14 +215,14 @@
       </div>
     </section>
 
-    <section>
+    <section class="mt-4">
       <div class="form-group row">
         <div class="ml-auto col-sm-12 col-md-9 col-lg-10">
-          <button class="btn btn-danger" type="submit"
+          <button class="btn btn-primary" type="submit"
               [disabled]="characterForm.invalid">
             <i class="fa fa-save"></i> Salvar Personagem
           </button>
-          <button class="btn btn-outline-danger" type="button" (click)="goBack()">
+          <button class="btn btn-outline-light" type="button" (click)="goBack()">
             <i class="fa fa-remove"></i> Cancelar
           </button>
         </div>

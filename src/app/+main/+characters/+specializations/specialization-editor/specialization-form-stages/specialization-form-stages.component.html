@@ -1,21 +1,16 @@
-<fieldset class="specialization-stages" [formGroup]="specializationForm">
-  <h4>Estágios de Evolução</h4>
-
-  <section formArrayName="stages">
-    <div class="list-group">
-      <div class="list-group-item" *ngFor="let stage of stages; let idx=index">
-        <specialization-form-stage [stage]="stage"
-          [stages]="specializationForm.controls.stages"
-          [stageIndex]="idx"
-          ></specialization-form-stage>
-      </div>
+<fieldset class="specialization-stages card" [formGroup]="specializationForm">
+  <div class="list-group list-group-flush" formArrayName="stages">
+    <div class="list-group-item" *ngFor="let stage of stages; let idx=index">
+      <specialization-form-stage [stage]="stage"
+        [stages]="specializationForm.controls.stages"
+        [stageIndex]="idx"
+        ></specialization-form-stage>
     </div>
-  </section>
+  </div>
 
-  <section class="d-flex justify-content-start">
-    <button class="btn btn-outline-primary btn-sm" type="button"
-        (click)="addStage()">
-      <i class="fa fa-plus-circle"></i> Novo estágio
+  <div class="card-footer">
+    <button class="btn btn-outline-light btn-sm" type="button" (click)="addStage()">
+      <i class="fa fa-plus-circle"></i> Adicionar estágio
     </button>
-  </section>
+  </div>
 </fieldset>

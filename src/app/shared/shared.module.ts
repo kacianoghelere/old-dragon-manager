@@ -20,6 +20,8 @@ import { HtmlOutletDirective } from './directives/html-outlet.directive';
 
 import { ApiService } from './services/api.service';
 import { CustomMarkdownService } from './services/custom-markdown.service';
+import { MarkdownPreviewComponent } from './components/markdown-preview/markdown-preview.component';
+import { MarkdownEditorComponent } from './components/markdown-editor/markdown-editor.component';
 
 @NgModule({
   imports: [
@@ -41,7 +43,9 @@ import { CustomMarkdownService } from './services/custom-markdown.service';
     MarkdownRendererComponent,
     UserCardComponent,
     HtmlOutletDirective,
-    SpecializationCardComponent
+    SpecializationCardComponent,
+    MarkdownPreviewComponent,
+    MarkdownEditorComponent
   ],
   exports: [
     MarkdownModule,
@@ -51,6 +55,8 @@ import { CustomMarkdownService } from './services/custom-markdown.service';
     UserPillComponent,
     MarkdownRendererComponent,
     MarkdownInstructionsComponent,
+    MarkdownPreviewComponent,
+    MarkdownEditorComponent,
     UserCardComponent,
     HtmlOutletDirective,
     SpecializationCardComponent

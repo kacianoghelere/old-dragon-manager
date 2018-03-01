@@ -1,0 +1,38 @@
+<div class="card">
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs">
+      <li class="nav-item">
+        <a class="nav-link"
+            (click)="setSelected(0)"
+            [ngClass]="{'active': isSelected(0)}">
+          <i class="fa fa-edit"></i> Editor
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"
+            (click)="setSelected(1)"
+            [ngClass]="{'active': isSelected(1)}">
+          <i class="fa fa-eye"></i> Pré-visualização
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"
+            (click)="setSelected(2)"
+            [ngClass]="{'active': isSelected(2)}">
+          <i class="fa fa-info-circle"></i> Instruções
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body tab-content">
+    <div class="tab-pane" role="tabpanel" [ngClass]="{'active': isSelected(0)}">
+      <ng-content></ng-content>
+    </div>
+    <div class="tab-pane" role="tabpanel" [ngClass]="{'active': isSelected(1)}">
+      <markdown [data]="markdownControl.value"></markdown>
+    </div>
+    <div class="tab-pane" role="tabpanel" [ngClass]="{'active': isSelected(2)}">
+      <markdown-instructions></markdown-instructions>
+    </div>
+  </div>
+</div>

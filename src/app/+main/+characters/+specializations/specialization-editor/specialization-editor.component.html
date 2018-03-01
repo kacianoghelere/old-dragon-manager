@@ -2,41 +2,10 @@
   <form *ngIf="specializationForm" [formGroup]="specializationForm"
       (ngSubmit)="onSubmit(specializationForm)">
     <section>
-      <div class="form-group row" *ngIf="!specialization.id">
-        <label class="col-sm-12 col-md-2 col-form-label">
-          Classe base
-        </label>
-        <div class="col-sm-12 col-md-10">
-          <span *ngFor="let charClass of characterClasses">
-            <label class="btn btn-light"
-                [ngClass]="getActive(charClass.flat_name, 'characterClass')">
-              <input type="radio" formControlName="characterClass"
-                [value]="charClass.flat_name">
-              <i class="ra {{charClass?.style}}"></i> {{charClass.name}}
-            </label>
-          </span>
-        </div>
-      </div>
-
       <div class="form-group row">
-        <label class="col-sm-12 col-md-2 col-form-label">
-          Alinhamento
-        </label>
-        <div class="col-sm-12 col-md-10">
-          <span *ngFor="let alignment of alignments">
-            <label class="btn btn-light"
-                [ngClass]="getActive(alignment.id, 'alignment')">
-              <input type="radio" formControlName="alignment"
-                [value]="alignment.id">
-              <i class="ra ra-{{alignment?.style}}"></i> {{alignment.name}}
-            </label>
-          </span>
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <label class="col-sm-2 col-md-2 col-form-label" for="specializationName">
-          Nome da Especialização
+        <label class="col-sm-2 col-md-2 col-form-label text-sm-left text-md-right"
+            for="specializationName">
+          <b>Nome da Especialização</b>
         </label>
         <div class="col-sm-12 col-md-6">
           <input class="form-control form-control-lg"
@@ -46,42 +15,83 @@
         </div>
       </div>
 
+      <div class="form-group row" *ngIf="!specialization.id">
+        <label class="col-sm-12 col-md-2 col-form-label text-sm-left text-md-right">
+          <b>Classe base</b>
+        </label>
+        <div class="col-sm-12 col-md-10">
+          <span class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-outline-secondary"
+                *ngFor="let characterClass of characterClasses; let i = index;"
+                [ngClass]="getActive(characterClass.flat_name, 'characterClass')">
+              <input type="radio"
+                formControlName="characterClass"
+                [value]="characterClass.flat_name">
+              <i class="ra {{characterClass?.style}}"></i> {{characterClass.name}}
+            </label>
+          </span>
+        </div>
+      </div>
+
       <div class="form-group row">
-        <label class="col-sm-2 col-form-label" for="specializationPicture">
-          Imagem de Capa
+        <label class="col-sm-12 col-md-2 col-form-label text-sm-left text-md-right">
+          <b>Alinhamento</b>
+        </label>
+        <div class="col-sm-12 col-md-10">
+          <span class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-outline-secondary"
+                *ngFor="let alignment of alignments"
+                [ngClass]="getActive(alignment.id, 'alignment')">
+              <input type="radio"
+                formControlName="alignment"
+                [value]="alignment.id">
+              <i class="ra ra-{{alignment?.style}}"></i> {{alignment.name}}
+            </label>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label text-sm-left text-md-right"
+            for="specializationPicture">
+          <b>Imagem de Capa</b>
         </label>
         <div class="col-sm-10 col-md-6">
-          <input class="form-control"
-            type="url"
-            id="specializationPicture"
-            formControlName="picture">
+          <div class="input-group">
+            <span class="input-group-addon">
+              <i class="fa fa-globe"></i>
+            </span>
+            <input class="form-control"
+              type="url"
+              id="specializationPicture"
+              formControlName="picture">
+          </div>
         </div>
       </div>
 
       <div class="form-group row">
-        <label class="col-sm-2 col-form-label" for="specializationDescription">
-          Descrição da Especialização
+        <label class="col-sm-2 col-form-label text-sm-left text-md-right"
+            for="specializationDescription">
+          <b>Descrição da Especialização</b>
         </label>
         <div class="col-sm-10">
-          <textarea class="form-control"
-            id="specializationDescription"
-            rows="5"
-            formControlName="description"></textarea>
+          <markdown-editor [markdownControl]="specializationForm.controls.description">
+            <textarea class="form-control"
+              id="specializationDescription"
+              rows="5"
+              formControlName="description"
+              placeholder="Descrição da Especialização"></textarea>
+          </markdown-editor>
         </div>
       </div>
     </section>
 
     <section>
       <div class="form-group row">
-        <div class="ml-auto col-sm-10">
-          <markdown-instructions></markdown-instructions>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="form-group row">
-        <div class="ml-auto col-sm-10">
+        <label class="col-sm-12 col-md-3 col-lg-2 col-form-label text-sm-left text-md-right">
+          <b>Estágios de Evolução</b>
+        </label>
+        <div class="col-sm-12 col-md-9 col-lg-10">
           <specialization-form-stages *ngIf="specializationForm"
             [specializationForm]="specializationForm"
             [stages]="specialization.stages"></specialization-form-stages>
@@ -96,7 +106,7 @@
               [disabled]="specializationForm.invalid">
             <i class="fa fa-edit"></i> Salvar
           </button>
-          <button class="btn btn-outline-secondary" type="button" (click)="goBack()">
+          <button class="btn btn-outline-light" type="button" (click)="goBack()">
             <i class="fa fa-remove"></i> Cancelar
           </button>
         </div>

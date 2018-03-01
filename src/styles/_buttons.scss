@@ -5,13 +5,15 @@
 //
 
 .btn {
+  border: $btn-border-width solid transparent;
   display: inline-block;
+  font-family: $btn-font-family !important;
   font-weight: $btn-font-weight;
   text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
+  text-transform: uppercase;
   user-select: none;
-  border: $btn-border-width solid transparent;
+  vertical-align: middle;
+  white-space: nowrap;
   @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-line-height, $btn-border-radius);
   @include transition($btn-transition);
 
@@ -19,6 +21,7 @@
   @include hover-focus {
     text-decoration: none;
   }
+
   &:focus,
   &.focus {
     outline: 0;
@@ -143,5 +146,20 @@ input[type="reset"],
 input[type="button"] {
   &.btn-block {
     width: 100%;
+  }
+}
+
+.btn-group,
+.btn-group-vertical {
+  @include button-border(#b0b0b0, #eee, #9b9b9b);
+
+  .btn {
+    border: none !important;
+    border-image: none !important;
+    margin: 0;
+  }
+
+  .btn + .btn {
+    border-left: 1px solid rgba($black, .1) !important;
   }
 }

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { SharedModule } from '../../../shared/shared.module';
 import { SpecializationsRoutingModule } from './specializations-routing.module';
 import { SpecializationsComponent } from './specializations/specializations.component';
 import { LayoutModule } from '../../../layout/layout.module';
@@ -18,6 +19,7 @@ import { SpecializationStagesComponent } from './specialization-profile/speciali
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    SharedModule,
     LayoutModule,
     SpecializationsRoutingModule
   ],

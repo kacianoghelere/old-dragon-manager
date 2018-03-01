@@ -8,7 +8,7 @@
 
 @import "~bootstrap/scss/functions";
 @import "variables";
-@import "~bootstrap/scss/variables";
+// @import "~bootstrap/scss/variables";
 @import "mixins";
 @import "~bootstrap/scss/root";
 @import "~bootstrap/scss/print";
@@ -19,11 +19,12 @@
 @import "~bootstrap/scss/grid";
 @import "~bootstrap/scss/tables";
 @import "~bootstrap/scss/forms";
+@import "forms";
 @import "buttons";
 @import "~bootstrap/scss/transitions";
 @import "~bootstrap/scss/dropdown";
 @import "~bootstrap/scss/button-group";
-@import "~bootstrap/scss/input-group";
+@import "input-group";
 @import "~bootstrap/scss/custom-forms";
 @import "~bootstrap/scss/nav";
 @import "~bootstrap/scss/navbar";

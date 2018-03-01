@@ -1,40 +1,55 @@
 @import "~bootstrap/scss/mixins";
 
-@mixin button-background($background) {
-  // background: -webkit-linear-gradient($background, darken($background, 2%));
-  // background: -o-linear-gradient($background, darken($background, 2%));
-  // background: linear-gradient($background, darken($background, 2%));
+@function color-yiq($color) {
+  $r: red($color);
+  $g: green($color);
+  $b: blue($color);
 
-  background: radial-gradient(
-      ellipse at center,
-      rgba(lighten($background, 10%), .85) 10%,
-      rgba(darken($background, 20%), .85) 100%
-    ),
-    url($btn-custom-bg) no-repeat;
+  $yiq: (($r * 299) + ($g * 587) + ($b * 114)) / 1000;
+
+  @if ($yiq >= 200) {
+    @return #333;
+  } @else {
+    @return $really-white;
+  }
+}
+
+@function colorize-it($color) {
+  $r: red($color);
+  $g: green($color);
+  $b: blue($color);
+
+  $yiq: (($r * 299) + ($g * 587) + ($b * 114)) / 1000;
+
+  @if ($yiq >= 200) {
+    @return $gray-600;
+  } @else {
+    @return $color;
+  }
+}
+
+@mixin button-background($background) {
+  background-color: $background;
   background-size: cover;
 }
 
-@mixin button-border($background) {
-  border-width: 1px;
-  border-color: $background;
-  border-radius: .25em .25em .25em .25em / .3em .3em .3em .3em;
+@mixin button-border($border-color: #b08f5f, $gradient-start: #f4d09c, $gradient-end: #9b7947) {
+  border-width: $btn-border-width;
+  border-color: $border-color;
+  border-image: -webkit-gradient(linear, left top, left bottom, from($gradient-start), to($gradient-end));
+  border-image: linear-gradient(180deg, $gradient-start, $gradient-end);
+  border-image-slice: 1;
+  border-image-width: $btn-border-width;
+  border-radius: $btn-border-radius !important;
   border-style: outset;
 }
 
-@mixin button-variant($background, $border, $active-background: darken($background, 25%), $active-border: darken($border, 10%), $hover-background: darken($background, 15%)) {
-  @include button-background($background);
-  @include button-border($background);
-  color: $really-white !important;
-  font-family: $btn-font-family !important;
-  font-weight: $font-weight-bold;
-  // margin: .25em .75em;
+@mixin button-variant($background, $border, $active-background: darken($background, 15%), $active-border: darken($border, 5%), $hover-background: darken($background, 10%)) {
+  color: color-yiq($background) !important;
   position: relative;
-  text-shadow: 0 1px 1px rgba($black, 1);
-  text-transform: uppercase;
-  -webkit-transition: background 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-  transition: background 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-  transition: background 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  transition: background 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  text-shadow: 0 1px 0 rgba($black, .5);
+  @include button-background($background);
+  @include button-border();
 
   &:hover {
     @include button-background($hover-background);
@@ -65,61 +80,31 @@
   .show > &.dropdown-toggle {
     @include button-background($active-background);
     border-color: #fcad35;
-
-    // &::before,
-    // &::after {
-    //   background: linear-gradient(120deg, darken($danger, 5%), darken($danger, 15%));
-    // }
   }
-
-  // &::before,
-  // &::after {
-  //   background: linear-gradient(120deg, darken($background, 5%), darken($background, 15%));
-  //   border: 2px outset #fcad35;
-  //   border-radius: .25rem;
-  //   content: '';
-  //   height: 1em;
-  //   margin: 0;
-  //   position: absolute;
-  //   transform: rotate(45deg);
-  //   top: .75em;
-  //   vertical-align: middle;
-  //   width: 1em;
-  // }
-  //
-  // &::before {
-  //   left: -.55em;
-  // }
-  //
-  // &::after {
-  //   right: -.55em;
-  // }
 }
 
 @mixin button-outline-variant($color, $color-hover: #fff, $active-color: darken($color, 10%)) {
-  @include button-border($color);
-  color: $active-color;
-  background-color: transparent;
+  @include button-border();
+  background-color: $really-white;
   background-image: none;
-  font-family: $btn-font-family !important;
-  font-weight: bold;
-  text-transform: uppercase;
+  color: colorize-it($color);
 
   @include hover {
     @include button-background($color);
-    color: $color-hover;
-    text-shadow: 0 1px 1px rgba($black, .95);
+    color: color-yiq($color);
   }
 
   &:focus,
   &.focus {
-    // box-shadow: 0 0 0 3px rgba($color, .5);
+    @if $enable-shadows {
+      box-shadow: $btn-box-shadow, 0 0 0 3px rgba($color, .5);
+    }
   }
 
   &.disabled,
   &:disabled {
-    color: $color;
     background-color: transparent;
+    color: $color;
   }
 
   &:active,
@@ -127,31 +112,29 @@
   .show > &.dropdown-toggle {
     @include button-background($active-color);
     border-color: $active-color;
-    color: $color-hover;
+    color: color-yiq($color) !important;
   }
 }
 
 @mixin button-minimal-variant($color, $color-hover: #fff, $active-color: darken($color, 10%)) {
-  @include button-border(transparent);
-  color: darken($color, 10%);
-  background-color: $white;
+  @include button-border(transparent, transparent, transparent);
+  background-color: $really-white;
   background-image: none;
+  border-radius: $btn-border-radius;
   box-shadow: $btn-box-shadow;
-  font-family: $btn-font-family !important;
-  font-weight: bold;
-  text-shadow: 0 1px 1px rgba($black, .1);
-  text-transform: uppercase;
+  color: colorize-it($color);
 
   @include hover {
     @include button-background($color);
-    @include button-border($color);
-    color: $color-hover;
-    text-shadow: 0 1px 1px rgba($black, .95);
+    @include button-border(#b0b0b0, #eee, #9b9b9b);
+    color: color-yiq($color);
   }
 
   &:focus,
   &.focus {
-    box-shadow: 0 0 0 3px rgba($color, .5);
+    @if $enable-shadows {
+      box-shadow: $btn-box-shadow, 0 0 0 3px rgba($color, .5);
+    }
   }
 
   &.disabled,
