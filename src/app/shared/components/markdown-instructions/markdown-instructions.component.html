@@ -1,46 +1,37 @@
-<article class="card bg-secondary">
-  <div class="card-body">
-    <h5>
-      Instruções de formatação de texto
-      <a class="pointer float-right" (click)="toggle()">
-        <i class="fa" [ngClass]="toggleClass"></i>
-      </a>
-    </h5>
+<div class="markdown-instructions">
+  <h5>Instruções de formatação de texto</h5>
 
-    <div class="row" *ngIf="showInstructions">
-      <div class="col">
-        <ul class="markdown-example">
-          <li><b>Texto simples:</b></li>
-          <li># Título 1</li>
-          <li>## Título 2</li>
-          <li>### Título 3...</li>
-          <li>*itálico*</li>
-          <li>**negrito**</li>
-        </ul>
-      </div>
-      <div class="col">
-        <ul class="markdown-example">
-          <li><b>Lista ordenada:</b></li>
-          <li>1 item</li>
-          <li>2 item</li>
-          <li><b>Lista não ordenada:</b></li>
-          <li>- item</li>
-          <li>- item</li>
-        </ul>
-      </div>
-      <div class="col">
-        <ul class="markdown-example">
-          <li><b>Link:</b> [Google](https://www.google.com)</li>
-          <li><b>Link de Páginas:</b> [Os Inimigos]([[Os Inimigos]] Os Inimigos dos jogadores)</li>
-          <li><b>Imagem:</b> ![old dragon](http://redboxeditora.com.br/od/imgs/logos.png "Old Dragon")</li>
-          <li>
-            <a href="https://help.github.com/articles/basic-writing-and-formatting-syntax/"
-                target="_blank">
-              Mais exemplos...
-            </a>
-          </li>
-        </ul>
-      </div>
+  <div class="row">
+    <div class="col">
+      <ul class="markdown-example">
+        <li><b>Texto simples:</b></li>
+        <li># Título 1</li>
+        <li>## Título 2</li>
+        <li>### Título 3...</li>
+        <li>*itálico*</li>
+        <li>**negrito**</li>
+      </ul>
+    </div>
+    <div class="col">
+      <ul class="markdown-example">
+        <li><b>Lista ordenada:</b></li>
+        <li>1 item</li>
+        <li>2 item</li>
+        <li><b>Lista não ordenada:</b></li>
+        <li>- item</li>
+        <li>- item</li>
+      </ul>
+    </div>
+    <div class="col">
+      <ul class="markdown-example">
+        <li><b>Link:</b> [Google](https://www.google.com)</li>
+        <li><b>Link de Páginas:</b> [Os Inimigos]([[Os Inimigos]] Os Inimigos dos jogadores)</li>
+        <li><b>Imagem:</b> ![old dragon](http://redboxeditora.com.br/od/imgs/logos.png "Old Dragon")</li>
+      </ul>
     </div>
   </div>
-</article>
+  <a href="https://help.github.com/articles/basic-writing-and-formatting-syntax/"
+    target="_blank">
+    <b>Mais exemplos...</b>
+  </a>
+</div>

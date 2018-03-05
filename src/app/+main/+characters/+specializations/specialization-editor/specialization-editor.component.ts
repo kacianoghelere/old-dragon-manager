@@ -88,7 +88,6 @@ export class SpecializationEditorComponent extends CoreComponent
   }
 
   onSubmit({value, valid}: {value: any, valid: boolean}) {
-    console.log("Submetido!", value);
     let params = {
       id: value.id,
       name: value.name,
@@ -104,7 +103,6 @@ export class SpecializationEditorComponent extends CoreComponent
         _destroy: stage._destroy
       }))
     };
-    console.log("Gravando!", params);
 
     this.specializationsService.handle(params).subscribe(
       (response: CharacterSpecialization) => {
@@ -143,7 +141,6 @@ export class SpecializationEditorComponent extends CoreComponent
     let alignment = specialization['alignment'] || {};
     let alignment_id = alignment ? alignment['id'] : null;
 
-    console.log('Class ID', class_id);
     this.specializationForm = this.formBuilder.group({
       id: this.specialization.id,
       name: [

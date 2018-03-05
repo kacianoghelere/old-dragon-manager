@@ -52,6 +52,14 @@ export class CharacterEditorComponent extends CoreComponent
     }
   }
 
+  getActive(id: any, field: string): {active: boolean} {
+    return {active: this.compareFormValues(id, field)};
+  }
+
+  compareFormValues(id: any, field: string): boolean {
+    return id === this.characterForm.value[field];
+  }
+
   ngOnDestroy() {
     if (this.subscription) this.subscription.unsubscribe();
   }
