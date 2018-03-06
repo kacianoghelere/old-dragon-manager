@@ -7,10 +7,10 @@
 .btn {
   border: $btn-border-width solid transparent;
   display: inline-block;
-  font-family: $btn-font-family !important;
-  font-weight: $btn-font-weight;
+  // font-family: $btn-font-family !important;
+  // font-weight: $btn-font-weight;
   text-align: center;
-  text-transform: uppercase;
+  // text-transform: uppercase;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
@@ -37,6 +37,10 @@
   &:active,
   &.active {
     background-image: none;
+  }
+
+  &[type="submit"] {
+    font-weight: $btn-font-weight;
   }
 }
 
@@ -77,10 +81,10 @@ fieldset[disabled] a.btn {
 .btn-link {
   color: $link-color;
   border-radius: 0;
-  font-family: $btn-font-family !important;
-  font-weight: $font-weight-bold;
+  // font-family: $btn-font-family !important;
+  // font-weight: $font-weight-bold;
   font-weight: bold;
-  text-transform: uppercase;
+  // text-transform: uppercase;
 
   &,
   &:active,

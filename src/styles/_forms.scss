@@ -3,19 +3,9 @@
 //
 // Textual form controls
 //
-@mixin form-control-border($border-color: #b08f5f, $gradient-start: #f4d09c, $gradient-end: #9b7947) {
-  border-width: $input-btn-border-width;
-  border-color: $border-color;
-  border-image: -webkit-gradient(linear, left top, left bottom, from($gradient-start), to($gradient-end));
-  border-image: linear-gradient(180deg, $gradient-start, $gradient-end);
-  border-image-slice: 1;
-  border-image-width: $input-btn-border-width;
-  border-radius: $input-border-radius;
-  border-style: outset;
-}
 
 .form-control {
-  @include form-control-border(#b0b0b0, #eee, #9b9b9b);
+  @include fading-border(#b0b0b0, #eee, #9b9b9b);
 
   // Disabled and read-only inputs
   //
@@ -24,7 +14,7 @@
   // don't honor that edge case; we style them as disabled anyway.
   &:disabled,
   &[readonly] {
-    @include form-control-border(#aaa, #ddd, #777);
+    @include fading-border(#aaa, #ddd, #777);
   }
 }
 //

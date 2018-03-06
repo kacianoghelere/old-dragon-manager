@@ -150,3 +150,16 @@
     @include button-background($active-color);
   }
 }
+
+$fading-border-widths: $input-btn-border-width $input-btn-border-width ($input-btn-border-width * 2) $input-btn-border-width;
+
+@mixin fading-border($border-color: #b08f5f, $gradient-start: #f4d09c, $gradient-end: #9b7947) {
+  border-color: $border-color;
+  border-image: -webkit-gradient(linear, left top, left bottom, from($gradient-start), to($gradient-end));
+  border-image: linear-gradient(180deg, $gradient-start, $gradient-end);
+  border-image-slice: 1;
+  border-image-width: $fading-border-widths;
+  border-radius: $input-border-radius;
+  border-style: solid;
+  border-width: $fading-border-widths;
+}

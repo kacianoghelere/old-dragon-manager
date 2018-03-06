@@ -25,13 +25,16 @@
     </ul>
   </div>
   <div class="card-body tab-content">
-    <div class="tab-pane" role="tabpanel" [ngClass]="{'active': isSelected(0)}">
+    <div class="tab-pane editor-tab" role="tabpanel"
+        [ngClass]="{'active': isSelected(0)}">
       <ng-content></ng-content>
     </div>
-    <div class="tab-pane" role="tabpanel" [ngClass]="{'active': isSelected(1)}">
+    <div class="tab-pane" role="tabpanel"
+        [ngClass]="{'active': isSelected(1)}">
       <markdown [data]="markdownControl.value"></markdown>
     </div>
-    <div class="tab-pane" role="tabpanel" [ngClass]="{'active': isSelected(2)}">
+    <div class="tab-pane" role="tabpanel"
+        [ngClass]="{'active': isSelected(2)}">
       <markdown-instructions></markdown-instructions>
     </div>
   </div>

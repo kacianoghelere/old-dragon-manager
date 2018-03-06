@@ -1,3 +1,13 @@
 a {
   cursor: pointer;
 }
+
+.editor-tab {
+  margin: -1.25em;
+
+  /deep/ .form-control {
+    border: none !important;
+    border-image: none !important;
+    min-height: 4em;
+  }
+}

@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Crimson+Text');
 @import url('https://fonts.googleapis.com/css?family=Lato');
 @import url('https://fonts.googleapis.com/css?family=PT+Serif');
-@import url('https://fonts.googleapis.com/css?family=Dosis');
+@import url('https://fonts.googleapis.com/css?family=Nunito');
 @import url('https://fonts.googleapis.com/css?family=Quattrocento');
 @import url('https://fonts.googleapis.com/css?family=Quattrocento+Sans');
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
@@ -88,13 +88,13 @@ $grays: (
 
 $blue:    #01579B !default;
 $cyan:    #00BCD4 !default;
-$green:   #388E3C !default;
+$green:   #428845 !default;
 $indigo:  #64498f !default;
 $orange:  #f0ad4e !default;
 $gold:    #9d6514 !default;
 $pink:    #ff5b77 !default;
 $purple:  #613d7c !default;
-$red:     #BF360C !default;
+$red:     #ab3232 !default;
 $teal:    #66b7cf !default;
 $yellow:  #ffc107 !default;
 
@@ -272,7 +272,7 @@ $font-family-sans-serif: "Crimson Text", Helvetica, Arial, sans-serif !default;
 $font-family-serif:      "Quattrocento Sans", "Times New Roman", Times, serif !default;
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 $font-family-monospace:  Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
-$font-family-base:       "Dosis", Helvetica, Arial, sans-serif !default;
+$font-family-base:       "Quattrocento Sans", Helvetica, Arial, sans-serif !default;
 
 
 $font-size-base: 1rem !default; // Assumes the browser default, typically `16px`
@@ -706,7 +706,7 @@ $card-border-radius:       0 !default;
 $card-border-color:        rgba($black,.125) !default;
 $card-box-shadow:          0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23) !default;
 $card-inner-border-radius: calc(#{$card-border-radius} - #{$card-border-width}) !default;
-$card-cap-bg:              rgba($black, .03) !default;
+$card-cap-bg:              rgba($black, .02) !default;
 $card-bg:                  $really-white !default;
 
 $card-img-overlay-padding:  1.25rem !default;
