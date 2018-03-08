@@ -1,30 +1,32 @@
 <section class="home-feed">
-  <header class="d-flex justify-content-between">
-    <h2>Quadro de avisos</h2>
-    <div>
-      <button class="btn btn-light btn-sm btn-minimal">
-        <i class="fa fa-refresh"></i> Atualizar
-      </button>
-      <button class="btn btn-light btn-sm btn-minimal">
-        <i class="fa fa-sort-amount-asc"></i> Ordenar
-      </button>
+  <article class="card">
+    <div class="card-header d-flex justify-content-between">
+      <h2 class="card-title m-0">Quadro de avisos</h2>
+      <div>
+        <button class="btn btn-outline-light">
+          <i class="fa fa-refresh"></i> Atualizar
+        </button>
+        <button class="btn btn-outline-light">
+          <i class="fa fa-sort-amount-asc"></i> Ordenar
+        </button>
+      </div>
     </div>
-  </header>
-  <article class="list-group">
-    <div class="list-group-item" *ngFor="let feed of feedList">
-      <div class="feed d-flex">
-        <div class="feed-img">
-          <a href="#">
-            <img class="feed-avatar img-thumbnail"
-              [src]="feed.author.picture" [alt]="feed.author.name">
-          </a>
-        </div>
-        <div class="feed-content">
-          <p class="feed-author">
-            <b>{{feed.author.name}}</b>
-            <small class="text-muted">{{feed.timestamp | date}}</small>
-          </p>
-          <p class="feed-text">{{feed.description}}</p>
+    <div class="list-group list-group-flush">
+      <div class="list-group-item" *ngFor="let feed of feedList">
+        <div class="feed d-flex">
+          <div class="feed-img">
+            <a href="#">
+              <img class="feed-avatar img-thumbnail"
+                [src]="feed.author.picture" [alt]="feed.author.name">
+            </a>
+          </div>
+          <div class="feed-content">
+            <p class="feed-author">
+              <b>{{feed.author.name}}</b>
+              <small class="text-muted">{{feed.timestamp | date}}</small>
+            </p>
+            <p class="feed-text">{{feed.description}}</p>
+          </div>
         </div>
       </div>
     </div>

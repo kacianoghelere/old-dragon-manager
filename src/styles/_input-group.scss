@@ -145,6 +145,7 @@
   // Negative margin for spacing, position for bringing hovered/focused/actived
   // element above the siblings.
   > .btn {
+    border: none;
     position: relative;
 
     + .btn {

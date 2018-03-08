@@ -7,13 +7,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { ToastrService } from 'ngx-toastr';
 
-import { AuthenticationService } from '../../../authentication/authentication.service';
-import { Character, CharacterClass, CharacterRace, CharacterSpecialization } from '../../../shared/models';
+import { AuthenticationService } from '@authentication/authentication.service';
+import { Character, CharacterClass, CharacterRace, CharacterSpecialization } from '@shared/models';
+import { CoreComponent } from '@shared/components/core/core.component';
 import { CharactersService } from '../shared/characters.service';
 import { RacesService } from '../shared/races.service';
 import { ClassesService } from '../shared/classes.service';
 import { SpecializationsService } from '../shared/specializations.service';
-import { CoreComponent } from '../../../shared/components/core/core.component';
 
 @Component({
   selector: 'character-editor',
@@ -86,7 +86,15 @@ export class CharacterEditorComponent extends CoreComponent
           id: null,
           name: '',
           flat_name: '',
-          description: ''
+          description: '',
+          attributes: {
+            strength: 0,
+            dexterity: 0,
+            constitution: 0,
+            intelligence: 0,
+            wisdom: 0,
+            charisma: 0
+          }
         };
         this.toFormGroup(this.character);
       }
@@ -123,21 +131,12 @@ export class CharacterEditorComponent extends CoreComponent
   }
 
   toFormGroup(character: Character) {
-    let attributeValidators = [
-      Validators.required, Validators.max(20), Validators.min(6)
-    ];
+    let characterClassId = this.character.class ? this.character.class.id : '';
 
-    let characterClass = this.character.class;
+    let characterRaceId = this.character.race ? this.character.race.id : '';
 
-    let characterClassId = characterClass ? characterClass.id : '';
-
-    let characterRace = this.character.race;
-
-    let characterRaceId = characterRace ? characterRace.id : '';
-
-    let characterSpecialization = this.character.specialization;
-
-    let characterSpecializationId = characterSpecialization ? characterSpecialization.id : '';
+    let characterSpecializationId = this.character.specialization
+                                    ? this.character.specialization.id : '';
 
     this.characterForm = this.formBuilder.group({
       id : this.character.id,
@@ -187,33 +186,7 @@ export class CharacterEditorComponent extends CoreComponent
       characterSpecialization: [
         characterSpecializationId,
         Validators.required
-      ],
-      attributes: this.formBuilder.group({
-        strength: [
-          this.character.attributes.strength,
-          attributeValidators
-        ],
-        dexterity: [
-          this.character.attributes.dexterity,
-          attributeValidators
-        ],
-        constitution: [
-          this.character.attributes.constitution,
-          attributeValidators
-        ],
-        intelligence: [
-          this.character.attributes.intelligence,
-          attributeValidators
-        ],
-        wisdom: [
-          this.character.attributes.wisdom,
-          attributeValidators
-        ],
-        charisma: [
-          this.character.attributes.charisma,
-          attributeValidators
-        ]
-      })
+      ]
     });
   }
 }

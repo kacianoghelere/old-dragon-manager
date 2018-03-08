@@ -40,10 +40,35 @@
   margin: 10px 0;
 
   &.feature-link,
-  &.feature-link .card-img {
-    border-radius: $card-inner-border-radius;
+  &.card-blurred {
+    border-radius: $border-radius;
+
+    .card-img-overlay {
+      border-radius: $border-radius;
+
+      .card-text {
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0s, opacity 0.3s linear;
+      }
+
+      &:hover {
+        .card-text {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+    }
+
+    .card-img {
+      max-height: 100%;
+      min-height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &.feature-link {
     max-height: 200px;
-    object-fit: cover;
   }
 
   .card-header {
@@ -118,17 +143,6 @@
   .card-title, .card-text {
     color: $white;
     text-shadow: 0 1px 1px rgba($black, .5);
-  }
-}
-
-.card.card-blurred {
-  border-radius: $border-radius;
-
-  .card-img-overlay { border-radius: $border-radius; }
-
-  .card-img {
-    max-height: 100%;
-    object-fit: cover;
   }
 }
 

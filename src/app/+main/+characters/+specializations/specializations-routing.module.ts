@@ -13,8 +13,8 @@ const routes: Routes = [
     children: [
       {path: '', component: SpecializationsListComponent, pathMatch: 'full'},
       {path: 'new', component: SpecializationEditorComponent},
-      {path: ':id', component: SpecializationProfileComponent},
-      {path: ':id/edit', component: SpecializationEditorComponent}
+      {path: ':id/edit', component: SpecializationEditorComponent},
+      {path: ':id', component: SpecializationProfileComponent}
     ]
   }
 ];

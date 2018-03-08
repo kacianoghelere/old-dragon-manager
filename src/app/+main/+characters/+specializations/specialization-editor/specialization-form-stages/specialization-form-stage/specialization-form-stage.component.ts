@@ -21,23 +21,14 @@ export class SpecializationFormStageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.stageForm = this.toFormGroup(this.stage);
-    this.stages.push(this.stageForm);
+    this.stages.push(this.stageForm = this.toFormGroup(this.stage));
   }
 
-  /**
-   * Emits the removal event
-   */
   remove() {
     this.stage._destroy = true;
     this.stageForm.controls._destroy.setValue(this.stage._destroy);
   }
 
-  /**
-   * Cria novo FormGroup baseado nos dados do estágio de evolução
-   * @param  {CharacterSpecializationStage} stage Estágio de especialização
-   * @return {FormGroup}                          Novo FormGroup
-   */
   toFormGroup(stage: CharacterSpecializationStage): FormGroup {
     return this.formBuilder.group({
       id: stage.id || null,

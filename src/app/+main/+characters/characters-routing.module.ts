@@ -26,6 +26,7 @@ const charactersRoutes: Routes = [
         path: 'specializations',
         loadChildren: 'app/+main/+characters/+specializations/specializations.module#SpecializationsModule'
       },
+      { path: 'new', component: CharacterEditorComponent },
       {
         path: ':character_id/edit',
         component: CharacterEditorComponent,

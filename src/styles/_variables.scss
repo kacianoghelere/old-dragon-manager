@@ -67,10 +67,10 @@ $gray-200: #ddd !default;
 $gray-300: #ccc !default;
 $gray-400: #bbb !default;
 $gray-500: #aaa !default;
-$gray-600: #444 !default;
-$gray-700: #333 !default;
-$gray-800: #222 !default;
-$gray-900: #111 !default;
+$gray-600: #666 !default;
+$gray-700: #555 !default;
+$gray-800: #444 !default;
+$gray-900: #333 !default;
 
 $black:  #222 !default;
 
@@ -251,9 +251,9 @@ $line-height-sm:         1.5 !default;
 $border-width: 1px !default;
 $border-color: $gray-200 !default;
 
-$border-radius:          .4rem;
-$border-radius-lg:       .6rem;
-$border-radius-sm:       .3rem;
+$border-radius:          0;
+$border-radius-lg:       $border-radius;
+$border-radius-sm:       $border-radius;
 
 $component-active-color: $white !default;
 $component-active-bg:    $gray-300 !default;
@@ -702,10 +702,10 @@ $jumbotron-box-shadow:           inset 0 0 15px rgba($gray-700, .6) !default;
 $card-spacer-y:            .75rem !default;
 $card-spacer-x:            1.25rem !default;
 $card-border-width:        1px !default;
-$card-border-radius:       0 !default;
+$card-border-radius:       $border-radius !default;
 $card-border-color:        rgba($black,.125) !default;
 $card-box-shadow:          0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23) !default;
-$card-inner-border-radius: calc(#{$card-border-radius} - #{$card-border-width}) !default;
+$card-inner-border-radius: $card-border-radius !default;
 $card-cap-bg:              rgba($black, .02) !default;
 $card-bg:                  $really-white !default;
 
@@ -925,8 +925,11 @@ $close-text-shadow:           0 1px 0 $white !default;
 
 // Code
 
-$code-font-size:                    87.5% !default;
-$code-color:                        $pink !default;
+$code-font-size:                    90% !default;
+$code-padding-y:                    .2rem !default;
+$code-padding-x:                    .4rem !default;
+$code-color:                        #bd4147 !default;
+$code-bg:                           $gray-100 !default;
 
 $kbd-padding-y:                     .2rem !default;
 $kbd-padding-x:                     .4rem !default;

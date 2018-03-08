@@ -10,21 +10,10 @@ export class CoreComponent {
 
   protected activeTab: number = 0;
 
-  /**
-   * Verifica se uma coleção é válida e não vazia
-   * @param  {any[]}   collection Coleção
-   * @return {boolean}            Resultado da verificação
-   */
   protected emptyCollection(collection: any[]): boolean {
     return !(collection && collection.length);
   }
 
-  /**
-   * Retorna objeto de classe de validação de um campo de formulário
-   * @param  {AbstractControl} control Controle do formulário
-   * @param  {string}         field    Nome do controle
-   * @return {any}                     Objeto de Classes de validação
-   */
   getErrorClass(
     control: AbstractControl,
     field: string
@@ -39,47 +28,48 @@ export class CoreComponent {
     return `${signal}${absModifier}`;
   }
 
-  /**
-   * Verifica se uma coleção é válida e tem dados preenchidos
-   * @param  {any[]}  collection Coleção de dados
-   * @return {boolean}            Resultado da verificação
-   */
+  getRandom(min: number, max: number): number {
+    return (Math.random() * (max - min) + min);
+  }
+
+  getRandomInt(min: number, max: number): number {
+    return Math.floor(this.getRandom(min, max));
+  }
+
+  rollDice(max: number): number {
+    return Math.floor(this.getRandom(1, 6));
+  }
+
+  rollAttribute(dices: number = 4) {
+    let values: number[] = [];
+
+    for (let i = 1; i <= dices; i++) {
+      values.push(this.rollDice(6));
+    }
+
+    let sortedValues = values.sort();
+
+    sortedValues.shift();
+
+    return sortedValues.reduce((a, b) => a + b);
+  }
+
   protected hasData(collection: any[]): boolean {
     return !this.emptyCollection(collection);
   }
 
-  /**
-   * Verifica se um Control de Form foi modificado e está com erro
-   * @param  {AbstractControl} field Campo do formulário
-   * @return {boolean}               Resultado da verificação
-   */
   hasError(field: AbstractControl): boolean {
     return (field.touched && !field.pristine && !field.valid);
   }
 
-  /**
-   * [isActiveClass description]
-   * @param  {any} index [description]
-   * @return {[type]}       [description]
-   */
   protected isActiveClass(index: any): {active: boolean} {
     return {active: this.isActiveTab(index)};
   }
 
-  /**
-   * [isActiveTab description]
-   * @param  {any}  index [description]
-   * @return {boolean}       [description]
-   */
   protected isActiveTab(index: any): boolean {
     return index === this.activeTab;
   }
 
-  /**
-   * [setActiveTab description]
-   * @param  {any} index [description]
-   * @return {[type]}       [description]
-   */
   protected setActiveTab(index: any) {
     this.activeTab = index;
   }

@@ -1,0 +1,87 @@
+<div class="card" [formGroup]="characterForm">
+  <div class="card-body row" formGroupName="attributes">
+    <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2" title="Força">
+      <label for="attributeStrength">FOR</label>
+      <div class="input-group">
+        <input class="form-control"
+          type="number"
+          id="attributeStrength"
+          formControlName="strength"
+          required>
+        <span class="input-group-addon">
+          <small>{{ getModifier(characterForm.controls.attributes.controls.strength.value) }}</small>
+        </span>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2" title="Destreza">
+      <label for="attributeDexterity">DES</label>
+      <div class="input-group">
+        <input class="form-control"
+          type="number"
+          id="attributeDexterity"
+          formControlName="dexterity"
+          required>
+        <span class="input-group-addon">
+          <small>{{ getModifier(characterForm.controls.attributes.controls.dexterity.value) }}</small>
+        </span>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2" title="Constituição">
+      <label for="attributeConstitution">CON</label>
+      <div class="input-group">
+        <input class="form-control"
+          type="number"
+          id="attributeConstitution"
+          formControlName="constitution"
+          required>
+        <span class="input-group-addon">
+          <small>{{ getModifier(characterForm.controls.attributes.controls.constitution.value) }}</small>
+        </span>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2" title="Inteligência">
+      <label for="attributeIntelligence">INT</label>
+      <div class="input-group">
+        <input class="form-control"
+          type="number"
+          id="attributeIntelligence"
+          formControlName="intelligence"
+          required>
+        <span class="input-group-addon">
+          <small>{{ getModifier(characterForm.controls.attributes.controls.intelligence.value) }}</small>
+        </span>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2" title="Sabedoria">
+      <label for="attributeWisdom">SAB</label>
+      <div class="input-group">
+        <input class="form-control"
+          type="number"
+          id="attributeWisdom"
+          formControlName="wisdom"
+          required>
+        <span class="input-group-addon">
+          <small>{{ getModifier(characterForm.controls.attributes.controls.wisdom.value) }}</small>
+        </span>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2" title="Carisma">
+      <label for="attributeCharisma">CAR</label>
+      <div class="input-group">
+        <input class="form-control"
+          type="number"
+          id="attributeCharisma"
+          formControlName="charisma"
+          required>
+        <span class="input-group-addon">
+          <small>{{ getModifier(characterForm.controls.attributes.controls.charisma.value) }}</small>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer d-flex justify-content-end">
+    <button class="btn btn-outline-light" type="button" (click)="generateAttributes()">
+      <i class="fa fa-cog"></i> Gerar atributos
+    </button>
+  </div>
+</div>

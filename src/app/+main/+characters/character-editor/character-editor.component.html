@@ -7,77 +7,30 @@
             for="characterName">
           <b>Nome</b>
         </label>
-        <div class="col-sm-12 col-md-9 col-lg-6">
-          <input class="form-control form-control-lg"
-            type="text"
-            id="characterName"
-            formControlName="name"
-            required>
+        <div class="col-sm-12 col-md-9 col-lg-8">
+          <div class="input-group">
+            <input class="form-control form-control-lg"
+              type="text"
+              id="characterName"
+              formControlName="name"
+              required>
+            <span class="input-group-btn">
+              <button class="btn btn-light" type="button">
+                <i class="fa fa-cog"></i> Gerar nome
+              </button>
+            </span>
+          </div>
         </div>
       </div>
 
-      <div class="form-group row align-items-center" formGroupName="attributes">
+      <div class="form-group row align-items-start">
         <label class="col-sm-12 col-md-3 col-lg-2 col-form-label text-sm-left text-md-right">
           <b>Atributos</b>
         </label>
-        <div class="col-sm-12 col-md-9 col-lg-9">
-          <div class="card">
-            <div class="card-body row">
-              <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2" title="Força">
-                <label for="attributeStrength">FOR</label>
-                <input class="form-control"
-                  type="number"
-                  id="attributeStrength"
-                  formControlName="strength"
-                  required>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2" title="Destreza">
-                <label for="attributeDexterity">DES</label>
-                <input class="form-control"
-                  type="number"
-                  id="attributeDexterity"
-                  formControlName="dexterity"
-                  required>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2" title="Constituição">
-                <label for="attributeConstitution">CON</label>
-                <input class="form-control"
-                  type="number"
-                  id="attributeConstitution"
-                  formControlName="constitution"
-                  required>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2" title="Inteligência">
-                <label for="attributeIntelligence">INT</label>
-                <input class="form-control"
-                  type="number"
-                  id="attributeIntelligence"
-                  formControlName="intelligence"
-                  required>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2" title="Sabedoria">
-                <label for="attributeWisdom">SAB</label>
-                <input class="form-control"
-                  type="number"
-                  id="attributeWisdom"
-                  formControlName="wisdom"
-                  required>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2" title="Carisma">
-                <label for="attributeCharisma">CAR</label>
-                <input class="form-control"
-                  type="number"
-                  id="attributeCharisma"
-                  formControlName="charisma"
-                  required>
-              </div>
-            </div>
-            <div class="card-footer">
-              <button class="btn btn-outline-light" type="button">
-                <i class="fa fa-cog"></i> Gerar aleatóriamente
-              </button>
-            </div>
-          </div>
+        <div class="col-sm-12 col-md-9 col-lg-10">
+          <character-editor-attributes *ngIf="characterForm"
+            [character]="character"
+            [characterForm]="characterForm"></character-editor-attributes>
         </div>
       </div>
 
@@ -223,11 +176,11 @@
     <section class="mt-4">
       <div class="form-group row">
         <div class="ml-auto col-sm-12 col-md-9 col-lg-10">
-          <button class="btn btn-primary" type="submit"
+          <button class="btn btn-primary btn-lg" type="submit"
               [disabled]="characterForm.invalid">
             <i class="fa fa-save"></i> Salvar Personagem
           </button>
-          <button class="btn btn-outline-light" type="button" (click)="goBack()">
+          <button class="btn btn-outline-light btn-lg" type="button" (click)="goBack()">
             <i class="fa fa-remove"></i> Cancelar
           </button>
         </div>

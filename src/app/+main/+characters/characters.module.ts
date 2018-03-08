@@ -15,6 +15,8 @@ import { CharactersService } from './shared/characters.service';
 import { ClassesService } from './shared/classes.service';
 import { RacesService } from './shared/races.service';
 import { SpecializationsService } from './shared/specializations.service';
+import { CharacterEditorAttributesComponent } from './character-editor/character-editor-attributes/character-editor-attributes.component';
+import { CharacterEditorAttributeComponent } from './character-editor/character-editor-attributes/character-editor-attribute/character-editor-attribute.component';
 
 @NgModule({
   imports: [
@@ -29,7 +31,9 @@ import { SpecializationsService } from './shared/specializations.service';
     CharactersComponent,
     CharactersHomeComponent,
     CharactersListComponent,
-    CharacterEditorComponent
+    CharacterEditorComponent,
+    CharacterEditorAttributesComponent,
+    CharacterEditorAttributeComponent
   ],
   providers: [
     AlignmentsService,
