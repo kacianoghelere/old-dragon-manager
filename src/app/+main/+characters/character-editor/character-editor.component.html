@@ -15,7 +15,7 @@
               formControlName="name"
               required>
             <span class="input-group-btn">
-              <button class="btn btn-light" type="button">
+              <button class="btn btn-light" type="button" (click)="generateName()">
                 <i class="fa fa-cog"></i> Gerar nome
               </button>
             </span>
@@ -87,7 +87,7 @@
         </label>
         <div class="col-sm-12 col-md-10">
           <span class="btn-group btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-outline-secondary"
+            <label class="btn btn-outline-light"
                 *ngFor="let characterClass of characterClasses | async; let i = index;"
                 [ngClass]="getActive(characterClass.id, 'characterClass')">
               <input type="radio"

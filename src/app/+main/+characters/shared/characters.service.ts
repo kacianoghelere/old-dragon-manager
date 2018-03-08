@@ -33,6 +33,11 @@ export class CharactersService extends EntityService<Character> {
     return super._find(this.resource)(id);
   }
 
+  generateName(): Observable<{name: string, surname: string}> {
+    return this.http.get(`${this.url}/generators/name`)
+      .map(this.responseToJson);
+  }
+
   /**
    * Identifica se o registro deve ser criado ou atualizado e direciona para a
    * função de tratamento correta

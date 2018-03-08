@@ -44,6 +44,12 @@ export class CharacterEditorComponent extends CoreComponent
     super();
   }
 
+  generateName() {
+    this.charactersService.generateName().subscribe((generated) => {
+      this.characterForm.patchValue({name: generated.name});
+    });
+  }
+
   goBack() {
     if (this.character.id) {
       this.router.navigate(['/main/characters', this.character.uuid]);

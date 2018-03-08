@@ -49,7 +49,7 @@
   position: relative;
   text-shadow: 0 1px 0 rgba($black, .5);
   @include button-background($background);
-  @include button-border();
+  @include fading-border();
 
   &:hover {
     @include button-background($hover-background);
@@ -84,7 +84,7 @@
 }
 
 @mixin button-outline-variant($color, $color-hover: #fff, $active-color: darken($color, 10%)) {
-  @include button-border();
+  @include fading-border();
   background-color: $really-white;
   background-image: none;
   color: colorize-it($color);
@@ -117,7 +117,7 @@
 }
 
 @mixin button-minimal-variant($color, $color-hover: #fff, $active-color: darken($color, 10%)) {
-  @include button-border(transparent, transparent, transparent);
+  @include fading-border(transparent, transparent, transparent);
   background-color: $really-white;
   background-image: none;
   border-radius: $btn-border-radius;
@@ -151,7 +151,7 @@
   }
 }
 
-$fading-border-widths: $input-btn-border-width $input-btn-border-width ($input-btn-border-width * 2) $input-btn-border-width;
+$fading-border-widths: $input-btn-border-width;
 
 @mixin fading-border($border-color: #b08f5f, $gradient-start: #f4d09c, $gradient-end: #9b7947) {
   border-color: $border-color;
