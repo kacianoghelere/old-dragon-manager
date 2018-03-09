@@ -1,6 +1,16 @@
 <div class="card" [formGroup]="characterForm">
   <div class="card-body row" formGroupName="attributes">
-    <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2" title="Força">
+    <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2 attribute" title="Força">
+      <!-- <character-editor-attribute controlId="attributeStrength"
+          [field]="characterForm.controls.strength"
+          label="FOR"
+          title="Força">
+        <input class="form-control"
+          type="number"
+          id="attributeStrength"
+          formControlName="strength"
+          required>
+      </character-editor-attribute> -->
       <label for="attributeStrength">FOR</label>
       <div class="input-group">
         <input class="form-control"
@@ -13,7 +23,7 @@
         </span>
       </div>
     </div>
-    <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2" title="Destreza">
+    <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2 attribute" title="Destreza">
       <label for="attributeDexterity">DES</label>
       <div class="input-group">
         <input class="form-control"
@@ -26,7 +36,7 @@
         </span>
       </div>
     </div>
-    <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2" title="Constituição">
+    <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2 attribute" title="Constituição">
       <label for="attributeConstitution">CON</label>
       <div class="input-group">
         <input class="form-control"
@@ -39,7 +49,7 @@
         </span>
       </div>
     </div>
-    <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2" title="Inteligência">
+    <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2 attribute" title="Inteligência">
       <label for="attributeIntelligence">INT</label>
       <div class="input-group">
         <input class="form-control"
@@ -52,7 +62,7 @@
         </span>
       </div>
     </div>
-    <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2" title="Sabedoria">
+    <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2 attribute" title="Sabedoria">
       <label for="attributeWisdom">SAB</label>
       <div class="input-group">
         <input class="form-control"
@@ -65,7 +75,7 @@
         </span>
       </div>
     </div>
-    <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2" title="Carisma">
+    <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2 attribute" title="Carisma">
       <label for="attributeCharisma">CAR</label>
       <div class="input-group">
         <input class="form-control"

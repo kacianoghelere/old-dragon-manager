@@ -44,18 +44,20 @@ export class CharacterEditorComponent extends CoreComponent
     super();
   }
 
-  generateName() {
-    this.charactersService.generateName().subscribe((generated) => {
-      this.characterForm.patchValue({name: generated.name});
-    });
-  }
-
-  goBack() {
+  closeEditor() {
     if (this.character.id) {
       this.router.navigate(['/main/characters', this.character.uuid]);
     } else {
       this.router.navigate(['/main/characters/']);
     }
+  }
+
+  generateName() {
+    this.charactersService.generateName().subscribe((generated) => {
+      this.characterForm.patchValue({
+        name: `${generated.name} ${generated.surname}`
+      });
+    });
   }
 
   getActive(id: any, field: string): {active: boolean} {

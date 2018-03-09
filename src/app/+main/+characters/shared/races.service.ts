@@ -16,20 +16,11 @@ export class RacesService extends EntityService<CharacterRace> {
     super(auth, http);
   }
 
-  /**
-   * [find description]
-   * @param  {number}          id [description]
-   * @return {Observable<any>}    [description]
-   */
-  find(id: number): Observable<any> {
+  find(id: number): Observable<CharacterRace> {
     return super._find(this.resource)(id);
   }
 
-  /**
-   * [list description]
-   * @return {Observable<any>} [description]
-   */
-  list(): Observable<any> {
+  list(): Observable<CharacterRace[]> {
     return super._list(this.resource)();
   }
 

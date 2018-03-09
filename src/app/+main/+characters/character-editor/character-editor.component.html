@@ -49,34 +49,34 @@
                 formControlName="level"
                 required>
             </div>
-            <div class="col-sm-12 col-md-auto">
-              <label class="col-form-label" for="characterRace">Raça</label>
-              <select class="form-control"
-                  formControlName="characterRace"
-                  [ngClass]="getErrorClass(characterForm.controls.characterRace)"
-                  id="characterRace"
-                  required>
-                  <option value="" selected>Escolha uma raça</option>
-                  <option *ngFor="let characterRace of characterRaces | async"
-                  [value]="characterRace.id">
-                  {{ characterRace.name }}
-                </option>
-              </select>
-            </div>
-            <div class="col-sm-12 col-md-auto">
-              <label class="col-form-label" for="characterSpecialization">Especialização</label>
-              <select class="form-control"
-                  formControlName="characterSpecialization"
-                  [ngClass]="getErrorClass(characterForm.controls.characterSpecialization)"
-                  id="characterSpecialization"
-                  required="false">
-                <option value="" selected>Escolha uma especialização</option>
-                <option *ngFor="let characterSpecialization of characterSpecializations | async"
-                    [value]="characterSpecialization.id">
-                  {{ characterSpecialization.name }}
-                </option>
-              </select>
-            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-12 col-md-2 col-form-label text-sm-left text-md-right">
+          <b>Raça</b>
+        </label>
+        <div class="col-sm-12 col-md-10">
+          <div class="img-selector">
+            <label class="img-radio"
+                *ngFor="let characterRace of characterRaces | async; let i = index;"
+                [ngClass]="getActive(characterRace.id, 'characterRace')"
+                for="race-{{ characterRace.id }}">
+              <input type="radio"
+                formControlName="characterRace"
+                id="race-{{ characterRace.id }}"
+                [value]="characterRace.id">
+              <div class="card">
+                <img class="card-img" [src]="characterRace.picture"
+                [alt]="characterRace.name">
+                <div class="card-img-overlay d-flex align-items-end">
+                  <p class="card-title">
+                    <b>{{ characterRace.name }}</b>
+                  </p>
+                </div>
+              </div>
+            </label>
           </div>
         </div>
       </div>
@@ -86,16 +86,46 @@
           <b>Classe</b>
         </label>
         <div class="col-sm-12 col-md-10">
-          <span class="btn-group btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-outline-light"
+          <div class="img-selector">
+            <label class="img-radio"
                 *ngFor="let characterClass of characterClasses | async; let i = index;"
-                [ngClass]="getActive(characterClass.id, 'characterClass')">
+                [ngClass]="getActive(characterClass.id, 'characterClass')"
+                for="class-{{ characterClass.id }}">
               <input type="radio"
                 formControlName="characterClass"
+                id="class-{{ characterClass.id }}"
                 [value]="characterClass.id">
-              <i class="ra {{characterClass?.style}}"></i> {{characterClass.name}}
+              <div class="card">
+                <img class="card-img" [src]="characterClass.picture"
+                [alt]="characterClass.name">
+                <div class="card-img-overlay d-flex align-items-end">
+                  <p class="card-title">
+                    <b>{{ characterClass.name }}</b>
+                  </p>
+                </div>
+              </div>
             </label>
-          </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-12 col-md-2 col-form-label text-sm-left text-md-right"
+            for="characterSpecialization">
+          <b>Especialização</b>
+        </label>
+        <div class="col-sm-12 col-md-4">
+          <select class="form-control"
+              formControlName="characterSpecialization"
+              [ngClass]="getErrorClass(characterForm.controls.characterSpecialization)"
+              id="characterSpecialization"
+              required="false">
+            <option value="" selected>Escolha uma especialização</option>
+            <option *ngFor="let characterSpecialization of characterSpecializations | async"
+                [value]="characterSpecialization.id">
+              {{ characterSpecialization.name }}
+            </option>
+          </select>
         </div>
       </div>
 
@@ -180,7 +210,7 @@
               [disabled]="characterForm.invalid">
             <i class="fa fa-save"></i> Salvar Personagem
           </button>
-          <button class="btn btn-outline-light btn-lg" type="button" (click)="goBack()">
+          <button class="btn btn-outline-light btn-lg" type="button" (click)="closeEditor()">
             <i class="fa fa-remove"></i> Cancelar
           </button>
         </div>

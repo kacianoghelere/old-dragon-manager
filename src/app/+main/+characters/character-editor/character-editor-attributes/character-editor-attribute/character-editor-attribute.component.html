@@ -1,3 +1,9 @@
-<p>
-  character-editor-attribute works!
-</p>
+<div [title]="title">
+  <label [for]="controlId">{{ label }}</label>
+  <div class="input-group">
+    <ng-content></ng-content>
+    <span class="input-group-addon">
+      <small>{{ calcModifier() }}</small>
+    </span>
+  </div>
+</div>

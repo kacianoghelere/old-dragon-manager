@@ -425,3 +425,57 @@ $btn-bg-img: 'https://vignette.wikia.nocookie.net/dont-starve-game/images/9/94/R
     display: block;
   }
 }
+.img-selector {
+  display: flex;
+	flex-wrap: wrap;
+  width: 100%;
+
+  .img-radio {
+    flex: 0 1 25%;
+
+    input[type="radio"] {
+      display: none;
+
+      &:checked ~ .card {
+        position: relative;
+
+        &::before {
+          background-color: $gray-800;
+          border: 2px solid $gray-600;
+          border-radius: 1em;
+          content: '';
+          left: 10px;
+          height: 2em;
+          position: absolute;
+          top: 10px;
+          width: 2em;
+        }
+
+        &::after {
+          background-color: transparent;
+          background-image: $custom-checkbox-indicator-icon-checked;
+          border-radius: 1em;
+          content: '';
+          left: 1em;
+          height: 1.25em;
+          position: absolute;
+          top: 1em;
+          width: 1.25em;
+        }
+      }
+    }
+
+    .card {
+      height: 10em;
+      max-width: 100%;
+      min-width: 100%;
+      width: 100%;
+
+      .card-img {
+        min-height: 100%;
+        max-width: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}

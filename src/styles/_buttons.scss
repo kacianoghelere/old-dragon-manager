@@ -155,8 +155,7 @@ input[type="button"] {
 
 .btn-group,
 .btn-group-vertical {
-  @include fading-border(#b0b0b0, #eee, #9b9b9b);
-
+  @include fading-border(#b0b0b0, $gray-100, $gray-300);
   .btn {
     border: none !important;
     border-image: none !important;

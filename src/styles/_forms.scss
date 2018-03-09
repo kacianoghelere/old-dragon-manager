@@ -5,7 +5,7 @@
 //
 
 .form-control {
-  @include fading-border(#b0b0b0, #eee, #9b9b9b);
+  @include fading-border(#b0b0b0, $gray-100, $gray-300);
 
   // Disabled and read-only inputs
   //
@@ -14,7 +14,7 @@
   // don't honor that edge case; we style them as disabled anyway.
   &:disabled,
   &[readonly] {
-    @include fading-border(#aaa, #ddd, #777);
+    @include fading-border(#aaa, $gray-100, $gray-200);
   }
 }
 //

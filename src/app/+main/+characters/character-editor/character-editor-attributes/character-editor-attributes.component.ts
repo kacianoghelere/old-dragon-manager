@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 
 import { Character } from '@shared/models';
 import { CoreComponent } from '@shared/components/core/core.component';
+import { Attributes } from '@shared/constants/attributes';
 
 @Component({
   selector: 'character-editor-attributes',
@@ -31,22 +32,13 @@ export class CharacterEditorAttributesComponent extends CoreComponent
   }
 
   generateAttributes() {
-    let attributeNames = [
-      'strength',
-      'dexterity',
-      'constitution',
-      'intelligence',
-      'wisdom',
-      'charisma'
-    ];
+    Object.keys(Attributes).forEach((attribute) => {
+      let attributes = {};
 
-    attributeNames.forEach((attribute) => {
-      let value = this.rollAttribute();
+      attributes[attribute] = this.rollAttribute();
 
-      let attributesGroup = <FormGroup> this.characterForm.controls['attributes'];
-
-      attributesGroup.controls[attribute].setValue(value);
-    })
+      this.characterForm.patchValue({attributes: attributes});
+    });
 
     this.changeDetectorRef.detectChanges();
   }
