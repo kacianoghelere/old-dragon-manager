@@ -431,13 +431,20 @@ $btn-bg-img: 'https://vignette.wikia.nocookie.net/dont-starve-game/images/9/94/R
   width: 100%;
 
   .img-radio {
-    flex: 0 1 25%;
+    box-sizing: border-box;
+    flex: 0 1 20%;
+    margin-left: 2px;
+    margin-right: 2px;
 
     input[type="radio"] {
       display: none;
 
       &:checked ~ .card {
         position: relative;
+
+        .card-img-overlay {
+          background-color: transparent;
+        }
 
         &::before {
           background-color: $gray-800;
@@ -471,10 +478,20 @@ $btn-bg-img: 'https://vignette.wikia.nocookie.net/dont-starve-game/images/9/94/R
       min-width: 100%;
       width: 100%;
 
+      .card-img-overlay {
+        background-color: rgba(34, 34, 34, 0.5);
+      }
+
       .card-img {
         min-height: 100%;
         max-width: 100%;
         object-fit: cover;
+      }
+
+      &:hover {
+        .card-img-overlay {
+          background-color: rgba(34, 34, 34, 0.25);
+        }
       }
     }
   }
