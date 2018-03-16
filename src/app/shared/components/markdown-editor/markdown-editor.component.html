@@ -27,11 +27,14 @@
   <div class="card-body tab-content">
     <div class="tab-pane editor-tab" role="tabpanel"
         [ngClass]="{'active': isSelected(0)}">
-      <ng-content></ng-content>
+      <textarea class="form-control"
+        rows="5"
+        [(ngModel)]="text"
+        [placeholder]="placeholder"></textarea>
     </div>
     <div class="tab-pane" role="tabpanel"
         [ngClass]="{'active': isSelected(1)}">
-      <markdown [data]="markdownControl.value"></markdown>
+      <markdown [data]="text"></markdown>
     </div>
     <div class="tab-pane" role="tabpanel"
         [ngClass]="{'active': isSelected(2)}">

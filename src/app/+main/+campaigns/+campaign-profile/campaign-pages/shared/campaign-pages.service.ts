@@ -52,6 +52,7 @@ export class CampaignPagesService extends EntityService<CampaignPage> {
       let regex = /\`\`\`dm\-content\n(.*?)\n\`\`\`/g;
       text = text.replace(regex, '');
     }
+
     return this.markdown.compile(text);
   }
 

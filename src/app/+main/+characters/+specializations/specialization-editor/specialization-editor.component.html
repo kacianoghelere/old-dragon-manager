@@ -75,12 +75,8 @@
           <b>Descrição da Especialização</b>
         </label>
         <div class="col-sm-10">
-          <markdown-editor [markdownControl]="specializationForm.controls.description">
-            <textarea class="form-control"
-              id="specializationDescription"
-              rows="5"
-              formControlName="description"
-              placeholder="Descrição da Especialização"></textarea>
+          <markdown-editor formControlName="description"
+              placeholder="Descrição da Especialização">
           </markdown-editor>
         </div>
       </div>

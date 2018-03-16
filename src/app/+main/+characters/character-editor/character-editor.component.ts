@@ -162,7 +162,7 @@ export class CharacterEditorComponent extends CoreComponent
         ]
       ],
       height: [
-        this.character.height, [
+        this.character.height || 1.2, [
           Validators.required, Validators.max(280), Validators.min(30)
         ]
       ],

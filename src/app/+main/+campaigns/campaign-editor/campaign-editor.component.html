@@ -31,18 +31,9 @@
           Descrição da Campanha
         </label>
         <div class="col-sm-10">
-          <textarea class="form-control"
-            id="campaignDescription"
-            rows="5"
-            formControlName="description"></textarea>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="form-group row">
-        <div class="ml-auto col-sm-10">
-          <markdown-instructions></markdown-instructions>
+          <markdown-editor formControlName="description"
+              placeholder="Descrição da Campanha">
+          </markdown-editor>
         </div>
       </div>
     </section>

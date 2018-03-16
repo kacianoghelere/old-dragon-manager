@@ -1,92 +1,28 @@
 <div class="card" [formGroup]="characterForm">
   <div class="card-body row" formGroupName="attributes">
-    <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2 attribute" title="Força">
-      <!-- <character-editor-attribute controlId="attributeStrength"
-          [field]="characterForm.controls.strength"
-          label="FOR"
-          title="Força">
-        <input class="form-control"
-          type="number"
-          id="attributeStrength"
-          formControlName="strength"
-          required>
-      </character-editor-attribute> -->
-      <label for="attributeStrength">FOR</label>
-      <div class="input-group">
-        <input class="form-control"
-          type="number"
-          id="attributeStrength"
-          formControlName="strength"
-          required>
-        <span class="input-group-addon">
-          <small>{{ getModifier(characterForm.controls.attributes.controls.strength.value) }}</small>
-        </span>
-      </div>
+    <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2">
+      <character-editor-attribute name="Força"
+        formControlName="strength"></character-editor-attribute>
     </div>
-    <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2 attribute" title="Destreza">
-      <label for="attributeDexterity">DES</label>
-      <div class="input-group">
-        <input class="form-control"
-          type="number"
-          id="attributeDexterity"
-          formControlName="dexterity"
-          required>
-        <span class="input-group-addon">
-          <small>{{ getModifier(characterForm.controls.attributes.controls.dexterity.value) }}</small>
-        </span>
-      </div>
+    <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2">
+      <character-editor-attribute name="Destreza"
+        formControlName="dexterity"></character-editor-attribute>
     </div>
-    <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2 attribute" title="Constituição">
-      <label for="attributeConstitution">CON</label>
-      <div class="input-group">
-        <input class="form-control"
-          type="number"
-          id="attributeConstitution"
-          formControlName="constitution"
-          required>
-        <span class="input-group-addon">
-          <small>{{ getModifier(characterForm.controls.attributes.controls.constitution.value) }}</small>
-        </span>
-      </div>
+    <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2">
+      <character-editor-attribute name="Constituição"
+        formControlName="constitution"></character-editor-attribute>
     </div>
-    <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2 attribute" title="Inteligência">
-      <label for="attributeIntelligence">INT</label>
-      <div class="input-group">
-        <input class="form-control"
-          type="number"
-          id="attributeIntelligence"
-          formControlName="intelligence"
-          required>
-        <span class="input-group-addon">
-          <small>{{ getModifier(characterForm.controls.attributes.controls.intelligence.value) }}</small>
-        </span>
-      </div>
+    <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2">
+      <character-editor-attribute name="Inteligência"
+        formControlName="intelligence"></character-editor-attribute>
     </div>
-    <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2 attribute" title="Sabedoria">
-      <label for="attributeWisdom">SAB</label>
-      <div class="input-group">
-        <input class="form-control"
-          type="number"
-          id="attributeWisdom"
-          formControlName="wisdom"
-          required>
-        <span class="input-group-addon">
-          <small>{{ getModifier(characterForm.controls.attributes.controls.wisdom.value) }}</small>
-        </span>
-      </div>
+    <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2">
+      <character-editor-attribute name="Sabedoria"
+        formControlName="wisdom"></character-editor-attribute>
     </div>
-    <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2 attribute" title="Carisma">
-      <label for="attributeCharisma">CAR</label>
-      <div class="input-group">
-        <input class="form-control"
-          type="number"
-          id="attributeCharisma"
-          formControlName="charisma"
-          required>
-        <span class="input-group-addon">
-          <small>{{ getModifier(characterForm.controls.attributes.controls.charisma.value) }}</small>
-        </span>
-      </div>
+    <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2">
+      <character-editor-attribute name="Carisma"
+        formControlName="charisma"></character-editor-attribute>
     </div>
   </div>
   <div class="card-footer d-flex justify-content-end">

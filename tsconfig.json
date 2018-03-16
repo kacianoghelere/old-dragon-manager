@@ -19,7 +19,8 @@
     "paths": {
       "@app/*": ["app/*"],
       "@authentication/*": ["app/authentication/*"],
-      "@shared/*": ["app/shared/*"]
+      "@shared/*": ["app/shared/*"],
+      "@util/*": ["app/util/*"]
     }
   }
 }

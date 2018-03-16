@@ -22,6 +22,7 @@
     "@angular/platform-browser-dynamic": "^5.0.0",
     "@angular/router": "^5.0.0",
     "@ng-bootstrap/ng-bootstrap": "^1.0.0-beta.8",
+    "@ng-select/ng-select": "^0.29.0",
     "angular-confirmation-popover": "^3.4.2",
     "angular2-markdown": "^1.6.0",
     "bootstrap": "^4.0.0-beta.2",

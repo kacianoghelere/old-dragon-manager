@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 
-import { CoreComponent } from '../../../../shared/components/core/core.component';
+import { CoreComponent } from '@shared/components/core/core.component';
 
 @Component({
   selector: 'character-attribute',

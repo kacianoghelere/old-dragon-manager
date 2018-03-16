@@ -156,12 +156,8 @@
           <b>Descrição</b>
         </label>
         <div class="col-sm-12 col-md-9 col-lg-10">
-          <markdown-editor [markdownControl]="characterForm.controls.description">
-            <textarea class="form-control"
-              id="characterDescription"
-              rows="5"
-              formControlName="description"
-              placeholder="Descrição do personagem"></textarea>
+          <markdown-editor formControlName="description"
+              placeholder="Descrição do personagem">
           </markdown-editor>
         </div>
       </div>

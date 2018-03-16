@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { MarkdownModule } from 'angular2-markdown';
@@ -26,6 +27,7 @@ import { MarkdownEditorComponent } from './components/markdown-editor/markdown-e
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     RouterModule,
     MarkdownModule.forRoot(),
     ConfirmationPopoverModule.forRoot({confirmButtonType: 'danger'})
