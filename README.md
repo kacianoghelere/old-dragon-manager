@@ -1,4 +1,4 @@
-# Old Dragon Manager
+![Old Dragon Manager](https://user-images.githubusercontent.com/4911357/42217170-9063aa36-7e9a-11e8-8c30-63cc6589f474.png)
 
 Um projeto sem fins lucrativos que visa construir uma ferramenta de auxílio a jogadores do jogo de RPG de mesa Old Dragon.
 
